@@ -31,6 +31,9 @@ export 'src/widgets/s_buttons/s_animated_button.dart';
 export 'src/widgets/s_bottom_bars/s_rounded_bottom_bar.dart';
 export 'src/widgets/s_bottom_bars/s_bottom_bar.dart';
 
+export 'src/shared/constants.dart';
+export 'src/shared/icons_images.dart';
+
 // Colors Export
 export 'src/shared/app_colors.dart';
 
