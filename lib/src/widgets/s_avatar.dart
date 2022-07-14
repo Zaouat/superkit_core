@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:superkit_core/src/shared/constants.dart';
-import 'package:superkit_core/src/widgets/custom_ui/image_loading_builder.dart';
 import 'package:superkit_core/superkit_core.dart';
 
 class SuperKitAvatar extends StatelessWidget {

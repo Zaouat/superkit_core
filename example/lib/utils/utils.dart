@@ -1,6 +1,5 @@
 import 'package:flutter/Material.dart';
 import 'package:flutter/services.dart';
-import 'package:superkit_core/superkit_core.dart';
 
 extension HexColor on Color {
   /// String is in the format "aabbcc" or "ffaabbcc" with an optional leading "#".
@@ -24,13 +23,13 @@ Future<String> getJsonFile(String path) async {
   return await rootBundle.loadString(path);
 }
 
-FlexScheme parseStringScheme(String themeName) {
-  FlexScheme theme = FlexScheme.custom;
+// FlexScheme parseStringScheme(String themeName) {
+//   FlexScheme theme = FlexScheme.custom;
 
-  for (int i = 0; i < FlexScheme.values.length; i++) {
-    if (FlexScheme.values[i].name == themeName) {
-      theme = FlexScheme.values[i];
-    }
-  }
-  return theme;
-}
+//   for (int i = 0; i < FlexScheme.values.length; i++) {
+//     if (FlexScheme.values[i].name == themeName) {
+//       theme = FlexScheme.values[i];
+//     }
+//   }
+//   return theme;
+// }

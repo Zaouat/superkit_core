@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_dynamic_calls, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:superkit_core/src/shared/constants.dart';
 import 'package:superkit_core/superkit_core.dart';
 
 class Appearance extends StatefulWidget {
