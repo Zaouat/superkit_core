@@ -6,7 +6,6 @@ export 'src/superkit_app.dart';
 //Superkit Packages
 export 'src/packages.dart';
 export 'src/widgets/s_settings/s_modal_settings/s_modal_settings.dart';
-export 'src/shared/icons_images.dart';
 
 // Widgets Export
 export 'src/widgets/s_text.dart';
@@ -31,19 +30,21 @@ export 'src/widgets/s_buttons/s_animated_button.dart';
 export 'src/widgets/s_bottom_bars/s_rounded_bottom_bar.dart';
 export 'src/widgets/s_bottom_bars/s_bottom_bar.dart';
 
+//Shared Export
+export 'src/shared/app_colors.dart';
 export 'src/shared/constants.dart';
 export 'src/shared/icons_images.dart';
-
-// Colors Export
-export 'src/shared/app_colors.dart';
-
-//Helpers
-export 'src/utils/ui_helpers.dart';
-
-//Utils
-export 'src/utils/color_changer.dart';
 export 'src/shared/superkit_theme.dart';
-export 'src/utils/font_changer.dart';
+
+//Models Export
 export 'src/models/custom_theme.dart';
-export 'src/utils/localizations.dart';
 export 'src/models/language.dart';
+
+//Utils Export
+export 'src/utils/color_changer.dart';
+export 'src/utils/font_changer.dart';
+export 'src/utils/change_language.dart';
+export 'src/utils/localizations.dart';
+export 'src/utils/ui_helpers.dart';
+export 'src/utils/utils.dart';
+export 'src/utils/package_info_service.dart';
