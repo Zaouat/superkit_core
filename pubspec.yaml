@@ -1,0 +1,82 @@
+name: superkit_core
+description: A new Flutter package project.
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_cupertino_localizations: 1.0.1
+
+  # Themes
+  flex_color_scheme: ^5.0.1
+  adaptive_theme: ^3.1.0
+
+  # Icons & Fonts
+  google_fonts: ^3.0.1
+  flutter_iconly: ^1.0.2
+  font_awesome_flutter: ^10.1.0
+  flutter_svg: ">=1.0.0 <1.1.1+1"
+  flutter_feather_icons: ^2.0.0+1
+  flutter_rating_bar: ^4.0.1
+
+  # Animations
+  flutter_scale_tap: ^1.0.5
+  auto_animated: ^3.0.1
+  shimmer: ^2.0.0
+  flutter_spinkit: ^5.1.0
+  animated_text_kit: ^4.2.2
+  animations: ">=2.0.0 <3.0.0"
+
+  # Tools & Others
+  go_router: ^3.1.1
+  google_maps_flutter: ^2.1.8
+  location: ^4.4.0
+  email_validator: ^2.0.1
+  collection: ">=1.15.0 <2.0.0"
+  intersperse: ">=2.0.0 <3.0.0"
+  url_launcher: ^6.1.4
+  get: ^4.6.5
+  get_storage: ^2.0.3
+  package_info_plus: ^1.4.2
+  provider: ^6.0.3
+  cached_network_image: ^3.2.1
+  flutter_hooks: ^0.18.5+1
+  percent_indicator: ^4.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1
+
+flutter:
+  assets:
+    # Fonts
+    - assets/google_fonts/poppins/
+    - assets/google_fonts/plexsans/
+
+    # Json's files
+    # - packages/superkit_core/assets/light_mode.json
+    # - packages/superkit_core/assets/dark_mode.json
+
+    # Marker icons
+    - packages/superkit_core/assets/icons/gmap/pin.svg
+    - packages/superkit_core/assets/icons/gmap/plane.svg
+    - packages/superkit_core/assets/icons/gmap/truck.svg
+
+    # Map-Modes images
+    - packages/superkit_core/assets/images/map_mode/normal.png
+    - packages/superkit_core/assets/images/map_mode/satellite.png
+    - packages/superkit_core/assets/images/map_mode/terrain.png
+
+    # Images
+    - packages/superkit_core/assets/images/avatar.png
+    - packages/superkit_core/assets/images/light.png
+    - packages/superkit_core/assets/images/dark.png
+    - packages/superkit_core/assets/images/system.png
