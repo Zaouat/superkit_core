@@ -92,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
               ),
             ]),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
           child: Center(
             child: Column(
               children: <Widget>[
@@ -102,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                 ),
                 verticalSpaceLarge,
                 SuperKitText.headlineBold(
-                  text: 'How did you find Superkit ?',
+                  text: 'How did you find Superkit Core?',
                   lang: globals.lang,
                   maxLines: 3,
                   align: TextAlign.center,
@@ -153,7 +153,10 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                 verticalSpaceSmall,
                 SuperKitText.bodyBold(text: 'Contact us', lang: globals.lang),
                 SuperKitText.captionMedium(
-                    text: 'mobiledevlopa@gmail.com', lang: globals.lang),
+                  text: 'mobiledevlopa@gmail.com',
+                  lang: globals.lang,
+                ),
+                verticalSpaceSmall,
               ],
             ),
           ),
