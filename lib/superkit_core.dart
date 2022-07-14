@@ -6,6 +6,8 @@ export 'src/superkit_app.dart';
 //Superkit Packages
 export 'src/packages.dart';
 export 'src/widgets/s_settings/s_modal_settings/s_modal_settings.dart';
+export 'src/shared/icons_images.dart';
+
 // Widgets Export
 export 'src/widgets/s_text.dart';
 export 'src/widgets/s_input_field.dart';
@@ -16,6 +18,7 @@ export 'src/widgets/s_divider.dart';
 export 'src/widgets/s_ dropdown.dart';
 export 'src/widgets/s_counter.dart';
 export 'src/widgets/s_radio.dart';
+export 'src/widgets/s_sliders/s_custom_sliders.dart';
 
 //Buttons Export
 export 'src/widgets/s_icon.dart';

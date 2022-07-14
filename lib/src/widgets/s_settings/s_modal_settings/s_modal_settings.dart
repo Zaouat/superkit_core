@@ -113,12 +113,14 @@ Future<void> superkitSettingsModal({
                                   globalProvider: globalPr,
                                   hideonTap: hideonTap,
                                 ),
-                                drawerPr ??
-                                    DrawerSwitcher(
-                                      drawers: drawerPr.drawers,
-                                      drawerProvider: drawerPr,
-                                      defaultDrawer: drawerPr.getSelectedDrawer,
-                                    ),
+                                enableDrawer!
+                                    ? DrawerSwitcher(
+                                        drawers: drawerPr.drawers,
+                                        drawerProvider: drawerPr,
+                                        defaultDrawer:
+                                            drawerPr.getSelectedDrawer,
+                                      )
+                                    : Container(),
                                 verticalSpaceMedium,
                               ],
                             ),

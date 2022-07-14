@@ -36,9 +36,7 @@ dependencies:
 
   # Tools & Others
   go_router: ^3.1.1
-  google_maps_flutter: ^2.1.8
   location: ^4.4.0
-  email_validator: ^2.0.1
   collection: ">=1.15.0 <2.0.0"
   intersperse: ">=2.0.0 <3.0.0"
   url_launcher: ^6.1.4
@@ -60,20 +58,6 @@ flutter:
     # Fonts
     - assets/google_fonts/poppins/
     - assets/google_fonts/plexsans/
-
-    # Json's files
-    # - packages/superkit_core/assets/light_mode.json
-    # - packages/superkit_core/assets/dark_mode.json
-
-    # Marker icons
-    - packages/superkit_core/assets/icons/gmap/pin.svg
-    - packages/superkit_core/assets/icons/gmap/plane.svg
-    - packages/superkit_core/assets/icons/gmap/truck.svg
-
-    # Map-Modes images
-    - packages/superkit_core/assets/images/map_mode/normal.png
-    - packages/superkit_core/assets/images/map_mode/satellite.png
-    - packages/superkit_core/assets/images/map_mode/terrain.png
 
     # Images
     - packages/superkit_core/assets/images/avatar.png
