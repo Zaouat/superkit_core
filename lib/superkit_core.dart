@@ -7,6 +7,8 @@ export 'src/superkit_app.dart';
 export 'src/packages.dart';
 export 'src/widgets/s_settings/s_modal_settings/s_modal_settings.dart';
 
+export 'src/widgets/custom_ui/image_error_builder.dart';
+export 'src/widgets/custom_ui/image_loading_builder.dart';
 // Widgets Export
 export 'src/widgets/s_text.dart';
 export 'src/widgets/s_input_field.dart';
