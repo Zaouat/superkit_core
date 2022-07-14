@@ -1,4 +1,4 @@
-import 'package:superkit_core/superkit_core.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class PackageInfoService {
   PackageInfoService() {

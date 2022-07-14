@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:superkit_core/superkit_core.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:superkit_core/src/models/language.dart';
 
 class AppLanguage {
   AppLanguage() {

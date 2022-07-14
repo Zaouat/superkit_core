@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_classes_with_only_static_members
 
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/Material.dart';
-import 'package:superkit_core/superkit_core.dart';
 
 class SuperKit {
   static Future<void> init() async {

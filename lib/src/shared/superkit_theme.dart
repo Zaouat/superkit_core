@@ -20,8 +20,9 @@
 10. If you do not have a themeMode switch, uncomment this line
    to let the device system mode control the theme mode:
    themeMode: ThemeMode.system, */
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
-import 'package:superkit_core/superkit_core.dart';
+import 'package:superkit_core/src/shared/app_colors.dart';
 
 ThemeData superkitLightTheme = FlexThemeData.light(
   colors: const FlexSchemeColor(

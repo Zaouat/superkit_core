@@ -1,8 +1,9 @@
 // ignore_for_file: unrelated_type_equality_checks
 
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:superkit_core/superkit_core.dart';
+import 'package:superkit_core/src/shared/app_colors.dart';
 
 /*
 1. We use AdaptiveTheme.of(context) to get the AdaptiveThemeData from the context.
