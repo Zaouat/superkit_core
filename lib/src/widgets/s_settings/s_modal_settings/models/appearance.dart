@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:superkit_core/src/shared/constants.dart';
-import 'package:superkit_core/src/widgets/custom_ui/appearance_card.dart';
 import 'package:superkit_core/superkit_core.dart';
 
 class Appearance extends StatefulWidget {

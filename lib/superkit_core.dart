@@ -19,6 +19,7 @@ export 'src/widgets/s_ dropdown.dart';
 export 'src/widgets/s_counter.dart';
 export 'src/widgets/s_radio.dart';
 export 'src/widgets/s_sliders/s_custom_sliders.dart';
+export 'src/widgets/custom_ui/appearance_card.dart';
 
 //Buttons Export
 export 'src/widgets/s_icon.dart';
