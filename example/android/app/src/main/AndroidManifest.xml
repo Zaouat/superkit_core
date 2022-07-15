@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.starter_project">
+    package="com.devlopa.superkitcore">
    <application
-        android:label="starter_project"
+        android:label="SuperKit Core"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

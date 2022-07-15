@@ -3,7 +3,7 @@
 import 'package:superkit_core/superkit_core.dart';
 
 Map<String, dynamic> configData = {
-  'appTitle': 'superkit',
+  'appTitle': 'superkit core',
   'theme': FlexScheme.deepPurple,
   'enableSharpEdges': false,
   'aboutText':
