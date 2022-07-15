@@ -38,6 +38,7 @@ export 'src/shared/app_colors.dart';
 export 'src/shared/constants.dart';
 export 'src/shared/icons_images.dart';
 export 'src/shared/superkit_theme.dart';
+export 'src/shared/screens.dart';
 
 //Models Export
 export 'src/models/custom_theme.dart';

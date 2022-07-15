@@ -20,6 +20,15 @@ void main() async {
       ),
     ),
   );
+  doWhenWindowReady(() {
+    final initialSize = Size(450, 720);
+    final minSize = Size(450, 720);
+    final maxSize = Size(1920, 1080);
+    appWindow.maxSize = maxSize;
+    appWindow.minSize = minSize;
+    appWindow.size = initialSize; //default size
+    appWindow.show();
+  });
 }
 
 class MainPage extends StatelessWidget {

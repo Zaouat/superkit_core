@@ -54,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
     /* -------------------------------------------------------------------------- */
     globals.lang = Localizations.localeOf(context).languageCode;
     /* -------------------------------------------------------------------------- */
+    bool isDesktop = Device.isDesktop;
     return Consumer3<LocaleProvider, GlobalProvider, ThemeProvider>(builder: (
       BuildContext context,
       LocaleProvider? appLanguage,
@@ -119,27 +120,51 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: SuperKitButton(
-                          title: 'Send',
-                          icon: IconlyBold.send,
-                          onTap: () {
-                            debugPrint(rating.toString());
-                          },
+                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  child: isDesktop
+                      ? SizedBox(
+                          width: screenWidth(context) * 0.3,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: SuperKitButton(
+                                  title: 'Send',
+                                  icon: IconlyBold.send,
+                                  onTap: () {
+                                    debugPrint(rating.toString());
+                                  },
+                                ),
+                              ),
+                              horizontalSpaceRegular,
+                              SuperKitIconButton.outline(
+                                color: Theme.of(context).primaryColor,
+                                icon: Icons.share,
+                                onTap: () {},
+                              ),
+                            ],
+                          ),
+                        )
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: SuperKitButton(
+                                title: 'Send',
+                                icon: IconlyBold.send,
+                                onTap: () {
+                                  debugPrint(rating.toString());
+                                },
+                              ),
+                            ),
+                            horizontalSpaceRegular,
+                            SuperKitIconButton.outline(
+                              color: Theme.of(context).primaryColor,
+                              icon: Icons.share,
+                              onTap: () {},
+                            ),
+                          ],
                         ),
-                      ),
-                      horizontalSpaceRegular,
-                      SuperKitIconButton.outline(
-                        color: Theme.of(context).primaryColor,
-                        icon: Icons.share,
-                        onTap: () {},
-                      ),
-                    ],
-                  ),
                 ),
                 const Spacer(),
                 SuperKitLogo.tiny(

@@ -16,3 +16,4 @@ export 'package:url_launcher/url_launcher.dart';
 export 'package:provider/provider.dart';
 export 'package:provider/single_child_widget.dart';
 export 'package:package_info_plus/package_info_plus.dart';
+export 'package:bitsdojo_window/bitsdojo_window.dart';

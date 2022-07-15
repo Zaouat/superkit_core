@@ -2,6 +2,7 @@
 
 import 'dart:math';
 import 'dart:io' show Platform;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Screen {
@@ -28,6 +29,18 @@ class Screen {
   static double diagonalInches(BuildContext c) => diagonal(c) / _ppi;
 }
 
+class Device {
+  static bool get isDesktop => !isWeb && (isWindows || isLinux || isMacOS);
+  static bool get isMobile => isAndroid || isIOS;
+  static bool get isWeb => kIsWeb;
+
+  static bool get isWindows => Platform.isWindows;
+  static bool get isLinux => Platform.isLinux;
+  static bool get isMacOS => Platform.isMacOS;
+  static bool get isAndroid => Platform.isAndroid;
+  static bool get isFuchsia => Platform.isFuchsia;
+  static bool get isIOS => Platform.isIOS;
+}
 // bool isLandscape = Screen.isLandscape(context);
 // bool isLargePhone = Screen.diagonal(context) > 720;
 // bool isTablet = Screen.diagonalInches(context) >= 7;
