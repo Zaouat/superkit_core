@@ -61,7 +61,7 @@ class SuperKitMaterialApp extends StatefulWidget {
   ///
   final RouterDelegate<Object>? routerDelegate;
 
-  /// A map of [String] route names to [WidgetBuilder]s that build [Route]s.
+  /// A map of [String] route names to []s that build [Route]s.
   final Map<String, Widget Function(BuildContext)>? routes;
 
   /// The initial route of the app.
@@ -171,6 +171,7 @@ class _SuperKitState extends State<SuperKitMaterialApp> {
                     GlobalWidgetsLocalizations.delegate,
                     DefaultCupertinoLocalizations.delegate,
                   ],
+
                   //home: const HomeView(),
                 )
               : MaterialApp(

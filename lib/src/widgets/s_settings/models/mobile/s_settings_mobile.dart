@@ -1,12 +1,10 @@
-// ignore_for_file: always_specify_types
-
-import 'package:flutter/material.dart';
-import 'package:superkit_core/src/widgets/s_settings/s_modal_settings/models/appearance.dart';
-import 'package:superkit_core/src/widgets/s_settings/s_modal_settings/models/drawer_switcher.dart';
-import 'package:superkit_core/src/widgets/s_settings/s_modal_settings/models/language.dart';
+import 'package:flutter/Material.dart';
+import 'package:superkit_core/src/widgets/s_settings/models/mobile/appearance.dart';
+import 'package:superkit_core/src/widgets/s_settings/models/mobile/drawer_switcher.dart';
+import 'package:superkit_core/src/widgets/s_settings/models/mobile/language.dart';
 import 'package:superkit_core/superkit_core.dart';
 
-Future<void> superkitSettingsModal({
+Future<void> superkitSettingsMobileModal({
   required BuildContext? context,
   required languagePr,
   required globalPr,

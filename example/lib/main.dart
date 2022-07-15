@@ -9,7 +9,8 @@ import 'package:superkit_core/superkit_core.dart';
 void main() async {
   await GetStorage.init();
   SuperKit.init();
-
+  /* Enable the line bellow to set the desktop config */
+  SuperKit.setDesktopConfig();
   runApp(
     /* Wraping your app with MultiProvider here is required for the Language & DarkMode functionalities */
     MultiProvider(
@@ -20,15 +21,6 @@ void main() async {
       ),
     ),
   );
-  doWhenWindowReady(() {
-    final initialSize = Size(450, 720);
-    final minSize = Size(450, 720);
-    final maxSize = Size(1920, 1080);
-    appWindow.maxSize = maxSize;
-    appWindow.minSize = minSize;
-    appWindow.size = initialSize; //default size
-    appWindow.show();
-  });
 }
 
 class MainPage extends StatelessWidget {
