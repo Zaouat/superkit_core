@@ -1,4 +1,4 @@
-# starter_project
+# superkit_project
 
 A new Flutter project.
 

@@ -16,15 +16,14 @@ dynamic superkitSettings({
   bool? hideonTap,
   required bool? enableDrawer,
   required List<Map<String, Object>>? supportedThemes,
+  GlobalKey<ScaffoldState>? scaffoldKey,
 }) {
   var deviceType = getDeviceType(MediaQuery.of(context!).size);
   switch (deviceType) {
     case DeviceScreenType.desktop:
       break;
     case DeviceScreenType.tablet:
-      return const Drawer(
-        backgroundColor: Colors.red,
-      );
+      return scaffoldKey!.currentState!.openEndDrawer();
 
     case DeviceScreenType.mobile:
       return superkitSettingsMobileModal(

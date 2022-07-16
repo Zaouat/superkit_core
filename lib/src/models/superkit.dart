@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_classes_with_only_static_members
 
-import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/Material.dart';
+import 'package:superkit_core/superkit_core.dart';
 import 'package:window_manager/window_manager.dart';
 
 class SuperKit {
@@ -30,7 +30,8 @@ class SuperKit {
       center: true,
       backgroundColor: Colors.transparent,
       skipTaskbar: false,
-      titleBarStyle: TitleBarStyle.hidden,
+      titleBarStyle:
+          Device.isMacOS ? TitleBarStyle.hidden : TitleBarStyle.normal,
     );
     windowManager.waitUntilReadyToShow(windowOptions, () async {
       await windowManager.show();

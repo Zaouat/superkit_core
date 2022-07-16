@@ -27,6 +27,7 @@ dependencies:
   flutter_svg: ">=1.0.0 <1.1.1+1"
   flutter_feather_icons: ^2.0.0+1
   flutter_rating_bar: ^4.0.1
+  modal_side_sheet: ^0.0.1
 
   # Animations
   flutter_scale_tap: ^1.0.5

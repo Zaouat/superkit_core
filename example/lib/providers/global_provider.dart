@@ -1,8 +1,8 @@
 // ignore_for_file: use_setters_to_change_properties
 
 import 'package:flutter/material.dart';
-import 'package:starter_project/classes/config.dart';
-import 'package:starter_project/config/confing.dart';
+import 'package:superkit_project/classes/config.dart';
+import 'package:superkit_project/config/confing.dart';
 
 class GlobalProvider extends ChangeNotifier {
   GlobalProvider() {

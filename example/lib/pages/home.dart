@@ -1,11 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/Material.dart';
-import 'package:starter_project/providers/global_provider.dart';
-import 'package:starter_project/providers/local_provider.dart';
-import 'package:starter_project/providers/theme_provider.dart';
+import 'package:superkit_project/providers/global_provider.dart';
+import 'package:superkit_project/providers/local_provider.dart';
+import 'package:superkit_project/providers/theme_provider.dart';
 import 'package:superkit_core/superkit_core.dart';
-import 'package:starter_project/config/globals.dart' as globals;
+import 'package:superkit_project/config/globals.dart' as globals;
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
@@ -17,7 +17,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
-  int? rating = 3;
+  int? rating = 5;
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
@@ -68,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
           dark: kcNeutralColor_100,
           light: Colors.white,
         ),
+        key: scaffoldKey,
         appBar: AppBar(
           backgroundColor: colorChanger(
             context: context,
@@ -88,10 +91,15 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                   themePr: themeProvider,
                   enableDrawer: false,
                   supportedThemes: globals.supportedThemes,
+                  scaffoldKey: scaffoldKey,
                 );
               },
             )
           ],
+        ),
+        endDrawer: Container(
+          color: Colors.grey,
+          width: screenWidth(context) / 2,
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),

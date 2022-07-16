@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:starter_project/providers/global_provider.dart';
-import 'package:starter_project/providers/local_provider.dart';
-import 'package:starter_project/providers/multi_provider.dart';
-import 'package:starter_project/providers/theme_provider.dart';
-import 'package:starter_project/routes/routes.dart';
+import 'package:superkit_project/providers/global_provider.dart';
+import 'package:superkit_project/providers/local_provider.dart';
+import 'package:superkit_project/providers/multi_provider.dart';
+import 'package:superkit_project/providers/theme_provider.dart';
+import 'package:superkit_project/routes/routes.dart';
 import 'package:superkit_core/superkit_core.dart';
 
 void main() async {
