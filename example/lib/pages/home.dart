@@ -97,9 +97,13 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
             )
           ],
         ),
-        endDrawer: Container(
-          color: Colors.grey,
-          width: screenWidth(context) / 2,
+        endDrawer: SettingsDesktopDrawer(
+          languagePr: appLanguage,
+          globalPr: globalProvider,
+          themePr: themeProvider,
+          enableDrawer: false,
+          supportedThemes: globals.supportedThemes,
+          scaffoldKey: scaffoldKey,
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),

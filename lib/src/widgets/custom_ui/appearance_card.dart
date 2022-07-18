@@ -11,6 +11,9 @@ class AppearanceCard extends StatelessWidget {
   final Function? onTap;
   final bool? selected;
   final bool? hideonTap;
+  final double? height;
+  final double? width;
+  final bool? enableDesktopMode;
 
   const AppearanceCard({
     Key? key,
@@ -19,6 +22,9 @@ class AppearanceCard extends StatelessWidget {
     this.onTap,
     this.selected,
     this.hideonTap = true,
+    this.height,
+    this.width,
+    this.enableDesktopMode = false,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -34,8 +40,8 @@ class AppearanceCard extends StatelessWidget {
       child: Tooltip(
         message: title,
         child: Container(
-          height: screenWidth(context) / 4,
-          width: screenWidth(context) / 4,
+          height: height ?? screenWidth(context) / 4,
+          width: width ?? screenWidth(context) / 4,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: image!.contains('http')
@@ -47,8 +53,8 @@ class AppearanceCard extends StatelessWidget {
                     ) as ImageProvider,
               fit: BoxFit.cover,
             ),
-            borderRadius: const BorderRadius.all(
-              Radius.circular(24),
+            borderRadius: BorderRadius.all(
+              Radius.circular(enableDesktopMode! ? 16 : 24),
             ),
             border: selected!
                 ? Border.all(
@@ -70,12 +76,19 @@ class AppearanceCard extends StatelessWidget {
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.only(
-              top: 30,
-              bottom: 30,
-              left: 15,
-              right: 15,
-            ),
+            padding: enableDesktopMode!
+                ? const EdgeInsets.only(
+                    top: 15,
+                    bottom: 15,
+                    left: 15,
+                    right: 15,
+                  )
+                : const EdgeInsets.only(
+                    top: 30,
+                    bottom: 30,
+                    left: 15,
+                    right: 15,
+                  ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(6),
               child: Material(

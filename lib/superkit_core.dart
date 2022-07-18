@@ -22,6 +22,7 @@ export 'src/widgets/s_radio.dart';
 export 'src/widgets/s_avatar.dart';
 export 'src/widgets/s_sliders/s_custom_sliders.dart';
 export 'src/widgets/custom_ui/appearance_card.dart';
+export 'src/widgets/s_settings/models/desktop/s_settings_desktop.dart';
 
 //Buttons Export
 export 'src/widgets/s_icon.dart';
