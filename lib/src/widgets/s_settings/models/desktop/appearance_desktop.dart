@@ -40,92 +40,86 @@ class _AppearanceState extends State<AppearanceDesktop> {
   Widget build(BuildContext context) {
     final String lang = Localizations.localeOf(context).languageCode;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
+        horizontalSpaceRegular,
         widget.enableDarkMode!
-            ? Padding(
-                padding: const EdgeInsets.only(
-                  left: 16,
-                  right: 16,
-                ),
-                child: Column(
-                  children: <Widget>[
-                    verticalSpaceRegular,
-                    SuperKitText.bodySemiBold(
-                      text: AppLocalizations.of(context)!.translate('theme')!,
-                      lang: lang,
-                      align: TextAlign.center,
-                    ),
-                    verticalSpaceSmall,
-                    AppearanceCard(
-                      title: AppLocalizations.of(context)!.translate('light'),
-                      image: light_cover,
-                      selected: AdaptiveTheme.of(context).mode ==
-                          AdaptiveThemeMode.light,
-                      hideonTap: widget.hideonTap,
-                      onTap: () {
-                        setLightMode(context: context);
-                        changeNavStatusBarsColor(context: context);
-                      },
-                      height: 80,
-                      width: 80,
-                      enableDesktopMode: true,
-                    ),
-                    verticalSpaceSmall,
-                    AppearanceCard(
-                      title: AppLocalizations.of(context)!.translate('dark'),
-                      image: dark_cover,
-                      selected: AdaptiveTheme.of(context).mode ==
-                          AdaptiveThemeMode.dark,
-                      hideonTap: widget.hideonTap,
-                      onTap: () {
-                        setDarkMode(context: context);
-                        changeNavStatusBarsColor(context: context);
-                      },
-                      height: 80,
-                      width: 80,
-                      enableDesktopMode: true,
-                    ),
-                    verticalSpaceSmall,
-                    AppearanceCard(
-                      title: AppLocalizations.of(context)!.translate('system'),
-                      image: system_cover,
-                      selected: AdaptiveTheme.of(context).mode ==
-                          AdaptiveThemeMode.system,
-                      hideonTap: widget.hideonTap,
-                      onTap: () {
-                        setSystemMode(context: context);
-                        changeNavStatusBarsColor(context: context);
-                      },
-                      height: 80,
-                      width: 80,
-                      enableDesktopMode: true,
-                    ),
-                    verticalSpaceRegular,
-                  ],
-                ),
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  verticalSpaceMedium,
+                  SuperKitText.bodySemiBold(
+                    text: AppLocalizations.of(context)!.translate('theme')!,
+                    lang: lang,
+                    align: TextAlign.center,
+                  ),
+                  verticalSpaceSmall,
+                  AppearanceCard(
+                    title: AppLocalizations.of(context)!.translate('light'),
+                    image: light_cover,
+                    selected: AdaptiveTheme.of(context).mode ==
+                        AdaptiveThemeMode.light,
+                    hideonTap: widget.hideonTap,
+                    onTap: () {
+                      setLightMode(context: context);
+                      changeNavStatusBarsColor(context: context);
+                    },
+                    height: 80,
+                    width: 80,
+                    enableDesktopMode: true,
+                  ),
+                  verticalSpaceSmall,
+                  AppearanceCard(
+                    title: AppLocalizations.of(context)!.translate('dark'),
+                    image: dark_cover,
+                    selected: AdaptiveTheme.of(context).mode ==
+                        AdaptiveThemeMode.dark,
+                    hideonTap: widget.hideonTap,
+                    onTap: () {
+                      setDarkMode(context: context);
+                      changeNavStatusBarsColor(context: context);
+                    },
+                    height: 80,
+                    width: 80,
+                    enableDesktopMode: true,
+                  ),
+                  verticalSpaceSmall,
+                  AppearanceCard(
+                    title: AppLocalizations.of(context)!.translate('system'),
+                    image: system_cover,
+                    selected: AdaptiveTheme.of(context).mode ==
+                        AdaptiveThemeMode.system,
+                    hideonTap: widget.hideonTap,
+                    onTap: () {
+                      setSystemMode(context: context);
+                      changeNavStatusBarsColor(context: context);
+                    },
+                    height: 80,
+                    width: 80,
+                    enableDesktopMode: true,
+                  ),
+                  verticalSpaceRegular,
+                ],
               )
             : Container(),
+        horizontalSpaceRegular,
         widget.enablethemes!
             ? Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 16,
-                      right: 16,
-                    ),
-                    child: SuperKitText.bodySemiBold(
-                      text: AppLocalizations.of(context)!
-                          .translate('primary-color')!,
-                      lang: lang,
-                    ),
+                  verticalSpaceMedium,
+                  SuperKitText.bodySemiBold(
+                    text: AppLocalizations.of(context)!
+                        .translate('primary-color')!,
+                    lang: lang,
+                    align: TextAlign.center,
+                    maxLines: 2,
                   ),
                   verticalSpaceSmall,
                   SizedBox(
-                    // height: screenWidth(context) / 8.5,
-                    width: screenWidth(context),
+                    width: screenWidth(context) * 0.2,
                     child: FutureBuilder<List<CustomThemes>>(
                       future: themes,
                       builder: (
@@ -134,15 +128,17 @@ class _AppearanceState extends State<AppearanceDesktop> {
                       ) {
                         if (snapshot.hasData) {
                           final List<CustomThemes>? data = snapshot.data;
-                          return ListView.builder(
+                          return GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithMaxCrossAxisExtent(
+                              maxCrossAxisExtent: 50,
+                              crossAxisSpacing: 4,
+                              mainAxisSpacing: 4,
+                            ),
                             itemCount: data!.length,
                             shrinkWrap: true,
                             primary: false,
                             physics: const BouncingScrollPhysics(),
-                            padding: const EdgeInsets.only(
-                              left: 16,
-                              right: 16,
-                            ),
                             itemBuilder: (BuildContext context, int index) {
                               /// Check if the default theme is selected
                               if (data[index].theme == FlexScheme.custom) {
@@ -199,6 +195,7 @@ class _AppearanceState extends State<AppearanceDesktop> {
                 ],
               )
             : Container(),
+        horizontalSpaceSmall,
       ],
     );
   }
@@ -223,12 +220,9 @@ Widget colorCardDesktop({
     child: Tooltip(
       message: title,
       child: Container(
-        height: 70,
-        width: 50,
-        margin: const EdgeInsets.only(bottom: 10, left: 16, right: 16),
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(
-            Radius.circular(14),
+            Radius.circular(12),
           ),
           color: isDarkMode(context) ? darkColor : lightColor,
         ),
@@ -236,8 +230,6 @@ Widget colorCardDesktop({
                 AdaptiveTheme.of(context).theme.primaryColor == darkColor
             ? Center(
                 child: Container(
-                  height: screenWidth(context) / 20,
-                  width: screenWidth(context) / 20,
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(
                       Radius.circular(7),
@@ -249,7 +241,7 @@ Widget colorCardDesktop({
                   child: const Icon(
                     Icons.check,
                     color: Colors.white,
-                    size: 10,
+                    size: 16,
                   ),
                 ),
               )

@@ -1,8 +1,11 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:superkit_core/src/widgets/s_settings/models/desktop/appearance_desktop.dart';
+import 'package:superkit_core/src/widgets/s_settings/models/desktop/language_desktop.dart';
 import 'package:superkit_core/superkit_core.dart';
 
-class SettingsDesktopDrawer extends StatefulWidget {
+class superkitSettingsDesktop extends StatefulWidget {
   final dynamic languagePr;
   final dynamic globalPr;
   final dynamic drawerPr;
@@ -15,7 +18,7 @@ class SettingsDesktopDrawer extends StatefulWidget {
   final List<Map<String, Object>>? supportedThemes;
   final GlobalKey<ScaffoldState>? scaffoldKey;
 
-  const SettingsDesktopDrawer(
+  const superkitSettingsDesktop(
       {super.key,
       required this.languagePr,
       required this.globalPr,
@@ -30,10 +33,10 @@ class SettingsDesktopDrawer extends StatefulWidget {
       this.scaffoldKey});
 
   @override
-  State<SettingsDesktopDrawer> createState() => _SettingsDesktopDrawerState();
+  State<superkitSettingsDesktop> createState() => _SettingsDesktopDrawerState();
 }
 
-class _SettingsDesktopDrawerState extends State<SettingsDesktopDrawer> {
+class _SettingsDesktopDrawerState extends State<superkitSettingsDesktop> {
   @override
   Widget build(BuildContext context) {
     final String lang = Localizations.localeOf(context).languageCode;
@@ -45,30 +48,39 @@ class _SettingsDesktopDrawerState extends State<SettingsDesktopDrawer> {
         dark: kcNeutralColor_100,
         light: Colors.white,
       ),
-      width: screenWidth(context) * 0.2,
+      width: lang.contains('ar')
+          ? screenWidth(context) * 0.45
+          : screenWidth(context) * 0.42,
       child: Center(
         child: ListView(
           children: <Widget>[
-            Align(
-              alignment: Alignment.topLeft,
-              child: SuperKitIcon(
-                icon: IconlyBold.closeSquare,
-                tooltip: 'Close',
-                onTap: () {
-                  widget.scaffoldKey!.currentState!.closeEndDrawer();
-                },
-              ),
-            ),
-            verticalSpaceSmall,
-            SuperKitText.headlineBold(
-              text: AppLocalizations.of(context)!.translate('settings')!,
-              lang: lang,
-              align: TextAlign.center,
+            verticalSpaceRegular,
+            Row(
+              children: <Widget>[
+                horizontalSpaceRegular,
+                SuperKitText.heading3Bold(
+                  text: AppLocalizations.of(context)!.translate('settings')!,
+                  lang: lang,
+                ),
+                const Spacer(),
+                SuperKitIcon(
+                  icon: IconlyBold.closeSquare,
+                  tooltip: 'Close',
+                  onTap: () {
+                    widget.scaffoldKey!.currentState!.closeEndDrawer();
+                  },
+                ),
+              ],
             ),
             AppearanceDesktop(
               sThemes: widget.supportedThemes,
               hideonTap: widget.hideonTap,
               themePr: widget.themePr,
+            ),
+            LanguageSectionDesktop(
+              languageProvider: widget.languagePr,
+              globalProvider: widget.globalPr,
+              hideonTap: widget.hideonTap,
             ),
           ],
         ),

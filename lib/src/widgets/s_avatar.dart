@@ -6,64 +6,109 @@ class SuperKitAvatar extends StatelessWidget {
     super.key,
     this.radius,
     this.image = avatar,
+    this.toolTip = 'Avatar',
+    this.onTap,
   });
 
   final double? radius;
   final String? image;
+  final String? toolTip;
+  final Function? onTap;
 
   @override
   Widget build(BuildContext context) {
     return image!.contains('http')
-        ? ClipRRect(
-            borderRadius: BorderRadius.circular(120),
-            child: SizedBox(
-              height: radius!,
-              width: radius,
-              child: Image.network(
-                image!,
-                fit: BoxFit.cover,
-                loadingBuilder: (
-                  BuildContext? context,
-                  Widget? child,
-                  ImageChunkEvent? loadingProgress,
-                ) {
-                  if (loadingProgress == null) {
-                    return child!;
-                  } else {
-                    return ImageLoading(
-                      height: radius!,
-                      width: radius,
-                    );
-                  }
+        ? InkWell(
+            hoverColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () {
+              onTap!();
+            },
+            child: Tooltip(
+              message: toolTip!,
+              child: ScaleTap(
+                onPressed: () {
+                  onTap!();
                 },
-                errorBuilder: (
-                  BuildContext? context,
-                  Object? exception,
-                  StackTrace? stackTrace,
-                ) {
-                  return ClipRRect(
-                    borderRadius: BorderRadius.circular(120),
-                    child: Container(
-                      color: Colors.red.withOpacity(0.5),
-                      child: const Center(
-                        child: Icon(
-                          IconlyBroken.profile,
-                          color: Colors.white,
-                          size: 16,
-                        ),
-                      ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(120),
+                  child: CircleAvatar(
+                    radius: radius!,
+                    child: Image.network(
+                      image!,
+                      fit: BoxFit.cover,
+                      errorBuilder: (
+                        BuildContext? context,
+                        Object? exception,
+                        StackTrace? stackTrace,
+                      ) {
+                        return ClipRRect(
+                          borderRadius: BorderRadius.circular(120),
+                          child: CircleAvatar(
+                            radius: radius!,
+                            backgroundColor: Colors.red.withOpacity(0.2),
+                            child: const Center(
+                              child: Icon(
+                                IconlyBroken.profile,
+                                color: Colors.white,
+                                size: 16,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
+                  ),
+                ),
               ),
             ),
           )
-        : SizedBox(
-            width: radius,
-            height: radius!,
-            child: Image.asset(
-              image!,
-              fit: BoxFit.cover,
+        : InkWell(
+            hoverColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () {
+              onTap!();
+            },
+            child: Tooltip(
+              message: toolTip!,
+              child: ScaleTap(
+                onPressed: () {
+                  onTap!();
+                },
+                child: CircleAvatar(
+                  radius: radius!,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(120),
+                    child: Image.asset(
+                      image!,
+                      fit: BoxFit.cover,
+                      errorBuilder: (
+                        BuildContext? context,
+                        Object? exception,
+                        StackTrace? stackTrace,
+                      ) {
+                        return ClipRRect(
+                          borderRadius: BorderRadius.circular(120),
+                          child: Container(
+                            color: Colors.red.withOpacity(0.2),
+                            child: const Center(
+                              child: Icon(
+                                IconlyBroken.profile,
+                                color: Colors.white,
+                                size: 16,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ),
             ),
           );
   }

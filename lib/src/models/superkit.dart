@@ -16,8 +16,8 @@ class SuperKit {
 
   static Future<dynamic> setDesktopConfig({
     String? title = 'Superkit Core',
-    Size? initialSize = const Size(450, 720),
-    Size? minSize = const Size(450, 720),
+    Size? initialSize = const Size(650, 720),
+    Size? minSize = const Size(650, 720),
     Size? maxSize = const Size(1920, 1080),
   }) async {
     await windowManager.ensureInitialized();

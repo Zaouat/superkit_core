@@ -28,7 +28,7 @@ List<Map<String, Object>> supportedThemes = [
   {
     'theme': FlexScheme.espresso,
     'colors': [
-      const Color(0xff220804),
+      const Color(0xff452f2b),
       const Color(0xff8d7f7d),
     ],
   },

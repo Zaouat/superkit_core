@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:superkit_core/src/widgets/s_settings/models/mobile/s_settings_mobile.dart';
 import 'package:superkit_core/superkit_core.dart';
 
-dynamic superkitSettings({
+dynamic superkitSettingsMobile({
   required BuildContext? context,
   required languagePr,
   required globalPr,

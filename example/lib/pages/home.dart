@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
     /* -------------------------------------------------------------------------- */
     globals.lang = Localizations.localeOf(context).languageCode;
     /* -------------------------------------------------------------------------- */
-
+    //debugPrint(Theme.of(context).primaryColor.toHex());
     return Consumer3<LocaleProvider, GlobalProvider, ThemeProvider>(builder: (
       BuildContext context,
       LocaleProvider? appLanguage,
@@ -77,14 +77,25 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
             dark: kcNeutralColor_100,
             light: Colors.white,
           ),
+          toolbarHeight: 70,
           actions: [
+            SuperKitAvatar(
+              radius: 16,
+              image: 'https://i.pravatar.cc/800',
+              //image: 'assets/avatar.jpeg',
+              onTap: () {
+                debugPrint("Avatar tapped");
+              },
+            ),
             SuperKitIcon(
               padding: const EdgeInsets.symmetric(
                 horizontal: 20,
               ),
               icon: IconlyBold.setting,
+              tooltip: 'Settings',
               onTap: () {
-                superkitSettings(
+                /* -------------  Open Mobile settings Modal  ------------------- */
+                superkitSettingsMobile(
                   context: context,
                   languagePr: appLanguage,
                   globalPr: globalProvider,
@@ -97,7 +108,10 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
             )
           ],
         ),
-        endDrawer: SettingsDesktopDrawer(
+
+        /* ------- You must provide this widget superkitSettingsDesktop 
+                        to open the settings on the desktop mode ------- */
+        endDrawer: superkitSettingsDesktop(
           languagePr: appLanguage,
           globalPr: globalProvider,
           themePr: themeProvider,
@@ -110,20 +124,22 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
           child: Center(
             child: Column(
               children: <Widget>[
-                verticalSpaceLarge,
                 SuperKitLogo.big(
                   svg: superkit_core,
                   size: 220,
                 ),
                 verticalSpaceMedium,
-                SuperKitText.headlineBold(
-                  text: 'How did you find Superkit Core?',
-                  lang: globals.lang,
-                  maxLines: 3,
-                  align: TextAlign.center,
+                SizedBox(
+                  width: screenWidth(context) * 0.3,
+                  child: SuperKitText.headlineBold(
+                    text: 'How did you find Superkit Core?',
+                    lang: globals.lang,
+                    maxLines: 3,
+                    align: TextAlign.center,
+                  ),
                 ),
                 SizedBox(
-                  width: screenWidth(context) * 0.7,
+                  width: screenWidth(context) * 0.4,
                   child: SuperKitCustomSlider.emoji(
                     emojiValue: rating!.toDouble(),
                     onEmojiChanged: (val) {
@@ -138,14 +154,12 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Expanded(
-                        child: SuperKitButton(
-                          title: 'Send',
-                          icon: IconlyBold.send,
-                          onTap: () {
-                            debugPrint(rating.toString());
-                          },
-                        ),
+                      SuperKitButton.large(
+                        title: 'Send',
+                        icon: IconlyBold.send,
+                        onTap: () {
+                          debugPrint(rating.toString());
+                        },
                       ),
                       horizontalSpaceRegular,
                       SuperKitIconButton.outline(

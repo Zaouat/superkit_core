@@ -77,12 +77,7 @@ class AppearanceCard extends StatelessWidget {
           ),
           child: Padding(
             padding: enableDesktopMode!
-                ? const EdgeInsets.only(
-                    top: 15,
-                    bottom: 15,
-                    left: 15,
-                    right: 15,
-                  )
+                ? const EdgeInsets.all(8)
                 : const EdgeInsets.only(
                     top: 30,
                     bottom: 30,
