@@ -32,10 +32,10 @@ class SuperKitAvatar extends StatelessWidget {
                 onPressed: () {
                   onTap!();
                 },
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(120),
-                  child: CircleAvatar(
-                    radius: radius!,
+                child: CircleAvatar(
+                  radius: radius!,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(120),
                     child: Image.network(
                       image!,
                       fit: BoxFit.cover,
