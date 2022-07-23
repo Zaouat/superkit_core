@@ -44,7 +44,7 @@ class _AppearanceState extends State<AppearanceDesktop> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        horizontalSpaceRegular,
+        horizontalSpaceSmall,
         widget.enableDarkMode!
             ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

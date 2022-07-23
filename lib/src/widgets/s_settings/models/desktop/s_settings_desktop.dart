@@ -40,51 +40,314 @@ class _SettingsDesktopDrawerState extends State<superkitSettingsDesktop> {
   @override
   Widget build(BuildContext context) {
     final String lang = Localizations.localeOf(context).languageCode;
+    return ScreenTypeLayout.builder(
+      breakpoints:
+          const ScreenBreakpoints(tablet: 550, desktop: 750, watch: 300),
+      mobile: (BuildContext context) => Container(),
+      tablet: (BuildContext context) => Container(
+        color: colorChanger(
+          context: context,
+          dark: kcNeutralColor_100,
+          light: Colors.white,
+        ),
+        width: lang.contains('ar')
+            ? screenWidth(context) * 0.45
+            : screenWidth(context) * 0.42,
+        child: Center(
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            children: <Widget>[
+              verticalSpaceRegular,
+              // Settings Drawer Header
+              Row(
+                children: <Widget>[
+                  horizontalSpaceRegular,
+                  SuperKitText.heading3Bold(
+                    text: AppLocalizations.of(context)!.translate('settings')!,
+                    lang: lang,
+                  ),
+                  const Spacer(),
+                  SuperKitIcon(
+                    icon: IconlyBold.closeSquare,
+                    tooltip: 'Close',
+                    onTap: () {
+                      widget.scaffoldKey!.currentState!.closeEndDrawer();
+                    },
+                  ),
+                ],
+              ),
+              verticalSpaceLarge,
 
-    //var deviceType = getDeviceType(MediaQuery.of(context).size);
-    return Container(
-      color: colorChanger(
-        context: context,
-        dark: kcNeutralColor_100,
-        light: Colors.white,
-      ),
-      width: lang.contains('ar')
-          ? screenWidth(context) * 0.45
-          : screenWidth(context) * 0.42,
-      child: Center(
-        child: ListView(
-          children: <Widget>[
-            verticalSpaceRegular,
-            Row(
-              children: <Widget>[
-                horizontalSpaceRegular,
-                SuperKitText.heading3Bold(
-                  text: AppLocalizations.of(context)!.translate('settings')!,
-                  lang: lang,
+              InkWell(
+                onTap: () {},
+                child: ScaleTap(
+                  onPressed: () {},
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        horizontalSpaceRegular,
+                        const Icon(
+                          FontAwesomeIcons.layerGroup,
+                          size: 14,
+                        ),
+                        horizontalSpaceSmall,
+                        SuperKitText.bodySemiBold(
+                          text: 'Widgets',
+                          lang: lang,
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                const Spacer(),
-                SuperKitIcon(
-                  icon: IconlyBold.closeSquare,
-                  tooltip: 'Close',
-                  onTap: () {
-                    widget.scaffoldKey!.currentState!.closeEndDrawer();
-                  },
+              ),
+              const SuperKitDivider.lightDivider(),
+              InkWell(
+                onTap: () {},
+                child: ScaleTap(
+                  onPressed: () {},
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        horizontalSpaceRegular,
+                        const Icon(
+                          IconlyBold.paper,
+                          size: 16,
+                        ),
+                        horizontalSpaceSmall,
+                        SuperKitText.bodySemiBold(
+                          text: 'Change log',
+                          lang: lang,
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-              ],
-            ),
-            AppearanceDesktop(
-              sThemes: widget.supportedThemes,
-              hideonTap: widget.hideonTap,
-              themePr: widget.themePr,
-            ),
-            LanguageSectionDesktop(
-              languageProvider: widget.languagePr,
-              globalProvider: widget.globalPr,
-              hideonTap: widget.hideonTap,
-            ),
-          ],
+              ),
+              const SuperKitDivider.lightDivider(),
+              InkWell(
+                onTap: () {},
+                child: ScaleTap(
+                  onPressed: () {},
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        horizontalSpaceRegular,
+                        const Icon(
+                          IconlyBold.document,
+                          size: 16,
+                        ),
+                        horizontalSpaceSmall,
+                        SuperKitText.bodySemiBold(
+                          text: 'Documentation',
+                          lang: lang,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SuperKitDivider.lightDivider(),
+              InkWell(
+                onTap: () {},
+                child: ScaleTap(
+                  onPressed: () {},
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        horizontalSpaceRegular,
+                        const Icon(
+                          IconlyBold.buy,
+                          size: 16,
+                        ),
+                        horizontalSpaceSmall,
+                        SuperKitText.bodySemiBold(
+                          text: 'Get the paid version',
+                          lang: lang,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              AppearanceDesktop(
+                sThemes: widget.supportedThemes,
+                hideonTap: widget.hideonTap,
+                themePr: widget.themePr,
+              ),
+              LanguageSectionDesktop(
+                languageProvider: widget.languagePr,
+                globalProvider: widget.globalPr,
+                hideonTap: widget.hideonTap,
+              ),
+            ],
+          ),
         ),
       ),
+      desktop: (BuildContext context) => Container(
+        color: colorChanger(
+          context: context,
+          dark: kcNeutralColor_100,
+          light: Colors.white,
+        ),
+        width: lang.contains('ar')
+            ? screenWidth(context) * 0.33
+            : screenWidth(context) * 0.3,
+        child: Center(
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            children: <Widget>[
+              verticalSpaceRegular,
+              // Settings Drawer Header
+              Row(
+                children: <Widget>[
+                  horizontalSpaceRegular,
+                  SuperKitText.heading3Bold(
+                    text: AppLocalizations.of(context)!.translate('settings')!,
+                    lang: lang,
+                  ),
+                  const Spacer(),
+                  SuperKitIcon(
+                    icon: IconlyBold.closeSquare,
+                    tooltip: 'Close',
+                    onTap: () {
+                      widget.scaffoldKey!.currentState!.closeEndDrawer();
+                    },
+                  ),
+                ],
+              ),
+              verticalSpaceLarge,
+
+              InkWell(
+                onTap: () {},
+                child: ScaleTap(
+                  onPressed: () {},
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        horizontalSpaceRegular,
+                        const Icon(
+                          FontAwesomeIcons.layerGroup,
+                          size: 14,
+                        ),
+                        horizontalSpaceSmall,
+                        SuperKitText.bodySemiBold(
+                          text: 'Widgets',
+                          lang: lang,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SuperKitDivider.lightDivider(),
+              InkWell(
+                onTap: () {},
+                child: ScaleTap(
+                  onPressed: () {},
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        horizontalSpaceRegular,
+                        const Icon(
+                          IconlyBold.paper,
+                          size: 16,
+                        ),
+                        horizontalSpaceSmall,
+                        SuperKitText.bodySemiBold(
+                          text: 'Change log',
+                          lang: lang,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SuperKitDivider.lightDivider(),
+              InkWell(
+                onTap: () {},
+                child: ScaleTap(
+                  onPressed: () {},
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        horizontalSpaceRegular,
+                        const Icon(
+                          IconlyBold.document,
+                          size: 16,
+                        ),
+                        horizontalSpaceSmall,
+                        SuperKitText.bodySemiBold(
+                          text: 'Documentation',
+                          lang: lang,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SuperKitDivider.lightDivider(),
+              InkWell(
+                onTap: () {},
+                child: ScaleTap(
+                  onPressed: () {},
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        horizontalSpaceRegular,
+                        const Icon(
+                          IconlyBold.buy,
+                          size: 16,
+                        ),
+                        horizontalSpaceSmall,
+                        SuperKitText.bodySemiBold(
+                          text: 'Get the paid version',
+                          lang: lang,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              AppearanceDesktop(
+                sThemes: widget.supportedThemes,
+                hideonTap: widget.hideonTap,
+                themePr: widget.themePr,
+              ),
+              LanguageSectionDesktop(
+                languageProvider: widget.languagePr,
+                globalProvider: widget.globalPr,
+                hideonTap: widget.hideonTap,
+              ),
+            ],
+          ),
+        ),
+      ),
+      watch: (BuildContext context) => Container(color: Colors.purple),
     );
+    //var deviceType = getDeviceType(MediaQuery.of(context).size);
   }
 }

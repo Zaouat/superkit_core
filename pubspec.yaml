@@ -63,6 +63,7 @@ flutter:
     - assets/google_fonts/plexsans/
 
     # Images
+    - packages/superkit_core/assets/images/superkit_core.png
     - packages/superkit_core/assets/images/avatar.png
     - packages/superkit_core/assets/images/light.png
     - packages/superkit_core/assets/images/dark.png

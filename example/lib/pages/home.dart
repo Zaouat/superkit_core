@@ -6,6 +6,9 @@ import 'package:superkit_project/providers/local_provider.dart';
 import 'package:superkit_project/providers/theme_provider.dart';
 import 'package:superkit_core/superkit_core.dart';
 import 'package:superkit_project/config/globals.dart' as globals;
+import 'package:superkit_project/widgets/content_desktop.dart';
+import 'package:superkit_project/widgets/content_mobile.dart';
+import 'package:superkit_project/widgets/content_tablet.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
@@ -17,7 +20,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
-  int? rating = 5;
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -65,133 +67,70 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
       Widget? child,
     ) {
       return Scaffold(
-        backgroundColor: colorChanger(
-          context: context,
-          dark: kcNeutralColor_100,
-          light: Colors.white,
-        ),
-        key: scaffoldKey,
-        appBar: AppBar(
           backgroundColor: colorChanger(
             context: context,
             dark: kcNeutralColor_100,
             light: Colors.white,
           ),
-          toolbarHeight: 70,
-          actions: [
-            SuperKitAvatar(
-              radius: 16,
-              image: 'https://i.pravatar.cc/800',
-              //image: 'assets/avatar.jpeg',
-              onTap: () {
-                debugPrint("Avatar tapped");
-              },
+          key: scaffoldKey,
+          appBar: AppBar(
+            backgroundColor: colorChanger(
+              context: context,
+              dark: kcNeutralColor_100,
+              light: Colors.white,
             ),
-            SuperKitIcon(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
+            toolbarHeight: 70,
+            actions: [
+              SuperKitAvatar(
+                radius: 16,
+                image: 'https://i.pravatar.cc/800',
+                // image: 'assets/avatar.jpeg',
+                onTap: () {
+                  debugPrint("Avatar tapped");
+                },
               ),
-              icon: IconlyBold.setting,
-              tooltip: 'Settings',
-              onTap: () {
-                /* -------------  Open Mobile settings Modal  ------------------- */
-                superkitSettingsMobile(
-                  context: context,
-                  languagePr: appLanguage,
-                  globalPr: globalProvider,
-                  themePr: themeProvider,
-                  enableDrawer: false,
-                  supportedThemes: globals.supportedThemes,
-                  scaffoldKey: scaffoldKey,
-                );
-              },
-            )
-          ],
-        ),
-
-        /* ------- You must provide this widget superkitSettingsDesktop 
-                        to open the settings on the desktop mode ------- */
-        endDrawer: superkitSettingsDesktop(
-          languagePr: appLanguage,
-          globalPr: globalProvider,
-          themePr: themeProvider,
-          enableDrawer: false,
-          supportedThemes: globals.supportedThemes,
-          scaffoldKey: scaffoldKey,
-        ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-          child: Center(
-            child: Column(
-              children: <Widget>[
-                SuperKitLogo.big(
-                  svg: superkit_core,
-                  size: 220,
+              SuperKitIcon(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
                 ),
-                verticalSpaceMedium,
-                SizedBox(
-                  width: screenWidth(context) * 0.3,
-                  child: SuperKitText.headlineBold(
-                    text: 'How did you find Superkit Core?',
-                    lang: globals.lang,
-                    maxLines: 3,
-                    align: TextAlign.center,
-                  ),
-                ),
-                SizedBox(
-                  width: screenWidth(context) * 0.4,
-                  child: SuperKitCustomSlider.emoji(
-                    emojiValue: rating!.toDouble(),
-                    onEmojiChanged: (val) {
-                      setState(() {
-                        rating = val;
-                      });
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SuperKitButton.large(
-                        title: 'Send',
-                        icon: IconlyBold.send,
-                        onTap: () {
-                          debugPrint(rating.toString());
-                        },
-                      ),
-                      horizontalSpaceRegular,
-                      SuperKitIconButton.outline(
-                        color: Theme.of(context).primaryColor,
-                        icon: Icons.share,
-                        onTap: () {},
-                      ),
-                    ],
-                  ),
-                ),
-                const Spacer(),
-                SuperKitLogo.tiny(
-                  svg: devlopa_logo,
-                  size: 28,
-                  color: colorChanger(
-                      context: context,
-                      dark: kcNeutralColor_70,
-                      light: Theme.of(context).primaryColor),
-                ),
-                verticalSpaceSmall,
-                SuperKitText.bodyBold(text: 'Contact us', lang: globals.lang),
-                SuperKitText.captionMedium(
-                  text: 'mobiledevlopa@gmail.com',
-                  lang: globals.lang,
-                ),
-                verticalSpaceSmall,
-              ],
-            ),
+                icon: IconlyBold.setting,
+                tooltip: 'Settings',
+                onTap: () {
+                  /* -------------  Open Mobile settings Modal  ------------------- */
+                  superkitSettingsMobile(
+                    context: context,
+                    languagePr: appLanguage,
+                    globalPr: globalProvider,
+                    themePr: themeProvider,
+                    enableDrawer: false,
+                    supportedThemes: globals.supportedThemes,
+                    scaffoldKey: scaffoldKey,
+                  );
+                },
+              )
+            ],
           ),
-        ),
-        // This trailing comma makes auto-formatting nicer for build methods.
-      );
+
+          /* ------- You must provide this widget superkitSettingsDesktop 
+                        to open the settings on the desktop mode ------- */
+          endDrawer: superkitSettingsDesktop(
+            languagePr: appLanguage,
+            globalPr: globalProvider,
+            themePr: themeProvider,
+            enableDrawer: false,
+            supportedThemes: globals.supportedThemes,
+            scaffoldKey: scaffoldKey,
+          ),
+          body: ScreenTypeLayout.builder(
+            breakpoints:
+                const ScreenBreakpoints(tablet: 550, desktop: 650, watch: 300),
+            mobile: (BuildContext context) => HomeContentMobile(),
+            tablet: (BuildContext context) => HomeContentTablet(),
+            desktop: (BuildContext context) => HomeContentDesktop(),
+            watch: (BuildContext context) => Container(color: Colors.purple),
+          )
+          // This trailing comma makes auto-formatting nicer for build methods.
+          );
     });
   }
 }

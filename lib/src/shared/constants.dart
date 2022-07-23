@@ -5,6 +5,9 @@ library superkit.constants;
 /*                  Images                  */
 const String avatar = 'packages/superkit_core/assets/images/avatar.png';
 
+const String superkit_core_logo =
+    'packages/superkit_core/assets/images/superkit_core.png';
+
 const String light_cover = 'packages/superkit_core/assets/images/light.png';
 const String dark_cover = 'packages/superkit_core/assets/images/dark.png';
 const String system_cover = 'packages/superkit_core/assets/images/system.png';
