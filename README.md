@@ -85,7 +85,7 @@ The SuperkitCore was developed with Flutter, this toolkit allows developers to c
 and here are some packages we used :
 
  
- <img href="https://pub.dev/packages/window_manager" src="images/window_manager.png" alt="window_manager" width="100">
+ <img href="https://pub.dev/packages/window_manager" src="images/window_manager.png" alt="window_manager" width="200">
 * [![Vue][Vue.js]][Vue-url]
 * [![Angular][Angular.io]][Angular-url]
 * [![Svelte][Svelte.dev]][Svelte-url]
