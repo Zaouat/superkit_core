@@ -12,14 +12,14 @@
 <p align="center">
 A complete Ui library for mobile and desktop development built with Flutter.
 <br />
-<a href="[https://github.com/othneildrew/Best-README-Template](https://github.com/othneildrew/Best-README-Template)"><strong>Explore the docs »</strong></a>
+<a href="https://www.superkitcore.com/documentation(https://www.superkitcore.com/documentation)"><strong>Explore the docs »</strong></a>
 <br />
 <br />
-<a href="[https://github.com/othneildrew/Best-README-Template](https://github.com/othneildrew/Best-README-Template)">View Demo</a>
+<a href="https://play.google.com/store/apps/details?id=com.devlopa.superkitcore(https://play.google.com/store/apps/details?id=com.devlopa.superkitcore)">View Demo</a>
 ·
-<a href="[https://github.com/othneildrew/Best-README-Template/issues](https://github.com/othneildrew/Best-README-Template/issues)">Report Bug</a>
+<a href="https://www.superkitcore.com/report(https://www.superkitcore.com/report)">Report Bug</a>
 ·
-<a href="[https://github.com/othneildrew/Best-README-Template/issues](https://github.com/othneildrew/Best-README-Template/issues)">Request Feature</a>
+<a href="https://www.superkitcore.com/request(https://www.superkitcore.com/request)">Request Feature</a>
 </p>
 </div>
 
@@ -55,26 +55,37 @@ A complete Ui library for mobile and desktop development built with Flutter.
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com/)
 
-Superkit is your one-stop mobile app development kit that already includes everything you need to make a breathtaking mobile app with just a few clicks. Think of it as an all-inclusive package that includes everything you need, and nothing you don't. It contains 1300+ hours of time-saving features, making it the perfect choice to save time, money and start building your business today!
+Superkit Core is your one-stop mobile app development kit that already includes everything you need to make a breathtaking mobile app with just a few clicks. Think of it as an all-inclusive package that includes everything you need, and nothing you don't. It contains 1300+ hours of time-saving features, making it the perfect choice to save time, money and start building your business today!
 
-Feauters:
+## Features:
 
-- Dark & Light & System Mode Build in.
-- Theming  6 themes (you can add custom one also).
-- Support multi-languages +6 languages
+- Support Dark & Light mode.
+- +6 themes (you can add a custom one).
+- Support multi-languages.
+- Full Responsive Ui Component.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+## Widgets : 
 
-Use the `BLANK_README.md` to get started.
+- Typography 
+- Input fields 
+- Dropdowns 
+- Cards 
+- Buttons 
+- Sliders
+- Avatars
+- Radio buttons
+- Logo
+- Bottom bars
+- and more ..
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+The SuperkitCore was developed with Flutter, this toolkit allows developers to create applications for Android and iOS from a single source code. Sound familiar? Yes, the same promise was repeated in some cross-platform frameworks like Xamarin, Iconic, Cordova, or React Native,
+and here are some packages we used :
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
+ 
+ <img href="https://pub.dev/packages/window_manager" src="images/window_manager.png" alt="window_manager" width="100">
 * [![Vue][Vue.js]][Vue-url]
 * [![Angular][Angular.io]][Angular-url]
 * [![Svelte][Svelte.dev]][Svelte-url]
