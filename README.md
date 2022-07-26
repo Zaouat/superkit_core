@@ -84,10 +84,10 @@ Superkit Core is your one-stop mobile app development kit that already includes 
 The SuperkitCore was developed with Flutter, this toolkit allows developers to create applications for Android and iOS from a single source code. Sound familiar? Yes, the same promise was repeated in some cross-platform frameworks like Xamarin, Iconic, Cordova, or React Native,
 and here are some packages we used :
 
-[<img alt="window_manager" width="200px" src="images/window_manager.png" />](https://pub.dev/packages/window_manager/)
-[<img alt="responsive_builder" width="200px" src="images/responsive_builder.png" />](https://pub.dev/packages/responsive_builder)
-[<img alt="flex_color_scheme" width="200px" src="images/flex_color_scheme.png" />](https://pub.dev/packages/flex_color_scheme)
-[<img alt="adaptive_theme" width="200px" src="images/adaptive_theme.png" />](https://pub.dev/packages/adaptive_theme)
+[<img alt="window_manager" width="200px" src="images/window_manager.png" />](https://pub.dev/packages/window_manager/)<br />
+[<img alt="responsive_builder" width="200px" src="images/responsive_builder.png" />](https://pub.dev/packages/responsive_builder)<br />
+[<img alt="flex_color_scheme" width="200px" src="images/flex_color_scheme.png" />](https://pub.dev/packages/flex_color_scheme)<br />
+[<img alt="adaptive_theme" width="200px" src="images/adaptive_theme.png" />](https://pub.dev/packages/adaptive_theme)<br />
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
