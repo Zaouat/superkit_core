@@ -85,12 +85,10 @@ The SuperkitCore was developed with Flutter, this toolkit allows developers to c
 and here are some packages we used :
 
 [<img alt="window_manager" width="200px" src="images/window_manager.png" />](https://pub.dev/packages/window_manager/)
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+[<img alt="responsive_builder" width="200px" src="images/responsive_builder.png" />](https://pub.dev/packages/responsive_builder)
+[<img alt="flex_color_scheme" width="200px" src="images/flex_color_scheme.png" />](https://pub.dev/packages/flex_color_scheme)
+[<img alt="adaptive_theme" width="200px" src="images/adaptive_theme.png" />](https://pub.dev/packages/adaptive_theme)
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
