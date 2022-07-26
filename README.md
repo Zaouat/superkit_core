@@ -84,8 +84,7 @@ Superkit Core is your one-stop mobile app development kit that already includes 
 The SuperkitCore was developed with Flutter, this toolkit allows developers to create applications for Android and iOS from a single source code. Sound familiar? Yes, the same promise was repeated in some cross-platform frameworks like Xamarin, Iconic, Cordova, or React Native,
 and here are some packages we used :
 
- 
- <img href="https://pub.dev/packages/window_manager" src="images/window_manager.png" alt="window_manager" width="200">
+[<img alt="window_manager" width="200px" src="images/window_manager.png" />](https://pub.dev/packages/window_manager/)
 * [![Vue][Vue.js]][Vue-url]
 * [![Angular][Angular.io]][Angular-url]
 * [![Svelte][Svelte.dev]][Svelte-url]
