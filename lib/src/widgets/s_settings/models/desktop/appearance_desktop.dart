@@ -149,15 +149,17 @@ class _AppearanceState extends State<AppearanceDesktop> {
                                   hideonTap: widget.hideonTap,
                                   title: 'SuperKit',
                                   onTap: () {
-                                    setState(() {
-                                      widget.themePr.setTheme =
-                                          FlexScheme.custom;
+                                    if (mounted) {
+                                      setState(() {
+                                        widget.themePr.setTheme =
+                                            FlexScheme.custom;
 
-                                      AdaptiveTheme.of(context).setTheme(
-                                        light: superkitLightTheme,
-                                        dark: superkitDarkTheme,
-                                      );
-                                    });
+                                        AdaptiveTheme.of(context).setTheme(
+                                          light: superkitLightTheme,
+                                          dark: superkitDarkTheme,
+                                        );
+                                      });
+                                    }
                                   },
                                 );
                               } else {
@@ -171,14 +173,16 @@ class _AppearanceState extends State<AppearanceDesktop> {
                                       .toString()
                                       .replaceAll('FlexScheme.', ''),
                                   onTap: () {
-                                    setState(() {
-                                      widget.themePr.setTheme =
-                                          data[index].theme as FlexScheme;
-                                      CustomTheme.changeTheme(
-                                        context,
-                                        data[index].theme,
-                                      );
-                                    });
+                                    if (mounted) {
+                                      setState(() {
+                                        widget.themePr.setTheme =
+                                            data[index].theme as FlexScheme;
+                                        CustomTheme.changeTheme(
+                                          context,
+                                          data[index].theme,
+                                        );
+                                      });
+                                    }
                                   },
                                 );
                               }

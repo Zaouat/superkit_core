@@ -22,7 +22,7 @@ class _HomeContentMobileState extends State<HomeContentMobile> {
             ),
             verticalSpaceMedium,
             SizedBox(
-              width: screenWidth(context) * 0.3,
+              width: screenWidth(context) * 0.6,
               child: SuperKitText.headlineBold(
                 text: 'How did you find Superkit Core?',
                 lang: globals.lang,
@@ -31,13 +31,15 @@ class _HomeContentMobileState extends State<HomeContentMobile> {
               ),
             ),
             SizedBox(
-              width: screenWidth(context) * 0.4,
+              width: screenWidth(context) * 0.6,
               child: SuperKitCustomSlider.emoji(
                 emojiValue: rating!.toDouble(),
                 onEmojiChanged: (val) {
-                  setState(() {
-                    rating = val;
-                  });
+                  if (mounted) {
+                    setState(() {
+                      rating = val;
+                    });
+                  }
                 },
               ),
             ),

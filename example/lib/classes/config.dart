@@ -6,7 +6,6 @@ class Config {
   final bool? enableAboutUs;
   final bool? enableMoreApps;
   final bool? enableSharpEdges;
-  final FlexScheme? theme;
   final String? appTitle;
   final String? aboutText;
   final bool? enableWebsite;
@@ -24,7 +23,6 @@ class Config {
     this.enableAboutUs,
     this.enableMoreApps,
     this.enableSharpEdges,
-    this.theme,
     this.appTitle,
     this.aboutText,
     this.enableWebsite,
@@ -45,7 +43,6 @@ class Config {
       'enableAboutUs': enableAboutUs,
       'enableMoreApps': enableMoreApps,
       'enableSharpEdges': enableSharpEdges,
-      'theme': theme,
       'appTitle': appTitle,
       'aboutText': aboutText,
       'enableWebsite': enableWebsite,
@@ -69,7 +66,6 @@ class Config {
       enableAboutUs: map['enableAboutUs'] as bool,
       enableMoreApps: map['enableMoreApps'] as bool,
       enableSharpEdges: map['enableSharpEdges'] as bool,
-      theme: map['theme'] as FlexScheme,
       appTitle: map['appTitle'].toString(),
       aboutText: map['aboutText'].toString(),
       enableWebsite: map['enableWebsite'] as bool,

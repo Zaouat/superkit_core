@@ -35,9 +35,11 @@ class _HomeContentTabletState extends State<HomeContentTablet> {
               child: SuperKitCustomSlider.emoji(
                 emojiValue: rating!.toDouble(),
                 onEmojiChanged: (val) {
-                  setState(() {
-                    rating = val;
-                  });
+                  if (mounted) {
+                    setState(() {
+                      rating = val;
+                    });
+                  }
                 },
               ),
             ),

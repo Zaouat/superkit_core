@@ -45,11 +45,13 @@ class _LanguageSectionState extends State<LanguageSectionDesktop> {
                 title: e.title,
                 icon: e.flag,
                 onTap: () {
-                  setState(() {
-                    widget.languageProvider!.changeLanguage(
-                      languageData: e,
-                    );
-                  });
+                  if (mounted) {
+                    setState(() {
+                      widget.languageProvider!.changeLanguage(
+                        languageData: e,
+                      );
+                    });
+                  }
                   if (widget.hideonTap == true) {
                     Navigator.pop(context);
                   }

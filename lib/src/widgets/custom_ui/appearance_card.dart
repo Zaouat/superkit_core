@@ -33,7 +33,7 @@ class AppearanceCard extends StatelessWidget {
     return ScaleTap(
       onPressed: () {
         if (hideonTap == true) {
-          Navigator.pop(context);
+          Navigator.of(context, rootNavigator: true).pop();
         }
         onTap!();
       },

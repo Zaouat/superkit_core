@@ -31,9 +31,11 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
       setSystemMode(
         context: context,
       );
-      setState(() {
-        changeNavStatusBarsSystem(context: context, brightness: brightness);
-      });
+      if (mounted) {
+        setState(() {
+          changeNavStatusBarsSystem(context: context, brightness: brightness);
+        });
+      }
     };
     super.initState();
   }
@@ -79,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
               dark: kcNeutralColor_100,
               light: Colors.white,
             ),
-            toolbarHeight: 70,
+            //toolbarHeight: 10,
             actions: [
               SuperKitAvatar(
                 radius: 16,

@@ -32,9 +32,11 @@ class _HomeContentDesktopState extends State<HomeContentDesktop> {
               child: SuperKitCustomSlider.emoji(
                 emojiValue: rating!.toDouble(),
                 onEmojiChanged: (val) {
-                  setState(() {
-                    rating = val;
-                  });
+                  if (mounted) {
+                    setState(() {
+                      rating = val;
+                    });
+                  }
                 },
               ),
             ),
