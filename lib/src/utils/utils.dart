@@ -1,5 +1,4 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
-import 'package:flutter/Material.dart';
 import 'package:flutter/services.dart';
 
 extension HexColor on Color {

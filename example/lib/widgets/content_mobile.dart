@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:superkit_core/superkit_core.dart';
 import 'package:superkit_project/config/globals.dart' as globals;
 
@@ -52,14 +53,18 @@ class _HomeContentMobileState extends State<HomeContentMobile> {
                     title: 'Send',
                     icon: IconlyBold.send,
                     onTap: () {
-                      debugPrint(rating.toString());
+                      debugPrint('Send');
                     },
                   ),
                   horizontalSpaceRegular,
                   SuperKitIconButton.outline(
                     color: Theme.of(context).primaryColor,
                     icon: Icons.share,
-                    onTap: () {},
+                    onTap: () {
+                      Share.share(
+                          'Check out Superkit Core on ${"https://example.com"}',
+                          subject: 'Superkit Core');
+                    },
                   ),
                 ],
               ),
