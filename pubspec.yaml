@@ -12,19 +12,19 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  flutter_cupertino_localizations: 1.0.1
-  window_manager: ^0.2.5
-  responsive_builder: ^0.4.2
+  # flutter_cupertino_localizations: 1.0.1
+  window_manager: ^0.3.7
+  responsive_builder: ^0.7.0
 
   # Themes
-  flex_color_scheme: ^5.0.1
-  adaptive_theme: ^3.1.0
+  flex_color_scheme: ^7.3.1
+  adaptive_theme: ^3.4.1
 
   # Icons & Fonts
-  google_fonts: ^3.0.1
+  google_fonts: ^6.1.0
   flutter_iconly: ^1.0.2
-  font_awesome_flutter: ^10.1.0
-  flutter_svg: ">=1.0.0 <1.1.1+1"
+  font_awesome_flutter: ^10.6.0
+  flutter_svg: ">=1.0.0 <2.0.9"
   flutter_feather_icons: ^2.0.0+1
   flutter_rating_bar: ^4.0.1
   modal_side_sheet: ^0.0.1
@@ -45,7 +45,7 @@ dependencies:
   url_launcher: ^6.1.4
   get: ^4.6.5
   get_storage: ^2.0.3
-  package_info_plus: ^1.4.2
+  package_info_plus: ^4.2.0
   provider: ^6.0.3
   cached_network_image: ^3.2.1
   flutter_hooks: ^0.18.5+1
