@@ -45,7 +45,7 @@ class SuperKitRadioPage extends State<SuperKitRadio> {
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
           radioTheme: Theme.of(context).radioTheme,
-          unselectedWidgetColor: Theme.of(context).textTheme.caption!.color!,
+          // unselectedWidgetColor: Theme.of(context).textTheme.caption!.color!,
           disabledColor: Theme.of(context).colorScheme.secondary,
         ),
         child: Row(

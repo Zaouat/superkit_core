@@ -57,7 +57,7 @@ class SuperKitLogo extends StatelessWidget {
               logo!,
               width: size ?? screenWidth(context) / 3,
               height: size ?? screenWidth(context) / 3,
-              color: color,
+              // color: color,
             )
           : Image.asset(
               logo!,
