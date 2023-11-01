@@ -3,16 +3,11 @@
 * Version : 1.0.0
 * */
 import 'package:flutter/material.dart';
+import 'package:superkit_core/src/pages/s_simple_template.dart';
 import 'package:superkit_core/src/widgets/s_tab_bars/indicators/dot_indicator.dart';
 import 'package:superkit_core/src/widgets/s_tab_bars/indicators/material_indicator.dart';
 import 'package:superkit_core/src/widgets/s_tab_bars/indicators/rectangular_indicator.dart';
 import 'package:superkit_core/superkit_core.dart';
-
-enum Indicator {
-  dots,
-  material,
-  rectangular,
-}
 
 class SuperKitTabBar extends StatefulWidget {
   const SuperKitTabBar({

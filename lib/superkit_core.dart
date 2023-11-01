@@ -33,6 +33,10 @@ export 'src/widgets/s_buttons/s_button.dart';
 export 'src/widgets/s_buttons/s_iconbutton.dart';
 export 'src/widgets/s_buttons/s_animated_button.dart';
 
+//Page Template Export
+export 'src/pages/s_simple_template.dart';
+export 'src/pages/s_page_switcher.dart';
+
 //Bottom Bars Export
 export 'src/widgets/s_bottom_bars/s_rounded_bottom_bar.dart';
 export 'src/widgets/s_bottom_bars/s_bottom_bar.dart';
