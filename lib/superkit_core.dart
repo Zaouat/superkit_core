@@ -25,6 +25,7 @@ export 'src/widgets/s_sliders/s_custom_sliders.dart';
 export 'src/widgets/custom_ui/appearance_card.dart';
 export 'src/widgets/s_settings/models/desktop/s_settings_desktop.dart';
 export 'src/widgets/s_card.dart';
+export 'src/widgets/s_tab_bars/s_tab_bar.dart';
 
 //Buttons Export
 export 'src/widgets/s_icon.dart';

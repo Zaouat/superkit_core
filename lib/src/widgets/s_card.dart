@@ -22,6 +22,7 @@ class SuperKitCard extends StatelessWidget {
     this.onPressed,
     this.enableShadow = true,
     this.enableScaleAnimation = true,
+    this.width = double.infinity,
   }) : super(key: key);
 
   final Widget? child;
@@ -34,6 +35,7 @@ class SuperKitCard extends StatelessWidget {
   final bool? enableShadow;
   final VoidCallback? onPressed;
   final bool? enableScaleAnimation;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +45,7 @@ class SuperKitCard extends StatelessWidget {
               children: <Widget>[
                 Container(
                   margin: margin ?? EdgeInsets.zero,
+                  width: width,
                   decoration: BoxDecoration(
                     color: color ??
                         colorChanger(
@@ -104,6 +107,7 @@ class SuperKitCard extends StatelessWidget {
             children: <Widget>[
               Container(
                 margin: margin ?? EdgeInsets.zero,
+                width: width,
                 decoration: BoxDecoration(
                   color: color ??
                       colorChanger(

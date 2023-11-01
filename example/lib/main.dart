@@ -16,10 +16,7 @@ void main() async {
     /* Wraping your app with MultiProvider here is required for the Language & DarkMode functionalities */
     MultiProvider(
       providers: providers_setup,
-      child: MediaQuery(
-        data: const MediaQueryData(),
-        child: MainPage(),
-      ),
+      child: MainPage(),
     ),
   );
 }
