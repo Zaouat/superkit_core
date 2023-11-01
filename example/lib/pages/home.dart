@@ -76,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
           ),
           key: scaffoldKey,
           appBar: AppBar(
+            toolbarHeight: 120,
             backgroundColor: colorChanger(
               context: context,
               dark: kcNeutralColor_100,

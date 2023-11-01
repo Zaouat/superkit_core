@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, deprecated_member_use
 /*
 * File : SuperKit Tile Widget
 * Version : 1.0.0

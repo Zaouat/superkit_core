@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 /*
 * File : SuperKit Input Widget
 * Version : 1.0.0

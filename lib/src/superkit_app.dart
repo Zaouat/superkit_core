@@ -155,16 +155,16 @@ class _SuperKitState extends State<SuperKitMaterialApp> {
           /* -------------------------------------------------------------------------- */
           builder: (ThemeData theme, ThemeData darkTheme) => widget.useGoRouter!
               ? MaterialApp.router(
-                  routeInformationParser: widget.routeInformationParser!,
-                  routerDelegate: widget.routerDelegate!,
+                  routeInformationParser: widget.routeInformationParser,
+                  routerDelegate: widget.routerDelegate,
                   title: widget.title!,
                   theme: theme,
                   darkTheme: darkTheme,
                   debugShowCheckedModeBanner: false,
                   locale: widget.locale,
                   supportedLocales: widget.supportedLocales!,
-                  localizationsDelegates: const <
-                      LocalizationsDelegate<dynamic>>[
+                  localizationsDelegates: const <LocalizationsDelegate<
+                      dynamic>>[
                     AppLocalizations.delegate,
                     GlobalMaterialLocalizations.delegate,
                     GlobalCupertinoLocalizations.delegate,
@@ -183,8 +183,8 @@ class _SuperKitState extends State<SuperKitMaterialApp> {
                   routes: widget.routes!,
                   initialRoute: widget.initialRoute,
                   supportedLocales: widget.supportedLocales!,
-                  localizationsDelegates: const <
-                      LocalizationsDelegate<dynamic>>[
+                  localizationsDelegates: const <LocalizationsDelegate<
+                      dynamic>>[
                     AppLocalizations.delegate,
                     GlobalMaterialLocalizations.delegate,
                     GlobalCupertinoLocalizations.delegate,
