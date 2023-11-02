@@ -24,13 +24,13 @@ class SimpleSPageTemplate extends StatefulWidget {
     this.title,
     this.body,
     this.onBack,
-    this.enableBack = true,
+    this.enableBack = false,
     this.appBarHeight = 70,
     this.hasTrailing = false,
     this.onSelectOption,
     this.listOptions,
     this.pinned = true,
-    this.elevation,
+    this.elevation = 0,
     this.trailing,
     this.isRtl = false,
     this.backTooltip,
@@ -172,7 +172,7 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
           lang: lang,
         ),
         elevation: widget.elevation,
-        forceElevated: true,
+        forceElevated: false,
         floating: false,
         stretch: true,
         pinned: widget.pinned!,
@@ -180,10 +180,12 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
         toolbarHeight: widget.appBarHeight,
         automaticallyImplyLeading: false,
         centerTitle: widget.centerTitle,
-        leading: customLeading(
-          context: context,
-          lang: lang,
-        ),
+        leading: widget.enableBack!
+            ? customLeading(
+                context: context,
+                lang: lang,
+              )
+            : null,
         shape: widget.enableContinuousRadius!
             ? ContinuousRectangleBorder(
                 borderRadius: BorderRadius.only(
@@ -213,17 +215,17 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                   tabs: widget.tabs,
                   tabController: tabController,
                   indicator: widget.indicator,
-                  tabColor: widget.appbarColor ??
-                      colorChanger(
-                        context: context,
-                        dark: kcNeutralColor_90,
-                        light: Colors.white,
-                      ),
+                  enableShadow: widget.elevation == 0 ? false : true,
+                  enableAppbarGradient: widget.enableAppbarGradient!,
+                  tabColor: widget.appbarColor,
                 ),
               )
             : null,
         titleSpacing: 0,
         flexibleSpace: Card(
+          shadowColor: widget.elevation == 0
+              ? Colors.transparent
+              : Theme.of(context).shadowColor,
           margin: EdgeInsets.zero,
           shape: widget.enableContinuousRadius!
               ? ContinuousRectangleBorder(
@@ -411,6 +413,7 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                         : SliverAppBar(
                             automaticallyImplyLeading: false,
                             toolbarHeight: 0,
+                            elevation: widget.elevation,
                             backgroundColor: colorChanger(
                               context: context,
                               dark: kcNeutralColor_100,
@@ -442,6 +445,7 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                       : SliverAppBar(
                           automaticallyImplyLeading: false,
                           toolbarHeight: 0,
+                          elevation: widget.elevation,
                           backgroundColor: colorChanger(
                             context: context,
                             dark: kcNeutralColor_100,
@@ -516,10 +520,11 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
           : EdgeInsets.only(
               bottom: 14,
               top: widget.enableTabs! ? titleSpace(widget.indicator!) : 0,
+              left: 30,
             ),
       child: SizedBox(
         width: screenWidth(context!) * 0.6,
-        child: SuperKitText.headlineBold(
+        child: SuperKitText.heading3Bold(
           text: widget.title ?? '',
           lang: lang,
           maxLines: widget.maxTitleLines,
@@ -529,7 +534,9 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                   dark: Theme.of(context).textTheme.displayLarge!.color!,
                   light: Colors.white,
                 )
-              : Theme.of(context).textTheme.displayLarge!.color!,
+              : widget.appbarColor != null
+                  ? Colors.white
+                  : Theme.of(context).textTheme.displayLarge!.color!,
         ),
       ),
     );

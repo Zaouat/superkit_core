@@ -1,9 +1,10 @@
+// ignore_for_file: unrelated_type_equality_checks
+
 /*
 * File : SuperKit Tab Bar 
 * Version : 1.0.0
 * */
 import 'package:flutter/material.dart';
-import 'package:superkit_core/src/pages/s_simple_template.dart';
 import 'package:superkit_core/src/widgets/s_tab_bars/indicators/dot_indicator.dart';
 import 'package:superkit_core/src/widgets/s_tab_bars/indicators/material_indicator.dart';
 import 'package:superkit_core/src/widgets/s_tab_bars/indicators/rectangular_indicator.dart';
@@ -20,6 +21,7 @@ class SuperKitTabBar extends StatefulWidget {
     this.initialIndex = 0,
     this.tabController,
     this.tabColor,
+    this.enableAppbarGradient = false,
   }) : super(key: key);
 
   /// Indicator type of the tab bar [Indicators.rectangular] by default.
@@ -44,6 +46,8 @@ class SuperKitTabBar extends StatefulWidget {
 
   /// Color of the tab bar.
   final Color? tabColor;
+
+  final bool enableAppbarGradient;
   @override
   State<SuperKitTabBar> createState() => _SuperKitTabBarState();
 }
@@ -97,6 +101,7 @@ class _SuperKitTabBarState extends State<SuperKitTabBar>
         data: ThemeData().copyWith(
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
+          shadowColor: Colors.transparent,
         ),
         child: TabBar(
           tabs: widget.tabs!,
@@ -110,18 +115,22 @@ class _SuperKitTabBarState extends State<SuperKitTabBar>
               : const EdgeInsets.only(left: 15, right: 15),
           isScrollable: true,
           physics: const BouncingScrollPhysics(),
-          labelColor: colorChanger(
-            context: context,
-            dark: Colors.white,
-            light: widget.indicator == Indicator.rectangular
-                ? Colors.white
-                : Theme.of(context).colorScheme.secondary,
-          ),
-          unselectedLabelColor: colorChanger(
-            context: context,
-            dark: kcNeutralColor_60,
-            light: kcNeutralColor_80,
-          ),
+          labelColor: widget.tabColor != null
+              ? Colors.white
+              : colorChanger(
+                  context: context,
+                  dark: Colors.white,
+                  light: widget.indicator == Indicator.rectangular
+                      ? const Color.fromARGB(255, 116, 83, 83)
+                      : Theme.of(context).colorScheme.primary,
+                ),
+          unselectedLabelColor: widget.tabColor != null
+              ? kcNeutralColor_20
+              : colorChanger(
+                  context: context,
+                  dark: kcNeutralColor_60,
+                  light: kcNeutralColor_80,
+                ),
           indicator: widget.indicator == Indicator.rectangular
               ? RectangularIndicator(
                   color:
@@ -133,7 +142,9 @@ class _SuperKitTabBarState extends State<SuperKitTabBar>
                 )
               : widget.indicator == Indicator.dots
                   ? DotIndicator(
-                      color: Theme.of(context).colorScheme.secondary,
+                      color: widget.tabColor != null
+                          ? Colors.white
+                          : Theme.of(context).colorScheme.primary,
                       paintingStyle: PaintingStyle.fill,
                       radius: 4,
                       distanceFromCenter: 20,
