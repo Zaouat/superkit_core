@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/Material.dart';
 import 'package:superkit_project/providers/global_provider.dart';
 import 'package:superkit_project/providers/local_provider.dart';
@@ -24,19 +22,19 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
 
   @override
   void initState() {
-    WidgetsBinding.instance.addObserver(this);
-    final SingletonFlutterWindow window = WidgetsBinding.instance.window;
-    window.onPlatformBrightnessChanged = () {
-      final Brightness brightness = window.platformBrightness;
-      setSystemMode(
-        context: context,
-      );
-      if (mounted) {
-        setState(() {
-          changeNavStatusBarsSystem(context: context, brightness: brightness);
-        });
-      }
-    };
+    // WidgetsBinding.instance.addObserver(this);
+    // final SingletonFlutterWindow window = WidgetsBinding.instance.window;
+    // window.onPlatformBrightnessChanged = () {
+    //   final Brightness brightness = window.platformBrightness;
+    //   setSystemMode(
+    //     context: context,
+    //   );
+    //   if (mounted) {
+    //     setState(() {
+    //       changeNavStatusBarsSystem(context: context, brightness: brightness);
+    //     });
+    //   }
+    // };
     super.initState();
   }
 

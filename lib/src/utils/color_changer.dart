@@ -66,6 +66,7 @@ void changeNavStatusBarsColor({
   required BuildContext? context,
 }) {
   final bool isDark = isDarkMode(context!);
+  debugPrint(isDark.toString());
   final SystemUiOverlayStyle style = SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: brightnessChanger(
