@@ -34,6 +34,7 @@ class SuperKitMaterialApp extends StatefulWidget {
     this.routes,
     this.initialRoute = '/',
     this.themeProvider,
+    this.defalutThemeMode = AdaptiveThemeMode.system,
   }) : super(key: key);
 
   /// The Light Theme to use for the Material widgets in the app the default is the [superkitLightTheme].
@@ -69,6 +70,7 @@ class SuperKitMaterialApp extends StatefulWidget {
 
   final dynamic themeProvider;
 
+  final AdaptiveThemeMode? defalutThemeMode;
   @override
   State<SuperKitMaterialApp> createState() => _SuperKitState();
 }
@@ -150,7 +152,7 @@ class _SuperKitState extends State<SuperKitMaterialApp> {
                         popupMenuOpacity: 0.95,
                       ),
                     )),
-          initial: snapshot.data ?? AdaptiveThemeMode.system,
+          initial: snapshot.data ?? widget.defalutThemeMode!,
 
           /* -------------------------------------------------------------------------- */
           builder: (ThemeData theme, ThemeData darkTheme) => widget.useGoRouter!
