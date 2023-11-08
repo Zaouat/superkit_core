@@ -7,20 +7,16 @@ class StartPage extends StatelessWidget {
     return SimpleSPageTemplate(
       title: "Earning",
       centerTitle: false,
-      appBarHeight: 55,
-      indicator: Indicator.dots,
-      appbarColor: Color(0xff4e5ce6),
-      elevation: 0,
-      enableTabs: true,
-      tabs: [
-        SuperKitText.bodyBold(text: "Shares", lang: ""),
-        SuperKitText.bodyBold(text: "CryptoCurrency", lang: ""),
-      ],
-      tabsWidgets: [
-        Container(),
-        Container(),
-      ],
-      body: Container(),
+      appBarHeight: 90,
+      appbarColor: Colors.white,
+      elevation: null,
+      enableTabs: false,
+      enableContinuousRadius: true,
+      titleColor: Colors.black,
+      appbarRadius: 100,
+      body: Container(
+        color: Colors.white,
+      ),
     );
   }
 }

@@ -49,6 +49,7 @@ class SimpleSPageTemplate extends StatefulWidget {
     this.maxTitleLines = 1,
     this.sliverAppBar,
     this.enablesliverAppBar = true,
+    this.titleColor,
   }) : super(key: key);
 
   /// title of the page
@@ -138,6 +139,8 @@ class SimpleSPageTemplate extends StatefulWidget {
 
   final bool? enablesliverAppBar;
 
+  final Color? titleColor;
+
   @override
   State<SimpleSPageTemplate> createState() => _SuperKitSimpleTemplateState();
 }
@@ -172,14 +175,17 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
           lang: lang,
         ),
         elevation: widget.elevation,
-        forceElevated: false,
+        forceElevated: true,
         floating: false,
         stretch: true,
         pinned: widget.pinned!,
         expandedHeight: widget.appBarHeight,
+        foregroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
         toolbarHeight: widget.appBarHeight,
         automaticallyImplyLeading: false,
         centerTitle: widget.centerTitle,
+        shadowColor: Colors.transparent,
         leading: widget.enableBack!
             ? customLeading(
                 context: context,
@@ -414,6 +420,7 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                             automaticallyImplyLeading: false,
                             toolbarHeight: 0,
                             elevation: widget.elevation,
+                            shadowColor: Colors.transparent,
                             backgroundColor: colorChanger(
                               context: context,
                               dark: kcNeutralColor_100,
@@ -445,6 +452,7 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                       : SliverAppBar(
                           automaticallyImplyLeading: false,
                           toolbarHeight: 0,
+                          shadowColor: Colors.transparent,
                           elevation: widget.elevation,
                           backgroundColor: colorChanger(
                             context: context,
@@ -528,15 +536,12 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
           text: widget.title ?? '',
           lang: lang,
           maxLines: widget.maxTitleLines,
-          color: widget.enableAppbarGradient!
-              ? colorChanger(
-                  context: context,
-                  dark: Theme.of(context).textTheme.displayLarge!.color!,
-                  light: Colors.white,
-                )
-              : widget.appbarColor != null
-                  ? Colors.white
-                  : Theme.of(context).textTheme.displayLarge!.color!,
+          color: widget.titleColor ??
+              colorChanger(
+                context: context,
+                dark: Colors.white,
+                light: Colors.black,
+              ),
         ),
       ),
     );
