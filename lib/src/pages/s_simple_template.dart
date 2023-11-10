@@ -50,6 +50,8 @@ class SimpleSPageTemplate extends StatefulWidget {
     this.sliverAppBar,
     this.enablesliverAppBar = true,
     this.titleColor,
+    this.selectedTextStyle,
+    this.unSelectedTextStyle,
   }) : super(key: key);
 
   /// title of the page
@@ -141,6 +143,10 @@ class SimpleSPageTemplate extends StatefulWidget {
 
   final Color? titleColor;
 
+  final TextStyle? selectedTextStyle;
+
+  final TextStyle? unSelectedTextStyle;
+
   @override
   State<SimpleSPageTemplate> createState() => _SuperKitSimpleTemplateState();
 }
@@ -224,6 +230,23 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                   enableShadow: widget.elevation == 0 ? false : true,
                   enableAppbarGradient: widget.enableAppbarGradient!,
                   tabColor: widget.appbarColor,
+                  selectedTextStyle: widget.selectedTextStyle ??
+                      TextStyle(
+                        color: colorChanger(
+                          context: context,
+                          dark: Colors.white,
+                          light: widget.indicator == Indicator.rectangular
+                              ? const Color.fromARGB(255, 116, 83, 83)
+                              : Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
+                  unSelectedTextStyle: widget.unSelectedTextStyle ??
+                      TextStyle(
+                          color: colorChanger(
+                        context: context,
+                        dark: kcNeutralColor_60,
+                        light: kcNeutralColor_30,
+                      )),
                 ),
               )
             : null,
@@ -500,11 +523,12 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
         padding: EdgeInsets.zero,
         iconSize: 20,
         icon: Icon(
-          lang!.contains('ar') ? Icons.arrow_back_ios : Icons.arrow_back_ios,
-          color: widget.enableAppbarGradient!
-              ? Colors.white
-              : Theme.of(context!).textTheme.displayLarge!.color!,
-        ),
+            lang!.contains('ar') ? Icons.arrow_back_ios : Icons.arrow_back_ios,
+            color: widget.titleColor ??
+                colorChanger(
+                    context: context!,
+                    dark: Colors.white,
+                    light: Theme.of(context).textTheme.displayLarge!.color!)),
         tooltip: widget.backTooltip ??
             AppLocalizations.of(context!)!.translate('tool-back')!,
         onPressed: () {
@@ -528,10 +552,9 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
           : EdgeInsets.only(
               bottom: 14,
               top: widget.enableTabs! ? titleSpace(widget.indicator!) : 0,
-              left: 30,
             ),
       child: SizedBox(
-        width: screenWidth(context!) * 0.6,
+        width: screenWidth(context!) * .6,
         child: SuperKitText.heading3Bold(
           text: widget.title ?? '',
           lang: lang,

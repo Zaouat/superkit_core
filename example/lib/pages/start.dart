@@ -7,13 +7,25 @@ class StartPage extends StatelessWidget {
     return SimpleSPageTemplate(
       title: "Earning",
       centerTitle: false,
-      appBarHeight: 90,
       appbarColor: Colors.white,
       elevation: null,
-      enableTabs: false,
-      enableContinuousRadius: true,
-      titleColor: Colors.black,
-      appbarRadius: 100,
+      enableTabs: true,
+      enableBack: true,
+      // selectedTextStyle: TextStyle(color: Colors.red),
+      // unSelectedTextStyle: TextStyle(color: Colors.green),
+      // titleColor: Colors.white,
+      tabs: [
+        SuperKitText.bodyMedium(text: "text", lang: "lang"),
+        SuperKitText.bodyMedium(text: "text", lang: "lang")
+      ],
+      tabsWidgets: [
+        Container(
+          color: Colors.white,
+        ),
+        Container(
+          color: Colors.white,
+        ),
+      ],
       body: Container(
         color: Colors.white,
       ),

@@ -22,6 +22,8 @@ class SuperKitTabBar extends StatefulWidget {
     this.tabController,
     this.tabColor,
     this.enableAppbarGradient = false,
+    required this.selectedTextStyle,
+    required this.unSelectedTextStyle,
   }) : super(key: key);
 
   /// Indicator type of the tab bar [Indicators.rectangular] by default.
@@ -48,6 +50,10 @@ class SuperKitTabBar extends StatefulWidget {
   final Color? tabColor;
 
   final bool enableAppbarGradient;
+
+  final TextStyle selectedTextStyle;
+
+  final TextStyle unSelectedTextStyle;
   @override
   State<SuperKitTabBar> createState() => _SuperKitTabBarState();
 }
@@ -115,22 +121,20 @@ class _SuperKitTabBarState extends State<SuperKitTabBar>
               : const EdgeInsets.only(left: 15, right: 15),
           isScrollable: true,
           physics: const BouncingScrollPhysics(),
-          labelColor: widget.tabColor != null
-              ? Colors.white
-              : colorChanger(
-                  context: context,
-                  dark: Colors.white,
-                  light: widget.indicator == Indicator.rectangular
-                      ? const Color.fromARGB(255, 116, 83, 83)
-                      : Theme.of(context).colorScheme.primary,
-                ),
-          unselectedLabelColor: widget.tabColor != null
-              ? kcNeutralColor_20
-              : colorChanger(
-                  context: context,
-                  dark: kcNeutralColor_60,
-                  light: kcNeutralColor_80,
-                ),
+          labelColor: widget.selectedTextStyle.color ??
+              colorChanger(
+                context: context,
+                dark: Colors.white,
+                light: widget.indicator == Indicator.rectangular
+                    ? const Color.fromARGB(255, 116, 83, 83)
+                    : Theme.of(context).colorScheme.primary,
+              ),
+          unselectedLabelColor: widget.unSelectedTextStyle.color ??
+              colorChanger(
+                context: context,
+                dark: kcNeutralColor_60,
+                light: kcNeutralColor_80,
+              ),
           indicator: widget.indicator == Indicator.rectangular
               ? RectangularIndicator(
                   color:
