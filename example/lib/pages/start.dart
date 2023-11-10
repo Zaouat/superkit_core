@@ -9,11 +9,11 @@ class StartPage extends StatelessWidget {
       centerTitle: false,
       appbarColor: Colors.white,
       elevation: null,
-      enableTabs: false,
-      enableBack: true,
+      enableTabs: true,
       // selectedTextStyle: TextStyle(color: Colors.red),
       // unSelectedTextStyle: TextStyle(color: Colors.green),
       // titleColor: Colors.white,
+      enableBack: true,
       tabs: [
         SuperKitText.bodyMedium(text: "text", lang: "lang"),
         SuperKitText.bodyMedium(text: "text", lang: "lang")

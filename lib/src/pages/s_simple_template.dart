@@ -547,11 +547,13 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
       padding: widget.centerTitle!
           ? EdgeInsets.only(
               bottom: 14,
-              top: widget.enableTabs! ? titleSpace(widget.indicator!) : 10,
+              top: widget.enableTabs! ? titleSpace(widget.indicator!) : 25,
             )
           : EdgeInsets.only(
               bottom: 14,
-              top: widget.enableTabs! ? titleSpace(widget.indicator!) : 10,
+              top: widget.enableTabs! ? titleSpace(widget.indicator!) : 25,
+              left: widget.enableBack! ? 0 : titleSpace(widget.indicator!),
+              right: widget.enableBack! ? 0 : titleSpace(widget.indicator!),
             ),
       child: SizedBox(
         width: screenWidth(context!) * .6,
