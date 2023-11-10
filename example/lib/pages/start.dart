@@ -9,7 +9,7 @@ class StartPage extends StatelessWidget {
       centerTitle: false,
       appbarColor: Colors.white,
       elevation: null,
-      enableTabs: true,
+      enableTabs: false,
       enableBack: true,
       // selectedTextStyle: TextStyle(color: Colors.red),
       // unSelectedTextStyle: TextStyle(color: Colors.green),
