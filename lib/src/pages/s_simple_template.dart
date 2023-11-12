@@ -52,6 +52,7 @@ class SimpleSPageTemplate extends StatefulWidget {
     this.titleColor,
     this.selectedTextStyle,
     this.unSelectedTextStyle,
+    this.bottomWidget,
   }) : super(key: key);
 
   /// title of the page
@@ -147,6 +148,8 @@ class SimpleSPageTemplate extends StatefulWidget {
 
   final TextStyle? unSelectedTextStyle;
 
+  final PreferredSizeWidget? bottomWidget;
+
   @override
   State<SimpleSPageTemplate> createState() => _SuperKitSimpleTemplateState();
 }
@@ -217,39 +220,40 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
               dark: kcNeutralColor_90,
               light: Colors.white,
             ),
-        bottom: widget.enableTabs!
-            ? PreferredSize(
-                preferredSize: widget.indicator! == Indicator.rectangular ||
-                        widget.indicator! == Indicator.dots
-                    ? const Size.fromHeight(60.0)
-                    : const Size.fromHeight(45.0),
-                child: SuperKitTabBar(
-                  tabs: widget.tabs,
-                  tabController: tabController,
-                  indicator: widget.indicator,
-                  enableShadow: widget.elevation == 0 ? false : true,
-                  enableAppbarGradient: widget.enableAppbarGradient!,
-                  tabColor: widget.appbarColor,
-                  selectedTextStyle: widget.selectedTextStyle ??
-                      TextStyle(
-                        color: colorChanger(
-                          context: context,
-                          dark: Colors.white,
-                          light: widget.indicator == Indicator.rectangular
-                              ? const Color.fromARGB(255, 116, 83, 83)
-                              : Theme.of(context).colorScheme.primary,
-                        ),
-                      ),
-                  unSelectedTextStyle: widget.unSelectedTextStyle ??
-                      TextStyle(
-                          color: colorChanger(
-                        context: context,
-                        dark: kcNeutralColor_60,
-                        light: kcNeutralColor_30,
-                      )),
-                ),
-              )
-            : null,
+        bottom: widget.bottomWidget ??
+            (widget.enableTabs!
+                ? PreferredSize(
+                    preferredSize: widget.indicator! == Indicator.rectangular ||
+                            widget.indicator! == Indicator.dots
+                        ? const Size.fromHeight(60.0)
+                        : const Size.fromHeight(45.0),
+                    child: SuperKitTabBar(
+                      tabs: widget.tabs,
+                      tabController: tabController,
+                      indicator: widget.indicator,
+                      enableShadow: widget.elevation == 0 ? false : true,
+                      enableAppbarGradient: widget.enableAppbarGradient!,
+                      tabColor: widget.appbarColor,
+                      selectedTextStyle: widget.selectedTextStyle ??
+                          TextStyle(
+                            color: colorChanger(
+                              context: context,
+                              dark: Colors.white,
+                              light: widget.indicator == Indicator.rectangular
+                                  ? const Color.fromARGB(255, 116, 83, 83)
+                                  : Theme.of(context).colorScheme.primary,
+                            ),
+                          ),
+                      unSelectedTextStyle: widget.unSelectedTextStyle ??
+                          TextStyle(
+                              color: colorChanger(
+                            context: context,
+                            dark: kcNeutralColor_60,
+                            light: kcNeutralColor_30,
+                          )),
+                    ),
+                  )
+                : null),
         titleSpacing: 0,
         flexibleSpace: Card(
           shadowColor: widget.elevation == 0
