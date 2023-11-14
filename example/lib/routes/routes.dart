@@ -1,4 +1,4 @@
-import 'package:flutter/Material.dart';
+import 'package:flutter/material.dart';
 import 'package:superkit_project/pages/home.dart';
 import 'package:superkit_core/superkit_core.dart';
 

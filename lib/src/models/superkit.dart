@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_classes_with_only_static_members
 
-import 'package:flutter/Material.dart';
+import 'package:flutter/material.dart';
 import 'package:superkit_core/superkit_core.dart';
 import 'package:window_manager/window_manager.dart';
 
