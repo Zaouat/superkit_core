@@ -5,7 +5,6 @@
 * Version : 1.0.0
 * */
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:superkit_core/superkit_core.dart';
 
 class SuperKitCounterView extends StatefulWidget {

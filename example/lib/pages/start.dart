@@ -14,13 +14,22 @@ class _StartPageState extends State<StartPage> {
     return SimpleSPageTemplate(
         title: "Earning",
         centerTitle: false,
-        appbarColor: Colors.grey,
-        elevation: null,
-        bottomWidget: buildAppBarBottom(),
+        appbarColor: Colors.white,
+        elevation: 0,
+        // bottomWidget: buildAppBarBottom(),
         // selectedTextStyle: TextStyle(color: Colors.red),
         // unSelectedTextStyle: TextStyle(color: Colors.green),
         // titleColor: Colors.white,
         enableBack: true,
+        hasTrailing: true,
+        listOptions: [
+          MoreMenu(1, "share"),
+          MoreMenu(2, "share"),
+          MoreMenu(3, "share"),
+        ],
+        onSelectOption: (value) {
+          debugPrint(value!.name.toString());
+        },
         body: buildBody());
   }
 

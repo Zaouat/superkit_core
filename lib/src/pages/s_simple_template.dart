@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 /*
 * File : SuperKit Simple Template page
 * Version : 1.0.0
@@ -389,8 +391,8 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                   },
                   child: Padding(
                     padding: EdgeInsets.only(
-                      right: 12,
-                      bottom: widget.appBarHeight / 3,
+                      right: 16,
+                      bottom: widget.appBarHeight / 25,
                     ),
                     child: Tooltip(
                       message: 'more',
