@@ -12,9 +12,11 @@ Future<void> superkitSettingsMobileModal({
   required themePr,
   String? title,
   double? height,
-  Color? backgroundColor,
+  Color? darkColor,
+  Color? lightColor,
   bool? hideonTap,
   bool? enableDrawer,
+  bool? enbalethemes,
   required List<Map<String, Object>>? supportedThemes,
 }) {
   return showModalBottomSheet(
@@ -37,12 +39,11 @@ Future<void> superkitSettingsMobileModal({
                 height: height ?? MediaQuery.of(context).size.height / 1.5,
                 width: screenWidth(context),
                 decoration: BoxDecoration(
-                  color: backgroundColor ??
-                      colorChanger(
-                        context: context,
-                        dark: kcNeutralColor_100,
-                        light: Colors.white,
-                      ),
+                  color: colorChanger(
+                    context: context,
+                    dark: darkColor ?? kcNeutralColor_100,
+                    light: lightColor ?? Colors.white,
+                  ),
                   borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(50),
                     topLeft: Radius.circular(50),
@@ -105,6 +106,7 @@ Future<void> superkitSettingsMobileModal({
                                   sThemes: supportedThemes,
                                   hideonTap: hideonTap,
                                   themePr: themePr,
+                                  enablethemes: enbalethemes,
                                 ),
                                 LanguageSection(
                                   languageProvider: languagePr,

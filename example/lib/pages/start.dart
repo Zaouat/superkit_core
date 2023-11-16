@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:superkit_core/superkit_core.dart';
+import 'package:superkit_project/providers/global_provider.dart';
+import 'package:superkit_project/providers/local_provider.dart';
+import 'package:superkit_project/providers/theme_provider.dart';
+import 'package:superkit_project/config/globals.dart' as globals;
 
 class StartPage extends StatefulWidget {
   @override
@@ -9,28 +13,55 @@ class StartPage extends StatefulWidget {
 class _StartPageState extends State<StartPage> {
   final items = List.generate(1000, (index) => '$index');
   var filterOptions = List.of(IntType.values);
+  TextEditingController controller = new TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return SimpleSPageTemplate(
-        title: "Earning",
-        centerTitle: false,
-        appbarColor: Colors.white,
-        elevation: 0,
-        // bottomWidget: buildAppBarBottom(),
-        // selectedTextStyle: TextStyle(color: Colors.red),
-        // unSelectedTextStyle: TextStyle(color: Colors.green),
-        // titleColor: Colors.white,
-        enableBack: true,
-        hasTrailing: true,
-        listOptions: [
-          MoreMenu(1, "share"),
-          MoreMenu(2, "share"),
-          MoreMenu(3, "share"),
-        ],
-        onSelectOption: (value) {
-          debugPrint(value!.name.toString());
-        },
-        body: buildBody());
+    return Consumer3<LocaleProvider, GlobalProvider, ThemeProvider>(builder: (
+      BuildContext context,
+      LocaleProvider? appLanguage,
+      GlobalProvider? globalProvider,
+      ThemeProvider? themeProvider,
+      Widget? child,
+    ) {
+      return SimpleSPageTemplate(
+          title: "Earning",
+          centerTitle: false,
+          appbarColor: Colors.white,
+          elevation: 0,
+          enableBack: true,
+          trailing: IconButton(
+            onPressed: () {
+              superkitSettingsMobile(
+                context: context,
+                languagePr: appLanguage,
+                globalPr: globalProvider,
+                themePr: themeProvider,
+                supportedThemes: globals.supportedThemes,
+                enableDrawer: false,
+                enbalethemes: false,
+                darkColor: Colors.black,
+                lightColor: Colors.white,
+              );
+            },
+            padding: EdgeInsets.only(right: screenWidth(context) * 0.1),
+            tooltip: 'Settings',
+            icon: Icon(
+              Icons.settings,
+              size: 28,
+              color: Colors.black,
+            ),
+          ),
+          body: Column(
+            children: [
+              SuperKitInput(
+                controller: controller,
+                onChanged: (val) {
+                  debugPrint(val.toString());
+                },
+              )
+            ],
+          ));
+    });
   }
 
   Widget buildBody() {

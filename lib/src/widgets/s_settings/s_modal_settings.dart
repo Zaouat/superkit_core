@@ -12,9 +12,11 @@ dynamic superkitSettingsMobile({
   required themePr,
   String? title,
   double? height,
-  Color? backgroundColor,
+  Color? darkColor,
+  Color? lightColor,
   bool? hideonTap,
   required bool? enableDrawer,
+  bool? enbalethemes,
   required List<Map<String, Object>>? supportedThemes,
   GlobalKey<ScaffoldState>? scaffoldKey,
 }) {
@@ -34,10 +36,12 @@ dynamic superkitSettingsMobile({
         themePr: themePr,
         title: title,
         height: height,
-        backgroundColor: backgroundColor,
         hideonTap: hideonTap,
         enableDrawer: enableDrawer,
+        lightColor: lightColor,
+        darkColor: darkColor,
         supportedThemes: supportedThemes,
+        enbalethemes: enbalethemes,
       );
     case DeviceScreenType.Mobile:
       break;
