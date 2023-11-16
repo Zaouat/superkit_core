@@ -98,7 +98,7 @@ class SuperKitInput extends StatelessWidget {
   final Widget? suffixIcon;
   final double? contentPadding;
   final BorderSide? borderSide;
-  final Function(String val)? onChanged;
+  final Function(dynamic)? onChanged;
 
   final OutlineInputBorder circularBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(8),
@@ -161,7 +161,7 @@ class SuperKitInput extends StatelessWidget {
               cursorColor: Theme.of(context).primaryColor,
               cursorWidth: 3,
               cursorHeight: 15,
-              onChanged: (value) => onChanged!(value)!,
+              onChanged: (String value) => onChanged!(value),
               style: fontChanger(
                 color:
                     txtColor ?? Theme.of(context).textTheme.headline2!.color!,
