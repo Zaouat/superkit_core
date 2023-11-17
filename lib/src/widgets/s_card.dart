@@ -148,14 +148,11 @@ class SuperKitCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(radius!),
                   child: Material(
                     color: Colors.transparent,
-                    child: InkWell(
-                      onTap: () => onPressed?.call(),
-                      child: Container(
-                        padding: padding ?? EdgeInsets.zero,
-                        // width: width ?? double.infinity,
-                        // height: height ?? double.infinity,
-                        child: child,
-                      ),
+                    child: Container(
+                      padding: padding ?? EdgeInsets.zero,
+                      // width: width ?? double.infinity,
+                      // height: height ?? double.infinity,
+                      child: child,
                     ),
                   ),
                 ),

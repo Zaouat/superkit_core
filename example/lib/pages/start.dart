@@ -58,6 +58,24 @@ class _StartPageState extends State<StartPage> {
                 onChanged: (val) {
                   debugPrint(val.toString());
                 },
+              ),
+              SuperKitCard(
+                width: screenWidth(context) / 2,
+                color: Colors.greenAccent,
+                padding: EdgeInsets.all(25),
+                enableScaleAnimation: false,
+                child: Row(
+                  children: [
+                    ScaleTap(
+                      child: Icon(
+                        Icons.ac_unit,
+                      ),
+                      onPressed: () {
+                        debugPrint("kjdvds");
+                      },
+                    ),
+                  ],
+                ),
               )
             ],
           ));
