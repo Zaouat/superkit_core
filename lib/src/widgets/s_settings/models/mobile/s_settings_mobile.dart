@@ -35,11 +35,11 @@ Future<void> superkitSettingsMobileModal({
     ),
     builder: (BuildContext ctx) {
       final String lang = Localizations.localeOf(context).languageCode;
-      return ValueListenableBuilder<AdaptiveThemeMode>(
-          valueListenable: AdaptiveTheme.of(context).modeChangeNotifier,
-          builder: (_, Object? mode, Widget? child) {
-            return StatefulBuilder(
-                builder: (BuildContext context, StateSetter mySetState) {
+      return StatefulBuilder(
+          builder: (BuildContext context, StateSetter mySetState) {
+        return ValueListenableBuilder<AdaptiveThemeMode>(
+            valueListenable: AdaptiveTheme.of(context).modeChangeNotifier,
+            builder: (_, Object? mode, Widget? child) {
               return Padding(
                 padding: MediaQuery.of(context).viewInsets,
                 child: Container(
@@ -185,7 +185,7 @@ Future<void> superkitSettingsMobileModal({
                 ),
               );
             });
-          });
+      });
     },
   );
 }
