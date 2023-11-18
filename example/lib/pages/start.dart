@@ -42,7 +42,9 @@ class _StartPageState extends State<StartPage> {
                 darkColor: Colors.black,
                 lightColor: Colors.white,
                 enableNotification: true,
-                onChange: (notification) => debugPrint(notification.toString()),
+                onChange: (notification) => debugPrint(
+                  notification.toString(),
+                ),
 
                 // widgets: Padding(
                 //   padding: globals.lang.contains('ar')
