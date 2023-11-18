@@ -19,7 +19,7 @@ dynamic superkitSettingsMobile({
   bool? enbalethemes = true,
   required List<Map<String, Object>>? supportedThemes,
   GlobalKey<ScaffoldState>? scaffoldKey,
-  bool? enableNotification,
+  bool enableNotification = true,
   Widget? widgets,
   Function(bool)? onChange,
 }) {
