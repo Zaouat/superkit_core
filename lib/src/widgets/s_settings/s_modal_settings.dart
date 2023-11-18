@@ -41,13 +41,13 @@ dynamic superkitSettingsMobile({
         height: height,
         hideonTap: hideonTap,
         enableDrawer: enableDrawer,
-        // lightColor: lightColor,
-        // darkColor: darkColor,
+        lightColor: lightColor,
+        darkColor: darkColor,
         supportedThemes: supportedThemes,
-        // enbalethemes: enbalethemes,
-        // onNotificationChange: (bool val) => onChange!(val),
-        // widgets: widgets,
-        // enableNotification: enableNotification,
+        enbalethemes: enbalethemes!,
+        onNotificationChange: (bool val) => onChange!(val),
+        widgets: widgets,
+        enableNotification: enableNotification,
       );
     case DeviceScreenType.Mobile:
       break;

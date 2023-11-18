@@ -6,14 +6,14 @@ import 'package:superkit_core/superkit_core.dart';
 class Appearance extends StatefulWidget {
   final List<Map<String, Object>>? sThemes;
   final bool? hideonTap;
-  final bool? enablethemes;
+  final bool enablethemes;
   final bool? enableDarkMode;
   final dynamic themePr;
   const Appearance({
     Key? key,
     required this.sThemes,
     this.hideonTap = true,
-    this.enablethemes = true,
+    required this.enablethemes,
     this.enableDarkMode = true,
     required this.themePr,
   }) : super(key: key);
@@ -110,109 +110,109 @@ class _AppearanceState extends State<Appearance> {
                 ),
               )
             : Container(),
-        widget.enablethemes!
-            ? Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: lang.contains('ar')
-                        ? const EdgeInsets.only(
-                            left: 22,
-                            right: 16,
-                          )
-                        : const EdgeInsets.only(
-                            left: 16,
-                            right: 22,
-                          ),
-                    child: SuperKitText.bodySemiBold(
-                      text: AppLocalizations.of(context)!
-                          .translate('primary-color')!,
-                      lang: lang,
-                    ),
-                  ),
-                  verticalSpaceSmall,
-                  SizedBox(
-                    height: screenWidth(context) / 8.5,
-                    width: screenWidth(context),
-                    child: FutureBuilder<List<CustomThemes>>(
-                      future: themes,
-                      builder: (
-                        BuildContext context,
-                        AsyncSnapshot<List<CustomThemes>> snapshot,
-                      ) {
-                        if (snapshot.hasData) {
-                          final List<CustomThemes>? data = snapshot.data;
-                          return ListView.builder(
-                            itemCount: data!.length,
-                            shrinkWrap: true,
-                            primary: false,
-                            scrollDirection: Axis.horizontal,
-                            physics: const BouncingScrollPhysics(),
-                            padding: lang.contains('ar')
-                                ? const EdgeInsets.only(
-                                    left: 22,
-                                    right: 16,
-                                  )
-                                : const EdgeInsets.only(
-                                    left: 16,
-                                    right: 22,
-                                  ),
-                            itemBuilder: (BuildContext context, int index) {
-                              /// Check if the default theme is selected
-                              if (data[index].theme == FlexScheme.custom) {
-                                return colorCard(
-                                  context: context,
-                                  lightColor: kcPrimaryColor_50,
-                                  darkColor: kcPrimaryColor_50,
-                                  hideonTap: widget.hideonTap,
-                                  title: 'SuperKit',
-                                  onTap: () {
-                                    setState(() {
-                                      widget.themePr.setTheme =
-                                          FlexScheme.custom;
+        Visibility(
+          visible: widget.enablethemes,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: lang.contains('ar')
+                    ? const EdgeInsets.only(
+                        left: 22,
+                        right: 16,
+                      )
+                    : const EdgeInsets.only(
+                        left: 16,
+                        right: 22,
+                      ),
+                child: SuperKitText.bodySemiBold(
+                  text:
+                      AppLocalizations.of(context)!.translate('primary-color')!,
+                  lang: lang,
+                ),
+              ),
+              verticalSpaceSmall,
+              SizedBox(
+                height: screenWidth(context) / 8.5,
+                width: screenWidth(context),
+                child: FutureBuilder<List<CustomThemes>>(
+                  future: themes,
+                  builder: (
+                    BuildContext context,
+                    AsyncSnapshot<List<CustomThemes>> snapshot,
+                  ) {
+                    if (snapshot.hasData) {
+                      final List<CustomThemes>? data = snapshot.data;
+                      return ListView.builder(
+                        itemCount: data!.length,
+                        shrinkWrap: true,
+                        primary: false,
+                        scrollDirection: Axis.horizontal,
+                        physics: const BouncingScrollPhysics(),
+                        padding: lang.contains('ar')
+                            ? const EdgeInsets.only(
+                                left: 22,
+                                right: 16,
+                              )
+                            : const EdgeInsets.only(
+                                left: 16,
+                                right: 22,
+                              ),
+                        itemBuilder: (BuildContext context, int index) {
+                          /// Check if the default theme is selected
+                          if (data[index].theme == FlexScheme.custom) {
+                            return colorCard(
+                              context: context,
+                              lightColor: kcPrimaryColor_50,
+                              darkColor: kcPrimaryColor_50,
+                              hideonTap: widget.hideonTap,
+                              title: 'SuperKit',
+                              onTap: () {
+                                setState(() {
+                                  widget.themePr.setTheme = FlexScheme.custom;
 
-                                      AdaptiveTheme.of(context).setTheme(
-                                        light: superkitLightTheme,
-                                        dark: superkitDarkTheme,
-                                      );
-                                    });
-                                  },
-                                );
-                              } else {
-                                return colorCard(
-                                  context: context,
-                                  lightColor: data[index].colors![0],
-                                  darkColor: data[index].colors![1],
-                                  hideonTap: widget.hideonTap,
-                                  title: data[index]
-                                      .theme
-                                      .toString()
-                                      .replaceAll('FlexScheme.', ''),
-                                  onTap: () {
-                                    setState(() {
-                                      widget.themePr.setTheme =
-                                          data[index].theme as FlexScheme;
-                                      CustomTheme.changeTheme(
-                                        context,
-                                        data[index].theme,
-                                      );
-                                    });
-                                  },
-                                );
-                              }
-                            },
-                          );
-                        } else if (snapshot.hasError) {
-                          return Text('${snapshot.error}');
-                        }
-                        // By default show a loading spinner.
-                        return const CircularProgressIndicator();
-                      },
-                    ),
-                  ),
-                ],
-              )
-            : Container(),
+                                  AdaptiveTheme.of(context).setTheme(
+                                    light: superkitLightTheme,
+                                    dark: superkitDarkTheme,
+                                  );
+                                });
+                              },
+                            );
+                          } else {
+                            return colorCard(
+                              context: context,
+                              lightColor: data[index].colors![0],
+                              darkColor: data[index].colors![1],
+                              hideonTap: widget.hideonTap,
+                              title: data[index]
+                                  .theme
+                                  .toString()
+                                  .replaceAll('FlexScheme.', ''),
+                              onTap: () {
+                                setState(() {
+                                  widget.themePr.setTheme =
+                                      data[index].theme as FlexScheme;
+                                  CustomTheme.changeTheme(
+                                    context,
+                                    data[index].theme,
+                                  );
+                                });
+                              },
+                            );
+                          }
+                        },
+                      );
+                    } else if (snapshot.hasError) {
+                      return Text('${snapshot.error}');
+                    }
+                    // By default show a loading spinner.
+                    return const CircularProgressIndicator();
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
