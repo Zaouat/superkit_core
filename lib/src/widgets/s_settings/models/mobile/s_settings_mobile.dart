@@ -4,7 +4,7 @@ import 'package:superkit_core/src/widgets/s_settings/models/mobile/drawer_switch
 import 'package:superkit_core/src/widgets/s_settings/models/mobile/language.dart';
 import 'package:superkit_core/superkit_core.dart';
 
-bool notification = false;
+bool notification = true;
 
 Future<void> superkitSettingsMobileModal({
   required BuildContext? context,
@@ -116,48 +116,48 @@ Future<void> superkitSettingsMobileModal({
                                     themePr: themePr,
                                     enablethemes: enbalethemes,
                                   ),
-                                  enableNotification!
-                                      ? Padding(
-                                          padding: lang.contains('ar')
-                                              ? const EdgeInsets.only(
-                                                  left: 22,
-                                                  right: 16,
-                                                )
-                                              : const EdgeInsets.only(
-                                                  left: 16,
-                                                  right: 22,
-                                                ),
-                                          child: Column(
+                                  Visibility(
+                                    visible: enableNotification!,
+                                    child: Padding(
+                                      padding: lang.contains('ar')
+                                          ? const EdgeInsets.only(
+                                              left: 22,
+                                              right: 16,
+                                            )
+                                          : const EdgeInsets.only(
+                                              left: 16,
+                                              right: 22,
+                                            ),
+                                      child: Column(
+                                        children: [
+                                          verticalSpaceSmall,
+                                          Row(
                                             children: [
-                                              verticalSpaceSmall,
-                                              Row(
-                                                children: [
-                                                  SuperKitText.bodySemiBold(
-                                                    text: AppLocalizations.of(
-                                                            context)!
-                                                        .translate(
-                                                            'allow_notifications')!,
-                                                    lang: lang,
-                                                  ),
-                                                  const Spacer(),
-                                                  Switch.adaptive(
-                                                      value: notification,
-                                                      onChanged: (bool value) {
-                                                        mySetState(
-                                                          () {
-                                                            notification =
-                                                                value;
-                                                            onNotificationChange!(
-                                                                notification);
-                                                          },
-                                                        );
-                                                      })
-                                                ],
+                                              SuperKitText.bodySemiBold(
+                                                text: AppLocalizations.of(
+                                                        context)!
+                                                    .translate(
+                                                        'allow_notifications')!,
+                                                lang: lang,
                                               ),
+                                              const Spacer(),
+                                              Switch.adaptive(
+                                                  value: notification,
+                                                  onChanged: (bool value) {
+                                                    mySetState(
+                                                      () {
+                                                        notification = value;
+                                                        onNotificationChange!(
+                                                            notification);
+                                                      },
+                                                    );
+                                                  })
                                             ],
                                           ),
-                                        )
-                                      : Container(),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
                                   LanguageSection(
                                     languageProvider: languagePr,
                                     globalProvider: globalPr,
