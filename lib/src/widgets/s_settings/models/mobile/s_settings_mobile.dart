@@ -187,7 +187,7 @@
 //   );
 // }
 
-import 'package:flutter/Material.dart';
+import 'package:flutter/material.dart';
 import 'package:superkit_core/src/widgets/s_settings/models/mobile/appearance.dart';
 import 'package:superkit_core/src/widgets/s_settings/models/mobile/drawer_switcher.dart';
 import 'package:superkit_core/src/widgets/s_settings/models/mobile/language.dart';
