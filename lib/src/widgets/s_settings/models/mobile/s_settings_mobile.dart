@@ -4,6 +4,8 @@ import 'package:superkit_core/src/widgets/s_settings/models/mobile/drawer_switch
 import 'package:superkit_core/src/widgets/s_settings/models/mobile/language.dart';
 import 'package:superkit_core/superkit_core.dart';
 
+bool notification = false;
+
 Future<void> superkitSettingsMobileModal({
   required BuildContext? context,
   required languagePr,
@@ -33,12 +35,11 @@ Future<void> superkitSettingsMobileModal({
     ),
     builder: (BuildContext ctx) {
       final String lang = Localizations.localeOf(context).languageCode;
-      bool notification = false;
       return ValueListenableBuilder<AdaptiveThemeMode>(
           valueListenable: AdaptiveTheme.of(context).modeChangeNotifier,
           builder: (_, Object? mode, Widget? child) {
-            return StatefulBuilder(builder: (BuildContext context,
-                StateSetter setState /*You can rename this!*/) {
+            return StatefulBuilder(
+                builder: (BuildContext context, StateSetter mySetState) {
               return Padding(
                 padding: MediaQuery.of(context).viewInsets,
                 child: Container(
@@ -142,7 +143,7 @@ Future<void> superkitSettingsMobileModal({
                                                   Switch.adaptive(
                                                       value: notification,
                                                       onChanged: (bool value) {
-                                                        setState(
+                                                        mySetState(
                                                           () {
                                                             notification =
                                                                 value;

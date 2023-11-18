@@ -14,10 +14,6 @@ class _StartPageState extends State<StartPage> {
   final items = List.generate(1000, (index) => '$index');
   var filterOptions = List.of(IntType.values);
   TextEditingController controller = new TextEditingController();
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +42,7 @@ class _StartPageState extends State<StartPage> {
                 darkColor: Colors.black,
                 lightColor: Colors.white,
                 enableNotification: true,
+
                 onChange: (notification) => debugPrint(notification.toString()),
 
                 // widgets: Padding(
