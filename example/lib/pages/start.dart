@@ -45,38 +45,6 @@ class _StartPageState extends State<StartPage> {
                 onChange: (notification) => debugPrint(
                   notification.toString(),
                 ),
-
-                // widgets: Padding(
-                //   padding: globals.lang.contains('ar')
-                //       ? const EdgeInsets.only(
-                //           left: 22,
-                //           right: 16,
-                //         )
-                //       : const EdgeInsets.only(
-                //           left: 16,
-                //           right: 22,
-                //         ),
-                //   child: Column(
-                //     children: [
-                //       verticalSpaceSmall,
-                //       Row(
-                //         children: [
-                //           SuperKitText.bodySemiBold(
-                //             text: "Allow Notifications",
-                //             lang: globals.lang,
-                //           ),
-                //           Switch.adaptive(
-                //             value: notification,
-                //             onChanged: (bool value) {
-                //               debugPrint(value.toString());
-                //               notification = value;
-                //             },
-                //           )
-                //         ],
-                //       ),
-                //     ],
-                //   ),
-                // ),
               );
             },
             padding: EdgeInsets.only(right: screenWidth(context) * 0.1),

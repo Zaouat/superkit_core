@@ -193,8 +193,6 @@ import 'package:superkit_core/src/widgets/s_settings/models/mobile/drawer_switch
 import 'package:superkit_core/src/widgets/s_settings/models/mobile/language.dart';
 import 'package:superkit_core/superkit_core.dart';
 
-bool notification = true;
-
 Future<void> superkitSettingsMobileModal({
   required BuildContext? context,
   required languagePr,
@@ -225,147 +223,154 @@ Future<void> superkitSettingsMobileModal({
     ),
     builder: (BuildContext ctx) {
       final String lang = Localizations.localeOf(context).languageCode;
-      return StatefulBuilder(builder:
-          (BuildContext? context, void Function(void Function())? mySetState) {
-        return Padding(
-          padding: MediaQuery.of(context!).viewInsets,
-          child: Container(
-            height: height ?? MediaQuery.of(context).size.height / 1.5,
-            width: screenWidth(context),
-            decoration: BoxDecoration(
-              color: colorChanger(
-                context: context,
-                dark: darkColor ?? kcNeutralColor_100,
-                light: lightColor ?? Colors.white,
-              ),
-              borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(50),
-                topLeft: Radius.circular(50),
-              ),
-              boxShadow: <BoxShadow>[
-                BoxShadow(
-                  color: colorChanger(
-                    context: context,
-                    dark: Theme.of(context).primaryColor.withOpacity(0.08),
-                    light: kcAccentColor_40.withOpacity(0.02),
-                  ),
-                  blurRadius: 12.0,
-                  spreadRadius: 1.5,
-                ),
-              ],
-            ),
-            child: ListView(
-              physics: const BouncingScrollPhysics(),
-              children: <Widget>[
-                verticalSpaceSmall,
-                Container(
-                  margin: EdgeInsets.only(
-                    left: screenWidth(context) / 2.2,
-                    right: screenWidth(context) / 2.2,
-                  ),
-                  height: 3,
+      return ValueListenableBuilder<AdaptiveThemeMode>(
+          valueListenable: AdaptiveTheme.of(context).modeChangeNotifier,
+          builder: (BuildContext? ctnxs, Object? mode, Widget? child) {
+            return StatefulBuilder(builder: (cntx, mySetState) {
+              return Padding(
+                padding: MediaQuery.of(context).viewInsets,
+                child: Container(
+                  height: height ?? MediaQuery.of(context).size.height / 1.5,
+                  width: screenWidth(context),
                   decoration: BoxDecoration(
                     color: colorChanger(
                       context: context,
-                      dark: Theme.of(context).primaryColor,
-                      light: Theme.of(context).colorScheme.secondary,
+                      dark: darkColor ?? kcNeutralColor_100,
+                      light: lightColor ?? Colors.white,
                     ),
-                    borderRadius: const BorderRadius.all(Radius.circular(50)),
-                  ),
-                ),
-                Material(
-                  color: Colors.transparent,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 2,
-                      right: 2,
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(50),
+                      topLeft: Radius.circular(50),
                     ),
-                    child: Column(
-                      children: <Widget>[
-                        verticalSpaceSmall,
-                        SuperKitText.heading3Bold(
-                          text: title ??
-                              AppLocalizations.of(context)!
-                                  .translate('settings')!,
-                          lang: lang,
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                        color: colorChanger(
+                          context: context,
+                          dark:
+                              Theme.of(context).primaryColor.withOpacity(0.08),
+                          light: kcAccentColor_40.withOpacity(0.02),
                         ),
-                        verticalSpaceRegular,
-                        ListView(
-                          physics: const BouncingScrollPhysics(),
-                          primary: false,
-                          shrinkWrap: true,
-                          children: <Widget>[
-                            Appearance(
-                              sThemes: supportedThemes,
-                              hideonTap: hideonTap,
-                              themePr: themePr,
-                              enablethemes: enbalethemes!,
-                            ),
-                            Visibility(
-                              visible: enableNotification!,
-                              child: Padding(
-                                padding: lang.contains('ar')
-                                    ? const EdgeInsets.only(
-                                        left: 22,
-                                        right: 16,
-                                      )
-                                    : const EdgeInsets.only(
-                                        left: 16,
-                                        right: 22,
-                                      ),
-                                child: Column(
-                                  children: [
-                                    verticalSpaceSmall,
-                                    Row(
-                                      children: [
-                                        SuperKitText.bodySemiBold(
-                                          text: AppLocalizations.of(context)!
-                                              .translate(
-                                                  'allow_notifications')!,
-                                          lang: lang,
-                                        ),
-                                        const Spacer(),
-                                        Switch.adaptive(
-                                            value: notification,
-                                            onChanged: (bool value) {
-                                              mySetState!(
-                                                () {
-                                                  notification = value;
-                                                  onNotificationChange!(
-                                                      notification);
-                                                },
-                                              );
-                                            })
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                        blurRadius: 12.0,
+                        spreadRadius: 1.5,
+                      ),
+                    ],
+                  ),
+                  child: ListView(
+                    physics: const BouncingScrollPhysics(),
+                    children: <Widget>[
+                      verticalSpaceSmall,
+                      Container(
+                        margin: EdgeInsets.only(
+                          left: screenWidth(context) / 2.2,
+                          right: screenWidth(context) / 2.2,
+                        ),
+                        height: 3,
+                        decoration: BoxDecoration(
+                          color: colorChanger(
+                            context: context,
+                            dark: Theme.of(context).primaryColor,
+                            light: Theme.of(context).colorScheme.secondary,
+                          ),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(50)),
+                        ),
+                      ),
+                      Material(
+                        color: Colors.transparent,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            left: 2,
+                            right: 2,
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              verticalSpaceSmall,
+                              SuperKitText.heading3Bold(
+                                text: title ??
+                                    AppLocalizations.of(context)!
+                                        .translate('settings')!,
+                                lang: lang,
                               ),
-                            ),
-                            LanguageSection(
-                              languageProvider: languagePr,
-                              globalProvider: globalPr,
-                              hideonTap: hideonTap,
-                            ),
-                            enableDrawer!
-                                ? DrawerSwitcher(
-                                    drawers: drawerPr.drawers,
-                                    drawerProvider: drawerPr,
-                                    defaultDrawer: drawerPr.getSelectedDrawer,
-                                  )
-                                : Container(),
-                            verticalSpaceMedium,
-                          ],
+                              verticalSpaceRegular,
+                              ListView(
+                                physics: const BouncingScrollPhysics(),
+                                primary: false,
+                                shrinkWrap: true,
+                                children: <Widget>[
+                                  Appearance(
+                                    sThemes: supportedThemes,
+                                    hideonTap: hideonTap,
+                                    themePr: themePr,
+                                    enablethemes: enbalethemes!,
+                                  ),
+                                  Visibility(
+                                    visible: enableNotification!,
+                                    child: Padding(
+                                      padding: lang.contains('ar')
+                                          ? const EdgeInsets.only(
+                                              left: 22,
+                                              right: 16,
+                                            )
+                                          : const EdgeInsets.only(
+                                              left: 16,
+                                              right: 22,
+                                            ),
+                                      child: Column(
+                                        children: [
+                                          verticalSpaceSmall,
+                                          Row(
+                                            children: [
+                                              SuperKitText.bodySemiBold(
+                                                text: AppLocalizations.of(
+                                                        context)!
+                                                    .translate(
+                                                        'allow_notifications')!,
+                                                lang: lang,
+                                              ),
+                                              const Spacer(),
+                                              // Switch.adaptive(
+                                              //     value: notification,
+                                              //     onChanged: (bool value) {
+                                              //       mySetState(
+                                              //         () {
+                                              //           notification = value;
+                                              //           onNotificationChange!(
+                                              //               notification);
+                                              //         },
+                                              //       );
+                                              //     })
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  LanguageSection(
+                                    languageProvider: languagePr,
+                                    globalProvider: globalPr,
+                                    hideonTap: hideonTap,
+                                  ),
+                                  enableDrawer!
+                                      ? DrawerSwitcher(
+                                          drawers: drawerPr.drawers,
+                                          drawerProvider: drawerPr,
+                                          defaultDrawer:
+                                              drawerPr.getSelectedDrawer,
+                                        )
+                                      : Container(),
+                                  verticalSpaceMedium,
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          ),
-        );
-      });
+              );
+            });
+          });
     },
   );
 }
