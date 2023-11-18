@@ -19,7 +19,7 @@ dynamic superkitSettingsMobile({
   bool? enbalethemes = true,
   required List<Map<String, Object>>? supportedThemes,
   GlobalKey<ScaffoldState>? scaffoldKey,
-  bool enableNotification = true,
+  bool? enableNotification = true,
   Widget? widgets,
   Function(bool)? onChange,
 }) {
@@ -46,8 +46,8 @@ dynamic superkitSettingsMobile({
         supportedThemes: supportedThemes,
         enbalethemes: enbalethemes!,
         onNotificationChange: (bool val) => onChange!(val),
-        widgets: widgets,
-        enableNotification: enableNotification,
+        widgets: widgets!,
+        enableNotification: enableNotification!,
       );
     case DeviceScreenType.Mobile:
       break;
