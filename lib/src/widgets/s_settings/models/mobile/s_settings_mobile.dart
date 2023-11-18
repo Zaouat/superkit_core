@@ -193,6 +193,7 @@ import 'package:superkit_core/src/widgets/s_settings/models/mobile/drawer_switch
 import 'package:superkit_core/src/widgets/s_settings/models/mobile/language.dart';
 import 'package:superkit_core/superkit_core.dart';
 
+bool notification = true;
 Future<void> superkitSettingsMobileModal({
   required BuildContext? context,
   required languagePr,
@@ -327,17 +328,18 @@ Future<void> superkitSettingsMobileModal({
                                                     lang: lang,
                                                   ),
                                                   const Spacer(),
-                                                  // Switch.adaptive(
-                                                  //     value: notification,
-                                                  //     onChanged: (bool value) {
-                                                  //       mySetState(
-                                                  //         () {
-                                                  //           notification = value;
-                                                  //           onNotificationChange!(
-                                                  //               notification);
-                                                  //         },
-                                                  //       );
-                                                  //     })
+                                                  Switch.adaptive(
+                                                      value: notification,
+                                                      onChanged: (bool value) {
+                                                        mySetState(
+                                                          () {
+                                                            notification =
+                                                                value;
+                                                            onNotificationChange!(
+                                                                notification);
+                                                          },
+                                                        );
+                                                      })
                                                 ],
                                               ),
                                             ],
