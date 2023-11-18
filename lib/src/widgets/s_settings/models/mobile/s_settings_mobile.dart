@@ -209,7 +209,7 @@ Future<void> superkitSettingsMobileModal({
   required List<Map<String, Object>>? supportedThemes,
   Color? darkColor,
   Color? lightColor,
-  bool enbalethemes = true,
+  bool? enbalethemes,
   final Function(bool)? onNotificationChange,
   bool? enableNotification = true,
   Widget? widgets,
@@ -225,9 +225,10 @@ Future<void> superkitSettingsMobileModal({
     ),
     builder: (BuildContext ctx) {
       final String lang = Localizations.localeOf(context).languageCode;
-      return StatefulBuilder(builder: (cntnx, mySetState) {
+      return StatefulBuilder(builder:
+          (BuildContext? context, void Function(void Function())? mySetState) {
         return Padding(
-          padding: MediaQuery.of(context).viewInsets,
+          padding: MediaQuery.of(context!).viewInsets,
           child: Container(
             height: height ?? MediaQuery.of(context).size.height / 1.5,
             width: screenWidth(context),
@@ -298,7 +299,7 @@ Future<void> superkitSettingsMobileModal({
                               sThemes: supportedThemes,
                               hideonTap: hideonTap,
                               themePr: themePr,
-                              enablethemes: enbalethemes,
+                              enablethemes: enbalethemes!,
                             ),
                             Visibility(
                               visible: enableNotification!,
@@ -327,7 +328,7 @@ Future<void> superkitSettingsMobileModal({
                                         Switch.adaptive(
                                             value: notification,
                                             onChanged: (bool value) {
-                                              mySetState(
+                                              mySetState!(
                                                 () {
                                                   notification = value;
                                                   onNotificationChange!(

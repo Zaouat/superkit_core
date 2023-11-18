@@ -16,7 +16,7 @@ dynamic superkitSettingsMobile({
   Color? lightColor,
   bool? hideonTap,
   required bool? enableDrawer,
-  bool? enbalethemes,
+  bool? enbalethemes = true,
   required List<Map<String, Object>>? supportedThemes,
   GlobalKey<ScaffoldState>? scaffoldKey,
   bool? enableNotification,
