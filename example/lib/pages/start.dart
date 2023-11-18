@@ -15,6 +15,11 @@ class _StartPageState extends State<StartPage> {
   var filterOptions = List.of(IntType.values);
   TextEditingController controller = new TextEditingController();
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Consumer3<LocaleProvider, GlobalProvider, ThemeProvider>(builder: (
       BuildContext context,
@@ -28,7 +33,6 @@ class _StartPageState extends State<StartPage> {
           centerTitle: false,
           appbarColor: Colors.white,
           elevation: 0,
-          enableBack: true,
           trailing: IconButton(
             onPressed: () {
               superkitSettingsMobile(
@@ -41,6 +45,40 @@ class _StartPageState extends State<StartPage> {
                 enbalethemes: false,
                 darkColor: Colors.black,
                 lightColor: Colors.white,
+                enableNotification: true,
+                onChange: (notification) => debugPrint(notification.toString()),
+
+                // widgets: Padding(
+                //   padding: globals.lang.contains('ar')
+                //       ? const EdgeInsets.only(
+                //           left: 22,
+                //           right: 16,
+                //         )
+                //       : const EdgeInsets.only(
+                //           left: 16,
+                //           right: 22,
+                //         ),
+                //   child: Column(
+                //     children: [
+                //       verticalSpaceSmall,
+                //       Row(
+                //         children: [
+                //           SuperKitText.bodySemiBold(
+                //             text: "Allow Notifications",
+                //             lang: globals.lang,
+                //           ),
+                //           Switch.adaptive(
+                //             value: notification,
+                //             onChanged: (bool value) {
+                //               debugPrint(value.toString());
+                //               notification = value;
+                //             },
+                //           )
+                //         ],
+                //       ),
+                //     ],
+                //   ),
+                // ),
               );
             },
             padding: EdgeInsets.only(right: screenWidth(context) * 0.1),
@@ -51,33 +89,18 @@ class _StartPageState extends State<StartPage> {
               color: Colors.black,
             ),
           ),
-          body: Column(
-            children: [
-              SuperKitInput(
-                controller: controller,
-                onChanged: (val) {
-                  debugPrint(val.toString());
-                },
-              ),
-              SuperKitCard(
-                width: screenWidth(context) / 2,
-                color: Colors.greenAccent,
-                padding: EdgeInsets.all(25),
-                enableScaleAnimation: false,
-                child: Row(
-                  children: [
-                    ScaleTap(
-                      child: Icon(
-                        Icons.ac_unit,
-                      ),
-                      onPressed: () {
-                        debugPrint("kjdvds");
-                      },
-                    ),
-                  ],
+          body: Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Column(
+              children: [
+                SuperKitInput(
+                  controller: controller,
+                  onChanged: (val) {
+                    debugPrint(val.toString());
+                  },
                 ),
-              )
-            ],
+              ],
+            ),
           ));
     });
   }

@@ -19,6 +19,9 @@ dynamic superkitSettingsMobile({
   bool? enbalethemes,
   required List<Map<String, Object>>? supportedThemes,
   GlobalKey<ScaffoldState>? scaffoldKey,
+  bool? enableNotification,
+  Widget? widgets,
+  Function(bool)? onChange,
 }) {
   var deviceType = getDeviceType(MediaQuery.of(context!).size);
   switch (deviceType) {
@@ -42,6 +45,9 @@ dynamic superkitSettingsMobile({
         darkColor: darkColor,
         supportedThemes: supportedThemes,
         enbalethemes: enbalethemes,
+        onNotificationChange: (bool val) => onChange!(val),
+        widgets: widgets,
+        enableNotification: enableNotification,
       );
     case DeviceScreenType.Mobile:
       break;
