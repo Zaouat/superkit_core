@@ -46,7 +46,7 @@ dynamic superkitSettingsMobile({
         supportedThemes: supportedThemes,
         enbalethemes: enbalethemes!,
         onNotificationChange: (bool val) => onChange!(val),
-        widgets: widgets!,
+        widgets: widgets,
         enableNotification: enableNotification!,
       );
     case DeviceScreenType.Mobile:
