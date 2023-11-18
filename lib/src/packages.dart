@@ -10,7 +10,6 @@ export 'package:google_fonts/google_fonts.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:flex_color_scheme/flex_color_scheme.dart';
 export 'package:adaptive_theme/adaptive_theme.dart';
-export 'package:auto_animated/auto_animated.dart';
 export 'package:go_router/go_router.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:provider/provider.dart';
