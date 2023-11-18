@@ -303,48 +303,48 @@ Future<void> superkitSettingsMobileModal({
                                     themePr: themePr,
                                     enablethemes: enbalethemes!,
                                   ),
-                                  Visibility(
-                                    visible: enableNotification!,
-                                    child: Padding(
-                                      padding: lang.contains('ar')
-                                          ? const EdgeInsets.only(
-                                              left: 22,
-                                              right: 16,
-                                            )
-                                          : const EdgeInsets.only(
-                                              left: 16,
-                                              right: 22,
-                                            ),
-                                      child: Column(
-                                        children: [
-                                          verticalSpaceSmall,
-                                          Row(
-                                            children: [
-                                              SuperKitText.bodySemiBold(
-                                                text: AppLocalizations.of(
-                                                        context)!
-                                                    .translate(
-                                                        'allow_notifications')!,
-                                                lang: lang,
-                                              ),
-                                              const Spacer(),
-                                              // Switch.adaptive(
-                                              //     value: notification,
-                                              //     onChanged: (bool value) {
-                                              //       mySetState(
-                                              //         () {
-                                              //           notification = value;
-                                              //           onNotificationChange!(
-                                              //               notification);
-                                              //         },
-                                              //       );
-                                              //     })
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
+                                  // Visibility(
+                                  //   visible: enableNotification!,
+                                  //   child: Padding(
+                                  //     padding: lang.contains('ar')
+                                  //         ? const EdgeInsets.only(
+                                  //             left: 22,
+                                  //             right: 16,
+                                  //           )
+                                  //         : const EdgeInsets.only(
+                                  //             left: 16,
+                                  //             right: 22,
+                                  //           ),
+                                  //     child: Column(
+                                  //       children: [
+                                  //         verticalSpaceSmall,
+                                  //         Row(
+                                  //           children: [
+                                  //             SuperKitText.bodySemiBold(
+                                  //               text: AppLocalizations.of(
+                                  //                       context)!
+                                  //                   .translate(
+                                  //                       'allow_notifications')!,
+                                  //               lang: lang,
+                                  //             ),
+                                  //             const Spacer(),
+                                  //             // Switch.adaptive(
+                                  //             //     value: notification,
+                                  //             //     onChanged: (bool value) {
+                                  //             //       mySetState(
+                                  //             //         () {
+                                  //             //           notification = value;
+                                  //             //           onNotificationChange!(
+                                  //             //               notification);
+                                  //             //         },
+                                  //             //       );
+                                  //             //     })
+                                  //           ],
+                                  //         ),
+                                  //       ],
+                                  //     ),
+                                  //   ),
+                                  // ),
                                   LanguageSection(
                                     languageProvider: languagePr,
                                     globalProvider: globalPr,
