@@ -55,6 +55,7 @@ class SimpleSPageTemplate extends StatefulWidget {
     this.selectedTextStyle,
     this.unSelectedTextStyle,
     this.bottomWidget,
+    this.titleWidget,
   }) : super(key: key);
 
   /// title of the page
@@ -152,6 +153,8 @@ class SimpleSPageTemplate extends StatefulWidget {
 
   final PreferredSizeWidget? bottomWidget;
 
+  final Widget? titleWidget;
+
   @override
   State<SimpleSPageTemplate> createState() => _SuperKitSimpleTemplateState();
 }
@@ -181,10 +184,11 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
 
     SliverAppBar showSliverAppBar() {
       return SliverAppBar(
-        title: customTitle(
-          context: context,
-          lang: lang,
-        ),
+        title: widget.titleWidget ??
+            customTitle(
+              context: context,
+              lang: lang,
+            ),
         elevation: widget.elevation,
         forceElevated: true,
         floating: false,
