@@ -7,10 +7,10 @@ import Foundation
 
 import location
 import package_info_plus
-import path_provider_macos
+import path_provider_foundation
 import screen_retriever
 import share_plus_macos
-import shared_preferences_macos
+import shared_preferences_foundation
 import sqflite
 import url_launcher_macos
 import window_manager

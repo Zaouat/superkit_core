@@ -22,7 +22,7 @@ enum Indicator {
 
 class SimpleSPageTemplate extends StatefulWidget {
   const SimpleSPageTemplate({
-    Key? key,
+    super.key,
     this.title,
     this.body,
     this.onBack,
@@ -56,7 +56,8 @@ class SimpleSPageTemplate extends StatefulWidget {
     this.unSelectedTextStyle,
     this.bottomWidget,
     this.titleWidget,
-  }) : super(key: key);
+    this.indicatorColor,
+  });
 
   /// title of the page
   final String? title;
@@ -155,6 +156,8 @@ class SimpleSPageTemplate extends StatefulWidget {
 
   final Widget? titleWidget;
 
+  final Color? indicatorColor;
+
   @override
   State<SimpleSPageTemplate> createState() => _SuperKitSimpleTemplateState();
 }
@@ -237,6 +240,7 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                       tabs: widget.tabs,
                       tabController: tabController,
                       indicator: widget.indicator,
+                      indicatorColor: widget.indicatorColor,
                       enableShadow: widget.elevation == 0 ? false : true,
                       enableAppbarGradient: widget.enableAppbarGradient!,
                       tabColor: widget.appbarColor,
@@ -252,11 +256,12 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                           ),
                       unSelectedTextStyle: widget.unSelectedTextStyle ??
                           TextStyle(
-                              color: colorChanger(
-                            context: context,
-                            dark: kcNeutralColor_60,
-                            light: kcNeutralColor_30,
-                          )),
+                            color: colorChanger(
+                              context: context,
+                              dark: kcNeutralColor_60,
+                              light: kcNeutralColor_30,
+                            ),
+                          ),
                     ),
                   )
                 : null),

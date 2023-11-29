@@ -26,9 +26,30 @@ class _StartPageState extends State<StartPage> {
     ) {
       return SimpleSPageTemplate(
           title: "Earning",
+          titleColor: Colors.white,
           centerTitle: false,
-          appbarColor: Colors.white,
+          appbarColor: Colors.green,
           elevation: 0,
+          tabs: [
+            SuperKitText.bodyBold(
+              text: "home",
+              lang: globals.lang,
+            ),
+            SuperKitText.bodyBold(
+              text: "Settings",
+              lang: globals.lang,
+            ),
+          ],
+          selectedTextStyle: TextStyle(
+            color: Colors.white,
+          ),
+          unSelectedTextStyle: TextStyle(
+            color: Colors.white.withOpacity(.5),
+          ),
+          indicatorColor: Colors.red,
+          indicator: Indicator.material,
+          enableTabs: true,
+          tabsWidgets: [Container(), Container()],
           trailing: IconButton(
             onPressed: () {
               superkitSettingsMobile(

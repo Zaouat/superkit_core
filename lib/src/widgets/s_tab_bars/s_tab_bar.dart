@@ -12,7 +12,7 @@ import 'package:superkit_core/superkit_core.dart';
 
 class SuperKitTabBar extends StatefulWidget {
   const SuperKitTabBar({
-    Key? key,
+    super.key,
     this.indicator = Indicator.rectangular,
     required this.tabs,
     this.tabsWidgets,
@@ -21,10 +21,11 @@ class SuperKitTabBar extends StatefulWidget {
     this.initialIndex = 0,
     this.tabController,
     this.tabColor,
+    this.indicatorColor,
     this.enableAppbarGradient = false,
     required this.selectedTextStyle,
     required this.unSelectedTextStyle,
-  }) : super(key: key);
+  });
 
   /// Indicator type of the tab bar [Indicators.rectangular] by default.
   final Indicator? indicator;
@@ -54,6 +55,8 @@ class SuperKitTabBar extends StatefulWidget {
   final TextStyle selectedTextStyle;
 
   final TextStyle unSelectedTextStyle;
+
+  final Color? indicatorColor;
   @override
   State<SuperKitTabBar> createState() => _SuperKitTabBarState();
 }
@@ -68,9 +71,10 @@ class _SuperKitTabBarState extends State<SuperKitTabBar>
       height: Indicator.rectangular == widget.indicator
           ? widget.height! + 5
           : Indicator.dots == widget.indicator
-              ? widget.height! + 20
-              : widget.height,
+              ? widget.height! + 25
+              : widget.height! + 5,
       padding: EdgeInsets.only(
+        left: Indicator.rectangular == widget.indicator ? 20 : 5,
         bottom: Indicator.rectangular == widget.indicator
             ? 10
             : Indicator.dots == widget.indicator
@@ -83,7 +87,7 @@ class _SuperKitTabBarState extends State<SuperKitTabBar>
             colorChanger(
               context: context,
               dark: kcNeutralColor_100,
-              light: Colors.white,
+              light: Colors.red,
             ),
         boxShadow: <BoxShadow>[
           BoxShadow(
@@ -112,13 +116,16 @@ class _SuperKitTabBarState extends State<SuperKitTabBar>
         child: TabBar(
           tabs: widget.tabs!,
           controller: widget.tabController,
+          dividerColor: Colors.transparent,
+          indicatorSize: TabBarIndicatorSize.tab,
           labelStyle: fontChanger(
             lang: lang,
             fontWeight: FontWeight.w500,
           ),
-          padding: widget.indicator == Indicator.rectangular
+          tabAlignment: TabAlignment.start,
+          labelPadding: widget.indicator == Indicator.rectangular
               ? const EdgeInsets.only(left: 20, right: 20)
-              : const EdgeInsets.only(left: 15, right: 15),
+              : const EdgeInsets.only(left: 15, right: 15, bottom: 5),
           isScrollable: true,
           physics: const BouncingScrollPhysics(),
           labelColor: widget.selectedTextStyle.color ??
@@ -137,29 +144,30 @@ class _SuperKitTabBarState extends State<SuperKitTabBar>
               ),
           indicator: widget.indicator == Indicator.rectangular
               ? RectangularIndicator(
-                  color:
+                  color: widget.indicatorColor ??
                       Theme.of(context).colorScheme.secondary.withOpacity(0.7),
                   topRightRadius: 24,
                   topLeftRadius: 24,
                   bottomLeftRadius: 24,
                   bottomRightRadius: 24,
+                  horizontalPadding: 10,
                 )
               : widget.indicator == Indicator.dots
                   ? DotIndicator(
-                      color: widget.tabColor != null
-                          ? Colors.white
-                          : Theme.of(context).colorScheme.primary,
+                      color: widget.indicatorColor ??
+                          Theme.of(context).colorScheme.primary,
                       paintingStyle: PaintingStyle.fill,
                       radius: 4,
                       distanceFromCenter: 20,
                     )
                   : MaterialIndicator(
-                      color: Theme.of(context).colorScheme.secondary,
+                      color: widget.indicatorColor ??
+                          Theme.of(context).colorScheme.secondary,
                       topRightRadius: 22,
                       topLeftRadius: 22,
                       bottomLeftRadius: 22,
                       bottomRightRadius: 22,
-                      horizontalPadding: 22,
+                      horizontalPadding: 25,
                     ),
           onTap: (int index) {},
         ),
