@@ -17,7 +17,7 @@ enum SliderTypes {
 
 class SuperKitCustomSlider extends StatefulWidget {
   SuperKitCustomSlider.normal({
-    Key? key,
+    super.key,
     this.type = SliderTypes.normal,
     this.lowerValue = 10,
     this.upperValue = 80,
@@ -29,10 +29,10 @@ class SuperKitCustomSlider extends StatefulWidget {
     this.onVolumeChanged,
     this.onProgressChanged,
     this.onEmojiChanged,
-  }) : super(key: key);
+  });
 
   SuperKitCustomSlider.volume({
-    Key? key,
+    super.key,
     this.type = SliderTypes.volume,
     this.lowerValue,
     this.upperValue,
@@ -44,10 +44,10 @@ class SuperKitCustomSlider extends StatefulWidget {
     this.onVolumeChanged,
     this.onProgressChanged,
     this.onEmojiChanged,
-  }) : super(key: key);
+  });
 
   SuperKitCustomSlider.progress({
-    Key? key,
+    super.key,
     this.type = SliderTypes.progress,
     this.lowerValue,
     this.upperValue,
@@ -59,10 +59,10 @@ class SuperKitCustomSlider extends StatefulWidget {
     this.onVolumeChanged,
     this.onProgressChanged,
     this.onEmojiChanged,
-  }) : super(key: key);
+  });
 
   SuperKitCustomSlider.emoji({
-    Key? key,
+    super.key,
     this.type = SliderTypes.emoji,
     this.lowerValue,
     this.upperValue,
@@ -74,7 +74,7 @@ class SuperKitCustomSlider extends StatefulWidget {
     this.onVolumeChanged,
     this.onProgressChanged,
     this.onEmojiChanged,
-  }) : super(key: key);
+  });
 
   /// double min value for normal slider
   late double? lowerValue;

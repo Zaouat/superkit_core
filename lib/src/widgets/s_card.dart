@@ -11,7 +11,7 @@ import 'package:superkit_core/superkit_core.dart';
 
 class SuperKitCard extends StatelessWidget {
   const SuperKitCard({
-    Key? key,
+    super.key,
     this.padding,
     this.margin,
     this.color,
@@ -23,7 +23,7 @@ class SuperKitCard extends StatelessWidget {
     this.enableShadow = true,
     this.enableScaleAnimation = true,
     this.width = double.infinity,
-  }) : super(key: key);
+  });
 
   final Widget? child;
   final EdgeInsets? padding;

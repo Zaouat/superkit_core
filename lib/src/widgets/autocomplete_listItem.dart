@@ -8,8 +8,7 @@ class AutoCompleteListItem extends StatelessWidget {
   final Function onTap;
 
   const AutoCompleteListItem(
-      {Key? key, required this.state, required this.city, required this.onTap})
-      : super(key: key);
+      {super.key, required this.state, required this.city, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

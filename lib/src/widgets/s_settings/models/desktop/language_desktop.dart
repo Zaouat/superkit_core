@@ -9,11 +9,11 @@ class LanguageSectionDesktop extends StatefulWidget {
   final bool? hideonTap;
 
   const LanguageSectionDesktop({
-    Key? key,
+    super.key,
     required this.languageProvider,
     required this.globalProvider,
     this.hideonTap = true,
-  }) : super(key: key);
+  });
   @override
   _LanguageSectionState createState() => _LanguageSectionState();
 }

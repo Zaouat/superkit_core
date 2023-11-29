@@ -9,7 +9,7 @@ import 'package:superkit_core/superkit_core.dart';
 
 class SuperkitDropdown extends StatefulWidget {
   const SuperkitDropdown({
-    Key? key,
+    super.key,
     this.customItems = const <String>['Item 1', 'Item 2', 'Item 3', 'Item 4'],
     this.height = 60,
     this.width = double.infinity,
@@ -20,10 +20,10 @@ class SuperkitDropdown extends StatefulWidget {
     this.onSelected,
     this.menuMaxHeight,
     this.elevation = 2,
-  }) : super(key: key);
+  });
 
   const SuperkitDropdown.countries({
-    Key? key,
+    super.key,
     this.customItems,
     this.height = 60,
     this.width = double.infinity,
@@ -34,7 +34,7 @@ class SuperkitDropdown extends StatefulWidget {
     this.onSelected,
     this.menuMaxHeight,
     this.elevation = 2,
-  }) : super(key: key);
+  });
 
   final List<String>? customItems;
   final double? height;

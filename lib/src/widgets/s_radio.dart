@@ -12,8 +12,7 @@ class SuperKitRadio extends StatefulWidget {
   final Function? press;
 
   const SuperKitRadio(
-      {Key? key, this.text, this.index, this.selectedButton, this.press})
-      : super(key: key);
+      {super.key, this.text, this.index, this.selectedButton, this.press});
 
   @override
   SuperKitRadioPage createState() => SuperKitRadioPage();

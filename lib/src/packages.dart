@@ -14,6 +14,6 @@ export 'package:go_router/go_router.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:provider/provider.dart';
 export 'package:provider/single_child_widget.dart';
-export 'package:package_info_plus/package_info_plus.dart';
+// export 'package:package_info_plus/package_info_plus.dart';
 export 'package:responsive_builder/responsive_builder.dart';
 export 'package:get/get_state_manager/src/simple/get_responsive.dart';

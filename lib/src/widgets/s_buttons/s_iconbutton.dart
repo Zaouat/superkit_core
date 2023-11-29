@@ -15,7 +15,7 @@ class SuperKitIconButton extends StatelessWidget {
   final double? radius;
 
   const SuperKitIconButton({
-    Key? key,
+    super.key,
     this.disabled = false,
     this.busy = false,
     this.onTap,
@@ -26,11 +26,10 @@ class SuperKitIconButton extends StatelessWidget {
     this.width = 45,
     this.height = 45,
     this.radius = 30,
-  })  : outline = false,
-        super(key: key);
+  })  : outline = false;
 
   const SuperKitIconButton.outline({
-    Key? key,
+    super.key,
     this.onTap,
     this.icon,
     this.color = kcNeutralColor_100,
@@ -41,8 +40,7 @@ class SuperKitIconButton extends StatelessWidget {
     this.radius = 30,
   })  : disabled = false,
         busy = false,
-        outline = true,
-        super(key: key);
+        outline = true;
 
   @override
   Widget build(BuildContext context) {

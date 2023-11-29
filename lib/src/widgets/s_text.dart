@@ -28,7 +28,7 @@ class SuperKitText extends StatelessWidget {
 
   //----------Heading1 style--------------//
   SuperKitText.heading1Light({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -39,11 +39,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w100,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.heading1Regular({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -54,11 +53,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w200,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.heading1Medium({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -69,11 +67,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w300,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.heading1SemiBold({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -84,11 +81,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w400,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.heading1Bold({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -99,12 +95,11 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.bold,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
 //----------Heading2 style--------------//
   SuperKitText.heading2Light({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -115,10 +110,9 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w100,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
   SuperKitText.heading2Regular({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -129,11 +123,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w200,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.heading2Medium({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -144,11 +137,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w300,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.heading2SemiBold({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -159,11 +151,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w400,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.heading2Bold({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -174,12 +165,11 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.bold,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
 //----------Heading3 style--------------//
   SuperKitText.heading3Light({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -190,11 +180,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w100,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.heading3Regular({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -205,11 +194,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w200,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.heading3Medium({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -220,11 +208,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w300,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.heading3SemiBold({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -235,11 +222,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w400,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.heading3Bold({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -250,12 +236,11 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.bold,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
 //----------Headline style--------------//
   SuperKitText.headlineLight({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -266,11 +251,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w100,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.headlineRegular({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -281,11 +265,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w200,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.headlineMedium({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -296,11 +279,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w300,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.headlineSemiBold({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -311,11 +293,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w400,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.headlineBold({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -326,12 +307,11 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.bold,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   //----------Body style--------------//
   SuperKitText.bodyLight({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -342,11 +322,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w100,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.bodyRegular({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -357,11 +336,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w200,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.bodyMedium({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -372,11 +350,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w300,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.bodySemiBold({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -387,11 +364,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w400,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.bodyBold({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -402,12 +378,11 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.bold,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   //----------Caption style--------------//
   SuperKitText.captionLight({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -418,11 +393,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w100,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.captionRegular({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -433,11 +407,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w200,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.captionMedium({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -448,11 +421,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w300,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.captionSemiBold({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -463,11 +435,10 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.w400,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   SuperKitText.captionBold({
-    Key? key,
+    super.key,
     required this.text,
     required this.lang,
     this.color,
@@ -478,8 +449,7 @@ class SuperKitText extends StatelessWidget {
           fontWeight: FontWeight.bold,
           lang: lang,
         ),
-        alignment = align,
-        super(key: key);
+        alignment = align;
 
   @override
   Widget build(BuildContext context) {

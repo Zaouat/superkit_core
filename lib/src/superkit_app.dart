@@ -22,7 +22,7 @@ class SuperKitMaterialApp extends StatefulWidget {
   ///
 
   const SuperKitMaterialApp({
-    Key? key,
+    super.key,
     this.lightTheme,
     this.darkTheme,
     this.title = 'SuperKit',
@@ -35,7 +35,7 @@ class SuperKitMaterialApp extends StatefulWidget {
     this.initialRoute = '/',
     this.themeProvider,
     this.defalutThemeMode = AdaptiveThemeMode.system,
-  }) : super(key: key);
+  });
 
   /// The Light Theme to use for the Material widgets in the app the default is the [superkitLightTheme].
   final ThemeData? lightTheme;

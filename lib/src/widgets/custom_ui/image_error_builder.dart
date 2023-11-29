@@ -5,9 +5,9 @@ class ImageErrorBuilder extends StatelessWidget {
   final String? title;
 
   const ImageErrorBuilder({
-    Key? key,
+    super.key,
     this.title = 'Error No Connection',
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     final String lang = Localizations.localeOf(context).languageCode;

@@ -16,7 +16,7 @@ class AppearanceCard extends StatelessWidget {
   final bool? enableDesktopMode;
 
   const AppearanceCard({
-    Key? key,
+    super.key,
     required this.title,
     this.image = place_holder,
     this.onTap,
@@ -25,7 +25,7 @@ class AppearanceCard extends StatelessWidget {
     this.height,
     this.width,
     this.enableDesktopMode = false,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     final String lang = Localizations.localeOf(context).languageCode;

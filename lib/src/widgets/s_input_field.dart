@@ -105,7 +105,7 @@ class SuperKitInput extends StatelessWidget {
   );
 
   SuperKitInput({
-    Key? key,
+    super.key,
     required this.controller,
     this.placeholder = '',
     this.trailingTapped,
@@ -128,7 +128,7 @@ class SuperKitInput extends StatelessWidget {
     this.contentPadding,
     this.borderSide,
     this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

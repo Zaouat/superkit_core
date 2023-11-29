@@ -8,11 +8,11 @@ class DrawerSwitcher extends StatefulWidget {
   final List<String>? drawers;
   final drawerProvider;
   const DrawerSwitcher({
-    Key? key,
+    super.key,
     this.defaultDrawer,
     required this.drawers,
     this.drawerProvider,
-  }) : super(key: key);
+  });
 
   @override
   State<DrawerSwitcher> createState() => _DrawerSwitcherState();

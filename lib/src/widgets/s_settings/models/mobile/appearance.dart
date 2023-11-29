@@ -10,13 +10,13 @@ class Appearance extends StatefulWidget {
   final bool? enableDarkMode;
   final dynamic themePr;
   const Appearance({
-    Key? key,
+    super.key,
     required this.sThemes,
     this.hideonTap = true,
     required this.enablethemes,
     this.enableDarkMode = true,
     required this.themePr,
-  }) : super(key: key);
+  });
 
   @override
   _AppearanceState createState() => _AppearanceState();

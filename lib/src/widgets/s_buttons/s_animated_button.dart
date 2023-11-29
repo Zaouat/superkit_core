@@ -13,7 +13,7 @@ class SuperKitAnimatedButton extends StatefulWidget {
   final bool? iconOnly;
 
   const SuperKitAnimatedButton({
-    Key? key,
+    super.key,
     this.disabled = false,
     this.busy = false,
     this.onTap,
@@ -22,11 +22,10 @@ class SuperKitAnimatedButton extends StatefulWidget {
     this.height = 45,
     this.enableSlowMo = false,
     this.iconOnly = false,
-  })  : outline = false,
-        super(key: key);
+  })  : outline = false;
 
   const SuperKitAnimatedButton.outline({
-    Key? key,
+    super.key,
     this.onTap,
     this.icon,
     this.width = 45,
@@ -35,8 +34,7 @@ class SuperKitAnimatedButton extends StatefulWidget {
     this.iconOnly = false,
   })  : disabled = false,
         busy = false,
-        outline = true,
-        super(key: key);
+        outline = true;
 
   @override
   State<SuperKitAnimatedButton> createState() => _SuperKitAnimatedButtonState();

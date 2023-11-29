@@ -7,7 +7,7 @@ import 'package:superkit_core/superkit_core.dart';
 
 class SuperKitButton extends StatelessWidget {
   const SuperKitButton({
-    Key? key,
+    super.key,
     this.title = 'Superkit',
     this.disabled = false,
     this.busy = false,
@@ -20,11 +20,10 @@ class SuperKitButton extends StatelessWidget {
     this.borderRadius = 15,
     this.spacing,
     this.align = TextAlign.center,
-  })  : outline = false,
-        super(key: key);
+  })  : outline = false;
 
   const SuperKitButton.small({
-    Key? key,
+    super.key,
     required this.title,
     this.disabled = false,
     this.busy = false,
@@ -37,11 +36,10 @@ class SuperKitButton extends StatelessWidget {
     this.spacing,
     this.borderRadius = 15,
     this.align = TextAlign.center,
-  })  : outline = false,
-        super(key: key);
+  })  : outline = false;
 
   const SuperKitButton.medium({
-    Key? key,
+    super.key,
     required this.title,
     this.disabled = false,
     this.busy = false,
@@ -54,10 +52,9 @@ class SuperKitButton extends StatelessWidget {
     this.borderRadius = 15,
     this.spacing,
     this.align = TextAlign.center,
-  })  : outline = false,
-        super(key: key);
+  })  : outline = false;
   const SuperKitButton.large({
-    Key? key,
+    super.key,
     required this.title,
     this.disabled = false,
     this.busy = false,
@@ -70,11 +67,10 @@ class SuperKitButton extends StatelessWidget {
     this.borderRadius = 15,
     this.spacing,
     this.align = TextAlign.center,
-  })  : outline = false,
-        super(key: key);
+  })  : outline = false;
 
   const SuperKitButton.outline({
-    Key? key,
+    super.key,
     required this.title,
     this.onTap,
     this.icon,
@@ -87,10 +83,9 @@ class SuperKitButton extends StatelessWidget {
     this.align = TextAlign.center,
   })  : disabled = false,
         busy = false,
-        outline = true,
-        super(key: key);
+        outline = true;
   const SuperKitButton.smallOutline({
-    Key? key,
+    super.key,
     required this.title,
     this.onTap,
     this.icon,
@@ -103,10 +98,9 @@ class SuperKitButton extends StatelessWidget {
     this.align = TextAlign.center,
   })  : disabled = false,
         busy = false,
-        outline = true,
-        super(key: key);
+        outline = true;
   const SuperKitButton.mediumOutline({
-    Key? key,
+    super.key,
     required this.title,
     this.onTap,
     this.icon,
@@ -119,10 +113,9 @@ class SuperKitButton extends StatelessWidget {
     this.align = TextAlign.center,
   })  : disabled = false,
         busy = false,
-        outline = true,
-        super(key: key);
+        outline = true;
   const SuperKitButton.largeOutline({
-    Key? key,
+    super.key,
     required this.title,
     this.onTap,
     this.icon,
@@ -135,8 +128,7 @@ class SuperKitButton extends StatelessWidget {
     this.align = TextAlign.center,
   })  : disabled = false,
         busy = false,
-        outline = true,
-        super(key: key);
+        outline = true;
 
   /// The text to display in the button.
   final String title;

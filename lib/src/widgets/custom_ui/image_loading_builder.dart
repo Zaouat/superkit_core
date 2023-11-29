@@ -6,10 +6,10 @@ class ImageLoading extends StatelessWidget {
   final double? height;
   final double? width;
   const ImageLoading({
-    Key? key,
+    super.key,
     this.height = double.infinity,
     this.width = double.infinity,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     return SizedBox(

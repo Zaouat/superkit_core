@@ -10,13 +10,13 @@ class AppearanceDesktop extends StatefulWidget {
   final bool? enableDarkMode;
   final dynamic themePr;
   const AppearanceDesktop({
-    Key? key,
+    super.key,
     required this.sThemes,
     this.hideonTap = true,
     this.enablethemes = true,
     this.enableDarkMode = true,
     required this.themePr,
-  }) : super(key: key);
+  });
 
   @override
   _AppearanceState createState() => _AppearanceState();

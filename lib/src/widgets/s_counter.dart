@@ -16,14 +16,14 @@ class SuperKitCounterView extends StatefulWidget {
   final double? radius;
 
   const SuperKitCounterView({
-    Key? key,
+    super.key,
     this.initNumber,
     this.counterCallback,
     this.increaseCallback,
     this.decreaseCallback,
     this.minNumber,
     this.radius = 12,
-  }) : super(key: key);
+  });
 
   @override
   _SuperKitCounterViewState createState() => _SuperKitCounterViewState();

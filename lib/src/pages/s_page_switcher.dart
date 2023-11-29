@@ -4,10 +4,10 @@ import 'package:superkit_core/superkit_core.dart';
 class SuperkitPageSwitcher extends StatelessWidget {
   /// The arguments [selectedIndex], [pages], must not be null.
   const SuperkitPageSwitcher({
-    Key? key,
+    super.key,
     required this.selectedIndex,
     required this.pages,
-  }) : super(key: key);
+  });
 
   /// The index of the selected page.
   final int? selectedIndex;

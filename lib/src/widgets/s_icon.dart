@@ -15,14 +15,14 @@ class SuperKitIcon extends StatefulWidget {
   final EdgeInsetsGeometry? padding;
 
   const SuperKitIcon({
-    Key? key,
+    super.key,
     required this.icon,
     this.size = 22,
     this.tooltip,
     this.onTap,
     this.iconColor = kcNeutralColor_60,
     this.padding,
-  }) : super(key: key);
+  });
 
   @override
   State<SuperKitIcon> createState() => _SuperKitIconState();
