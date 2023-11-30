@@ -458,6 +458,8 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                             automaticallyImplyLeading: false,
                             toolbarHeight: 0,
                             elevation: widget.elevation,
+                            foregroundColor: Colors.transparent,
+                            surfaceTintColor: Colors.transparent,
                             shadowColor: Colors.transparent,
                             backgroundColor: colorChanger(
                               context: context,
@@ -492,6 +494,8 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                           toolbarHeight: 0,
                           shadowColor: Colors.transparent,
                           elevation: widget.elevation,
+                          foregroundColor: Colors.transparent,
+                          surfaceTintColor: Colors.transparent,
                           backgroundColor: colorChanger(
                             context: context,
                             dark: kcNeutralColor_100,

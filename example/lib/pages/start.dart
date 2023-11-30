@@ -25,51 +25,54 @@ class _StartPageState extends State<StartPage> {
       Widget? child,
     ) {
       return SimpleSPageTemplate(
-          title: "Earning",
-          centerTitle: false,
-          appbarColor: Colors.white,
-          elevation: 0,
-          // tabs: [
-          //   SuperKitText.bodyBold(
-          //     text: "home",
-          //     lang: globals.lang,
-          //   ),
-          //   SuperKitText.bodyBold(
-          //     text: "Settings",
-          //     lang: globals.lang,
-          //   ),
-          // ],
-          indicatorColor: Colors.red,
-          // indicator: Indicator.material,
-          // enableTabs: true,
-          // tabsWidgets: [Container(), Container()],
-          trailing: IconButton(
-            onPressed: () {
-              superkitSettingsMobile(
-                context: context,
-                languagePr: appLanguage,
-                globalPr: globalProvider,
-                themePr: themeProvider,
-                supportedThemes: globals.supportedThemes,
-                enableDrawer: false,
-                enbalethemes: false,
-                darkColor: Colors.black,
-                lightColor: Colors.white,
-                enableNotification: true,
-                onChange: (notification) => debugPrint(
-                  notification.toString(),
-                ),
-              );
-            },
-            padding: EdgeInsets.only(right: screenWidth(context) * 0.1),
-            tooltip: 'Settings',
-            icon: Icon(
-              Icons.settings,
-              size: 28,
-              color: Colors.black,
-            ),
+        title: "Earning",
+        centerTitle: false,
+        appbarColor: colorChanger(
+            context: context, dark: Colors.black, light: Colors.white),
+        elevation: 0,
+        tabs: [
+          SuperKitText.bodyBold(
+            text: "home",
+            lang: globals.lang,
           ),
-          body: Padding(
+          SuperKitText.bodyBold(
+            text: "Settings",
+            lang: globals.lang,
+          ),
+        ],
+        indicatorColor: Colors.red,
+        indicator: Indicator.material,
+        enableTabs: true,
+        tabsWidgets: [Container(), Container()],
+        trailing: IconButton(
+          onPressed: () {
+            superkitSettingsMobile(
+              context: context,
+              languagePr: appLanguage,
+              globalPr: globalProvider,
+              themePr: themeProvider,
+              supportedThemes: globals.supportedThemes,
+              enableDrawer: false,
+              enbalethemes: false,
+              darkColor: Colors.black,
+              lightColor: Colors.white,
+              enableNotification: true,
+              onChange: (notification) => debugPrint(
+                notification.toString(),
+              ),
+            );
+          },
+          padding: EdgeInsets.only(right: screenWidth(context) * 0.1),
+          tooltip: 'Settings',
+          icon: Icon(
+            Icons.settings,
+            size: 28,
+            color: Colors.black,
+          ),
+        ),
+        body: Container(
+          color: Colors.white,
+          child: Padding(
             padding: const EdgeInsets.all(18.0),
             child: Column(
               children: [
@@ -84,7 +87,9 @@ class _StartPageState extends State<StartPage> {
                 ),
               ],
             ),
-          ));
+          ),
+        ),
+      );
     });
   }
 
