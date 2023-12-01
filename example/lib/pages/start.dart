@@ -27,8 +27,6 @@ class _StartPageState extends State<StartPage> {
       return SimpleSPageTemplate(
         title: "Earning",
         centerTitle: false,
-        appbarColor: colorChanger(
-            context: context, dark: Colors.black, light: Colors.white),
         elevation: 0,
         tabs: [
           SuperKitText.bodyBold(
@@ -40,6 +38,8 @@ class _StartPageState extends State<StartPage> {
             lang: globals.lang,
           ),
         ],
+        statuBarBrightness:
+            isDarkMode(context) ? Brightness.dark : Brightness.light,
         indicatorColor: Colors.red,
         indicator: Indicator.material,
         enableTabs: true,
