@@ -6,6 +6,7 @@
 * */
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:superkit_core/superkit_core.dart';
 
 class MoreMenu {
@@ -57,6 +58,7 @@ class SimpleSPageTemplate extends StatefulWidget {
     this.bottomWidget,
     this.titleWidget,
     this.indicatorColor,
+    this.statuBarBrightness,
   });
 
   /// title of the page
@@ -157,6 +159,8 @@ class SimpleSPageTemplate extends StatefulWidget {
   final Widget? titleWidget;
 
   final Color? indicatorColor;
+
+  final Brightness? statuBarBrightness;
 
   @override
   State<SimpleSPageTemplate> createState() => _SuperKitSimpleTemplateState();
@@ -440,8 +444,78 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
 
     ///-- body --------------------------------------------------------------- /
     return widget.enableTabs!
-        ? DefaultTabController(
-            length: widget.tabs!.length,
+        ? Theme(
+            data: ThemeData(
+                useMaterial3: false,
+                appBarTheme: AppBarTheme(
+                  systemOverlayStyle: SystemUiOverlayStyle(
+                    statusBarBrightness: (widget.statuBarBrightness) == null
+                        ? isDarkMode(context)
+                            ? Brightness.light
+                            : Brightness.dark
+                        : widget.statuBarBrightness!,
+                    statusBarIconBrightness: (widget.statuBarBrightness) == null
+                        ? isDarkMode(context)
+                            ? Brightness.light
+                            : Brightness.dark
+                        : widget.statuBarBrightness!,
+                  ),
+                )),
+            child: DefaultTabController(
+              length: widget.tabs!.length,
+              child: Scaffold(
+                backgroundColor: colorChanger(
+                  context: context,
+                  dark: kcNeutralColor_100,
+                  light: Colors.white,
+                ),
+                body: NestedScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  headerSliverBuilder: (BuildContext context, _) {
+                    return <Widget>[
+                      widget.enablesliverAppBar!
+                          ? widget.sliverAppBar ?? showSliverAppBar()
+                          : SliverAppBar(
+                              automaticallyImplyLeading: false,
+                              toolbarHeight: 0,
+                              elevation: widget.elevation,
+                              foregroundColor: Colors.transparent,
+                              surfaceTintColor: Colors.transparent,
+                              shadowColor: Colors.transparent,
+                              backgroundColor: colorChanger(
+                                context: context,
+                                dark: kcNeutralColor_100,
+                                light: Colors.white,
+                              ),
+                            ),
+                    ];
+                  },
+                  body: TabBarView(
+                    controller: tabController,
+                    physics: const BouncingScrollPhysics(),
+                    children: widget.tabsWidgets!,
+                  ),
+                ),
+              ),
+            ),
+          )
+        : Theme(
+            data: ThemeData(
+                useMaterial3: false,
+                appBarTheme: AppBarTheme(
+                  systemOverlayStyle: SystemUiOverlayStyle(
+                    statusBarBrightness: (widget.statuBarBrightness) == null
+                        ? isDarkMode(context)
+                            ? Brightness.light
+                            : Brightness.dark
+                        : widget.statuBarBrightness!,
+                    statusBarIconBrightness: (widget.statuBarBrightness) == null
+                        ? isDarkMode(context)
+                            ? Brightness.light
+                            : Brightness.dark
+                        : widget.statuBarBrightness!,
+                  ),
+                )),
             child: Scaffold(
               backgroundColor: colorChanger(
                 context: context,
@@ -457,10 +531,10 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                         : SliverAppBar(
                             automaticallyImplyLeading: false,
                             toolbarHeight: 0,
+                            shadowColor: Colors.transparent,
                             elevation: widget.elevation,
                             foregroundColor: Colors.transparent,
                             surfaceTintColor: Colors.transparent,
-                            shadowColor: Colors.transparent,
                             backgroundColor: colorChanger(
                               context: context,
                               dark: kcNeutralColor_100,
@@ -469,42 +543,8 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                           ),
                   ];
                 },
-                body: TabBarView(
-                  controller: tabController,
-                  physics: const BouncingScrollPhysics(),
-                  children: widget.tabsWidgets!,
-                ),
+                body: widget.body ?? Container(),
               ),
-            ),
-          )
-        : Scaffold(
-            backgroundColor: colorChanger(
-              context: context,
-              dark: kcNeutralColor_100,
-              light: Colors.white,
-            ),
-            body: NestedScrollView(
-              physics: const BouncingScrollPhysics(),
-              headerSliverBuilder: (BuildContext context, _) {
-                return <Widget>[
-                  widget.enablesliverAppBar!
-                      ? widget.sliverAppBar ?? showSliverAppBar()
-                      : SliverAppBar(
-                          automaticallyImplyLeading: false,
-                          toolbarHeight: 0,
-                          shadowColor: Colors.transparent,
-                          elevation: widget.elevation,
-                          foregroundColor: Colors.transparent,
-                          surfaceTintColor: Colors.transparent,
-                          backgroundColor: colorChanger(
-                            context: context,
-                            dark: kcNeutralColor_100,
-                            light: Colors.white,
-                          ),
-                        ),
-                ];
-              },
-              body: widget.body ?? Container(),
             ),
           );
   }
