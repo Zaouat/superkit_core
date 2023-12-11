@@ -111,7 +111,7 @@ class SimpleSPageTemplate extends StatefulWidget {
   final List<Widget>? tabs;
 
   /// initial index of the tabs
-  final int? initialIndex;
+  final int initialIndex;
 
   /// indicator of the tabs (default is rectangular)
   final Indicator? indicator;
@@ -175,7 +175,9 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
     super.initState();
     tabController = widget.enableTabs!
         ? TabController(
-            length: widget.tabs!.length, vsync: this, initialIndex: 0)
+            length: widget.tabs!.length,
+            vsync: this,
+            initialIndex: widget.initialIndex)
         : null;
   }
 
