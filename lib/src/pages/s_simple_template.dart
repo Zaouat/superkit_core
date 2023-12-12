@@ -400,6 +400,12 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                         child: SuperKitText.captionBold(
                           text: choice.name,
                           lang: lang,
+                          color: colorChanger(
+                            context: context,
+                            dark: kcAccentColor_5,
+                            light:
+                                Theme.of(context).textTheme.headline2!.color!,
+                          ),
                         ),
                       );
                     }).toList();

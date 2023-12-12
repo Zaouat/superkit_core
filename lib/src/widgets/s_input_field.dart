@@ -158,12 +158,19 @@ class SuperKitInput extends StatelessWidget {
             textCapitalization: TextCapitalization.words,
             textInputAction: action,
             controller: controller,
-            cursorColor: Theme.of(context).primaryColor,
+            cursorColor: isDarkMode(context)
+                ? kcAccentColor_5
+                : Theme.of(context).colorScheme.primary,
             cursorWidth: 3,
             cursorHeight: 15,
             onChanged: (String value) => onChanged!(value),
             style: fontChanger(
-              color: txtColor ?? Theme.of(context).textTheme.headline2!.color!,
+              color: txtColor ??
+                  colorChanger(
+                    context: context,
+                    dark: kcAccentColor_5,
+                    light: Theme.of(context).textTheme.headline2!.color!,
+                  ),
               lang: lang,
               fontSize: 14,
               fontWeight: FontWeight.w600,

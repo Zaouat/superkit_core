@@ -11,8 +11,8 @@ class StartPage extends StatefulWidget {
 }
 
 class _StartPageState extends State<StartPage> {
-  final items = List.generate(1000, (index) => '$index');
-  var filterOptions = List.of(IntType.values);
+  // final items = List.generate(1000, (index) => '$index');
+  // var filterOptions = List.of(IntType.values);
   TextEditingController controller = new TextEditingController();
 
   @override
@@ -28,6 +28,11 @@ class _StartPageState extends State<StartPage> {
         title: "Earning",
         centerTitle: false,
         elevation: 0,
+        hasTrailing: true,
+        listOptions: [
+          MoreMenu(0, "Buy"),
+          MoreMenu(1, "Details"),
+        ],
         tabs: [
           SuperKitText.bodyBold(
             text: "home",
@@ -40,9 +45,8 @@ class _StartPageState extends State<StartPage> {
         ],
         statuBarBrightness:
             isDarkMode(context) ? Brightness.dark : Brightness.light,
-        indicatorColor: Colors.red,
         indicator: Indicator.material,
-        enableTabs: true,
+        enableTabs: false,
         tabsWidgets: [Container(), Container()],
         trailing: IconButton(
           onPressed: () {
@@ -71,7 +75,6 @@ class _StartPageState extends State<StartPage> {
           ),
         ),
         body: Container(
-          color: Colors.white,
           child: Padding(
             padding: const EdgeInsets.all(18.0),
             child: Column(
@@ -93,68 +96,68 @@ class _StartPageState extends State<StartPage> {
     });
   }
 
-  Widget buildBody() {
-    return Scrollbar(
-      // second question
-      child: ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          final item = items[index];
+  // Widget buildBody() {
+  //   return Scrollbar(
+  //     // second question
+  //     child: ListView.builder(
+  //       itemCount: items.length,
+  //       itemBuilder: (context, index) {
+  //         final item = items[index];
 
-          if (filterOptions.any((option) => option.length == item.length)) {
-            return ListTile(title: Text(item));
-          }
+  //         if (filterOptions.any((option) => option.length == item.length)) {
+  //           return ListTile(title: Text(item));
+  //         }
 
-          return Container(height: 0.0001); // first question
-        },
-      ),
-    );
-  }
+  //         return Container(height: 0.0001); // first question
+  //       },
+  //     ),
+  //   );
+  // }
 
-  PreferredSizeWidget buildAppBarBottom() {
-    return PreferredSize(
-      preferredSize: Size.fromHeight(50),
-      child: Padding(
-        padding: EdgeInsets.all(8),
-        child: Row(
-          children: IntType.values.map((option) {
-            return Padding(
-              padding: EdgeInsets.symmetric(horizontal: 4),
-              child: FilterChip(
-                selectedColor: Colors.white,
-                selected: filterOptions.contains(option),
-                onSelected: (isSelected) {
-                  setState(() {
-                    if (isSelected) {
-                      filterOptions.add(option);
-                    } else {
-                      filterOptions.remove(option);
-                    }
-                  });
-                },
-                label: Text(option.name),
-              ),
-            );
-          }).toList(),
-        ),
-      ),
-    );
-  }
+  // PreferredSizeWidget buildAppBarBottom() {
+  //   return PreferredSize(
+  //     preferredSize: Size.fromHeight(50),
+  //     child: Padding(
+  //       padding: EdgeInsets.all(8),
+  //       child: Row(
+  //         children: IntType.values.map((option) {
+  //           return Padding(
+  //             padding: EdgeInsets.symmetric(horizontal: 4),
+  //             child: FilterChip(
+  //               selectedColor: Colors.white,
+  //               selected: filterOptions.contains(option),
+  //               onSelected: (isSelected) {
+  //                 setState(() {
+  //                   if (isSelected) {
+  //                     filterOptions.add(option);
+  //                   } else {
+  //                     filterOptions.remove(option);
+  //                   }
+  //                 });
+  //               },
+  //               label: Text(option.name),
+  //             ),
+  //           );
+  //         }).toList(),
+  //       ),
+  //     ),
+  //   );
+  // }
 }
 
-class IntType {
-  static const IntType ones = const IntType._('Ones', 1);
-  static const IntType tens = const IntType._('Tens', 2);
-  static const IntType hundreds = const IntType._('Hundreds', 3);
+// class IntType {
+//   static const IntType ones = const IntType._('Ones', 1);
+//   static const IntType tens = const IntType._('Tens', 2);
+//   static const IntType hundreds = const IntType._('Hundreds', 3);
 
-  final String name;
-  final int length;
+//   final String name;
+//   final int length;
 
-  const IntType._(this.name, this.length);
+//   const IntType._(this.name, this.length);
 
-  static const values = [
-    IntType.ones,
-    IntType.tens,
-    IntType.hundreds,
-  ];
-}
+//   static const values = [
+//     IntType.ones,
+//     IntType.tens,
+//     IntType.hundreds,
+//   ];
+// }

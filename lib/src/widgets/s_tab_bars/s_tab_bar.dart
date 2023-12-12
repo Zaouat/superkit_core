@@ -87,7 +87,7 @@ class _SuperKitTabBarState extends State<SuperKitTabBar>
             colorChanger(
               context: context,
               dark: kcNeutralColor_100,
-              light: Colors.red,
+              light: Colors.white,
             ),
         boxShadow: <BoxShadow>[
           BoxShadow(
