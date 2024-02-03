@@ -8,6 +8,8 @@ class SuperKitAvatar extends StatelessWidget {
     this.image = avatar,
     this.toolTip = 'Avatar',
     this.borderColor = Colors.black,
+    this.bgColor = Colors.white,
+    this.imageSpace = 4,
     this.borderWidth = 3,
     this.onTap,
   });
@@ -15,6 +17,8 @@ class SuperKitAvatar extends StatelessWidget {
   final double? radius;
   final String? image;
   final Color? borderColor;
+  final Color? bgColor;
+  final double? imageSpace;
   final String? toolTip;
   final int? borderWidth;
   final Function? onTap;
@@ -35,9 +39,13 @@ class SuperKitAvatar extends StatelessWidget {
                   borderRadius: BorderRadius.circular(120),
                   child: CircleAvatar(
                     radius: radius! - borderWidth!,
-                    child: Image.network(
-                      image!,
-                      fit: BoxFit.cover,
+                    backgroundColor: bgColor,
+                    child: Padding(
+                      padding: EdgeInsets.all(imageSpace ?? 0),
+                      child: Image.network(
+                        image!,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
@@ -57,9 +65,13 @@ class SuperKitAvatar extends StatelessWidget {
                   borderRadius: BorderRadius.circular(120),
                   child: CircleAvatar(
                     radius: radius! - borderWidth!,
-                    child: Image.asset(
-                      image!,
-                      fit: BoxFit.cover,
+                    backgroundColor: bgColor,
+                    child: Padding(
+                      padding: EdgeInsets.all(imageSpace ?? 0),
+                      child: Image.asset(
+                        image!,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),

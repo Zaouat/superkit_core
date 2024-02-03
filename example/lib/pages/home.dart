@@ -83,8 +83,9 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
             actions: [
               SuperKitAvatar(
                 radius: 25,
-                image: 'https://i.pravatar.cc/800',
-                borderColor: kcPrimaryColor_90,
+                imageSpace: 4,
+                image: 'assets/coin.png',
+                borderColor: kcVeryLightGreyColor,
                 onTap: () {
                   debugPrint("Avatar tapped");
                 },
