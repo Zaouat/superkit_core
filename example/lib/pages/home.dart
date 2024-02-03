@@ -74,18 +74,16 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
           ),
           key: scaffoldKey,
           appBar: AppBar(
-            toolbarHeight: 120,
+            toolbarHeight: 85,
             backgroundColor: colorChanger(
               context: context,
               dark: kcNeutralColor_100,
               light: Colors.white,
             ),
-            //toolbarHeight: 10,
             actions: [
               SuperKitAvatar(
                 radius: 16,
                 image: 'https://i.pravatar.cc/800',
-                // image: 'assets/avatar.jpeg',
                 onTap: () {
                   debugPrint("Avatar tapped");
                 },
@@ -95,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                   horizontal: 20,
                 ),
                 icon: IconlyBold.setting,
+                size: 28,
                 tooltip: 'Settings',
                 onTap: () {
                   /* -------------  Open Mobile settings Modal  ------------------- */

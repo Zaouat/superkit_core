@@ -1,6 +1,5 @@
 /// A material design slider and range slider with horizontal and vertical axis, rtl support and lots of options and customizations for flutter
-
-// ignore_for_file: overridden_fields, always_specify_types, library_private_types_in_public_api
+// ignore_for_file: overridden_fields, always_specify_types, library_private_types_in_public_api, dangling_library_doc_comments
 
 import 'package:flutter/material.dart';
 import 'dart:math';

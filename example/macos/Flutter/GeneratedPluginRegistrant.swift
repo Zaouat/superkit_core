@@ -8,7 +8,7 @@ import Foundation
 import location
 import path_provider_foundation
 import screen_retriever
-import share_plus_macos
+import share_plus
 import shared_preferences_foundation
 import sqflite
 import url_launcher_macos
