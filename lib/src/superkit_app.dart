@@ -28,6 +28,7 @@ class SuperKitMaterialApp extends StatefulWidget {
     this.title = 'SuperKit',
     this.locale,
     this.useGoRouter = true,
+    this.routerConfig,
     this.supportedLocales,
     this.routeInformationParser,
     this.routerDelegate,
@@ -52,6 +53,8 @@ class SuperKitMaterialApp extends StatefulWidget {
 
   /// a Bool to determine if [GoRouter] should be used or use the default routes it's true by default.
   final bool? useGoRouter;
+
+  final RouterConfig<Object>? routerConfig;
 
   /// A list of locales that the app supports.
   final Iterable<Locale>? supportedLocales;
@@ -162,6 +165,7 @@ class _SuperKitState extends State<SuperKitMaterialApp> {
                   title: widget.title!,
                   theme: theme,
                   darkTheme: darkTheme,
+                  routerConfig:  widget.routerConfig!,                  
                   debugShowCheckedModeBanner: false,
                   locale: widget.locale,
                   supportedLocales: widget.supportedLocales!,
