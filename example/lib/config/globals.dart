@@ -17,5 +17,14 @@ List<Map<String, Object>> supportedThemes = [
       Colors.red,
       Colors.red,
     ],
+  },
+  {
+    // The global theme is selected to change the color scheme when is selected (SupekitScheme) by default.
+    'theme': FlexScheme.flutterDash,
+    // The global color scheme list is selected to change the color when the LightMode & DarkMode is changed.
+    'colors': [
+      Colors.red,
+      Colors.red,
+    ],
   }
 ];

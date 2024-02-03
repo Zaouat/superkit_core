@@ -70,15 +70,6 @@ class _HomeContentMobileState extends State<HomeContentMobile> {
               ),
             ),
             const Spacer(),
-            SuperKitLogo.tiny(
-              logo: devlopa_logo,
-              size: 28,
-              color: colorChanger(
-                  context: context,
-                  dark: kcNeutralColor_70,
-                  light: Theme.of(context).primaryColor),
-            ),
-            verticalSpaceSmall,
             SuperKitText.bodyBold(text: 'Contact us', lang: globals.lang),
             SuperKitText.captionMedium(
               text: 'mobiledevlopa@gmail.com',

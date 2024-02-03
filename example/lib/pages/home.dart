@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
       return Scaffold(
           backgroundColor: colorChanger(
             context: context,
-            dark: kcNeutralColor_100,
+            dark: Colors.black,
             light: Colors.white,
           ),
           key: scaffoldKey,
@@ -77,17 +77,17 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
             toolbarHeight: 85,
             backgroundColor: colorChanger(
               context: context,
-              dark: kcNeutralColor_100,
+              dark: Colors.black,
               light: Colors.white,
             ),
             actions: [
-              SuperKitAvatar(
-                radius: 16,
-                image: 'https://i.pravatar.cc/800',
-                onTap: () {
-                  debugPrint("Avatar tapped");
-                },
-              ),
+              // SuperKitAvatar(
+              //   radius: 16,
+              //   image: 'https://i.pravatar.cc/800',
+              //   onTap: () {
+              //     debugPrint("Avatar tapped");
+              //   },
+              // ),
               SuperKitIcon(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20,
