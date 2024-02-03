@@ -11,7 +11,7 @@ void main() async {
   await GetStorage.init();
   SuperKit.init();
   /* Enable the line bellow to set the desktop config */
-  SuperKit.setDesktopConfig();
+  // SuperKit.setDesktopConfig();
   runApp(
     /* Wraping your app with MultiProvider here is required for the Language & DarkMode functionalities */
     MultiProvider(

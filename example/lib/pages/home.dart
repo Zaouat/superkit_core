@@ -81,13 +81,14 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
               light: Colors.white,
             ),
             actions: [
-              // SuperKitAvatar(
-              //   radius: 16,
-              //   image: 'https://i.pravatar.cc/800',
-              //   onTap: () {
-              //     debugPrint("Avatar tapped");
-              //   },
-              // ),
+              SuperKitAvatar(
+                radius: 25,
+                image: 'https://i.pravatar.cc/800',
+                borderColor: kcPrimaryColor_90,
+                onTap: () {
+                  debugPrint("Avatar tapped");
+                },
+              ),
               SuperKitIcon(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20,
