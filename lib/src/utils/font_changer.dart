@@ -17,23 +17,41 @@ TextStyle fontChanger({
   final FontWeight? fontWeight,
   final Color? color,
   final double? fontHeight,
+  final String? fontName,
+  final String? fontArName,
   required final String? lang,
 }) {
   //final String lang = Localizations.localeOf(context).languageCode;
 
   if (lang!.contains('ar')) {
-    return GoogleFonts.ibmPlexSansArabic(
-      fontSize: fontSize,
-      fontWeight: fontWeight,
-      color: color,
-      height: fontHeight,
-    );
+    return fontArName != null
+        ? GoogleFonts.getFont(
+            fontArName,
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+            color: color,
+            height: fontHeight,
+          )
+        : GoogleFonts.ibmPlexSansArabic(
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+            color: color,
+            height: fontHeight,
+          );
   } else {
-    return GoogleFonts.poppins(
-      fontSize: fontSize,
-      fontWeight: fontWeight,
-      color: color,
-      height: fontHeight,
-    );
+    return fontName != null
+        ? GoogleFonts.getFont(
+            fontName,
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+            color: color,
+            height: fontHeight,
+          )
+        : GoogleFonts.poppins(
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+            color: color,
+            height: fontHeight,
+          );
   }
 }

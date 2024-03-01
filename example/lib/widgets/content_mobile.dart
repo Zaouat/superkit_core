@@ -22,15 +22,25 @@ class _HomeContentMobileState extends State<HomeContentMobile> {
               size: 220,
             ),
             verticalSpaceMedium,
+            SuperKitText.heading3Bold(
+              text: 'Getting started is a breeze',
+              lang: globals.lang,
+              maxLines: 3,
+              fontFamily: 'Rubik',
+              align: TextAlign.center,
+            ),
             SizedBox(
               width: screenWidth(context) * 0.6,
-              child: SuperKitText.headlineBold(
-                text: 'How did you find Superkit Core?',
+              child: SuperKitText.captionSemiBold(
+                text:
+                    'Download the app and meet your new virtual assistant. It’s intuitive, smart, and ready to simplify your life.',
                 lang: globals.lang,
                 maxLines: 3,
+                fontFamily: 'DM Sans',
                 align: TextAlign.center,
               ),
             ),
+            verticalSpaceMedium,
             SizedBox(
               width: screenWidth(context) * 0.6,
               child: SuperKitCustomSlider.emoji(

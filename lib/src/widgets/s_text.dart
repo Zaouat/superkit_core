@@ -24,6 +24,8 @@ class SuperKitText extends StatelessWidget {
   final TextStyle? style;
   final TextAlign alignment;
   final Color? color;
+  final String? fontFamily;
+  final String? fontArFamily;
   final int? maxLines;
 
   //----------Heading1 style--------------//
@@ -32,11 +34,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 48,
           fontWeight: FontWeight.w100,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -46,11 +52,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 48,
           fontWeight: FontWeight.w200,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -60,11 +70,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 48,
           fontWeight: FontWeight.w300,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -74,11 +88,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 48,
           fontWeight: FontWeight.w400,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -88,11 +106,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 48,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w800,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -103,11 +125,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 32,
           fontWeight: FontWeight.w100,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -116,11 +142,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 32,
           fontWeight: FontWeight.w200,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -130,11 +160,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 32,
           fontWeight: FontWeight.w300,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -144,11 +178,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 32,
           fontWeight: FontWeight.w400,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -158,11 +196,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 32,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w800,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -173,11 +215,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 24,
           fontWeight: FontWeight.w100,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -187,11 +233,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 24,
           fontWeight: FontWeight.w200,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -201,11 +251,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 24,
           fontWeight: FontWeight.w300,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -215,11 +269,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 24,
           fontWeight: FontWeight.w400,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -229,11 +287,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 24,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w800,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -244,11 +306,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 20,
           fontWeight: FontWeight.w100,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -258,11 +324,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 20,
           fontWeight: FontWeight.w200,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -272,11 +342,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 20,
           fontWeight: FontWeight.w300,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -286,11 +360,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 20,
           fontWeight: FontWeight.w400,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -300,11 +378,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 20,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w800,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -315,11 +397,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 16,
           fontWeight: FontWeight.w100,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -329,11 +415,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 16,
           fontWeight: FontWeight.w200,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -343,11 +433,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 16,
           fontWeight: FontWeight.w300,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -357,11 +451,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 16,
           fontWeight: FontWeight.w400,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -371,11 +469,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 16,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w800,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -386,11 +488,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 12,
           fontWeight: FontWeight.w100,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -400,11 +506,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 12,
           fontWeight: FontWeight.w200,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -414,11 +524,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 12,
           fontWeight: FontWeight.w300,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -428,11 +542,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 12,
           fontWeight: FontWeight.w400,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;
@@ -442,11 +560,15 @@ class SuperKitText extends StatelessWidget {
     required this.text,
     required this.lang,
     this.color,
+    this.fontFamily,
+    this.fontArFamily,
     this.maxLines,
     TextAlign align = TextAlign.start,
   })  : style = fontChanger(
           fontSize: 12,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w800,
+          fontName: fontFamily,
+          fontArName: fontArFamily,
           lang: lang,
         ),
         alignment = align;

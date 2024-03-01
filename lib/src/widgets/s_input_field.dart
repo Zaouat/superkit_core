@@ -285,26 +285,28 @@ class SuperKitInput extends StatelessWidget {
                         size: 18,
                       ),
                     ),
-              suffixIcon: SizedBox(
-                width: 80,
-                child: (suffixIcon) ??
-                    IconButton(
-                      icon: isPassword!
-                          ? Icon(
-                              passwordVisible
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                              color: Theme.of(context).primaryColor,
-                              size: 20,
-                            )
-                          : Container(),
-                      onPressed: () {
-                        setState(() {
-                          passwordVisible = !passwordVisible;
-                        });
-                      },
-                    ),
-              ),
+              suffixIcon: suffixIcon != null
+                  ? SizedBox(
+                      width: 80,
+                      child: (suffixIcon) ??
+                          IconButton(
+                            icon: isPassword!
+                                ? Icon(
+                                    passwordVisible
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    color: Theme.of(context).primaryColor,
+                                    size: 20,
+                                  )
+                                : Container(),
+                            onPressed: () {
+                              setState(() {
+                                passwordVisible = !passwordVisible;
+                              });
+                            },
+                          ),
+                    )
+                  : null,
             ),
 
             // decoration: InputDecoration(

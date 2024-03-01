@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:superkit_project/pages/home.dart';
+import 'package:superkit_project/pages/start.dart';
 import 'package:superkit_project/providers/global_provider.dart';
 import 'package:superkit_project/providers/local_provider.dart';
 import 'package:superkit_project/providers/multi_provider.dart';
@@ -47,7 +48,7 @@ class MainPage extends StatelessWidget {
           routerDelegate: router.routerDelegate,
           themeProvider: themePr,
           routes: <String, Widget Function(BuildContext)>{
-            '/': (BuildContext context) => MyHomePage(),
+            '/': (BuildContext context) => StartPage(),
           },
           useGoRouter: false,
           locale: context.watch<LocaleProvider>().appLocale,
