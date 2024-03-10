@@ -22,6 +22,7 @@ class SuperKitButton extends StatelessWidget {
     this.align = TextAlign.center,
     this.font,
     this.fontAr,
+    this.fontWeight,
   }) : outline = false;
 
   const SuperKitButton.small({
@@ -40,6 +41,7 @@ class SuperKitButton extends StatelessWidget {
     this.align = TextAlign.center,
     this.font,
     this.fontAr,
+    this.fontWeight,
   }) : outline = false;
 
   const SuperKitButton.medium({
@@ -58,6 +60,7 @@ class SuperKitButton extends StatelessWidget {
     this.align = TextAlign.center,
     this.font,
     this.fontAr,
+    this.fontWeight,
   }) : outline = false;
   const SuperKitButton.large({
     super.key,
@@ -75,6 +78,7 @@ class SuperKitButton extends StatelessWidget {
     this.align = TextAlign.center,
     this.font,
     this.fontAr,
+    this.fontWeight,
   }) : outline = false;
 
   const SuperKitButton.outline({
@@ -91,6 +95,7 @@ class SuperKitButton extends StatelessWidget {
     this.align = TextAlign.center,
     this.font,
     this.fontAr,
+    this.fontWeight,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -108,6 +113,7 @@ class SuperKitButton extends StatelessWidget {
     this.align = TextAlign.center,
     this.font,
     this.fontAr,
+    this.fontWeight,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -125,6 +131,7 @@ class SuperKitButton extends StatelessWidget {
     this.align = TextAlign.center,
     this.font,
     this.fontAr,
+    this.fontWeight,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -142,6 +149,7 @@ class SuperKitButton extends StatelessWidget {
     this.align = TextAlign.center,
     this.font,
     this.fontAr,
+    this.fontWeight,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -187,6 +195,9 @@ class SuperKitButton extends StatelessWidget {
 
   /// The Arabic Font of the text in the button.
   final String? fontAr;
+
+  /// The Font Weight of the text in the button.
+  final FontWeight? fontWeight;
 
   final double? spacing;
   @override
@@ -252,6 +263,7 @@ class SuperKitButton extends StatelessWidget {
                                 lang: lang,
                                 fontName: font,
                                 fontArName: fontAr,
+                                fontWeight: fontWeight ?? FontWeight.w500,
                                 color: !outline
                                     ? Colors.white
                                     : color ?? Theme.of(context).primaryColor,
@@ -271,9 +283,11 @@ class SuperKitButton extends StatelessWidget {
                               title,
                               textAlign: align,
                               style: fontChanger(
-                                fontWeight: !outline
-                                    ? FontWeight.w500
-                                    : FontWeight.w500,
+                                fontWeight: (fontWeight != null)
+                                    ? fontWeight
+                                    : !outline
+                                        ? FontWeight.w500
+                                        : FontWeight.w500,
                                 fontName: font,
                                 fontArName: fontAr,
                                 lang: lang,
