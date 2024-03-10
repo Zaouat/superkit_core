@@ -14,6 +14,8 @@ class AppearanceCard extends StatelessWidget {
   final double? height;
   final double? width;
   final bool? enableDesktopMode;
+  final String? font;
+  final String? fontAr;
 
   const AppearanceCard({
     super.key,
@@ -25,6 +27,8 @@ class AppearanceCard extends StatelessWidget {
     this.height,
     this.width,
     this.enableDesktopMode = false,
+    this.font,
+    this.fontAr,
   });
   @override
   Widget build(BuildContext context) {
@@ -101,6 +105,8 @@ class AppearanceCard extends StatelessWidget {
                             lang: lang,
                             color: Colors.white,
                             align: TextAlign.center,
+                            fontFamily: font,
+                            fontArFamily: fontAr,
                           ),
                         ),
                       ),

@@ -9,6 +9,8 @@ class Appearance extends StatefulWidget {
   final bool enablethemes;
   final bool? enableDarkMode;
   final dynamic themePr;
+  final String? font;
+  final String? fontAr;
   const Appearance({
     super.key,
     required this.sThemes,
@@ -16,6 +18,8 @@ class Appearance extends StatefulWidget {
     required this.enablethemes,
     this.enableDarkMode = true,
     required this.themePr,
+    this.font,
+    this.fontAr,
   });
 
   @override
@@ -61,6 +65,8 @@ class _AppearanceState extends State<Appearance> {
                     SuperKitText.bodySemiBold(
                       text: AppLocalizations.of(context)!.translate('theme')!,
                       lang: lang,
+                      fontFamily: widget.font,
+                      fontArFamily: widget.fontAr,
                     ),
                     verticalSpaceSmall,
                     Row(
@@ -68,6 +74,8 @@ class _AppearanceState extends State<Appearance> {
                         AppearanceCard(
                           title:
                               AppLocalizations.of(context)!.translate('light'),
+                          font: widget.font,
+                          fontAr: widget.fontAr,
                           image: light_cover,
                           selected: AdaptiveTheme.of(context).mode ==
                               AdaptiveThemeMode.light,
@@ -81,6 +89,8 @@ class _AppearanceState extends State<Appearance> {
                         AppearanceCard(
                           title:
                               AppLocalizations.of(context)!.translate('dark'),
+                          font: widget.font,
+                          fontAr: widget.fontAr,
                           image: dark_cover,
                           selected: AdaptiveTheme.of(context).mode ==
                               AdaptiveThemeMode.dark,
@@ -94,6 +104,8 @@ class _AppearanceState extends State<Appearance> {
                         AppearanceCard(
                           title:
                               AppLocalizations.of(context)!.translate('system'),
+                          font: widget.font,
+                          fontAr: widget.fontAr,
                           image: system_cover,
                           selected: AdaptiveTheme.of(context).mode ==
                               AdaptiveThemeMode.system,
@@ -129,6 +141,8 @@ class _AppearanceState extends State<Appearance> {
                   text:
                       AppLocalizations.of(context)!.translate('primary-color')!,
                   lang: lang,
+                  fontFamily: widget.font,
+                  fontArFamily: widget.fontAr,
                 ),
               ),
               verticalSpaceSmall,

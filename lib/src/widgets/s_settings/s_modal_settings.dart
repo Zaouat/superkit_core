@@ -22,6 +22,8 @@ dynamic superkitSettingsMobile({
   bool? enableNotification = true,
   Widget? widgets,
   Function(bool)? onChange,
+  String? font,
+  String? fontAr,
 }) {
   var deviceType = getDeviceType(MediaQuery.of(context!).size);
   switch (deviceType) {
@@ -48,6 +50,8 @@ dynamic superkitSettingsMobile({
         onNotificationChange: (bool val) => onChange!(val),
         widgets: widgets,
         enableNotification: enableNotification!,
+        font: font,
+        fontAr: fontAr,
       );
     case DeviceScreenType.Mobile:
       break;

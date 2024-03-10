@@ -20,7 +20,9 @@ class SuperKitButton extends StatelessWidget {
     this.borderRadius = 15,
     this.spacing,
     this.align = TextAlign.center,
-  })  : outline = false;
+    this.font,
+    this.fontAr,
+  }) : outline = false;
 
   const SuperKitButton.small({
     super.key,
@@ -36,7 +38,9 @@ class SuperKitButton extends StatelessWidget {
     this.spacing,
     this.borderRadius = 15,
     this.align = TextAlign.center,
-  })  : outline = false;
+    this.font,
+    this.fontAr,
+  }) : outline = false;
 
   const SuperKitButton.medium({
     super.key,
@@ -52,7 +56,9 @@ class SuperKitButton extends StatelessWidget {
     this.borderRadius = 15,
     this.spacing,
     this.align = TextAlign.center,
-  })  : outline = false;
+    this.font,
+    this.fontAr,
+  }) : outline = false;
   const SuperKitButton.large({
     super.key,
     required this.title,
@@ -67,7 +73,9 @@ class SuperKitButton extends StatelessWidget {
     this.borderRadius = 15,
     this.spacing,
     this.align = TextAlign.center,
-  })  : outline = false;
+    this.font,
+    this.fontAr,
+  }) : outline = false;
 
   const SuperKitButton.outline({
     super.key,
@@ -81,6 +89,8 @@ class SuperKitButton extends StatelessWidget {
     this.borderRadius = 15,
     this.spacing,
     this.align = TextAlign.center,
+    this.font,
+    this.fontAr,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -96,6 +106,8 @@ class SuperKitButton extends StatelessWidget {
     this.borderRadius = 15,
     this.spacing,
     this.align = TextAlign.center,
+    this.font,
+    this.fontAr,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -111,6 +123,8 @@ class SuperKitButton extends StatelessWidget {
     this.borderRadius = 15,
     this.spacing,
     this.align = TextAlign.center,
+    this.font,
+    this.fontAr,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -126,6 +140,8 @@ class SuperKitButton extends StatelessWidget {
     this.borderRadius = 15,
     this.spacing,
     this.align = TextAlign.center,
+    this.font,
+    this.fontAr,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -165,6 +181,12 @@ class SuperKitButton extends StatelessWidget {
 
   /// The alignment of the text in the button.
   final TextAlign align;
+
+  /// The Font of the text in the button.
+  final String? font;
+
+  /// The Arabic Font of the text in the button.
+  final String? fontAr;
 
   final double? spacing;
   @override
@@ -228,6 +250,8 @@ class SuperKitButton extends StatelessWidget {
                               textAlign: align,
                               style: fontChanger(
                                 lang: lang,
+                                fontName: font,
+                                fontArName: fontAr,
                                 color: !outline
                                     ? Colors.white
                                     : color ?? Theme.of(context).primaryColor,
@@ -250,6 +274,8 @@ class SuperKitButton extends StatelessWidget {
                                 fontWeight: !outline
                                     ? FontWeight.w500
                                     : FontWeight.w500,
+                                fontName: font,
+                                fontArName: fontAr,
                                 lang: lang,
                                 color: !outline
                                     ? Colors.white

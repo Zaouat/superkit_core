@@ -212,6 +212,8 @@ Future<void> superkitSettingsMobileModal({
   final Function(bool)? onNotificationChange,
   bool? enableNotification,
   Widget? widgets,
+  required String? font,
+  required String? fontAr,
 }) {
   return showModalBottomSheet(
     isScrollControlled: true, // required for min/max child size
@@ -291,6 +293,8 @@ Future<void> superkitSettingsMobileModal({
                                     AppLocalizations.of(context)!
                                         .translate('settings')!,
                                 lang: lang,
+                                fontFamily: font,
+                                fontArFamily: fontAr,
                               ),
                               verticalSpaceRegular,
                               ListView(
@@ -303,6 +307,8 @@ Future<void> superkitSettingsMobileModal({
                                     hideonTap: hideonTap,
                                     themePr: themePr,
                                     enablethemes: enbalethemes!,
+                                    font: font,
+                                    fontAr: fontAr,
                                   ),
                                   enableNotification!
                                       ? Padding(
@@ -326,6 +332,8 @@ Future<void> superkitSettingsMobileModal({
                                                         .translate(
                                                             'allow_notifications')!,
                                                     lang: lang,
+                                                    fontFamily: font,
+                                                    fontArFamily: fontAr,
                                                   ),
                                                   const Spacer(),
                                                   Switch.adaptive(
@@ -350,6 +358,8 @@ Future<void> superkitSettingsMobileModal({
                                     languageProvider: languagePr,
                                     globalProvider: globalPr,
                                     hideonTap: hideonTap,
+                                    font: font,
+                                    fontAr: fontAr,
                                   ),
                                   enableDrawer!
                                       ? DrawerSwitcher(

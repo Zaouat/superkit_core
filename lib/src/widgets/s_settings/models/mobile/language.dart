@@ -7,12 +7,16 @@ class LanguageSection extends StatefulWidget {
   final languageProvider;
   final globalProvider;
   final bool? hideonTap;
+  final String? font;
+  final String? fontAr;
 
   const LanguageSection({
     super.key,
     required this.languageProvider,
     required this.globalProvider,
     this.hideonTap = true,
+    this.font,
+    this.fontAr,
   });
   @override
   _LanguageSectionState createState() => _LanguageSectionState();
@@ -40,6 +44,8 @@ class _LanguageSectionState extends State<LanguageSection> {
           SuperKitText.bodySemiBold(
             text: AppLocalizations.of(context)!.translate('languages')!,
             lang: lang,
+            fontFamily: widget.font,
+            fontArFamily: widget.fontAr,
           ),
           verticalSpaceSmall,
           Column(
@@ -49,6 +55,8 @@ class _LanguageSectionState extends State<LanguageSection> {
               return languageRow(
                 title: e.title,
                 icon: e.flag,
+                font: widget.font,
+                fontAr: widget.fontAr,
                 onTap: () {
                   setState(() {
                     widget.languageProvider!.changeLanguage(
@@ -78,6 +86,8 @@ Widget languageRow({
   required BuildContext context,
   required String langCode,
   required String lang,
+  required String? font,
+  required String? fontAr,
 }) {
   return ScaleTap(
     onPressed: () {
@@ -104,6 +114,8 @@ Widget languageRow({
               title.toLowerCase(),
             )!,
             lang: lang,
+            fontFamily: font,
+            fontArFamily: fontAr,
           ),
           const Spacer(),
           if (langCode == lang)

@@ -14,6 +14,8 @@ InputDecoration inputSuperkitDecoration({
   String? prefixText,
   BuildContext? context,
   bool? useBorder = true,
+  String? font,
+  String? fontAr,
 }) {
   final String lang = Localizations.localeOf(context!).languageCode;
 
@@ -21,6 +23,8 @@ InputDecoration inputSuperkitDecoration({
     labelText: labelText,
     labelStyle: fontChanger(
       lang: lang,
+      fontName: font,
+      fontArName: fontAr,
       color: colorChanger(
         context: context,
         dark: kcNeutralColor_40,
@@ -66,6 +70,8 @@ InputDecoration inputSuperkitDecoration({
       color: kcNeutralColor_40,
       fontSize: 12,
       fontWeight: FontWeight.w500,
+      fontName: font,
+      fontArName: fontAr,
     ),
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(15.0),
@@ -100,6 +106,8 @@ class SuperKitInput extends StatelessWidget {
   final double? contentPadding;
   final BorderSide? borderSide;
   final Function(dynamic)? onChanged;
+  final String? font;
+  final String? fontAr;
 
   final OutlineInputBorder circularBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(8),
@@ -130,6 +138,8 @@ class SuperKitInput extends StatelessWidget {
     this.borderSide,
     this.onChanged,
     this.label,
+    this.font,
+    this.fontAr,
   });
 
   @override
@@ -174,6 +184,8 @@ class SuperKitInput extends StatelessWidget {
               lang: lang,
               fontSize: 14,
               fontWeight: FontWeight.w600,
+              fontName: font,
+              fontArName: fontAr,
             ),
             strutStyle: StrutStyle.fromTextStyle(
               fontChanger(
@@ -182,6 +194,8 @@ class SuperKitInput extends StatelessWidget {
                 lang: lang,
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
+                fontName: font,
+                fontArName: fontAr,
               ),
             ),
             textAlignVertical: expand == true
@@ -249,6 +263,8 @@ class SuperKitInput extends StatelessWidget {
                     ),
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
+                fontName: font,
+                fontArName: fontAr,
               ),
               labelStyle: fontChanger(
                 lang: lang,
@@ -265,6 +281,8 @@ class SuperKitInput extends StatelessWidget {
                     ),
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
+                fontName: font,
+                fontArName: fontAr,
               ),
               prefixIcon: icon == null
                   ? null
