@@ -59,6 +59,8 @@ class SimpleSPageTemplate extends StatefulWidget {
     this.titleWidget,
     this.indicatorColor,
     this.statuBarBrightness,
+    this.font,
+    this.fontAr,
   });
 
   /// title of the page
@@ -162,6 +164,10 @@ class SimpleSPageTemplate extends StatefulWidget {
 
   final Brightness? statuBarBrightness;
 
+  final String? font;
+
+  final String? fontAr;
+
   @override
   State<SimpleSPageTemplate> createState() => _SuperKitSimpleTemplateState();
 }
@@ -197,6 +203,8 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
             customTitle(
               context: context,
               lang: lang,
+              font: widget.font,
+              fontAr: widget.fontAr,
             ),
         elevation: widget.elevation,
         forceElevated: true,
@@ -609,6 +617,8 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
   Widget customTitle({
     required BuildContext? context,
     required String? lang,
+    required String? font,
+    required String? fontAr,
   }) {
     return Padding(
       padding: widget.centerTitle!
@@ -627,6 +637,8 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
         child: SuperKitText.heading3Bold(
           text: widget.title ?? '',
           lang: lang,
+          fontFamily: font,
+          fontArFamily: font,
           maxLines: widget.maxTitleLines,
           color: widget.titleColor ??
               colorChanger(

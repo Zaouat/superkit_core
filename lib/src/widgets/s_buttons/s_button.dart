@@ -23,6 +23,7 @@ class SuperKitButton extends StatelessWidget {
     this.font,
     this.fontAr,
     this.fontWeight,
+    this.borderWidth = 1.5,
   }) : outline = false;
 
   const SuperKitButton.small({
@@ -42,6 +43,7 @@ class SuperKitButton extends StatelessWidget {
     this.font,
     this.fontAr,
     this.fontWeight,
+    this.borderWidth = 1.5,
   }) : outline = false;
 
   const SuperKitButton.medium({
@@ -61,6 +63,7 @@ class SuperKitButton extends StatelessWidget {
     this.font,
     this.fontAr,
     this.fontWeight,
+    this.borderWidth = 1.5,
   }) : outline = false;
   const SuperKitButton.large({
     super.key,
@@ -79,6 +82,7 @@ class SuperKitButton extends StatelessWidget {
     this.font,
     this.fontAr,
     this.fontWeight,
+    this.borderWidth = 1.5,
   }) : outline = false;
 
   const SuperKitButton.outline({
@@ -96,6 +100,7 @@ class SuperKitButton extends StatelessWidget {
     this.font,
     this.fontAr,
     this.fontWeight,
+    this.borderWidth = 1.5,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -114,6 +119,7 @@ class SuperKitButton extends StatelessWidget {
     this.font,
     this.fontAr,
     this.fontWeight,
+    this.borderWidth = 1.5,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -132,6 +138,7 @@ class SuperKitButton extends StatelessWidget {
     this.font,
     this.fontAr,
     this.fontWeight,
+    this.borderWidth = 1.5,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -150,6 +157,7 @@ class SuperKitButton extends StatelessWidget {
     this.font,
     this.fontAr,
     this.fontWeight,
+    this.borderWidth = 1.5,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -186,6 +194,9 @@ class SuperKitButton extends StatelessWidget {
 
   /// The border radius of the button.
   final double? borderRadius;
+
+  /// The border width of the button.
+  final double? borderWidth;
 
   /// The alignment of the text in the button.
   final TextAlign align;
@@ -238,7 +249,7 @@ class SuperKitButton extends StatelessWidget {
                       borderRadius: BorderRadius.circular(borderRadius!),
                       border: Border.all(
                         color: color!,
-                        width: 1.5,
+                        width: borderWidth!,
                       ),
                     ),
               child: !busy
