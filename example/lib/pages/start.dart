@@ -54,7 +54,7 @@ class _StartPageState extends State<StartPage> {
               context: context,
               languagePr: appLanguage,
               globalPr: globalProvider,
-              themePr: themeProvider,
+              // themePr: themeProvider,
               supportedThemes: globals.supportedThemes,
               enableDrawer: false,
               enbalethemes: false,

@@ -17,7 +17,7 @@ class Appearance extends StatefulWidget {
     this.hideonTap = true,
     required this.enablethemes,
     this.enableDarkMode = true,
-    required this.themePr,
+    this.themePr,
     required this.font,
     required this.fontAr,
   });
@@ -182,7 +182,7 @@ class _AppearanceState extends State<Appearance> {
                               title: 'SuperKit',
                               onTap: () {
                                 setState(() {
-                                  widget.themePr.setTheme = FlexScheme.custom;
+                                  widget.themePr!.setTheme = FlexScheme.custom;
 
                                   AdaptiveTheme.of(context).setTheme(
                                     light: superkitLightTheme,
@@ -203,8 +203,8 @@ class _AppearanceState extends State<Appearance> {
                                   .replaceAll('FlexScheme.', ''),
                               onTap: () {
                                 setState(() {
-                                  widget.themePr.setTheme =
-                                      data[index].theme as FlexScheme;
+                                  // widget.themePr.setTheme =
+                                  //     data[index].theme as FlexScheme;
                                   CustomTheme.changeTheme(
                                     context,
                                     data[index].theme,

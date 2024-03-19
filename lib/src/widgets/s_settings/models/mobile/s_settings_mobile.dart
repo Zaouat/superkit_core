@@ -199,7 +199,7 @@ Future<void> superkitSettingsMobileModal({
   required languagePr,
   required globalPr,
   drawerPr,
-  required themePr,
+  dynamic themePr,
   String? title,
   double? height,
   Color? backgroundColor,

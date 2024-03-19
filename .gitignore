@@ -29,3 +29,7 @@ migrate_working_dir/
 .packages
 build/
 /.flutter-plugins
+.flutter-plugins
+.flutter-plugins-dependencies
+example/windows/flutter/generated_plugins.cmake
+example/linux/flutter/generated_plugins.cmake

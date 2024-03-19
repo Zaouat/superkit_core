@@ -151,8 +151,8 @@ class _AppearanceState extends State<AppearanceDesktop> {
                                   onTap: () {
                                     if (mounted) {
                                       setState(() {
-                                        widget.themePr.setTheme =
-                                            FlexScheme.custom;
+                                        // widget.themePr.setTheme =
+                                        //     FlexScheme.custom;
 
                                         AdaptiveTheme.of(context).setTheme(
                                           light: superkitLightTheme,
@@ -175,8 +175,8 @@ class _AppearanceState extends State<AppearanceDesktop> {
                                   onTap: () {
                                     if (mounted) {
                                       setState(() {
-                                        widget.themePr.setTheme =
-                                            data[index].theme as FlexScheme;
+                                        // widget.themePr.setTheme =
+                                        //     data[index].theme as FlexScheme;
                                         CustomTheme.changeTheme(
                                           context,
                                           data[index].theme,

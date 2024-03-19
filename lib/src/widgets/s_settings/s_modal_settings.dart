@@ -9,7 +9,7 @@ dynamic superkitSettingsMobile({
   required languagePr,
   required globalPr,
   drawerPr,
-  required themePr,
+  themePr,
   String? title,
   double? height,
   Color? darkColor,
