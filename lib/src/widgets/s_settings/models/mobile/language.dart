@@ -41,7 +41,7 @@ class _LanguageSectionState extends State<LanguageSection> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           verticalSpaceMedium,
-          SuperKitText.bodySemiBold(
+          SuperKitText.bodyBold(
             text: AppLocalizations.of(context)!.translate('languages')!,
             lang: lang,
             fontFamily: widget.font,
@@ -116,6 +116,11 @@ Widget languageRow({
             lang: lang,
             fontFamily: font,
             fontArFamily: fontAr,
+            color: colorChanger(
+              context: context,
+              dark: Colors.white,
+              light: kcNeutralColor_80,
+            ),
           ),
           const Spacer(),
           if (langCode == lang)

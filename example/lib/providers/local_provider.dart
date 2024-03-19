@@ -1,6 +1,7 @@
 // ignore_for_file: use_named_constants, always_specify_types
 
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:superkit_core/superkit_core.dart';
 
 class LocaleProvider with ChangeNotifier {

@@ -107,6 +107,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                     enableDrawer: false,
                     supportedThemes: globals.supportedThemes,
                     scaffoldKey: scaffoldKey,
+                    font: 'Rubik',
                   );
                 },
               )

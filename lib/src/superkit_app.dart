@@ -1,9 +1,60 @@
 // ignore_for_file: avoid_classes_with_only_static_members
 
+import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:superkit_core/superkit_core.dart';
+import 'package:superkit_core/src/shared/screens.dart';
+import 'package:superkit_core/src/shared/superkit_theme.dart';
+import 'package:superkit_core/src/utils/localizations.dart';
+import 'dart:io' show Platform;
+
+import 'package:window_manager/window_manager.dart';
+
+class SuperKit {
+  static Future<void> init() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await AdaptiveTheme.getThemeMode();
+  }
+
+  static Future<AdaptiveThemeMode?> getMode() async {
+    return await AdaptiveTheme.getThemeMode();
+  }
+
+  static Future<dynamic> setDesktopConfig({
+    String? title = 'Superkit Core',
+    Size? initialSize = const Size(650, 720),
+    Size? minSize = const Size(650, 720),
+    Size? maxSize = const Size(1920, 1080),
+  }) async {
+    if (Platform.isWindows || Platform.isMacOS || Platform.isLinux) {
+      await windowManager.ensureInitialized();
+      WindowOptions windowOptions = WindowOptions(
+        title: title,
+        size: initialSize,
+        minimumSize: minSize!,
+        maximumSize: maxSize!,
+        center: true,
+        backgroundColor: Colors.transparent,
+        skipTaskbar: false,
+        titleBarStyle:
+            Device.isMacOS ? TitleBarStyle.hidden : TitleBarStyle.normal,
+      );
+      windowManager.waitUntilReadyToShow(windowOptions, () async {
+        await windowManager.show();
+        await windowManager.focus();
+      });
+      // doWhenWindowReady(() {
+      //   appWindow.maxSize = maxSize;
+      //   appWindow.minSize = minSize;
+      //   appWindow.size = initialSize!;
+      //   appWindow.title = title!;
+      //   appWindow.show();
+      // });
+    }
+  }
+}
 
 class SuperKitMaterialApp extends StatefulWidget {
   /// Creates a Superkit MaterialApp.
@@ -165,7 +216,7 @@ class _SuperKitState extends State<SuperKitMaterialApp> {
                   title: widget.title!,
                   theme: theme,
                   darkTheme: darkTheme,
-                  routerConfig:  widget.routerConfig!,                  
+                  routerConfig: widget.routerConfig!,
                   debugShowCheckedModeBanner: false,
                   locale: widget.locale,
                   supportedLocales: widget.supportedLocales!,

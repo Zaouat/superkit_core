@@ -1,6 +1,7 @@
 // ignore_for_file: use_named_constants, always_specify_types, avoid_setters_without_getters, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:superkit_core/superkit_core.dart';
 
 class ThemeProvider with ChangeNotifier {

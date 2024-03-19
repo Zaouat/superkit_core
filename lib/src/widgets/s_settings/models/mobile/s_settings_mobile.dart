@@ -326,7 +326,7 @@ Future<void> superkitSettingsMobileModal({
                                               verticalSpaceSmall,
                                               Row(
                                                 children: [
-                                                  SuperKitText.bodySemiBold(
+                                                  SuperKitText.bodyBold(
                                                     text: AppLocalizations.of(
                                                             context)!
                                                         .translate(
@@ -369,6 +369,7 @@ Future<void> superkitSettingsMobileModal({
                                               drawerPr.getSelectedDrawer,
                                         )
                                       : Container(),
+                                  widgets ?? Container(),
                                   verticalSpaceMedium,
                                 ],
                               ),

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:superkit_project/pages/home.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:superkit_project/pages/start.dart';
 import 'package:superkit_project/providers/global_provider.dart';
 import 'package:superkit_project/providers/local_provider.dart';
 import 'package:superkit_project/providers/multi_provider.dart';
 import 'package:superkit_project/providers/theme_provider.dart';
-import 'package:superkit_project/routes/routes.dart';
 import 'package:superkit_core/superkit_core.dart';
 
 void main() async {
@@ -44,8 +43,8 @@ class MainPage extends StatelessWidget {
       ) {
         return SuperKitMaterialApp(
           title: context.read<GlobalProvider>().config!.appTitle,
-          routeInformationParser: router.routeInformationParser,
-          routerDelegate: router.routerDelegate,
+          // routeInformationParser: router.routeInformationParser,
+          // routerDelegate: router.routerDelegate,
           themeProvider: themePr,
           routes: <String, Widget Function(BuildContext)>{
             '/': (BuildContext context) => StartPage(),

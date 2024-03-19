@@ -18,8 +18,8 @@ class Appearance extends StatefulWidget {
     required this.enablethemes,
     this.enableDarkMode = true,
     required this.themePr,
-    this.font,
-    this.fontAr,
+    required this.font,
+    required this.fontAr,
   });
 
   @override
@@ -43,7 +43,6 @@ class _AppearanceState extends State<Appearance> {
   @override
   Widget build(BuildContext context) {
     final String lang = Localizations.localeOf(context).languageCode;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -62,7 +61,7 @@ class _AppearanceState extends State<Appearance> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     verticalSpaceMedium,
-                    SuperKitText.bodySemiBold(
+                    SuperKitText.bodyBold(
                       text: AppLocalizations.of(context)!.translate('theme')!,
                       lang: lang,
                       fontFamily: widget.font,
