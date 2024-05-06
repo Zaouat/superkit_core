@@ -60,7 +60,8 @@ class _StartPageState extends State<StartPage> {
               enbalethemes: false,
               darkColor: Colors.black,
               lightColor: Colors.white,
-              enableNotification: true,
+              enableNotificationSection: true,
+              notificationValue: false,
               onChange: (notification) => debugPrint(
                 notification.toString(),
               ),

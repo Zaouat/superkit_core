@@ -193,7 +193,6 @@ import 'package:superkit_core/src/widgets/s_settings/models/mobile/drawer_switch
 import 'package:superkit_core/src/widgets/s_settings/models/mobile/language.dart';
 import 'package:superkit_core/superkit_core.dart';
 
-bool notification = true;
 Future<void> superkitSettingsMobileModal({
   required BuildContext? context,
   required languagePr,
@@ -214,6 +213,7 @@ Future<void> superkitSettingsMobileModal({
   Widget? widgets,
   required String? font,
   required String? fontAr,
+  required bool notificationValue,
 }) {
   return showModalBottomSheet(
     isScrollControlled: true, // required for min/max child size
@@ -337,14 +337,14 @@ Future<void> superkitSettingsMobileModal({
                                                   ),
                                                   const Spacer(),
                                                   Switch.adaptive(
-                                                      value: notification,
+                                                      value: notificationValue,
                                                       onChanged: (bool value) {
                                                         mySetState(
                                                           () {
-                                                            notification =
+                                                            notificationValue =
                                                                 value;
                                                             onNotificationChange!(
-                                                                notification);
+                                                                notificationValue);
                                                           },
                                                         );
                                                       })
