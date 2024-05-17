@@ -179,7 +179,7 @@ class SuperKitInput extends StatelessWidget {
                   colorChanger(
                     context: context,
                     dark: kcAccentColor_5,
-                    light: Theme.of(context).textTheme.headline2!.color!,
+                    light: Theme.of(context).textTheme.headlineMedium!.color!,
                   ),
               lang: lang,
               fontSize: 14,
@@ -189,8 +189,8 @@ class SuperKitInput extends StatelessWidget {
             ),
             strutStyle: StrutStyle.fromTextStyle(
               fontChanger(
-                color:
-                    txtColor ?? Theme.of(context).textTheme.headline2!.color!,
+                color: txtColor ??
+                    Theme.of(context).textTheme.headlineMedium!.color!,
                 lang: lang,
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
@@ -257,7 +257,7 @@ class SuperKitInput extends StatelessWidget {
                       light: txtColor ??
                           Theme.of(context)
                               .textTheme
-                              .headline2!
+                              .headlineMedium!
                               .color!
                               .withOpacity(0.3),
                     ),
@@ -275,7 +275,7 @@ class SuperKitInput extends StatelessWidget {
                       light: txtColor ??
                           Theme.of(context)
                               .textTheme
-                              .headline2!
+                              .headlineMedium!
                               .color!
                               .withOpacity(0.5),
                     ),
@@ -296,7 +296,7 @@ class SuperKitInput extends StatelessWidget {
                           light: txtColor ??
                               Theme.of(context)
                                   .textTheme
-                                  .headline2!
+                                  .headlineMedium!
                                   .color!
                                   .withOpacity(0.5),
                         ),

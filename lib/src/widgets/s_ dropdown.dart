@@ -66,12 +66,12 @@ class _SuperkitDropdownState extends State<SuperkitDropdown> {
           isExpanded: true,
           elevation: widget.elevation!,
           menuMaxHeight: widget.menuMaxHeight ?? screenHeight(context) / 3,
-          iconEnabledColor: Theme.of(context).textTheme.bodyText1!.color!,
+          iconEnabledColor: Theme.of(context).textTheme.bodySmall!.color!,
           decoration: InputDecoration(
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
                 width: 1,
-                color: Theme.of(context).textTheme.bodyText1!.color!,
+                color: Theme.of(context).textTheme.bodySmall!.color!,
               ),
               borderRadius: const BorderRadius.all(
                 Radius.circular(15.0),
@@ -80,7 +80,7 @@ class _SuperkitDropdownState extends State<SuperkitDropdown> {
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
                 width: 1,
-                color: Theme.of(context).textTheme.bodyText1!.color!,
+                color: Theme.of(context).textTheme.bodySmall!.color!,
               ),
               borderRadius: const BorderRadius.all(
                 Radius.circular(15.0),
@@ -89,7 +89,7 @@ class _SuperkitDropdownState extends State<SuperkitDropdown> {
             border: OutlineInputBorder(
               borderSide: BorderSide(
                 width: 1,
-                color: Theme.of(context).textTheme.bodyText1!.color!,
+                color: Theme.of(context).textTheme.bodySmall!.color!,
               ),
               borderRadius: const BorderRadius.all(
                 Radius.circular(15.0),
@@ -147,7 +147,7 @@ class _SuperkitDropdownState extends State<SuperkitDropdown> {
                       value,
                       style: fontChanger(
                         lang: lang,
-                        color: Theme.of(context).textTheme.bodyText1!.color!,
+                        color: Theme.of(context).textTheme.bodySmall!.color!,
                       ),
                     ),
                   );
@@ -159,7 +159,7 @@ class _SuperkitDropdownState extends State<SuperkitDropdown> {
                       value,
                       style: fontChanger(
                         lang: lang,
-                        color: Theme.of(context).textTheme.bodyText1!.color!,
+                        color: Theme.of(context).textTheme.bodySmall!.color!,
                       ),
                     ),
                   );

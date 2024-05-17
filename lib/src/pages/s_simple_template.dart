@@ -411,8 +411,10 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                           color: colorChanger(
                             context: context,
                             dark: kcAccentColor_5,
-                            light:
-                                Theme.of(context).textTheme.headline2!.color!,
+                            light: Theme.of(context)
+                                .textTheme
+                                .headlineMedium!
+                                .color!,
                           ),
                         ),
                       );
