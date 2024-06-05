@@ -336,27 +336,18 @@ Future<void> superkitSettingsMobileModal({
                                                     fontArFamily: fontAr,
                                                   ),
                                                   const Spacer(),
-                                                  Theme(
-                                                    data: ThemeData(
-                                                      platform: TargetPlatform
-                                                          .android,
-                                                      colorScheme:
-                                                          Theme.of(context)
-                                                              .colorScheme,
-                                                    ),
-                                                    child: Switch.adaptive(
-                                                      value: notificationValue,
-                                                      onChanged: (bool value) {
-                                                        mySetState(
-                                                          () {
-                                                            notificationValue =
-                                                                value;
-                                                            onNotificationChange!(
-                                                                notificationValue);
-                                                          },
-                                                        );
-                                                      },
-                                                    ),
+                                                  Switch.adaptive(
+                                                    value: notificationValue,
+                                                    onChanged: (bool value) {
+                                                      mySetState(
+                                                        () {
+                                                          notificationValue =
+                                                              value;
+                                                          onNotificationChange!(
+                                                              notificationValue);
+                                                        },
+                                                      );
+                                                    },
                                                   ),
                                                 ],
                                               ),
