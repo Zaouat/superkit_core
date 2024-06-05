@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:superkit_core/superkit_core.dart';
 import 'package:superkit_project/providers/global_provider.dart';
@@ -25,29 +27,25 @@ class _StartPageState extends State<StartPage> {
       Widget? child,
     ) {
       return SimpleSPageTemplate(
-        title: "Earning",
+        title: "Profile",
         centerTitle: false,
-        elevation: 0,
-        hasTrailing: true,
-        listOptions: [
-          MoreMenu(0, "Buy"),
-          MoreMenu(1, "Details"),
-        ],
-        tabs: [
-          SuperKitText.bodyBold(
-            text: "home",
-            lang: globals.lang,
-          ),
-          SuperKitText.bodyBold(
-            text: "Settings",
-            lang: globals.lang,
-          ),
-        ],
-        statuBarBrightness:
-            isDarkMode(context) ? Brightness.dark : Brightness.light,
-        indicator: Indicator.material,
-        enableTabs: false,
-        tabsWidgets: [Container(), Container()],
+        font: "Rubik",
+        pinned: true,
+        appBarHeight: 55,
+        statuBarBrightness: (Platform.isIOS)
+            ? (isDarkMode(context) ? Brightness.dark : Brightness.light)
+            : (isDarkMode(context) ? Brightness.light : Brightness.dark),
+        elevation: isDarkMode(context) ? null : 0,
+        appbarColor: colorChanger(
+          context: context,
+          dark: Colors.black,
+          light: Colors.white,
+        ),
+        titleColor: colorChanger(
+          context: context,
+          dark: Colors.black,
+          light: Colors.white,
+        ),
         trailing: IconButton(
           onPressed: () {
             superkitSettingsMobile(
