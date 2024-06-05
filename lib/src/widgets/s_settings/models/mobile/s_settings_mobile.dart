@@ -336,18 +336,19 @@ Future<void> superkitSettingsMobileModal({
                                                     fontArFamily: fontAr,
                                                   ),
                                                   const Spacer(),
-                                                  Switch.adaptive(
-                                                      value: notificationValue,
-                                                      onChanged: (bool value) {
-                                                        mySetState(
-                                                          () {
-                                                            notificationValue =
-                                                                value;
-                                                            onNotificationChange!(
-                                                                notificationValue);
-                                                          },
-                                                        );
-                                                      })
+                                                  Switch(
+                                                    value: notificationValue,
+                                                    onChanged: (bool value) {
+                                                      mySetState(
+                                                        () {
+                                                          notificationValue =
+                                                              value;
+                                                          onNotificationChange!(
+                                                              notificationValue);
+                                                        },
+                                                      );
+                                                    },
+                                                  )
                                                 ],
                                               ),
                                             ],
