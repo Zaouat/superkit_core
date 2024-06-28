@@ -216,14 +216,10 @@ Future<void> superkitSettingsMobileModal({
   required bool notificationValue,
 }) {
   return showModalBottomSheet(
-    isScrollControlled: true, // required for min/max child size
+    isScrollControlled: true,
     context: context!,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.only(
-        topRight: Radius.circular(50),
-        topLeft: Radius.circular(50),
-      ),
-    ),
+    backgroundColor: Colors.transparent,
+    constraints: BoxConstraints(maxHeight: screenHeight(context) * 0.8),
     builder: (BuildContext ctx) {
       final String lang = Localizations.localeOf(context).languageCode;
       return ValueListenableBuilder<AdaptiveThemeMode>(
@@ -232,50 +228,70 @@ Future<void> superkitSettingsMobileModal({
             return StatefulBuilder(builder: (cntx, mySetState) {
               return Padding(
                 padding: MediaQuery.of(context).viewInsets,
-                child: Container(
-                  height: height ?? MediaQuery.of(context).size.height / 1.5,
-                  width: screenWidth(context),
-                  decoration: BoxDecoration(
-                    color: colorChanger(
-                      context: context,
-                      dark: darkColor ?? kcNeutralColor_100,
-                      light: lightColor ?? Colors.white,
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(50),
-                      topLeft: Radius.circular(50),
-                    ),
-                    boxShadow: <BoxShadow>[
-                      BoxShadow(
-                        color: colorChanger(
-                          context: context,
-                          dark:
-                              Theme.of(context).primaryColor.withOpacity(0.08),
-                          light: kcAccentColor_40.withOpacity(0.02),
-                        ),
-                        blurRadius: 12.0,
-                        spreadRadius: 1.5,
-                      ),
-                    ],
+                child: SuperKitCard(
+                  radius: 22.0,
+                  color: colorChanger(
+                    context: context,
+                    dark: darkColor ?? kcNeutralColor_100,
+                    light: lightColor ?? Colors.white,
                   ),
+                  margin: const EdgeInsets.only(
+                    left: 18,
+                    right: 18,
+                    bottom: 28,
+                  ),
+                  borderColor: colorChanger(
+                    context: context,
+                    dark: const Color(0xffA7AABD).withOpacity(.2),
+                    light: const Color(0xffA7AABD).withOpacity(.7),
+                  ),
+                  borderWidth: 2,
+                  enableShadow: true,
+                  enableScaleAnimation: false,
+                  // height: height ?? MediaQuery.of(context).size.height / 1.5,
+                  // width: screenWidth(context),
+                  // decoration: BoxDecoration(
+                  //   color: colorChanger(
+                  //     context: context,
+                  //     dark: darkColor ?? kcNeutralColor_100,
+                  //     light: lightColor ?? Colors.white,
+                  //   ),
+                  //   borderRadius: const BorderRadius.only(
+                  //     topRight: Radius.circular(50),
+                  //     topLeft: Radius.circular(50),
+                  //   ),
+                  //   boxShadow: <BoxShadow>[
+                  //     BoxShadow(
+                  //       color: colorChanger(
+                  //         context: context,
+                  //         dark:
+                  //             Theme.of(context).primaryColor.withOpacity(0.08),
+                  //         light: kcAccentColor_40.withOpacity(0.02),
+                  //       ),
+                  //       blurRadius: 12.0,
+                  //       spreadRadius: 1.5,
+                  //     ),
+                  //   ],
+                  // ),
                   child: ListView(
                     physics: const BouncingScrollPhysics(),
                     children: <Widget>[
                       verticalSpaceSmall,
-                      Container(
-                        margin: EdgeInsets.only(
-                          left: screenWidth(context) / 2.2,
-                          right: screenWidth(context) / 2.2,
-                        ),
-                        height: 3,
-                        decoration: BoxDecoration(
-                          color: colorChanger(
-                            context: context,
-                            dark: Theme.of(context).primaryColor,
-                            light: Theme.of(context).colorScheme.secondary,
+                      Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          height: 3,
+                          width: screenWidth(context) * 0.1,
+                          decoration: BoxDecoration(
+                            color: colorChanger(
+                              context: context,
+                              dark: Theme.of(context).primaryColor,
+                              light: Theme.of(context).colorScheme.secondary,
+                            ),
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(50),
+                            ),
                           ),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(50)),
                         ),
                       ),
                       Material(
