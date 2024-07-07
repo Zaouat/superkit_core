@@ -330,12 +330,12 @@ Future<void> superkitSettingsMobileModal({
                                       ? Padding(
                                           padding: lang.contains('ar')
                                               ? const EdgeInsets.only(
-                                                  left: 22,
+                                                  left: 16,
                                                   right: 16,
                                                 )
                                               : const EdgeInsets.only(
                                                   left: 16,
-                                                  right: 22,
+                                                  right: 16,
                                                 ),
                                           child: Column(
                                             children: [
