@@ -1,4 +1,4 @@
-// ignore_for_file: use_named_constants, always_specify_types
+// ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
@@ -7,17 +7,28 @@ import 'package:superkit_core/superkit_core.dart';
 class LocaleProvider with ChangeNotifier {
   LocaleProvider() {
     _box = GetStorage();
-    Future.delayed(const Duration(), () async {
-      fetchLocale();
-    });
+    _initLocale();
   }
+
   GetStorage? _box;
+  Locale appLocale = const Locale('en'); // Default locale
 
-  Locale appLocale = const Locale('en');
-
-  Future<void> fetchLocale() async {
+  Future<void> _initLocale() async {
+    await _box?.initStorage; // Ensure GetStorage is initialized
     if (_box?.read('language_code') == null) {
-      appLocale = const Locale('en');
+      // Load device locale if no stored language
+      final String? localeString =
+          WidgetsBinding.instance.window.locale.toLanguageTag();
+      if (localeString != null) {
+        final List<String> parts = localeString.split('-');
+        if (parts.length > 1) {
+          appLocale = Locale(parts[0], parts[1]);
+        } else {
+          appLocale = Locale(parts[0]);
+        }
+      } else {
+        appLocale = const Locale('en'); // Default locale if fetching fails
+      }
     } else {
       appLocale = Locale(_box?.read('language_code') as String);
     }
@@ -32,7 +43,6 @@ class LocaleProvider with ChangeNotifier {
     appLocale = Locale(languageData.code);
     await _box?.write('language_code', languageData.code);
     await _box?.write('countryCode', languageData.countryCode);
-    appLocale = Locale(languageData.code);
     notifyListeners();
   }
 }

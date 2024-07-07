@@ -32,5 +32,6 @@
   "changelog_title": "Change Log",
   "btn_buy": "Buy Now",
   "terms_services": "Terms of Service | Privacy Policy",
-  "allow_notifications": "Allow Notifications"
+  "allow_notifications": "Allow Notifications",
+  "device_default": " (default)"
 }

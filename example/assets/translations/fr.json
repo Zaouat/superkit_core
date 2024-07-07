@@ -32,5 +32,6 @@
   "changelog_title": "Journal des modifications",
   "btn_buy": "Acheter",
   "terms_services": "Conditions d'utilisation",
-  "allow_notifications": "Autoriser les notifications"
+  "allow_notifications": "Autoriser les notifications",
+  "device_default": " (défaut)"
 }

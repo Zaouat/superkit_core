@@ -32,5 +32,6 @@
   "changelog_title": "Verander log",
   "btn_buy": "Koop nu",
   "terms_services": "Servicevoorwaarden | Privacybeleid",
-  "allow_notifications": "Meldingen toestaan"
+  "allow_notifications": "Meldingen toestaan",
+  "device_default": " (Standard)"
 }

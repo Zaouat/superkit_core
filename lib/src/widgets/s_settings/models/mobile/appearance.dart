@@ -50,12 +50,12 @@ class _AppearanceState extends State<Appearance> {
             ? Padding(
                 padding: lang.contains('ar')
                     ? const EdgeInsets.only(
-                        left: 22,
-                        right: 16,
+                        left: 12,
+                        right: 12,
                       )
                     : const EdgeInsets.only(
-                        left: 16,
-                        right: 22,
+                        left: 12,
+                        right: 12,
                       ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_dynamic_calls, prefer_typing_uninitialized_variables, always_specify_types, library_private_types_in_public_api
+// ignore_for_file: avoid_dynamic_calls, prefer_typing_uninitialized_variables, always_specify_types, library_private_types_in_public_api, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:superkit_core/superkit_core.dart';
@@ -18,6 +18,7 @@ class LanguageSection extends StatefulWidget {
     this.font,
     this.fontAr,
   });
+
   @override
   _LanguageSectionState createState() => _LanguageSectionState();
 }
@@ -26,17 +27,13 @@ class _LanguageSectionState extends State<LanguageSection> {
   @override
   Widget build(BuildContext context) {
     final String lang = Localizations.localeOf(context).languageCode;
+    final String deviceLang =
+        WidgetsBinding.instance.window.locale.languageCode;
 
     return Padding(
       padding: lang.contains('ar')
-          ? const EdgeInsets.only(
-              left: 22,
-              right: 16,
-            )
-          : const EdgeInsets.only(
-              left: 16,
-              right: 22,
-            ),
+          ? const EdgeInsets.only(left: 22, right: 16)
+          : const EdgeInsets.only(left: 16, right: 22),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -59,9 +56,7 @@ class _LanguageSectionState extends State<LanguageSection> {
                 fontAr: widget.fontAr,
                 onTap: () {
                   setState(() {
-                    widget.languageProvider!.changeLanguage(
-                      languageData: e,
-                    );
+                    widget.languageProvider!.changeLanguage(languageData: e);
                   });
                   if (widget.hideonTap == true) {
                     Navigator.pop(context);
@@ -70,6 +65,7 @@ class _LanguageSectionState extends State<LanguageSection> {
                 context: context,
                 langCode: e.code,
                 lang: lang,
+                deviceLang: deviceLang, // Pass device language code
               );
             }).toList(),
           ),
@@ -88,6 +84,7 @@ Widget languageRow({
   required String lang,
   required String? font,
   required String? fontAr,
+  required String deviceLang, // Add deviceLang parameter
 }) {
   return ScaleTap(
     onPressed: () {
@@ -111,8 +108,11 @@ Widget languageRow({
           const SizedBox(width: 16),
           SuperKitText.captionBold(
             text: AppLocalizations.of(context)!.translate(
-              title.toLowerCase(),
-            )!,
+                  title.toLowerCase(),
+                )! +
+                (langCode == deviceLang
+                    ? AppLocalizations.of(context)!.translate('device_default')!
+                    : ''),
             lang: lang,
             fontFamily: font,
             fontArFamily: fontAr,

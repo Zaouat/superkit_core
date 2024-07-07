@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:superkit_core/src/models/language.dart';
@@ -43,7 +42,6 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) {
-    // print(AppLocaizations.languages);
     return AppLocalizations.languages?.any(
           (LanguageData language) => language.code == locale.languageCode,
         ) ??

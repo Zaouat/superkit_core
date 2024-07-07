@@ -51,16 +51,9 @@ class MainPage extends StatelessWidget {
           },
           useGoRouter: false,
           locale: context.watch<LocaleProvider>().appLocale,
-          supportedLocales: context
-              .read<GlobalProvider>()
-              .config!
-              .languages!
-              .map((LanguageData e) {
-            return Locale(
-              e.code,
-              e.code.toUpperCase(),
-            );
-          }).toList(),
+          supportedLocales: AppLocalizations.languages
+                  ?.map((language) => Locale(language.code)) ??
+              [],
         );
       },
     );

@@ -32,5 +32,6 @@
   "changelog_title": "Cambiar registro",
   "btn_buy": "Compra ahora",
   "terms_services": "Términos de Servicio | Política de privacidad",
-  "allow_notifications": "Permitir notificaciones"
+  "allow_notifications": "Permitir notificaciones",
+  "device_default": " (por defecto)"
 }
