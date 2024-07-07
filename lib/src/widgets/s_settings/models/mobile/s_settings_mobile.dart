@@ -342,14 +342,21 @@ Future<void> superkitSettingsMobileModal({
                                               verticalSpaceSmall,
                                               Row(
                                                 children: [
-                                                  SuperKitText.bodyBold(
-                                                    text: AppLocalizations.of(
-                                                            context)!
-                                                        .translate(
-                                                            'allow_notifications')!,
-                                                    lang: lang,
-                                                    fontFamily: font,
-                                                    fontArFamily: fontAr,
+                                                  SizedBox(
+                                                    width:
+                                                        screenWidth(context) *
+                                                            0.61,
+                                                    child:
+                                                        SuperKitText.bodyBold(
+                                                      text: AppLocalizations.of(
+                                                              context)!
+                                                          .translate(
+                                                              'allow_notifications')!,
+                                                      lang: lang,
+                                                      fontFamily: font,
+                                                      maxLines: 2,
+                                                      fontArFamily: fontAr,
+                                                    ),
                                                   ),
                                                   const Spacer(),
                                                   Switch.adaptive(
