@@ -5,7 +5,7 @@ import 'package:superkit_core/src/models/language.dart';
 
 class AppLocalizations {
   final Locale locale;
-  static List<LanguageData>? languages;
+  static List<LanguageData> languages;
 
   AppLocalizations(this.locale);
 
