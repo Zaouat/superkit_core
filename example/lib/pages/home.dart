@@ -102,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                   superkitSettingsMobile(
                     context: context,
                     languagePr: appLanguage,
-                    globalPr: globalProvider,
+                    languages: globalProvider!.config!.languages,
                     themePr: themeProvider,
                     enableDrawer: false,
                     supportedThemes: globals.supportedThemes,

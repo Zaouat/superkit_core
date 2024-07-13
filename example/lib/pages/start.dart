@@ -51,7 +51,7 @@ class _StartPageState extends State<StartPage> {
             superkitSettingsMobile(
               context: context,
               languagePr: appLanguage,
-              globalPr: globalProvider,
+              languages: globalProvider!.config!.languages,
               // themePr: themeProvider,
               supportedThemes: globals.supportedThemes,
               enableDrawer: false,

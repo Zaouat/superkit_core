@@ -5,7 +5,7 @@ import 'package:superkit_core/superkit_core.dart';
 
 class LanguageSection extends StatefulWidget {
   final languageProvider;
-  final globalProvider;
+  final List<LanguageData> languages;
   final bool? hideonTap;
   final String? font;
   final String? fontAr;
@@ -13,7 +13,7 @@ class LanguageSection extends StatefulWidget {
   const LanguageSection({
     super.key,
     required this.languageProvider,
-    required this.globalProvider,
+    required this.languages,
     this.hideonTap = true,
     this.font,
     this.fontAr,
@@ -47,7 +47,7 @@ class _LanguageSectionState extends State<LanguageSection> {
           verticalSpaceSmall,
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: widget.globalProvider!.config!.languages!
+            children: widget.languages
                 .map<Widget>((LanguageData e) {
               return languageRow(
                 title: e.title,

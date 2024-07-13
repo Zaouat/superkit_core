@@ -196,7 +196,7 @@ import 'package:superkit_core/superkit_core.dart';
 Future<void> superkitSettingsMobileModal({
   required BuildContext? context,
   required languagePr,
-  required globalPr,
+  required List<LanguageData> languages,
   drawerPr,
   dynamic themePr,
   String? title,
@@ -380,7 +380,7 @@ Future<void> superkitSettingsMobileModal({
                                       : Container(),
                                   LanguageSection(
                                     languageProvider: languagePr,
-                                    globalProvider: globalPr,
+                                    languages: languages,
                                     hideonTap: hideonTap,
                                     font: font,
                                     fontAr: fontAr,

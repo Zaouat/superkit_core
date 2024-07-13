@@ -7,7 +7,7 @@ import 'package:superkit_core/superkit_core.dart';
 dynamic superkitSettingsMobile({
   required BuildContext? context,
   required languagePr,
-  required globalPr,
+  required List<LanguageData> languages,
   drawerPr,
   themePr,
   String? title,
@@ -37,7 +37,7 @@ dynamic superkitSettingsMobile({
       return superkitSettingsMobileModal(
         context: context,
         languagePr: languagePr,
-        globalPr: globalPr,
+        languages: languages,
         drawerPr: drawerPr,
         themePr: themePr,
         title: title,
