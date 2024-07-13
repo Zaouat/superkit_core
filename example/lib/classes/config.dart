@@ -18,7 +18,7 @@ class Config {
   final String? admobAppId;
   final String? bannerAdId;
   final String? interstitialAdId;
-  final List<LanguageData>? languages;
+  final List<LanguageData> languages;
   Config({
     this.enableAboutUs,
     this.enableMoreApps,
@@ -35,7 +35,7 @@ class Config {
     this.admobAppId,
     this.bannerAdId,
     this.interstitialAdId,
-    this.languages,
+    required this.languages,
   });
 
   Map<String, dynamic> toMap() {
@@ -56,7 +56,7 @@ class Config {
       'bannerAdId': bannerAdId,
       'interstitialAdId': interstitialAdId,
       'languages': languages
-          ?.where((LanguageData e) => e.enabled)
+          .where((LanguageData e) => e.enabled)
           .map((LanguageData x) => x.toMap())
     };
   }
