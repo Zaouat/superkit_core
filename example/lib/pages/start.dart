@@ -87,6 +87,16 @@ class _StartPageState extends State<StartPage> {
                     debugPrint(val.toString());
                   },
                 ),
+                verticalSpaceRegular,
+                SuperKitButton(
+                  title: "Submit",
+                  width: screenWidth(context) / 2,
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                  onTap: () {
+                    debugPrint(controller.text);
+                  },
+                ),
               ],
             ),
           ),

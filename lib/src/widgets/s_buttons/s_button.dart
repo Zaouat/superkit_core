@@ -24,6 +24,7 @@ class SuperKitButton extends StatelessWidget {
     this.fontAr,
     this.fontWeight,
     this.borderWidth = 1.5,
+    this.fontSize,
   }) : outline = false;
 
   const SuperKitButton.small({
@@ -44,6 +45,7 @@ class SuperKitButton extends StatelessWidget {
     this.fontAr,
     this.fontWeight,
     this.borderWidth = 1.5,
+    this.fontSize,
   }) : outline = false;
 
   const SuperKitButton.medium({
@@ -64,6 +66,7 @@ class SuperKitButton extends StatelessWidget {
     this.fontAr,
     this.fontWeight,
     this.borderWidth = 1.5,
+    this.fontSize,
   }) : outline = false;
   const SuperKitButton.large({
     super.key,
@@ -83,6 +86,7 @@ class SuperKitButton extends StatelessWidget {
     this.fontAr,
     this.fontWeight,
     this.borderWidth = 1.5,
+    this.fontSize,
   }) : outline = false;
 
   const SuperKitButton.outline({
@@ -101,6 +105,7 @@ class SuperKitButton extends StatelessWidget {
     this.fontAr,
     this.fontWeight,
     this.borderWidth = 1.5,
+    this.fontSize,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -120,6 +125,7 @@ class SuperKitButton extends StatelessWidget {
     this.fontAr,
     this.fontWeight,
     this.borderWidth = 1.5,
+    this.fontSize,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -139,6 +145,7 @@ class SuperKitButton extends StatelessWidget {
     this.fontAr,
     this.fontWeight,
     this.borderWidth = 1.5,
+    this.fontSize,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -158,6 +165,7 @@ class SuperKitButton extends StatelessWidget {
     this.fontAr,
     this.fontWeight,
     this.borderWidth = 1.5,
+    this.fontSize,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -209,6 +217,9 @@ class SuperKitButton extends StatelessWidget {
 
   /// The Font Weight of the text in the button.
   final FontWeight? fontWeight;
+
+  /// The Font Size of the text in the button.
+  final double? fontSize;
 
   final double? spacing;
   @override
@@ -302,6 +313,7 @@ class SuperKitButton extends StatelessWidget {
                                 fontName: font,
                                 fontArName: fontAr,
                                 lang: lang,
+                                fontSize: fontSize ?? 16,
                                 color: !outline
                                     ? Colors.white
                                     : color ?? Theme.of(context).primaryColor,
