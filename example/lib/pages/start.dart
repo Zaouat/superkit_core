@@ -88,7 +88,7 @@ class _StartPageState extends State<StartPage> {
                   },
                 ),
                 verticalSpaceRegular,
-                SuperKitButton(
+                SuperKitButton.outline(
                   title: "Submit",
                   width: screenWidth(context) / 2,
                   fontSize: 12,

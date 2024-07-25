@@ -285,6 +285,7 @@ class SuperKitButton extends StatelessWidget {
                                 lang: lang,
                                 fontName: font,
                                 fontArName: fontAr,
+                                fontSize: fontSize ?? 12,
                                 fontWeight: fontWeight ?? FontWeight.w500,
                                 color: !outline
                                     ? Colors.white
@@ -313,7 +314,7 @@ class SuperKitButton extends StatelessWidget {
                                 fontName: font,
                                 fontArName: fontAr,
                                 lang: lang,
-                                fontSize: fontSize ?? 16,
+                                fontSize: fontSize ?? 12,
                                 color: !outline
                                     ? Colors.white
                                     : color ?? Theme.of(context).primaryColor,
