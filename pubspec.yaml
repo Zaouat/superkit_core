@@ -43,7 +43,7 @@ dependencies:
   cached_network_image: ^3.3.1
   flutter_hooks: ^0.20.4
   percent_indicator:
-    git: https://github.com/diegoveloper/flutter_percent_indicator.git
+    git: https://github.com/devllopa/flutter_percent_indicator.git
 
 dev_dependencies:
   flutter_test:
