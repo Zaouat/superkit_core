@@ -47,8 +47,7 @@ class _LanguageSectionState extends State<LanguageSection> {
           verticalSpaceSmall,
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: widget.languages
-                .map<Widget>((LanguageData e) {
+            children: widget.languages.map<Widget>((LanguageData e) {
               return languageRow(
                 title: e.title,
                 icon: e.flag,
@@ -96,16 +95,23 @@ Widget languageRow({
       contentPadding: EdgeInsets.zero,
       title: Row(
         children: <Widget>[
-          ClipRRect(
-            borderRadius: const BorderRadius.all(
-              Radius.circular(10),
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.grey.withOpacity(0.3),
+                width: 2,
+              ),
+              borderRadius: BorderRadius.circular(8),
             ),
-            child: SvgPicture.asset(
-              icon,
-              width: screenWidth(context) * 0.12,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: SvgPicture.asset(
+                icon,
+                width: screenWidth(context) * 0.1,
+              ),
             ),
           ),
-          const SizedBox(width: 16),
+          const SizedBox(width: 14),
           SuperKitText.captionBold(
             text: AppLocalizations.of(context)!.translate(
                   title.toLowerCase(),

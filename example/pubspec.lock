@@ -579,7 +579,7 @@ packages:
       path: "."
       ref: HEAD
       resolved-ref: "29b2a6859854c79dbc32a268a2a4ec4b3e9efc8b"
-      url: "https://github.com/diegoveloper/flutter_percent_indicator.git"
+      url: "https://github.com/devllopa/flutter_percent_indicator.git"
     source: git
     version: "4.2.3"
   petitparser:
