@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:superkit_project/pages/start.dart';
+import 'package:superkit_project/pages/home.dart';
 import 'package:superkit_project/providers/global_provider.dart';
 import 'package:superkit_project/providers/local_provider.dart';
 import 'package:superkit_project/providers/multi_provider.dart';
@@ -42,19 +42,17 @@ class MainPage extends StatelessWidget {
         Widget? child,
       ) {
         return SuperKitMaterialApp(
-          title: context.read<GlobalProvider>().config!.appTitle,
-          // routeInformationParser: router.routeInformationParser,
-          // routerDelegate: router.routerDelegate,
-          themeProvider: themePr,
-          routes: <String, Widget Function(BuildContext)>{
-            '/': (BuildContext context) => StartPage(),
-          },
-          useGoRouter: false,
-          locale: context.watch<LocaleProvider>().appLocale,
-          supportedLocales: AppLocalizations.languages
-                  .map((language) => Locale(language.code))
-            
-        );
+            title: context.read<GlobalProvider>().config!.appTitle,
+            // routeInformationParser: router.routeInformationParser,
+            // routerDelegate: router.routerDelegate,
+            themeProvider: themePr,
+            routes: <String, Widget Function(BuildContext)>{
+              '/': (BuildContext context) => MyHomePage(),
+            },
+            useGoRouter: false,
+            locale: context.watch<LocaleProvider>().appLocale,
+            supportedLocales: AppLocalizations.languages
+                .map((language) => Locale(language.code)));
       },
     );
   }

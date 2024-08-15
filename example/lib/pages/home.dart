@@ -4,9 +4,7 @@ import 'package:superkit_project/providers/local_provider.dart';
 import 'package:superkit_project/providers/theme_provider.dart';
 import 'package:superkit_core/superkit_core.dart';
 import 'package:superkit_project/config/globals.dart' as globals;
-import 'package:superkit_project/widgets/content_desktop.dart';
 import 'package:superkit_project/widgets/content_mobile.dart';
-import 'package:superkit_project/widgets/content_tablet.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
@@ -124,14 +122,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
             supportedThemes: globals.supportedThemes,
             scaffoldKey: scaffoldKey,
           ),
-          body: ScreenTypeLayout.builder(
-            breakpoints:
-                const ScreenBreakpoints(tablet: 550, desktop: 650, watch: 300),
-            mobile: (BuildContext context) => HomeContentMobile(),
-            tablet: (BuildContext context) => HomeContentTablet(),
-            desktop: (BuildContext context) => HomeContentDesktop(),
-            watch: (BuildContext context) => Container(color: Colors.purple),
-          )
+          body: HomeContentMobile()
           // This trailing comma makes auto-formatting nicer for build methods.
           );
     });
