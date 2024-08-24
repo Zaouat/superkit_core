@@ -346,15 +346,15 @@ Future<void> superkitSettingsMobileModal({
                                                     width:
                                                         screenWidth(context) *
                                                             0.61,
-                                                    child: SuperKitText
-                                                        .captionBold(
+                                                    child:
+                                                        SuperKitText.bodyBold(
                                                       text: AppLocalizations.of(
                                                               context)!
                                                           .translate(
                                                               'allow_notifications')!,
                                                       lang: lang,
                                                       fontFamily: font,
-                                                      maxLines: 2,
+                                                      maxLines: 3,
                                                       fontArFamily: fontAr,
                                                     ),
                                                   ),
