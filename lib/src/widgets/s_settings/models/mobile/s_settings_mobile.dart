@@ -346,8 +346,8 @@ Future<void> superkitSettingsMobileModal({
                                                     width:
                                                         screenWidth(context) *
                                                             0.61,
-                                                    child:
-                                                        SuperKitText.bodyBold(
+                                                    child: SuperKitText
+                                                        .captionBold(
                                                       text: AppLocalizations.of(
                                                               context)!
                                                           .translate(
