@@ -46,6 +46,38 @@ class _StartPageState extends State<StartPage> {
           dark: Colors.black,
           light: Colors.white,
         ),
+        enableTabs: true,
+        tabs: [
+          Tab(
+            text: "Tab 1",
+          ),
+          Tab(
+            text: "Tab 2",
+          ),
+          Tab(
+            text: "Tab 3",
+          ),
+        ],
+        tabsWidgets: [
+          Container(
+            child: Center(
+              child: Text("Tab 1"),
+            ),
+          ),
+          Container(
+            child: Center(
+              child: Text("Tab 2"),
+            ),
+          ),
+          Container(
+            child: Center(
+              child: Text("Tab 3"),
+            ),
+          ),
+        ],
+        // onTabChange: (index) {
+        //   debugPrint(index.toString());
+        // },
         trailing: IconButton(
           onPressed: () {
             superkitSettingsMobile(

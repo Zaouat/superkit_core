@@ -25,6 +25,7 @@ class SuperKitTabBar extends StatefulWidget {
     this.enableAppbarGradient = false,
     required this.selectedTextStyle,
     required this.unSelectedTextStyle,
+    required this.onTabChange,
   });
 
   /// Indicator type of the tab bar [Indicators.rectangular] by default.
@@ -57,6 +58,9 @@ class SuperKitTabBar extends StatefulWidget {
   final TextStyle unSelectedTextStyle;
 
   final Color? indicatorColor;
+
+  final Function(int) onTabChange;
+
   @override
   State<SuperKitTabBar> createState() => _SuperKitTabBarState();
 }
@@ -66,7 +70,10 @@ class _SuperKitTabBarState extends State<SuperKitTabBar>
   @override
   Widget build(BuildContext context) {
     final String lang = Localizations.localeOf(context).languageCode;
-
+    widget.tabController!.addListener(() {
+      setState(() {});
+      widget.onTabChange(widget.tabController!.index);
+    });
     return Container(
       height: Indicator.rectangular == widget.indicator
           ? widget.height! + 5
@@ -169,7 +176,7 @@ class _SuperKitTabBarState extends State<SuperKitTabBar>
                       bottomRightRadius: 22,
                       horizontalPadding: 25,
                     ),
-          onTap: (int index) {},
+          onTap: (int index) => widget.onTabChange(index),
         ),
       ),
     );

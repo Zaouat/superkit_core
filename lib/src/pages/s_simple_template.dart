@@ -61,6 +61,7 @@ class SimpleSPageTemplate extends StatefulWidget {
     this.statuBarBrightness,
     this.font,
     this.fontAr,
+    this.onTabChange,
   });
 
   /// title of the page
@@ -168,6 +169,8 @@ class SimpleSPageTemplate extends StatefulWidget {
 
   final String? fontAr;
 
+  final Function(int)? onTabChange;
+
   @override
   State<SimpleSPageTemplate> createState() => _SuperKitSimpleTemplateState();
 }
@@ -253,6 +256,7 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                     child: SuperKitTabBar(
                       tabs: widget.tabs,
                       tabController: tabController,
+                      onTabChange: widget.onTabChange ?? (index) {},
                       indicator: widget.indicator,
                       indicatorColor: widget.indicatorColor,
                       enableShadow: widget.elevation == 0 ? false : true,
