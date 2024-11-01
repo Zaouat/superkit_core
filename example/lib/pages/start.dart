@@ -91,6 +91,7 @@ class _StartPageState extends State<StartPage> {
               darkColor: Colors.black,
               lightColor: Colors.white,
               enableNotificationSection: true,
+
               notificationValue: false,
               onChange: (notification) => debugPrint(
                 notification.toString(),

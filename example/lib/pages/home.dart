@@ -98,15 +98,25 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                 onTap: () {
                   /* -------------  Open Mobile settings Modal  ------------------- */
                   superkitSettingsMobile(
-                    context: context,
-                    languagePr: appLanguage,
-                    languages: globalProvider!.config!.languages,
-                    themePr: themeProvider,
-                    enableDrawer: false,
-                    supportedThemes: globals.supportedThemes,
-                    scaffoldKey: scaffoldKey,
-                    font: 'Rubik',
-                  );
+                      context: context,
+                      languagePr: appLanguage,
+                      languages: globalProvider!.config!.languages,
+                      themePr: themeProvider,
+                      enableDrawer: false,
+                      supportedThemes: globals.supportedThemes,
+                      scaffoldKey: scaffoldKey,
+                      font: 'Rubik',
+                      enableNotificationSection: false,
+                      widgets: Column(
+                        children: [
+                          SuperKitButton(
+                            title: 'Save',
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                          )
+                        ],
+                      ));
                 },
               )
             ],

@@ -219,7 +219,7 @@ Future<void> superkitSettingsMobileModal({
     isScrollControlled: true,
     context: context!,
     backgroundColor: Colors.transparent,
-    constraints: BoxConstraints(maxHeight: screenHeight(context) * 0.8),
+    // constraints: BoxConstraints(minHeight: screenHeight(context) * 0.5),
     builder: (BuildContext ctx) {
       final String lang = Localizations.localeOf(context).languageCode;
       return ValueListenableBuilder<AdaptiveThemeMode>(
@@ -274,7 +274,9 @@ Future<void> superkitSettingsMobileModal({
                   //   ],
                   // ),
                   child: ListView(
-                    physics: const BouncingScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.only(bottom: 5),
                     children: <Widget>[
                       verticalSpaceSmall,
                       Align(

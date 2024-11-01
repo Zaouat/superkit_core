@@ -45,112 +45,112 @@ class _LanguageSectionState extends State<LanguageSection> {
             fontArFamily: widget.fontAr,
           ),
           verticalSpaceSmall,
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: widget.languages.map<Widget>((LanguageData e) {
-              return languageRow(
-                title: e.title,
-                icon: e.flag,
-                font: widget.font,
-                fontAr: widget.fontAr,
-                onTap: () {
-                  setState(() {
-                    widget.languageProvider!.changeLanguage(languageData: e);
-                  });
-                  if (widget.hideonTap == true) {
-                    Navigator.pop(context);
-                  }
-                },
-                context: context,
-                langCode: e.code,
-                lang: lang,
-                deviceLang: deviceLang, // Pass device language code
-              );
-            }).toList(),
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.grey.withOpacity(0.2),
+                width: 1.5,
+              ),
+              borderRadius: BorderRadius.circular(18),
+            ),
+            child: DropdownButtonHideUnderline(
+              child: ButtonTheme(
+                alignedDropdown: true,
+                child: DropdownButton<LanguageData>(
+                  borderRadius: BorderRadius.circular(18),
+                  isExpanded: true,
+                  padding: EdgeInsets.only(
+                    top: 4,
+                    bottom: 4,
+                    right: lang.contains("ar") ? 0 : 6,
+                    left: lang.contains("ar") ? 6 : 0,
+                  ),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: Colors.grey.withOpacity(0.7),
+                  ),
+                  value: widget.languages.firstWhere((e) => e.code == lang),
+                  items: widget.languages
+                      .map<DropdownMenuItem<LanguageData>>((LanguageData e) {
+                    return DropdownMenuItem<LanguageData>(
+                      value: e,
+                      child: Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.grey.withOpacity(0.2),
+                                width: 1.5,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(6),
+                              child: SvgPicture.asset(
+                                e.flag,
+                                width: screenWidth(context) * 0.1,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 14),
+                          Expanded(
+                            child: SuperKitText.captionBold(
+                              text: AppLocalizations.of(context)!.translate(
+                                    e.title.toLowerCase(),
+                                  )! +
+                                  (e.code == deviceLang
+                                      ? AppLocalizations.of(context)!
+                                          .translate('device_default')!
+                                      : ''),
+                              lang: lang,
+                              fontFamily: widget.font,
+                              fontArFamily: widget.fontAr,
+                              color: colorChanger(
+                                context: context,
+                                dark: Colors.white,
+                                light: kcNeutralColor_80,
+                              ),
+                            ),
+                          ),
+                          // if (e.code == lang)
+                          //   Container(
+                          //     height: screenWidth(context) / 20,
+                          //     width: screenWidth(context) / 20,
+                          //     decoration: BoxDecoration(
+                          //       borderRadius: BorderRadius.circular(200),
+                          //       color: Theme.of(context).primaryColor,
+                          //     ),
+                          //     child: Icon(
+                          //       Icons.check_rounded,
+                          //       color: colorChanger(
+                          //         context: context,
+                          //         dark: kcNeutralColor_100,
+                          //         light: Colors.white,
+                          //       ),
+                          //       size: 10,
+                          //     ),
+                          //   ),
+                        ],
+                      ),
+                    );
+                  }).toList(),
+                  onChanged: (LanguageData? newValue) {
+                    if (newValue != null) {
+                      setState(() {
+                        widget.languageProvider!
+                            .changeLanguage(languageData: newValue);
+                      });
+                      if (widget.hideonTap == true) {
+                        Navigator.pop(context);
+                      }
+                    }
+                  },
+                ),
+              ),
+            ),
           ),
         ],
       ),
     );
   }
-}
-
-Widget languageRow({
-  required String title,
-  required String icon,
-  required Function onTap,
-  required BuildContext context,
-  required String langCode,
-  required String lang,
-  required String? font,
-  required String? fontAr,
-  required String deviceLang, // Add deviceLang parameter
-}) {
-  return ScaleTap(
-    onPressed: () {
-      onTap();
-    },
-    child: ListTile(
-      minVerticalPadding: 12,
-      enableFeedback: true,
-      contentPadding: EdgeInsets.zero,
-      title: Row(
-        children: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.grey.withOpacity(0.3),
-                width: 2,
-              ),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(6),
-              child: SvgPicture.asset(
-                icon,
-                width: screenWidth(context) * 0.1,
-              ),
-            ),
-          ),
-          const SizedBox(width: 14),
-          SuperKitText.captionBold(
-            text: AppLocalizations.of(context)!.translate(
-                  title.toLowerCase(),
-                )! +
-                (langCode == deviceLang
-                    ? AppLocalizations.of(context)!.translate('device_default')!
-                    : ''),
-            lang: lang,
-            fontFamily: font,
-            fontArFamily: fontAr,
-            color: colorChanger(
-              context: context,
-              dark: Colors.white,
-              light: kcNeutralColor_80,
-            ),
-          ),
-          const Spacer(),
-          if (langCode == lang)
-            Container(
-              height: screenWidth(context) / 20,
-              width: screenWidth(context) / 20,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(200),
-                color: Theme.of(context).primaryColor,
-              ),
-              child: Icon(
-                Icons.check_rounded,
-                color: colorChanger(
-                  context: context,
-                  dark: kcNeutralColor_100,
-                  light: Colors.white,
-                ),
-                size: 10,
-              ),
-            )
-          else
-            Container(),
-        ],
-      ),
-    ),
-  );
 }
