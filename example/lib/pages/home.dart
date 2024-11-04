@@ -65,76 +65,76 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
       Widget? child,
     ) {
       return Scaffold(
+        backgroundColor: colorChanger(
+          context: context,
+          dark: Colors.black,
+          light: Colors.white,
+        ),
+        key: scaffoldKey,
+        appBar: AppBar(
+          toolbarHeight: 85,
           backgroundColor: colorChanger(
             context: context,
             dark: Colors.black,
             light: Colors.white,
           ),
-          key: scaffoldKey,
-          appBar: AppBar(
-            toolbarHeight: 85,
-            backgroundColor: colorChanger(
-              context: context,
-              dark: Colors.black,
-              light: Colors.white,
+          actions: [
+            SuperKitAvatar(
+              radius: 25,
+              imageSpace: 4,
+              image: 'assets/coin.png',
+              borderColor: kcVeryLightGreyColor,
+              onTap: () {
+                debugPrint("Avatar tapped");
+              },
             ),
-            actions: [
-              SuperKitAvatar(
-                radius: 25,
-                imageSpace: 4,
-                image: 'assets/coin.png',
-                borderColor: kcVeryLightGreyColor,
-                onTap: () {
-                  debugPrint("Avatar tapped");
-                },
+            SuperKitIcon(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
               ),
-              SuperKitIcon(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                ),
-                icon: IconlyBold.setting,
-                size: 28,
-                tooltip: 'Settings',
-                onTap: () {
-                  /* -------------  Open Mobile settings Modal  ------------------- */
-                  superkitSettingsMobile(
-                      context: context,
-                      languagePr: appLanguage,
-                      languages: globalProvider!.config!.languages,
-                      themePr: themeProvider,
-                      enableDrawer: false,
-                      supportedThemes: globals.supportedThemes,
-                      scaffoldKey: scaffoldKey,
-                      font: 'Rubik',
-                      enableNotificationSection: false,
-                      widgets: Column(
-                        children: [
-                          SuperKitButton(
-                            title: 'Save',
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                          )
-                        ],
-                      ));
-                },
-              )
-            ],
-          ),
+              icon: IconlyBold.setting,
+              size: 28,
+              tooltip: 'Settings',
+              onTap: () {
+                /* -------------  Open Mobile settings Modal  ------------------- */
+                superkitSettingsMobile(
+                    context: context,
+                    languagePr: appLanguage,
+                    languages: globalProvider!.config!.languages,
+                    themePr: themeProvider,
+                    enableDrawer: false,
+                    supportedThemes: globals.supportedThemes,
+                    scaffoldKey: scaffoldKey,
+                    font: 'Rubik',
+                    enableNotificationSection: false,
+                    widgets: Column(
+                      children: [
+                        SuperKitButton(
+                          title: 'Save',
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                        )
+                      ],
+                    ));
+              },
+            )
+          ],
+        ),
 
-          /* ------- You must provide this widget superkitSettingsDesktop 
+        /* ------- You must provide this widget superkitSettingsDesktop 
                         to open the settings on the desktop mode ------- */
-          endDrawer: superkitSettingsDesktop(
-            languagePr: appLanguage,
-            globalPr: globalProvider,
-            themePr: themeProvider,
-            enableDrawer: false,
-            supportedThemes: globals.supportedThemes,
-            scaffoldKey: scaffoldKey,
-          ),
-          body: HomeContentMobile()
-          // This trailing comma makes auto-formatting nicer for build methods.
-          );
+        endDrawer: superkitSettingsDesktop(
+          languagePr: appLanguage,
+          globalPr: globalProvider,
+          themePr: themeProvider,
+          enableDrawer: false,
+          supportedThemes: globals.supportedThemes,
+          scaffoldKey: scaffoldKey,
+        ),
+        body: HomeContentMobile(),
+        // This trailing comma makes auto-formatting nicer for build methods.
+      );
     });
   }
 }

@@ -50,6 +50,12 @@ class MainPage extends StatelessWidget {
             routes: <String, Widget Function(BuildContext)>{
               '/': (BuildContext context) => StartPage(),
             },
+            // builder: (context, app) {
+            //   return GestureDetector(
+            //     onTap: () => debugPrint("Tapped"),
+            //     child: app,
+            //   );
+            // },
             useGoRouter: false,
             locale: context.watch<LocaleProvider>().appLocale,
             supportedLocales: AppLocalizations.languages
