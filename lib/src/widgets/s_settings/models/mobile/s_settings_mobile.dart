@@ -364,14 +364,14 @@ Future<void> superkitSettingsMobileModal({
                                                   ),
                                                   const Spacer(),
                                                   Switch.adaptive(
-                                                    value: accountOverviewValue,
+                                                    value: notificationValue,
                                                     onChanged: (bool value) {
                                                       mySetState(
                                                         () {
-                                                          accountOverviewValue =
+                                                          notificationValue =
                                                               value;
                                                           onNotificationChange!(
-                                                              accountOverviewValue);
+                                                              notificationValue);
                                                         },
                                                       );
                                                     },
