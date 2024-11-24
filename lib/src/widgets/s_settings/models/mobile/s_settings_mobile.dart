@@ -404,8 +404,10 @@ Future<void> superkitSettingsMobileModal({
                                                             0.61,
                                                     child:
                                                         SuperKitText.bodyBold(
-                                                      text:
-                                                          "Allow Account Overview",
+                                                      text: AppLocalizations.of(
+                                                              context)!
+                                                          .translate(
+                                                              'allow_account_overview')!,
                                                       lang: lang,
                                                       fontFamily: font,
                                                       maxLines: 3,
@@ -414,14 +416,14 @@ Future<void> superkitSettingsMobileModal({
                                                   ),
                                                   const Spacer(),
                                                   Switch.adaptive(
-                                                    value: notificationValue,
+                                                    value: accountOverviewValue,
                                                     onChanged: (bool value) {
                                                       mySetState(
                                                         () {
-                                                          notificationValue =
+                                                          accountOverviewValue =
                                                               value;
-                                                          onNotificationChange!(
-                                                              notificationValue);
+                                                          onAccountOverviewChange!(
+                                                              accountOverviewValue);
                                                         },
                                                       );
                                                     },

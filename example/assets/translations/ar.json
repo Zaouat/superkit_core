@@ -33,5 +33,7 @@
   "btn_buy": "اشتري الآن",
   "terms_services": "الشروط والخدمات",
   "allow_notifications": "السماح بالاشعارات",
-  "device_default": " (لغة ​​الجهاز)"
+  "device_default": " (لغة ​​الجهاز)",
+
+  "allow_account_overview": "السماح بمراجعة الحساب"
 }

@@ -33,5 +33,7 @@
   "btn_buy": "Buy Now",
   "terms_services": "Terms of Service | Privacy Policy",
   "allow_notifications": "Allow Notifications",
-  "device_default": " (default)"
+  "device_default": " (default)",
+
+  "allow_account_overview": "Allow Account Overview"
 }

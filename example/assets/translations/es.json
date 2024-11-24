@@ -33,5 +33,7 @@
   "btn_buy": "Compra ahora",
   "terms_services": "Términos de Servicio | Política de privacidad",
   "allow_notifications": "Permitir notificaciones",
-  "device_default": " (por defecto)"
+  "device_default": " (por defecto)",
+
+  "allow_account_overview": "Permitir resumen de la cuenta"
 }

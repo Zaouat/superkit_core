@@ -33,5 +33,7 @@
   "btn_buy": "Koop nu",
   "terms_services": "Servicevoorwaarden | Privacybeleid",
   "allow_notifications": "Meldingen toestaan",
-  "device_default": " (Standard)"
+  "device_default": " (Standard)",
+
+  "allow_account_overview": "Accountoverzicht toestaan"
 }
