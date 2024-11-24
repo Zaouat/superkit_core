@@ -50,22 +50,6 @@ class SuperKit {
 }
 
 class SuperKitMaterialApp extends StatefulWidget {
-  /// Creates a Superkit MaterialApp.
-  ///
-  /// If [lightTheme], [darkTheme], are null, then their SuperKitApp
-  /// values will be used. If the corresponding SuperKitApp property is null,
-  /// then the default specified in the property's documentation will be used instead.
-  ///
-  /// The [supportedLocales], [routeInformationParser], and [routerDelegate], are required,
-  /// if the [useGoRouter] variable is true, then you must implement it with SuperKitApp.
-  ///
-  /// If the 'locale' is null then the system's locale value is used.
-  /// The value of [Localizations.locale] will equal this locale if it matches one of the [supportedLocales]. Otherwise it will be the first element of [supportedLocales].
-  ///
-  /// The [routes] variable is required, if the [useGoRouter] variable is false, then it must be a map of go routes.
-  ///
-  /// [builder] is an optional parameter that wraps the entire application with a custom widget.
-
   const SuperKitMaterialApp({
     super.key,
     this.lightTheme,
@@ -81,47 +65,22 @@ class SuperKitMaterialApp extends StatefulWidget {
     this.initialRoute = '/',
     this.themeProvider,
     this.defalutThemeMode = AdaptiveThemeMode.system,
-    this.builder, // Added builder parameter
+    this.builder,
   });
 
-  /// The Light Theme to use for the Material widgets in the app the default is the [superkitLightTheme].
   final ThemeData? lightTheme;
-
-  /// The Dark Theme to use for the Material widgets in the app the default is the [superkitDarkTheme].
   final ThemeData? darkTheme;
-
-  /// Typically a [String] containing a title of the current contents
-  /// of the app.
   final String? title;
-
-  /// The initial locale for this app's [Localizations] widget.
   final Locale? locale;
-
-  /// a Bool to determine if [GoRouter] should be used or use the default routes it's true by default.
   final bool? useGoRouter;
-
   final RouterConfig<Object>? routerConfig;
-
-  /// A list of locales that the app supports.
   final Iterable<Locale>? supportedLocales;
-
-  /// A function that parses the route information.
   final RouteInformationParser<Object>? routeInformationParser;
-
-  ///
   final RouterDelegate<Object>? routerDelegate;
-
-  /// A map of [String] route names to []s that build [Route]s.
   final Map<String, Widget Function(BuildContext)>? routes;
-
-  /// The initial route of the app.
   final String? initialRoute;
-
   final dynamic themeProvider;
-
   final AdaptiveThemeMode? defalutThemeMode;
-
-  /// Optional builder that wraps the entire app
   final Widget Function(BuildContext, Widget)? builder;
 
   @override
@@ -136,9 +95,6 @@ class _SuperKitState extends State<SuperKitMaterialApp> {
       builder:
           (BuildContext context, AsyncSnapshot<AdaptiveThemeMode?> snapshot) {
         return AdaptiveTheme(
-          /* -------------------------------------------------------------------------- */
-          /*                        The default theme for the app                       */
-          /* -------------------------------------------------------------------------- */
           light: widget.lightTheme ??
               (widget.themeProvider!.getSelectedTheme == FlexScheme.custom
                   ? superkitLightTheme
@@ -206,55 +162,61 @@ class _SuperKitState extends State<SuperKitMaterialApp> {
                       ),
                     )),
           initial: snapshot.data ?? widget.defalutThemeMode!,
-
-          /* -------------------------------------------------------------------------- */
           builder: (ThemeData theme, ThemeData darkTheme) {
-            Widget app = widget.useGoRouter!
-                ? MaterialApp.router(
-                    routeInformationParser: widget.routeInformationParser,
-                    routerDelegate: widget.routerDelegate,
-                    title: widget.title!,
-                    theme: theme,
-                    darkTheme: darkTheme,
-                    routerConfig: widget.routerConfig!,
-                    debugShowCheckedModeBanner: false,
-                    locale: widget.locale,
-                    supportedLocales: widget.supportedLocales!,
-                    localizationsDelegates: const <LocalizationsDelegate<
-                        dynamic>>[
-                      AppLocalizations.delegate,
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalCupertinoLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      DefaultCupertinoLocalizations.delegate,
-                    ],
-                  )
-                : MaterialApp(
-                    title: widget.title!,
-                    theme: theme,
-                    darkTheme: darkTheme,
-                    debugShowCheckedModeBanner: false,
-                    locale: widget.locale,
-                    routes: widget.routes!,
-                    initialRoute: widget.initialRoute,
-                    supportedLocales: widget.supportedLocales!,
-                    localizationsDelegates: const <LocalizationsDelegate<
-                        dynamic>>[
-                      AppLocalizations.delegate,
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalCupertinoLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      DefaultCupertinoLocalizations.delegate,
-                    ],
-                  );
+            Widget app;
 
-            // Safely wrap the builder
-      if (widget.builder != null) {
-        // Only wrap the `app` if builder is provided
-        app = Builder(
-          builder: (innerContext) => widget.builder!(innerContext, app),
-        );
-      }
+            // Create the base MaterialApp with all configurations
+            if (widget.useGoRouter!) {
+              app = MaterialApp.router(
+                routeInformationParser: widget.routeInformationParser,
+                routerDelegate: widget.routerDelegate,
+                routerConfig: widget.routerConfig!,
+                title: widget.title!,
+                theme: theme,
+                darkTheme: darkTheme,
+                debugShowCheckedModeBanner: false,
+                locale: widget.locale,
+                supportedLocales: widget.supportedLocales!,
+                builder: (context, child) {
+                  if (widget.builder != null) {
+                    return widget.builder!(context, child ?? const SizedBox());
+                  }
+                  return child ?? const SizedBox();
+                },
+                localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+                  AppLocalizations.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  DefaultCupertinoLocalizations.delegate,
+                ],
+              );
+            } else {
+              app = MaterialApp(
+                title: widget.title!,
+                theme: theme,
+                darkTheme: darkTheme,
+                debugShowCheckedModeBanner: false,
+                locale: widget.locale,
+                routes: widget.routes!,
+                initialRoute: widget.initialRoute,
+                supportedLocales: widget.supportedLocales!,
+                builder: (context, child) {
+                  if (widget.builder != null) {
+                    return widget.builder!(context, child ?? const SizedBox());
+                  }
+                  return child ?? const SizedBox();
+                },
+                localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+                  AppLocalizations.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  DefaultCupertinoLocalizations.delegate,
+                ],
+              );
+            }
+
             return app;
           },
         );

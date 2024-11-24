@@ -50,12 +50,29 @@ class MainPage extends StatelessWidget {
             routes: <String, Widget Function(BuildContext)>{
               '/': (BuildContext context) => StartPage(),
             },
-            // builder: (context, app) {
-            //   return GestureDetector(
-            //     onTap: () => debugPrint("Tapped"),
-            //     child: app,
-            //   );
-            // },
+            builder: (context, child) {
+              return Navigator(
+                // Add a Navigator here
+                onGenerateRoute: (settings) {
+                  return MaterialPageRoute(
+                    builder: (context) => GestureDetector(
+                      onTap: () => showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        backgroundColor: Colors.white,
+                        builder: (BuildContext context) {
+                          return Container(
+                            height: 200,
+                            color: Colors.red,
+                          );
+                        },
+                      ),
+                      child: child,
+                    ),
+                  );
+                },
+              );
+            },
             useGoRouter: false,
             locale: context.watch<LocaleProvider>().appLocale,
             supportedLocales: AppLocalizations.languages
