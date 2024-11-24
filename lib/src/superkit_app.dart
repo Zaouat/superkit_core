@@ -248,10 +248,13 @@ class _SuperKitState extends State<SuperKitMaterialApp> {
                     ],
                   );
 
-            // Wrap the entire app with the builder if provided
-            if (widget.builder != null) {
-              app = widget.builder!(context, app);
-            }
+            // Safely wrap the builder
+      if (widget.builder != null) {
+        // Only wrap the `app` if builder is provided
+        app = Builder(
+          builder: (innerContext) => widget.builder!(innerContext, app),
+        );
+      }
             return app;
           },
         );
