@@ -91,7 +91,11 @@ class _StartPageState extends State<StartPage> {
               darkColor: Colors.black,
               lightColor: Colors.white,
               enableNotificationSection: true,
-
+              enableAccountOverview: true,
+              accountOverviewValue: true,
+              onAccountOverviewChange: (account) => debugPrint(
+                account.toString(),
+              ),
               notificationValue: false,
               onChange: (notification) => debugPrint(
                 notification.toString(),

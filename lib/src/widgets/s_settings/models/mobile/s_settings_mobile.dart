@@ -209,11 +209,14 @@ Future<void> superkitSettingsMobileModal({
   Color? lightColor,
   bool? enbalethemes,
   final Function(bool)? onNotificationChange,
+  final Function(bool)? onAccountOverviewChange,
   bool? enableNotification,
+  bool? enableAccountOverview,
   Widget? widgets,
   required String? font,
   required String? fontAr,
   required bool notificationValue,
+  required bool accountOverviewValue,
 }) {
   return showModalBottomSheet(
     isScrollControlled: true,
@@ -276,7 +279,6 @@ Future<void> superkitSettingsMobileModal({
                   child: ListView(
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    padding: const EdgeInsets.only(bottom: 5),
                     children: <Widget>[
                       verticalSpaceSmall,
                       Align(
@@ -362,6 +364,56 @@ Future<void> superkitSettingsMobileModal({
                                                   ),
                                                   const Spacer(),
                                                   Switch.adaptive(
+                                                    value: accountOverviewValue,
+                                                    onChanged: (bool value) {
+                                                      mySetState(
+                                                        () {
+                                                          accountOverviewValue =
+                                                              value;
+                                                          onNotificationChange!(
+                                                              accountOverviewValue);
+                                                        },
+                                                      );
+                                                    },
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      : Container(),
+                                  enableAccountOverview!
+                                      ? Padding(
+                                          padding: lang.contains('ar')
+                                              ? const EdgeInsets.only(
+                                                  left: 16,
+                                                  right: 16,
+                                                )
+                                              : const EdgeInsets.only(
+                                                  left: 16,
+                                                  right: 16,
+                                                ),
+                                          child: Column(
+                                            children: [
+                                              verticalSpaceSmall,
+                                              Row(
+                                                children: [
+                                                  SizedBox(
+                                                    width:
+                                                        screenWidth(context) *
+                                                            0.61,
+                                                    child:
+                                                        SuperKitText.bodyBold(
+                                                      text:
+                                                          "Allow Account Overview",
+                                                      lang: lang,
+                                                      fontFamily: font,
+                                                      maxLines: 3,
+                                                      fontArFamily: fontAr,
+                                                    ),
+                                                  ),
+                                                  const Spacer(),
+                                                  Switch.adaptive(
                                                     value: notificationValue,
                                                     onChanged: (bool value) {
                                                       mySetState(
@@ -396,7 +448,6 @@ Future<void> superkitSettingsMobileModal({
                                         )
                                       : Container(),
                                   widgets ?? Container(),
-                                  verticalSpaceMedium,
                                 ],
                               ),
                             ],
