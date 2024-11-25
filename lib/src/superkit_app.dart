@@ -66,6 +66,7 @@ class SuperKitMaterialApp extends StatefulWidget {
     this.themeProvider,
     this.defalutThemeMode = AdaptiveThemeMode.system,
     this.builder,
+    this.keynavigator,
   });
 
   final ThemeData? lightTheme;
@@ -82,6 +83,7 @@ class SuperKitMaterialApp extends StatefulWidget {
   final dynamic themeProvider;
   final AdaptiveThemeMode? defalutThemeMode;
   final Widget Function(BuildContext, Widget)? builder;
+  final GlobalKey<NavigatorState>? keynavigator;
 
   @override
   State<SuperKitMaterialApp> createState() => _SuperKitState();
@@ -177,12 +179,6 @@ class _SuperKitState extends State<SuperKitMaterialApp> {
                 debugShowCheckedModeBanner: false,
                 locale: widget.locale,
                 supportedLocales: widget.supportedLocales!,
-                builder: (context, child) {
-                  if (widget.builder != null) {
-                    return widget.builder!(context, child ?? const SizedBox());
-                  }
-                  return child ?? const SizedBox();
-                },
                 localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
                   AppLocalizations.delegate,
                   GlobalMaterialLocalizations.delegate,
@@ -190,6 +186,12 @@ class _SuperKitState extends State<SuperKitMaterialApp> {
                   GlobalWidgetsLocalizations.delegate,
                   DefaultCupertinoLocalizations.delegate,
                 ],
+                builder: (context, child) {
+                  if (widget.builder != null) {
+                    return widget.builder!(context, child ?? const SizedBox());
+                  }
+                  return child ?? const SizedBox();
+                },
               );
             } else {
               app = MaterialApp(
@@ -201,12 +203,7 @@ class _SuperKitState extends State<SuperKitMaterialApp> {
                 routes: widget.routes!,
                 initialRoute: widget.initialRoute,
                 supportedLocales: widget.supportedLocales!,
-                builder: (context, child) {
-                  if (widget.builder != null) {
-                    return widget.builder!(context, child ?? const SizedBox());
-                  }
-                  return child ?? const SizedBox();
-                },
+                navigatorKey: widget.keynavigator,
                 localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
                   AppLocalizations.delegate,
                   GlobalMaterialLocalizations.delegate,
@@ -214,6 +211,12 @@ class _SuperKitState extends State<SuperKitMaterialApp> {
                   GlobalWidgetsLocalizations.delegate,
                   DefaultCupertinoLocalizations.delegate,
                 ],
+                builder: (context, child) {
+                  if (widget.builder != null) {
+                    return widget.builder!(context, child ?? const SizedBox());
+                  }
+                  return child ?? const SizedBox();
+                },
               );
             }
 

@@ -27,6 +27,7 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     AppLocalizations.languages =
         context.read<GlobalProvider>().config!.languages;
+    final GlobalKey<NavigatorState> _navigator = GlobalKey<NavigatorState>();
 
     /*  If you decide to not use GoRouter then you need to implement this code on SuperKitMaterialApp  
      useGoRouter: false,
@@ -50,28 +51,42 @@ class MainPage extends StatelessWidget {
             routes: <String, Widget Function(BuildContext)>{
               '/': (BuildContext context) => StartPage(),
             },
-            builder: (context, child) {
-              return Navigator(
-                // Add a Navigator here
-                onGenerateRoute: (settings) {
-                  return MaterialPageRoute(
-                    builder: (context) => GestureDetector(
-                      onTap: () => showModalBottomSheet(
-                        context: context,
-                        isScrollControlled: true,
-                        backgroundColor: Colors.white,
-                        builder: (BuildContext context) {
-                          return Container(
-                            height: 200,
-                            color: Colors.red,
-                          );
-                        },
-                      ),
-                      child: child,
-                    ),
-                  );
-                },
+            keynavigator: _navigator,
+            builder: (scontext, child) {
+              return GestureDetector(
+                onTap: () => showModalBottomSheet(
+                  context: _navigator.currentContext!,
+                  isScrollControlled: true,
+                  backgroundColor: Colors.white,
+                  builder: (BuildContext context) {
+                    return Container(
+                      height: 200,
+                      color: Colors.red,
+                    );
+                  },
+                ),
+                child: child,
               );
+              // return Navigator(
+              //   onGenerateRoute: (settings) {
+              //     return MaterialPageRoute(
+              //       builder: (context) => GestureDetector(
+              //         onTap: () => showModalBottomSheet(
+              //           context: context,
+              //           isScrollControlled: true,
+              //           backgroundColor: Colors.white,
+              //           builder: (BuildContext context) {
+              //             return Container(
+              //               height: 200,
+              //               color: Colors.red,
+              //             );
+              //           },
+              //         ),
+              //         child: child,
+              //       ),
+              //     );
+              //   },
+              // );
             },
             useGoRouter: false,
             locale: context.watch<LocaleProvider>().appLocale,
