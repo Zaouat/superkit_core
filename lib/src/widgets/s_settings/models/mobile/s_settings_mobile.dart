@@ -450,6 +450,7 @@ Future<void> superkitSettingsMobileModal({
                                         )
                                       : Container(),
                                   widgets ?? Container(),
+                                  verticalSpaceMedium,
                                 ],
                               ),
                             ],
