@@ -2,10 +2,12 @@
 * File : SuperKit Button 
 * Version : 1.0.0
 * */
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:superkit_core/superkit_core.dart';
 
-class SuperKitButton extends StatelessWidget {
+class SuperKitButton extends StatefulWidget {
   const SuperKitButton({
     super.key,
     this.title = 'Superkit',
@@ -25,6 +27,7 @@ class SuperKitButton extends StatelessWidget {
     this.fontWeight,
     this.borderWidth = 1.5,
     this.fontSize,
+    this.disabledTimer,
   }) : outline = false;
 
   const SuperKitButton.small({
@@ -46,6 +49,7 @@ class SuperKitButton extends StatelessWidget {
     this.fontWeight,
     this.borderWidth = 1.5,
     this.fontSize,
+    this.disabledTimer,
   }) : outline = false;
 
   const SuperKitButton.medium({
@@ -67,6 +71,7 @@ class SuperKitButton extends StatelessWidget {
     this.fontWeight,
     this.borderWidth = 1.5,
     this.fontSize,
+    this.disabledTimer,
   }) : outline = false;
   const SuperKitButton.large({
     super.key,
@@ -87,6 +92,7 @@ class SuperKitButton extends StatelessWidget {
     this.fontWeight,
     this.borderWidth = 1.5,
     this.fontSize,
+    this.disabledTimer,
   }) : outline = false;
 
   const SuperKitButton.outline({
@@ -106,6 +112,7 @@ class SuperKitButton extends StatelessWidget {
     this.fontWeight,
     this.borderWidth = 1.5,
     this.fontSize,
+    this.disabledTimer,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -126,6 +133,7 @@ class SuperKitButton extends StatelessWidget {
     this.fontWeight,
     this.borderWidth = 1.5,
     this.fontSize,
+    this.disabledTimer,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -146,6 +154,7 @@ class SuperKitButton extends StatelessWidget {
     this.fontWeight,
     this.borderWidth = 1.5,
     this.fontSize,
+    this.disabledTimer,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -166,6 +175,7 @@ class SuperKitButton extends StatelessWidget {
     this.fontWeight,
     this.borderWidth = 1.5,
     this.fontSize,
+    this.disabledTimer,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -222,115 +232,132 @@ class SuperKitButton extends StatelessWidget {
   final double? fontSize;
 
   final double? spacing;
+
+  final int? disabledTimer;
+
+  @override
+  State<SuperKitButton> createState() => _SuperKitButtonState();
+}
+
+class _SuperKitButtonState extends State<SuperKitButton> {
+  late int remainingTime;
+  bool isTimerActive = false;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.disabledTimer != null) {
+      startDisabledTimer();
+    }
+  }
+
+  void startDisabledTimer() {
+    setState(() {
+      isTimerActive = true;
+      remainingTime = widget.disabledTimer!;
+    });
+
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (remainingTime > 1) {
+        setState(() {
+          remainingTime--;
+        });
+      } else {
+        timer.cancel();
+        setState(() {
+          isTimerActive = false;
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final String lang = Localizations.localeOf(context).languageCode;
 
     return ScaleTap(
-      onPressed: () {
-        onTap!();
-      },
+      onPressed: widget.busy || widget.disabled || isTimerActive
+          ? null
+          : () {
+              widget.onTap?.call();
+            },
       child: ClipRRect(
         borderRadius: BorderRadius.all(
-          Radius.circular(borderRadius!),
+          Radius.circular(widget.borderRadius ?? 8.0),
         ),
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: () {
-              onTap!();
-            },
-            child: Container(
-              width: width ?? double.infinity,
-              height: height,
-              alignment: align == TextAlign.center
-                  ? Alignment.center
-                  : lang.contains('ar')
-                      ? Alignment.centerRight
-                      : Alignment.centerLeft,
-              decoration: !outline
-                  ? BoxDecoration(
-                      color: !disabled
-                          ? color ?? Theme.of(context).primaryColor
-                          : color!.withOpacity(0.3),
-                      borderRadius: BorderRadius.circular(borderRadius!),
-                    )
-                  : BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(borderRadius!),
-                      border: Border.all(
-                        color: color!,
-                        width: borderWidth!,
-                      ),
-                    ),
-              child: !busy
-                  ? (icon != null)
-                      ? Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            //horizontalSpaceSmall,
-                            Icon(
-                              icon,
-                              color: outline
-                                  ? color ?? Theme.of(context).primaryColor
-                                  : Colors.white,
-                              size: iconSize ?? 20,
-                            ),
-                            if (icon != null) SizedBox(width: spacing ?? 10),
-                            Text(
-                              title,
-                              textAlign: align,
-                              style: fontChanger(
-                                lang: lang,
-                                fontName: font,
-                                fontArName: fontAr,
-                                fontSize: fontSize ?? 12,
-                                fontWeight: fontWeight ?? FontWeight.w500,
-                                color: !outline
-                                    ? Colors.white
-                                    : color ?? Theme.of(context).primaryColor,
-                              ),
-                            ),
-                          ],
-                        )
-                      : Row(
-                          mainAxisAlignment: align == TextAlign.center
-                              ? MainAxisAlignment.center
-                              : MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            if (align != TextAlign.center)
-                              const SizedBox(width: 10),
-                            Text(
-                              title,
-                              textAlign: align,
-                              style: fontChanger(
-                                fontWeight: (fontWeight != null)
-                                    ? fontWeight
-                                    : !outline
-                                        ? FontWeight.w500
-                                        : FontWeight.w500,
-                                fontName: font,
-                                fontArName: fontAr,
-                                lang: lang,
-                                fontSize: fontSize ?? 12,
-                                color: !outline
-                                    ? Colors.white
-                                    : color ?? Theme.of(context).primaryColor,
-                              ),
-                            ),
-                          ],
-                        )
-                  : const SizedBox(
-                      width: 18,
-                      height: 18,
+            onTap: widget.busy || widget.disabled || isTimerActive
+                ? null
+                : () {
+                    widget.onTap?.call();
+                  },
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              width: widget.busy
+                  ? widget.height
+                  : (widget.width ?? double.infinity),
+              height: widget.height,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: widget.busy
+                    ? (widget.color ?? Theme.of(context).primaryColor)
+                    : !widget.outline
+                        ? (!widget.disabled && !isTimerActive
+                            ? widget.color ?? Theme.of(context).primaryColor
+                            : widget.color!.withOpacity(0.45))
+                        : Colors.transparent,
+                borderRadius: BorderRadius.circular(widget.borderRadius ?? 8.0),
+                border: widget.outline && !widget.busy
+                    ? Border.all(
+                        color: widget.color ?? Theme.of(context).primaryColor,
+                        width: widget.borderWidth ?? 1.0,
+                      )
+                    : null,
+              ),
+              child: widget.busy
+                  ? const SizedBox(
+                      width: 20,
+                      height: 20,
                       child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                          Colors.white,
-                        ),
+                        strokeWidth: 3,
+                        strokeCap: StrokeCap.round,
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                       ),
+                    )
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        if (widget.icon != null)
+                          Icon(
+                            widget.icon,
+                            color: widget.outline
+                                ? widget.color ?? Theme.of(context).primaryColor
+                                : Colors.white,
+                            size: widget.iconSize ?? 20,
+                          ),
+                        if (widget.icon != null)
+                          SizedBox(width: widget.spacing ?? 10),
+                        Text(
+                          isTimerActive
+                              ? "${widget.title} in ${remainingTime}sec"
+                              : widget.title,
+                          textAlign: widget.align,
+                          style: fontChanger(
+                            lang: lang,
+                            fontName: widget.font,
+                            fontArName: widget.fontAr,
+                            fontSize: widget.fontSize ?? 12,
+                            fontWeight: widget.fontWeight ?? FontWeight.w500,
+                            color: !widget.outline
+                                ? Colors.white
+                                : widget.color ??
+                                    Theme.of(context).primaryColor,
+                          ),
+                        ),
+                      ],
                     ),
             ),
           ),

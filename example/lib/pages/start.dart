@@ -16,6 +16,7 @@ class _StartPageState extends State<StartPage> {
   // final items = List.generate(1000, (index) => '$index');
   // var filterOptions = List.of(IntType.values);
   TextEditingController controller = new TextEditingController();
+  bool _isBusy = false;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +62,33 @@ class _StartPageState extends State<StartPage> {
         tabsWidgets: [
           Container(
             child: Center(
-              child: Text("Tab 1"),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SuperKitButton.large(
+                    title: "BlaBla",
+                    color: Colors.deepPurple,
+                    fontWeight: FontWeight.w900,
+                    fontSize: 16,
+                    font: "Rubik",
+                    borderRadius: 100,
+                    busy: _isBusy,
+                    disabledTimer: 30,
+                    onTap: () {
+                      setState(() {
+                        _isBusy = true;
+                      });
+
+                      Future.delayed(Duration(seconds: 7), () {
+                        setState(() {
+                          _isBusy = false;
+                        });
+                        // Navigate after delay
+                      });
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
           Container(
