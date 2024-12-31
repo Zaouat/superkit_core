@@ -16,7 +16,6 @@ class _StartPageState extends State<StartPage> {
   // final items = List.generate(1000, (index) => '$index');
   // var filterOptions = List.of(IntType.values);
   TextEditingController controller = new TextEditingController();
-  bool _isBusy = false;
 
   @override
   Widget build(BuildContext context) {
@@ -66,25 +65,48 @@ class _StartPageState extends State<StartPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SuperKitButton.large(
-                    title: "BlaBla",
+                    title: "Show Alert",
                     color: Colors.deepPurple,
                     fontWeight: FontWeight.w900,
                     fontSize: 16,
                     font: "Rubik",
-                    borderRadius: 100,
-                    busy: _isBusy,
-                    disabledTimer: 30,
+                    isTimerActive: false,
                     onTap: () {
-                      setState(() {
-                        _isBusy = true;
-                      });
-
-                      Future.delayed(Duration(seconds: 7), () {
-                        setState(() {
-                          _isBusy = false;
-                        });
-                        // Navigate after delay
-                      });
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Confirmation"),
+                            content: Column(
+                              children: [
+                                Text("Are you sure you want to proceed?"),
+                                SuperKitButton.large(
+                                  title: "Click Me",
+                                  color: Colors.deepPurple,
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 16,
+                                  font: "Rubik",
+                                  isTimerActive: true,
+                                  disabledTimer: 5,
+                                  borderRadius: 100,
+                                  onTap: () {},
+                                ),
+                                SuperKitButton.large(
+                                  title: "Cancel",
+                                  color: Colors.deepPurple,
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 16,
+                                  font: "Rubik",
+                                  isTimerActive: false,
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
                     },
                   ),
                 ],

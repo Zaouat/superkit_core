@@ -1,6 +1,8 @@
+// ignore_for_file: must_be_immutable
+
 /*
 * File : SuperKit Button 
-* Version : 1.0.0
+* Version : 1.0.1
 * */
 import 'dart:async';
 
@@ -8,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:superkit_core/superkit_core.dart';
 
 class SuperKitButton extends StatefulWidget {
-  const SuperKitButton({
+  SuperKitButton({
     super.key,
     this.title = 'Superkit',
     this.disabled = false,
@@ -28,9 +30,10 @@ class SuperKitButton extends StatefulWidget {
     this.borderWidth = 1.5,
     this.fontSize,
     this.disabledTimer,
+    this.isTimerActive = false,
   }) : outline = false;
 
-  const SuperKitButton.small({
+  SuperKitButton.small({
     super.key,
     required this.title,
     this.disabled = false,
@@ -50,9 +53,10 @@ class SuperKitButton extends StatefulWidget {
     this.borderWidth = 1.5,
     this.fontSize,
     this.disabledTimer,
+    this.isTimerActive = false,
   }) : outline = false;
 
-  const SuperKitButton.medium({
+  SuperKitButton.medium({
     super.key,
     required this.title,
     this.disabled = false,
@@ -72,8 +76,10 @@ class SuperKitButton extends StatefulWidget {
     this.borderWidth = 1.5,
     this.fontSize,
     this.disabledTimer,
+    this.isTimerActive = false,
   }) : outline = false;
-  const SuperKitButton.large({
+
+  SuperKitButton.large({
     super.key,
     required this.title,
     this.disabled = false,
@@ -93,9 +99,10 @@ class SuperKitButton extends StatefulWidget {
     this.borderWidth = 1.5,
     this.fontSize,
     this.disabledTimer,
+    this.isTimerActive = false,
   }) : outline = false;
 
-  const SuperKitButton.outline({
+  SuperKitButton.outline({
     super.key,
     required this.title,
     this.onTap,
@@ -113,10 +120,12 @@ class SuperKitButton extends StatefulWidget {
     this.borderWidth = 1.5,
     this.fontSize,
     this.disabledTimer,
+    this.isTimerActive = false,
   })  : disabled = false,
         busy = false,
         outline = true;
-  const SuperKitButton.smallOutline({
+
+  SuperKitButton.smallOutline({
     super.key,
     required this.title,
     this.onTap,
@@ -134,10 +143,12 @@ class SuperKitButton extends StatefulWidget {
     this.borderWidth = 1.5,
     this.fontSize,
     this.disabledTimer,
+    this.isTimerActive = false,
   })  : disabled = false,
         busy = false,
         outline = true;
-  const SuperKitButton.mediumOutline({
+
+  SuperKitButton.mediumOutline({
     super.key,
     required this.title,
     this.onTap,
@@ -155,10 +166,12 @@ class SuperKitButton extends StatefulWidget {
     this.borderWidth = 1.5,
     this.fontSize,
     this.disabledTimer,
+    this.isTimerActive = false,
   })  : disabled = false,
         busy = false,
         outline = true;
-  const SuperKitButton.largeOutline({
+
+  SuperKitButton.largeOutline({
     super.key,
     required this.title,
     this.onTap,
@@ -176,6 +189,7 @@ class SuperKitButton extends StatefulWidget {
     this.borderWidth = 1.5,
     this.fontSize,
     this.disabledTimer,
+    this.isTimerActive = false,
   })  : disabled = false,
         busy = false,
         outline = true;
@@ -231,9 +245,14 @@ class SuperKitButton extends StatefulWidget {
   /// The Font Size of the text in the button.
   final double? fontSize;
 
+  /// The spacing between the icon and text in the button.
   final double? spacing;
 
+  /// The duration in seconds for which the button should remain disabled.
   final int? disabledTimer;
+
+  /// A boolean value that indicates whether the timer is currently active.
+  late bool? isTimerActive;
 
   @override
   State<SuperKitButton> createState() => _SuperKitButtonState();
@@ -241,7 +260,7 @@ class SuperKitButton extends StatefulWidget {
 
 class _SuperKitButtonState extends State<SuperKitButton> {
   late int remainingTime;
-  bool isTimerActive = false;
+  Timer? _timer;
 
   @override
   void initState() {
@@ -251,22 +270,35 @@ class _SuperKitButtonState extends State<SuperKitButton> {
     }
   }
 
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
   void startDisabledTimer() {
     setState(() {
-      isTimerActive = true;
+      widget.isTimerActive = true;
       remainingTime = widget.disabledTimer!;
     });
 
-    Timer.periodic(const Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (!mounted) {
+        timer.cancel();
+        return;
+      }
+
       if (remainingTime > 1) {
         setState(() {
           remainingTime--;
         });
       } else {
         timer.cancel();
-        setState(() {
-          isTimerActive = false;
-        });
+        if (mounted) {
+          setState(() {
+            widget.isTimerActive = false;
+          });
+        }
       }
     });
   }
@@ -276,7 +308,7 @@ class _SuperKitButtonState extends State<SuperKitButton> {
     final String lang = Localizations.localeOf(context).languageCode;
 
     return ScaleTap(
-      onPressed: widget.busy || widget.disabled || isTimerActive
+      onPressed: widget.busy || widget.disabled || widget.isTimerActive!
           ? null
           : () {
               widget.onTap?.call();
@@ -288,7 +320,7 @@ class _SuperKitButtonState extends State<SuperKitButton> {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: widget.busy || widget.disabled || isTimerActive
+            onTap: widget.busy || widget.disabled || widget.isTimerActive!
                 ? null
                 : () {
                     widget.onTap?.call();
@@ -304,7 +336,7 @@ class _SuperKitButtonState extends State<SuperKitButton> {
                 color: widget.busy
                     ? (widget.color ?? Theme.of(context).primaryColor)
                     : !widget.outline
-                        ? (!widget.disabled && !isTimerActive
+                        ? (!widget.disabled && !widget.isTimerActive!
                             ? widget.color ?? Theme.of(context).primaryColor
                             : widget.color!.withOpacity(0.45))
                         : Colors.transparent,
@@ -341,7 +373,7 @@ class _SuperKitButtonState extends State<SuperKitButton> {
                         if (widget.icon != null)
                           SizedBox(width: widget.spacing ?? 10),
                         Text(
-                          isTimerActive
+                          widget.isTimerActive!
                               ? "${widget.title} in ${remainingTime}sec"
                               : widget.title,
                           textAlign: widget.align,
