@@ -170,6 +170,7 @@ class _SuperKitState extends State<SuperKitMaterialApp> {
             // Create the base MaterialApp with all configurations
             if (widget.useGoRouter!) {
               app = MaterialApp.router(
+                
                 routeInformationParser: widget.routeInformationParser,
                 routerDelegate: widget.routerDelegate,
                 routerConfig: widget.routerConfig!,
@@ -178,7 +179,6 @@ class _SuperKitState extends State<SuperKitMaterialApp> {
                 darkTheme: darkTheme,
                 debugShowCheckedModeBanner: false,
                 locale: widget.locale,
-                navigatorKey: widget.navigatorKey,
                 supportedLocales: widget.supportedLocales!,
                 localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
                   AppLocalizations.delegate,
