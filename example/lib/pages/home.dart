@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:superkit_project/providers/global_provider.dart';
 import 'package:superkit_project/providers/local_provider.dart';
-import 'package:superkit_project/providers/theme_provider.dart';
 import 'package:superkit_core/superkit_core.dart';
 import 'package:superkit_project/config/globals.dart' as globals;
 import 'package:superkit_project/widgets/content_mobile.dart';
@@ -58,11 +56,9 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
     globals.lang = Localizations.localeOf(context).languageCode;
     /* -------------------------------------------------------------------------- */
     //debugPrint(Theme.of(context).primaryColor.toHex());
-    return Consumer3<LocaleProvider, GlobalProvider, ThemeProvider>(builder: (
+    return Consumer<LocaleProvider>(builder: (
       BuildContext context,
       LocaleProvider? appLanguage,
-      GlobalProvider? globalProvider,
-      ThemeProvider? themeProvider,
       Widget? child,
     ) {
       return Scaffold(
@@ -98,26 +94,26 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
               tooltip: 'Settings',
               onTap: () {
                 /* -------------  Open Mobile settings Modal  ------------------- */
-                superkitSettingsMobile(
-                    context: context,
-                    languagePr: appLanguage,
-                    languages: globalProvider!.config!.languages,
-                    themePr: themeProvider,
-                    enableDrawer: false,
-                    supportedThemes: globals.supportedThemes,
-                    scaffoldKey: scaffoldKey,
-                    font: 'Rubik',
-                    enableNotificationSection: false,
-                    widgets: Column(
-                      children: [
-                        SuperKitButton(
-                          title: 'Save',
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                        )
-                      ],
-                    ));
+                // superkitSettingsMobile(
+                //     context: context,
+                //     languagePr: appLanguage,
+                //     languages: globalProvider!.config!.languages,
+                //     themePr: themeProvider,
+                //     enableDrawer: false,
+                //     supportedThemes: globals.supportedThemes,
+                //     scaffoldKey: scaffoldKey,
+                //     font: 'Rubik',
+                //     enableNotificationSection: false,
+                //     widgets: Column(
+                //       children: [
+                //         SuperKitButton(
+                //           title: 'Save',
+                //           onTap: () {
+                //             Navigator.pop(context);
+                //           },
+                //         )
+                //       ],
+                //     ));
               },
             )
           ],
@@ -125,14 +121,14 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
 
         /* ------- You must provide this widget superkitSettingsDesktop 
                         to open the settings on the desktop mode ------- */
-        endDrawer: superkitSettingsDesktop(
-          languagePr: appLanguage,
-          globalPr: globalProvider,
-          themePr: themeProvider,
-          enableDrawer: false,
-          supportedThemes: globals.supportedThemes,
-          scaffoldKey: scaffoldKey,
-        ),
+        // endDrawer: superkitSettingsDesktop(
+        //   languagePr: appLanguage,
+        //   globalPr: globalProvider,
+        //   themePr: themeProvider,
+        //   enableDrawer: false,
+        //   supportedThemes: globals.supportedThemes,
+        //   scaffoldKey: scaffoldKey,
+        // ),
         body: HomeContentMobile(),
         // This trailing comma makes auto-formatting nicer for build methods.
       );

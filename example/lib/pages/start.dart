@@ -3,9 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:superkit_core/superkit_core.dart';
-import 'package:superkit_project/providers/global_provider.dart';
 import 'package:superkit_project/providers/local_provider.dart';
-import 'package:superkit_project/providers/theme_provider.dart';
 import 'package:superkit_project/config/globals.dart' as globals;
 
 class StartPage extends StatefulWidget {
@@ -20,11 +18,9 @@ class _StartPageState extends State<StartPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer3<LocaleProvider, GlobalProvider, ThemeProvider>(builder: (
+    return Consumer<LocaleProvider>(builder: (
       BuildContext context,
       LocaleProvider? appLanguage,
-      GlobalProvider? globalProvider,
-      ThemeProvider? themeProvider,
       Widget? child,
     ) {
       return SimpleSPageTemplate(
@@ -128,38 +124,38 @@ class _StartPageState extends State<StartPage> {
         // onTabChange: (index) {
         //   debugPrint(index.toString());
         // },
-        trailing: IconButton(
-          onPressed: () {
-            superkitSettingsMobile(
-              context: context,
-              languagePr: appLanguage,
-              languages: globalProvider!.config!.languages,
-              // themePr: themeProvider,
-              supportedThemes: globals.supportedThemes,
-              enableDrawer: false,
-              enbalethemes: false,
-              darkColor: Colors.black,
-              lightColor: Colors.white,
-              enableNotificationSection: true,
-              enableAccountOverview: true,
-              accountOverviewValue: true,
-              onAccountOverviewChange: (account) => debugPrint(
-                account.toString(),
-              ),
-              notificationValue: false,
-              onChange: (notification) => debugPrint(
-                notification.toString(),
-              ),
-            );
-          },
-          padding: EdgeInsets.only(right: screenWidth(context) * 0.1),
-          tooltip: 'Settings',
-          icon: Icon(
-            Icons.settings,
-            size: 28,
-            color: Colors.black,
-          ),
-        ),
+        // trailing: IconButton(
+        //   onPressed: () {
+        //     superkitSettingsMobile(
+        //       context: context,
+        //       languagePr: appLanguage,
+        //       languages: globalProvider!.config!.languages,
+        //       // themePr: themeProvider,
+        //       supportedThemes: globals.supportedThemes,
+        //       enableDrawer: false,
+        //       enbalethemes: false,
+        //       darkColor: Colors.black,
+        //       lightColor: Colors.white,
+        //       enableNotificationSection: true,
+        //       enableAccountOverview: true,
+        //       accountOverviewValue: true,
+        //       onAccountOverviewChange: (account) => debugPrint(
+        //         account.toString(),
+        //       ),
+        //       notificationValue: false,
+        //       onChange: (notification) => debugPrint(
+        //         notification.toString(),
+        //       ),
+        //     );
+        //   },
+        //   padding: EdgeInsets.only(right: screenWidth(context) * 0.1),
+        //   tooltip: 'Settings',
+        //   icon: Icon(
+        //     Icons.settings,
+        //     size: 28,
+        //     color: Colors.black,
+        //   ),
+        // ),
         body: Container(
           child: Padding(
             padding: const EdgeInsets.all(18.0),
