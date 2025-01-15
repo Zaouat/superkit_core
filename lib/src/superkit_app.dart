@@ -66,7 +66,6 @@ class SuperKitMaterialApp extends StatefulWidget {
     this.themeProvider,
     this.defalutThemeMode = AdaptiveThemeMode.system,
     this.builder,
-    this.navigatorKey,
   });
 
   final ThemeData? lightTheme;
@@ -83,7 +82,6 @@ class SuperKitMaterialApp extends StatefulWidget {
   final dynamic themeProvider;
   final AdaptiveThemeMode? defalutThemeMode;
   final Widget Function(BuildContext, Widget)? builder;
-  final GlobalKey<NavigatorState>? navigatorKey;
 
   @override
   State<SuperKitMaterialApp> createState() => _SuperKitState();
@@ -170,7 +168,6 @@ class _SuperKitState extends State<SuperKitMaterialApp> {
             // Create the base MaterialApp with all configurations
             if (widget.useGoRouter!) {
               app = MaterialApp.router(
-                
                 routeInformationParser: widget.routeInformationParser,
                 routerDelegate: widget.routerDelegate,
                 routerConfig: widget.routerConfig!,
@@ -204,7 +201,6 @@ class _SuperKitState extends State<SuperKitMaterialApp> {
                 routes: widget.routes!,
                 initialRoute: widget.initialRoute,
                 supportedLocales: widget.supportedLocales!,
-                navigatorKey: widget.navigatorKey,
                 localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
                   AppLocalizations.delegate,
                   GlobalMaterialLocalizations.delegate,
