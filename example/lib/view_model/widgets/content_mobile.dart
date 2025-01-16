@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:superkit_core/superkit_core.dart';
 import 'package:superkit_project/config/globals.dart' as globals;
 
 class HomeContentMobile extends StatefulWidget {
+  const HomeContentMobile({super.key});
+
   @override
   State<HomeContentMobile> createState() => _HomeContentMobileState();
 }
@@ -48,7 +49,7 @@ class _HomeContentMobileState extends State<HomeContentMobile> {
                 onEmojiChanged: (val) {
                   if (mounted) {
                     setState(() {
-                      rating = val;
+                      rating = val as int;
                     });
                   }
                 },
@@ -70,11 +71,7 @@ class _HomeContentMobileState extends State<HomeContentMobile> {
                   SuperKitIconButton.outline(
                     color: Theme.of(context).primaryColor,
                     icon: Icons.share,
-                    onTap: () {
-                      Share.share(
-                          'Check out Superkit Core on ${"https://example.com"}',
-                          subject: 'Superkit Core');
-                    },
+                    onTap: () {},
                   ),
                 ],
               ),

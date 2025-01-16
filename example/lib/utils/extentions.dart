@@ -2,7 +2,7 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:superkit_core/superkit_core.dart';
-import 'package:superkit_project/db_manager.dart';
+import 'package:superkit_project/data/db_manager.dart';
 
 extension HexColorX on Color {
   static Color fromHex(String hexString) {
@@ -24,7 +24,7 @@ extension HexColorX on Color {
 extension Currency on double {
   String toCurrency({
     bool useDefaultFormat = false,
-    String currencySymbol = "\$",
+    String currencySymbol = '\$',
     int decimalDigits = 2,
     List<String> suffixes = const ['T', 'B', 'M', 'k'],
     List<double> thresholds = const [
@@ -47,41 +47,41 @@ extension Currency on double {
     }
 
     if (useDefaultFormat) {
-      String formatted = NumberFormat.currency(
+      final String formatted = NumberFormat.currency(
               locale: 'en_US',
               symbol: currencySymbol,
               decimalDigits: decimalDigits)
           .format(this);
       return removeTrailingZeros(formatted);
     } else {
-      double absValue = abs();
+      final double absValue = abs();
 
       for (int i = 0; i < thresholds.length; i++) {
         if (absValue >= thresholds[i]) {
-          double dividedValue = this / thresholds[i];
-          String suffix = suffixes[i];
+          final double dividedValue = this / thresholds[i];
+          final String suffix = suffixes[i];
 
           // Format the number with the specified decimal digits and remove unnecessary zeros
-          String formattedNumber =
+          final String formattedNumber =
               removeTrailingZeros(dividedValue.toStringAsFixed(decimalDigits));
 
-          return "$currencySymbol$formattedNumber$suffix";
+          return '$currencySymbol$formattedNumber$suffix';
         }
       }
 
       // Handle numbers less than 1
       if (absValue < 1) {
         final decimalValue = Decimal.parse(toStringAsFixed(7));
-        int zeroAmount = countLeadingZeros(decimalValue);
+        final int zeroAmount = countLeadingZeros(decimalValue);
 
         if (zeroAmount >= 3) {
-          String strNumber = decimalValue.toString().split('0.0')[1];
-          String zeros = List.generate(zeroAmount - 1, (_) => "0").join();
-          String dots = List.generate(zeroAmount - 1, (_) => ".").join();
-          String converted = strNumber.replaceAll(zeros, dots);
+          final String strNumber = decimalValue.toString().split('0.0')[1];
+          final String zeros = List.generate(zeroAmount - 1, (_) => '0').join();
+          final String dots = List.generate(zeroAmount - 1, (_) => '.').join();
+          final String converted = strNumber.replaceAll(zeros, dots);
           return '$currencySymbol.0$converted';
         } else if (zeroAmount == 2) {
-          String formatted = NumberFormat.currency(
+          final String formatted = NumberFormat.currency(
                   locale: 'en_US', symbol: currencySymbol, decimalDigits: 6)
               .format(this);
           return removeTrailingZeros(formatted);
@@ -89,7 +89,7 @@ extension Currency on double {
       }
 
       // For all other numbers, format normally and remove trailing zeros
-      String formatted = NumberFormat.currency(
+      final String formatted = NumberFormat.currency(
               locale: 'en_US',
               symbol: currencySymbol,
               decimalDigits: decimalDigits)
@@ -100,14 +100,14 @@ extension Currency on double {
 }
 
 int countLeadingZeros(Decimal number) {
-  String numberStr = number.toString();
-  List<String> parts = numberStr.split('.');
+  final String numberStr = number.toString();
+  final List<String> parts = numberStr.split('.');
 
   if (parts.length < 2) {
     return 0; // No decimal point, no leading zeros
   }
 
-  String decimalPart = parts[1];
+  final String decimalPart = parts[1];
   int count = 0;
 
   for (int i = 0; i < decimalPart.length; i++) {
@@ -137,7 +137,7 @@ extension TranslateNoContext on String {
   Future<String> tr() async {
     final config = DBManager.getAppConfig();
     final locale = Locale(config.languageCode, config.countryCode);
-    AppLocalizations t = await AppLocalizations.delegate.load(locale);
+    final AppLocalizations t = await AppLocalizations.delegate.load(locale);
     return t.translate(this)!;
   }
 }
@@ -168,9 +168,9 @@ extension DurationFormatting on Duration {
   String formatDuration() {
     String twoDigits(int n) => n.toString().padLeft(2, '0');
 
-    String hours = twoDigits(inHours);
-    String minutes = twoDigits(inMinutes.remainder(60));
-    String seconds = twoDigits(inSeconds.remainder(60));
+    final String hours = twoDigits(inHours);
+    final String minutes = twoDigits(inMinutes.remainder(60));
+    final String seconds = twoDigits(inSeconds.remainder(60));
 
     return '$hours:$minutes:$seconds';
   }

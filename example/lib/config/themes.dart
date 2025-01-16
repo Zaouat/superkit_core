@@ -1,34 +1,33 @@
 // ignore_for_file: deprecated_member_use
-
-import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:superkit_project/config/globals.dart' as globals;
 
 mixin Themes {
   static final ThemeData light = ThemeData.light().copyWith(
     visualDensity: VisualDensity.adaptivePlatformDensity,
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      foregroundColor: globals.kcPrimaryColor,
+      foregroundColor: globals.kcPrimary_100,
     ),
-    primaryColor: globals.kcPrimaryColor,
+    primaryColor: globals.kcPrimary_100,
     brightness: Brightness.light,
     primaryColorLight: globals.lightBG,
     dialogBackgroundColor: globals.lightBG,
     scaffoldBackgroundColor: globals.lightBG,
-    unselectedWidgetColor: globals.kcPrimaryColor,
+    unselectedWidgetColor: globals.kcPrimary_100,
     cardColor: globals.lightBG,
-    hintColor: globals.kcPrimaryColor,
-    highlightColor: globals.kcPrimaryColor.withOpacity(0.2),
-    hoverColor: globals.kcPrimaryColor.withOpacity(0.2),
-    focusColor: globals.kcPrimaryColor.withOpacity(0.2),
+    hintColor: globals.kcPrimary_100,
+    highlightColor: globals.kcPrimary_100.withOpacity(0.2),
+    hoverColor: globals.kcPrimary_100.withOpacity(0.2),
+    focusColor: globals.kcPrimary_100.withOpacity(0.2),
     disabledColor: globals.darkBG,
-    splashColor: globals.kcPrimaryColor.withOpacity(0.1),
+    splashColor: globals.kcPrimary_100.withOpacity(0.1),
     canvasColor: globals.lightBG,
-    cardTheme: CardTheme(shadowColor: globals.kcPrimaryColor.withOpacity(0.5)),
+    cardTheme: CardTheme(shadowColor: globals.kcPrimary_100.withOpacity(0.5)),
     textSelectionTheme: TextSelectionThemeData(
-      selectionColor: globals.kcPrimaryColor,
+      selectionColor: globals.kcPrimary_100,
       cursorColor: globals.lightColor,
-      selectionHandleColor: globals.kcPrimaryColor,
+      selectionHandleColor: globals.kcPrimary_100,
     ),
     appBarTheme: AppBarTheme(
       color: globals.lightBG,
@@ -44,9 +43,9 @@ mixin Themes {
       style: ButtonStyle(
         elevation: WidgetStateProperty.all(1),
         shadowColor:
-            WidgetStateProperty.all(globals.kcPrimaryColor.withOpacity(0.2)),
+            WidgetStateProperty.all(globals.kcPrimary_100.withOpacity(0.2)),
         overlayColor: WidgetStateProperty.all(
-          globals.kcPrimaryColor.withOpacity(0.1),
+          globals.kcPrimary_100.withOpacity(0.1),
         ),
       ),
     ),
@@ -57,7 +56,7 @@ mixin Themes {
           return null;
         }
         if (states.contains(WidgetState.selected)) {
-          return globals.kcPrimaryColor;
+          return globals.kcPrimary_100;
         }
         return null;
       }),
@@ -72,24 +71,24 @@ mixin Themes {
           return null;
         }
         if (states.contains(WidgetState.selected)) {
-          return globals.kcPrimaryColor;
+          return globals.kcPrimary_100;
         }
         return null;
       }),
     ),
     colorScheme: ColorScheme.fromSeed(
-      seedColor: globals.kcPrimaryColor,
+      seedColor: globals.kcPrimary_100,
       brightness: Brightness.light,
       background: globals.lightBG,
-      onBackground: globals.kcPrimaryColor,
+      onBackground: globals.kcPrimary_100,
       surface: globals.lightBG,
-      onSurface: globals.kcPrimaryColor,
+      onSurface: globals.kcPrimary_100,
     ),
     switchTheme: SwitchThemeData(
-      thumbColor: WidgetStateProperty.all(
-          globals.kcPrimaryColor), // Uniform thumb color
+      thumbColor:
+          WidgetStateProperty.all(globals.kcPrimary_100), // Uniform thumb color
       trackColor: WidgetStateProperty.all(
-        globals.kcPrimaryColor.withOpacity(0.5),
+        globals.kcPrimary_100.withOpacity(0.5),
       ), // U
       trackOutlineColor:
           WidgetStateProperty.all(globals.softColor.withOpacity(0.5)),
@@ -99,32 +98,32 @@ mixin Themes {
   static final ThemeData dark = ThemeData.dark().copyWith(
     visualDensity: VisualDensity.adaptivePlatformDensity,
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      foregroundColor: globals.kcPrimaryColor,
+      foregroundColor: globals.kcPrimary_100,
     ),
-    primaryColor: globals.kcPrimaryColor,
+    primaryColor: globals.kcPrimary_100,
     brightness: Brightness.dark,
     primaryColorDark: globals.darkBG,
     dialogBackgroundColor: globals.darkBG,
     scaffoldBackgroundColor: globals.darkBG,
-    unselectedWidgetColor: globals.kcPrimaryColor,
+    unselectedWidgetColor: globals.kcPrimary_100,
     cardColor: globals.darkBG,
     hintColor: globals.lightColor,
-    highlightColor: globals.kcPrimaryColor.withOpacity(0.2),
+    highlightColor: globals.kcPrimary_100.withOpacity(0.2),
     hoverColor: globals.lightColor.withOpacity(0.2),
     focusColor: globals.lightColor.withOpacity(0.2),
     disabledColor: globals.darkBG,
-    splashColor: globals.kcPrimaryColor.withOpacity(0.1),
+    splashColor: globals.kcPrimary_100.withOpacity(0.1),
     canvasColor: globals.darkBG,
-    cardTheme: const CardTheme(shadowColor: globals.kcPrimaryColor),
+    cardTheme: const CardTheme(shadowColor: globals.kcPrimary_100),
     textSelectionTheme: TextSelectionThemeData(
-      selectionColor: globals.kcPrimaryColor,
+      selectionColor: globals.kcPrimary_100,
       cursorColor: globals.darkBG,
-      selectionHandleColor: globals.kcPrimaryColor,
+      selectionHandleColor: globals.kcPrimary_100,
     ),
     appBarTheme: AppBarTheme(
       color: globals.darkBG,
       elevation: 0,
-      shadowColor: globals.kcPrimaryColor,
+      shadowColor: globals.kcPrimary_100,
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarBrightness: Brightness.light,
         statusBarIconBrightness: Brightness.light,
@@ -145,13 +144,13 @@ mixin Themes {
           return null;
         }
         if (states.contains(WidgetState.selected)) {
-          return globals.kcPrimaryColor;
+          return globals.kcPrimary_100;
         }
         return null;
       }),
     ),
     bottomSheetTheme: BottomSheetThemeData(
-      dragHandleColor: globals.kcPrimaryColor,
+      dragHandleColor: globals.kcPrimary_100,
     ),
     radioTheme: RadioThemeData(
       fillColor:
@@ -160,24 +159,24 @@ mixin Themes {
           return null;
         }
         if (states.contains(WidgetState.selected)) {
-          return globals.kcPrimaryColor;
+          return globals.kcPrimary_100;
         }
         return null;
       }),
     ),
     colorScheme: ColorScheme.fromSeed(
-      seedColor: globals.kcPrimaryColor,
+      seedColor: globals.kcPrimary_100,
       brightness: Brightness.light,
       background: globals.lightBG,
-      onBackground: globals.kcPrimaryColor,
+      onBackground: globals.kcPrimary_100,
       surface: globals.lightBG,
-      onSurface: globals.kcPrimaryColor,
+      onSurface: globals.kcPrimary_100,
     ),
     switchTheme: SwitchThemeData(
-      thumbColor: WidgetStateProperty.all(
-          globals.kcPrimaryColor), // Uniform thumb color
+      thumbColor:
+          WidgetStateProperty.all(globals.kcPrimary_100), // Uniform thumb color
       trackColor: WidgetStateProperty.all(
-        globals.kcPrimaryColor.withOpacity(0.5),
+        globals.kcPrimary_100.withOpacity(0.5),
       ), // U
       trackOutlineColor:
           WidgetStateProperty.all(globals.softColor.withOpacity(0.15)),

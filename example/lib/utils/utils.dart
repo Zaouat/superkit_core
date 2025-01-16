@@ -1,27 +1,27 @@
+// ignore_for_file: deprecated_member_use
+import 'dart:io' show Platform;
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:superkit_core/superkit_core.dart';
-import 'dart:io' show Platform;
-import 'package:superkit_project/config/confing.dart';
+import 'package:superkit_project/config/config.dart';
 import 'package:superkit_project/config/globals.dart' as globals;
 import 'package:superkit_project/config/themes.dart';
 import 'package:superkit_project/utils/extentions.dart';
 
-//TODO refactor this to be extention later
 bool isSmallDevice(BuildContext context) {
   return context.width >= 200 && context.width <= 390;
 }
 
 Locale getDeviceLocale() {
-  Config _config = Config.fromMap(configData);
-  List<LanguageData> _languages = _config.languages;
+  final Config _config = Config.fromMap(configData);
+  final List<LanguageData> _languages = _config.languages;
 
   final String deviceLocaleData =
       WidgetsBinding.instance.window.locale.toLanguageTag();
-  List<String> localParts = deviceLocaleData.split('-');
-  Locale deviceLocale = Locale(localParts[0], localParts[1]);
+  final List<String> localParts = deviceLocaleData.split('-');
+  final Locale deviceLocale = Locale(localParts[0], localParts[1]);
   if (_languages.any(
     (LanguageData language) =>
         language.code == deviceLocale.languageCode &&
@@ -39,17 +39,18 @@ class StatusNavigationNotifier extends StatefulWidget {
   final bool forceLight;
 
   const StatusNavigationNotifier({
+    super.key,
     required this.context,
     required this.child,
     required this.forceLight,
   });
 
   @override
-  _StatusNavigationNotifierState createState() =>
-      _StatusNavigationNotifierState();
+  StatusNavigationNotifierState createState() =>
+      StatusNavigationNotifierState();
 }
 
-class _StatusNavigationNotifierState extends State<StatusNavigationNotifier> {
+class StatusNavigationNotifierState extends State<StatusNavigationNotifier> {
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -105,8 +106,8 @@ SystemUiOverlayStyle getSystemUIOverlayStyle(BuildContext context) {
 ///
 /// Returns a random integer within the specified range, with bias and influence.
 int randomInteger(int min, int max, double bias, double influence) {
-  int rnd = Random().nextInt(max - min) + min; // random in range
-  double mix = Random().nextDouble() * influence; // random mixer
+  final int rnd = Random().nextInt(max - min) + min; // random in range
+  final double mix = Random().nextDouble() * influence; // random mixer
   return (rnd * (1 - mix) + bias * mix).round(); // mix full range and bias
 }
 
@@ -127,13 +128,13 @@ List<T> getRandomItems<T>(List<T> inputList, int x) {
         'x cannot be greater than the number of items in the list');
   }
 
-  var random = Random();
-  var inputListCopy =
+  final random = Random();
+  final inputListCopy =
       List<T>.from(inputList); // Create a copy of the input list
-  var randomItems = <T>[];
+  final randomItems = <T>[];
 
   for (int i = 0; i < x; i++) {
-    var randomIndex = random.nextInt(inputListCopy.length);
+    final randomIndex = random.nextInt(inputListCopy.length);
     randomItems.add(inputListCopy.removeAt(randomIndex));
   }
 
@@ -147,21 +148,21 @@ bool randomBooleanByPercentage(double percentage) {
   }
 
   // Create a random number generator
-  Random random = Random();
+  final Random random = Random();
 
   // Generate a random number between 0 and 100
-  double randomValue = random.nextDouble() * 100;
+  final double randomValue = random.nextDouble() * 100;
 
   // Return true if the random value is less than the percentage, false otherwise
   return randomValue < percentage;
 }
 
 String generateCreditCardDate() {
-  DateTime now = DateTime.now();
-  DateTime expireDate = now.add(Duration(days: 1500));
-  String month =
-      expireDate.month < 10 ? "0${expireDate.month}" : "${expireDate.month}";
-  return "$month/${expireDate.year.toString().substring(expireDate.year.toString().length - 2)}";
+  final DateTime now = DateTime.now();
+  final DateTime expireDate = now.add(Duration(days: 1500));
+  final String month =
+      expireDate.month < 10 ? '0${expireDate.month}' : '${expireDate.month}';
+  return '$month/${expireDate.year.toString().substring(expireDate.year.toString().length - 2)}';
 }
 
 enum ClickSource { favorite, details, search, carService, showroom }
@@ -176,14 +177,14 @@ ThemeData getTheme(BuildContext context) {
 
 double getAdaptiveFontSize(double amount) {
   // Base font size
-  double baseSize = 30;
+  final double baseSize = 30;
 
   // If amount is 0 or negative, return base size
   if (amount <= 0) return baseSize;
 
   // Calculate reduction based on log10 of the number
   // log10 gives us the number of digits minus 1
-  double reduction = (log(amount) / ln10) / 3;
+  final double reduction = (log(amount) / ln10) / 3;
 
   // Calculate final size with a minimum of 20
   return max(baseSize - (reduction * 2), 20);

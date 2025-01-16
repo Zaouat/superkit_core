@@ -26,7 +26,7 @@ import 'package:superkit_core/src/shared/app_colors.dart';
 
 ThemeData superkitLightTheme = FlexThemeData.light(
   colors: const FlexSchemeColor(
-    primary: kcPrimaryColor_50,
+    primary: kcPrimary_100_50,
     secondary: Color(0xff36bb91),
     appBarColor: Color(0xff36bb91),
     error: Color(0xffb00020),
@@ -63,7 +63,7 @@ ThemeData superkitLightTheme = FlexThemeData.light(
 );
 ThemeData superkitDarkTheme = FlexThemeData.dark(
   colors: const FlexSchemeColor(
-    primary: kcPrimaryColor_50,
+    primary: kcPrimary_100_50,
     secondary: Color(0xffff6e48),
     appBarColor: Color(0xffed7f29),
     error: Color(0xffcf6679),

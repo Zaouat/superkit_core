@@ -2,14 +2,14 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:superkit_core/superkit_core.dart';
-import 'package:superkit_project/db_manager.dart';
+import 'package:superkit_project/data/db_manager.dart';
 
-class LocaleProvider with ChangeNotifier {
-  LocaleProvider() {
+class LocaleViewModel with ChangeNotifier {
+  LocaleViewModel() {
     unawaited(_initLocale());
   }
 
-  Locale appLocale = const Locale('en'); // Default locale
+  Locale appLocale = const Locale('en');
 
   Future<void> _initLocale() async {
     final config = DBManager.getAppConfig();
@@ -29,7 +29,7 @@ class LocaleProvider with ChangeNotifier {
     appLocale = Locale(languageData.code, languageData.countryCode);
 
     final config = DBManager.getAppConfig();
-    DBManager.saveAppconfig(config.copyWith(
+    await DBManager.saveAppconfig(config.copyWith(
       languageCode: languageData.code,
       countryCode: languageData.countryCode,
     ));

@@ -144,8 +144,8 @@ class _AppearanceState extends State<AppearanceDesktop> {
                               if (data[index].theme == FlexScheme.custom) {
                                 return colorCardDesktop(
                                   context: context,
-                                  lightColor: kcPrimaryColor_50,
-                                  darkColor: kcPrimaryColor_50,
+                                  lightColor: kcPrimary_100_50,
+                                  darkColor: kcPrimary_100_50,
                                   hideonTap: widget.hideonTap,
                                   title: 'SuperKit',
                                   onTap: () {

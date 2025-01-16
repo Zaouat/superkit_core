@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 //Primary Color
-const Color kcPrimaryColor_5 = Color(0xffF3F1FE);
-const Color kcPrimaryColor_10 = Color(0xffDDD7FC);
-const Color kcPrimaryColor_20 = Color(0xffBBB1FA);
-const Color kcPrimaryColor_30 = Color(0xff9487F1);
-const Color kcPrimaryColor_40 = Color(0xff7466E3);
-const Color kcPrimaryColor_50 = Color(0xff4838D1);
-const Color kcPrimaryColor_60 = Color(0xff3528B3);
-const Color kcPrimaryColor_70 = Color(0xff261C96);
-const Color kcPrimaryColor_80 = Color(0xff191179);
-const Color kcPrimaryColor_90 = Color(0xff100A64);
-const Color kcPrimaryColor_100 = Color(0xff090638);
+const Color kcPrimary_100_5 = Color(0xffF3F1FE);
+const Color kcPrimary_100_10 = Color(0xffDDD7FC);
+const Color kcPrimary_100_20 = Color(0xffBBB1FA);
+const Color kcPrimary_100_30 = Color(0xff9487F1);
+const Color kcPrimary_100_40 = Color(0xff7466E3);
+const Color kcPrimary_100_50 = Color(0xff4838D1);
+const Color kcPrimary_100_60 = Color(0xff3528B3);
+const Color kcPrimary_100_70 = Color(0xff261C96);
+const Color kcPrimary_100_80 = Color(0xff191179);
+const Color kcPrimary_100_90 = Color(0xff100A64);
+const Color kcPrimary_100_100 = Color(0xff090638);
 
 //Accent Color
 const Color kcAccentColor_5 = Color(0xffFFFAF5);

@@ -1,5 +1,18 @@
+import 'package:provider/provider.dart';
+import 'package:provider/single_child_widget.dart';
 import 'package:superkit_core/superkit_core.dart';
 import 'package:superkit_project/utils/extentions.dart';
+import 'package:superkit_project/view_model/home_view_model.dart';
+import 'package:superkit_project/view_model/locale_view_model.dart';
+
+/* -------------------------------------------------------------------------- */
+/*                              Your providers here                          */
+/* -------------------------------------------------------------------------- */
+final List<SingleChildStatelessWidget> providers_setup =
+    <SingleChildStatelessWidget>[
+  ChangeNotifierProvider(create: (_) => LocaleViewModel()),
+  ChangeNotifierProvider(create: (_) => HomeViewModel()),
+];
 
 Map<String, dynamic> configData = {
   'languages': [
@@ -129,7 +142,7 @@ class Config {
     return Config(
       languages: json
           .get('languages', [])
-          .map((e) => LanguageData.fromMap(e))
+          .map((e) => LanguageData.fromMap(e as Map<String, dynamic>))
           .toList(),
     );
   }

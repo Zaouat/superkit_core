@@ -1,7 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:superkit_project/db_manager.dart';
+import 'package:superkit_project/data/db_manager.dart';
 import 'package:superkit_project/utils/extentions.dart';
 import 'package:superkit_project/utils/utils.dart';
 
@@ -14,6 +13,7 @@ class AppSettingsManager {
 
   final _streamController = StreamController<AppConfig>.broadcast();
   Stream<AppConfig> get stream => _streamController.stream;
+
   Future<void> load() async {
     _appConfig = DBManager.getAppConfig();
     _streamController.add(_appConfig);
@@ -22,27 +22,27 @@ class AppSettingsManager {
   Future<void> updateAppConfig(AppConfig appConfig) async {
     _appConfig = appConfig;
     _streamController.add(appConfig);
-    DBManager.saveAppconfig(appConfig);
+    await DBManager.saveAppconfig(appConfig);
   }
 
   Future<void> updateAppConfigWith(Map<String, dynamic> json) async {
     _appConfig = AppConfig.fromJson(json);
     _streamController.add(_appConfig);
-    DBManager.saveAppconfig(appConfig);
+    await DBManager.saveAppconfig(_appConfig);
   }
 
   Future<void> updateAppConfigWithFunction(
-      Function(AppConfig) updateFunction) async {
+      AppConfig Function(AppConfig) updateFunction) async {
     _appConfig = updateFunction(_appConfig);
     _streamController.add(_appConfig);
-    DBManager.saveAppconfig(_appConfig);
+    await DBManager.saveAppconfig(_appConfig);
   }
 }
 
 class AppConfig {
   final bool skipOnboarding;
   final bool enableNotifications;
-  final enableRemoteNotifications;
+  final bool enableRemoteNotifications;
   final String languageCode;
   final String countryCode;
   final bool showOverlay;
@@ -62,26 +62,26 @@ class AppConfig {
     required this.analyticsConsent,
   });
 
-  toJson() {
+  Map<String, dynamic> toJson() {
     return {
-      "skipOnboarding": skipOnboarding,
-      "languageCode": languageCode,
-      "countryCode": countryCode,
-      "enableNotifications": enableNotifications,
-      "enableRemoteNotifications": enableRemoteNotifications,
-      "showOverlay": showOverlay,
-      "enableSound": enableSound,
-      "personalizedAdsConsent": personalizedAdsConsent,
-      "analyticsConsent": analyticsConsent,
+      'skipOnboarding': skipOnboarding,
+      'languageCode': languageCode,
+      'countryCode': countryCode,
+      'enableNotifications': enableNotifications,
+      'enableRemoteNotifications': enableRemoteNotifications,
+      'showOverlay': showOverlay,
+      'enableSound': enableSound,
+      'personalizedAdsConsent': personalizedAdsConsent,
+      'analyticsConsent': analyticsConsent,
     };
   }
 
-  static AppConfig fromJson(Map<String, dynamic> json) {
-    Locale deviceLocale = getDeviceLocale();
+  factory AppConfig.fromJson(Map<String, dynamic> json) {
+    final Locale deviceLocale = getDeviceLocale();
     return AppConfig(
       skipOnboarding: json.get('skipOnboarding', false),
       languageCode: json.get('languageCode', deviceLocale.languageCode),
-      countryCode: json.get('countryCode', deviceLocale.countryCode!),
+      countryCode: json.get('countryCode', deviceLocale.countryCode ?? ''),
       enableNotifications: json.get('enableNotifications', false),
       enableRemoteNotifications: json.get('enableRemoteNotifications', false),
       showOverlay: json.get('showOverlay', true),
@@ -91,16 +91,17 @@ class AppConfig {
     );
   }
 
-  copyWith(
-      {bool? skipOnboarding,
-      String? languageCode,
-      String? countryCode,
-      bool? enableNotifications,
-      bool? enableRemoteNotifications,
-      bool? showOverlay,
-      bool? enableSound,
-      bool? personalizedAdsConsent,
-      bool? analyticsConsent}) {
+  AppConfig copyWith({
+    bool? skipOnboarding,
+    String? languageCode,
+    String? countryCode,
+    bool? enableNotifications,
+    bool? enableRemoteNotifications,
+    bool? showOverlay,
+    bool? enableSound,
+    bool? personalizedAdsConsent,
+    bool? analyticsConsent,
+  }) {
     return AppConfig(
       skipOnboarding: skipOnboarding ?? this.skipOnboarding,
       languageCode: languageCode ?? this.languageCode,
@@ -116,12 +117,12 @@ class AppConfig {
     );
   }
 
-  static AppConfig defaultConfig() {
-    Locale deviceLocale = getDeviceLocale();
+  factory AppConfig.defaultConfig() {
+    final Locale deviceLocale = getDeviceLocale();
     return AppConfig(
       skipOnboarding: false,
       languageCode: deviceLocale.languageCode,
-      countryCode: deviceLocale.countryCode!,
+      countryCode: deviceLocale.countryCode ?? '',
       enableNotifications: false,
       enableRemoteNotifications: false,
       showOverlay: true,

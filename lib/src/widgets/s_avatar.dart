@@ -36,7 +36,7 @@ class SuperKitAvatar extends StatelessWidget {
                 radius: radius,
                 backgroundColor: borderColor,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(120),
+                  borderRadius: BorderRadius.circular(radius!),
                   child: CircleAvatar(
                     radius: radius! - borderWidth!,
                     backgroundColor: bgColor,

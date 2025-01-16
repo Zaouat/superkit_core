@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:superkit_project/classes/app_config.dart';
+import 'package:superkit_project/models/app_model.dart';
 
-Future<Box> openHiveBox(
+Future<Box<dynamic>> openHiveBox(
     {required String boxName,
     bool useEncryption = false,
     HiveAesCipher? encryptionCipher}) {
@@ -16,7 +16,7 @@ Future<Box> openHiveBox(
 }
 
 class DBManager {
-  static Box app_config_box = Hive.box('app_config_box');
+  static Box<dynamic> app_config_box = Hive.box('app_config_box');
 
   static Future<void> init() async {
     final dir = await getApplicationDocumentsDirectory();
@@ -35,7 +35,7 @@ class DBManager {
     final data = app_config_box.get('app_config_box');
     if (data != null) {
       final jsonString = jsonEncode(data);
-      return AppConfig.fromJson(jsonDecode(jsonString));
+      return AppConfig.fromJson(jsonDecode(jsonString) as Map<String, dynamic>);
     } else {
       return AppConfig.defaultConfig();
     }
