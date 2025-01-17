@@ -81,12 +81,6 @@ flutter:
           weight: 200
         - asset: assets/fonts/dmsans/DMSans-Light.ttf
           weight: 100
-    - family: Phosphate
-      fonts:
-        - asset: assets/fonts/phosphate/Phosphate-Solid.ttf
-          weight: 900
-        - asset: assets/fonts/phosphate/Phosphate-Inline.ttf
-          weight: 100
 
   # To add assets to your application, add an assets section, like this:
   assets:

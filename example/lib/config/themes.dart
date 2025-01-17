@@ -37,6 +37,7 @@ mixin Themes {
         statusBarBrightness: Brightness.dark,
         statusBarIconBrightness: Brightness.dark,
         statusBarColor: Colors.transparent,
+        systemNavigationBarColor: Colors.white,
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
