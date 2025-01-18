@@ -62,6 +62,7 @@ class SimpleSPageTemplate extends StatefulWidget {
     this.font,
     this.fontAr,
     this.onTabChange,
+    this.tabController,
   });
 
   /// title of the page
@@ -171,6 +172,8 @@ class SimpleSPageTemplate extends StatefulWidget {
 
   final Function(int)? onTabChange;
 
+  final TabController? tabController;
+
   @override
   State<SimpleSPageTemplate> createState() => _SuperKitSimpleTemplateState();
 }
@@ -255,7 +258,7 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                         : const Size.fromHeight(45.0),
                     child: SuperKitTabBar(
                       tabs: widget.tabs,
-                      tabController: tabController,
+                      tabController: widget.tabController ?? tabController,
                       onTabChange: widget.onTabChange ?? (index) {},
                       indicator: widget.indicator,
                       indicatorColor: widget.indicatorColor,
@@ -513,7 +516,7 @@ class _SuperKitSimpleTemplateState extends State<SimpleSPageTemplate>
                     ];
                   },
                   body: TabBarView(
-                    controller: tabController,
+                    controller: widget.tabController ?? tabController,
                     physics: const BouncingScrollPhysics(),
                     children: widget.tabsWidgets!,
                   ),

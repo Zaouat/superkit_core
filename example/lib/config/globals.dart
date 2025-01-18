@@ -23,7 +23,7 @@ const Color kcAccent_200 = Color(0xffcee8ff);
 const Color kcSecondaryColor = Color(0xffd8805d);
 
 // The global Title of the app
-String title = 'SuperKit Example';
+String title = 'SuperKit Core';
 
 // The globals URL's of the App
 
