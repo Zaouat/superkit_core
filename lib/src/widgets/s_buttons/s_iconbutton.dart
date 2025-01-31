@@ -26,7 +26,7 @@ class SuperKitIconButton extends StatelessWidget {
     this.width = 45,
     this.height = 45,
     this.radius = 30,
-  })  : outline = false;
+  }) : outline = false;
 
   const SuperKitIconButton.outline({
     super.key,
@@ -54,7 +54,7 @@ class SuperKitIconButton extends StatelessWidget {
         alignment: Alignment.center,
         decoration: !outline
             ? ShapeDecoration(
-                color: !disabled ? Theme.of(context).primaryColor : color!,
+                color: disabled ? Theme.of(context).primaryColor : color!,
                 shape: ContinuousRectangleBorder(
                   borderRadius: BorderRadius.circular(radius!),
                 ),

@@ -2,7 +2,6 @@
 
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:superkit_core/superkit_core.dart';
 import 'package:superkit_project/config/globals.dart' as globals;
 import 'package:superkit_project/view_model/home_view_model.dart';
@@ -49,14 +48,14 @@ class _HomePageState extends State<HomePage> {
                 height: 40,
               ),
             ),
-            ScaleTap(
-              onPressed: () {},
-              child: SvgPicture.asset(
-                'assets/icons/setting.svg',
-                color: globals.lightColor,
-                width: 22,
-              ),
-            ),
+            // ScaleTap(
+            //   onPressed: () {},
+            //   child: SvgPicture.asset(
+            //     'assets/icons/setting.svg',
+            //     color: globals.lightColor,
+            //     width: 22,
+            //   ),
+            // ),
           ],
         ),
       ),
