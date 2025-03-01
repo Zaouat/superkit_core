@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
               child: SvgPicture.asset(
                 'assets/icons/menu.svg',
                 color: globals.lightColor,
-                width: 21,
+                width: 24,
               ),
             ),
             ScaleTap(
@@ -48,14 +48,14 @@ class _HomePageState extends State<HomePage> {
                 height: 40,
               ),
             ),
-            // ScaleTap(
-            //   onPressed: () {},
-            //   child: SvgPicture.asset(
-            //     'assets/icons/setting.svg',
-            //     color: globals.lightColor,
-            //     width: 22,
-            //   ),
-            // ),
+            ScaleTap(
+              onPressed: () {},
+              child: SvgPicture.asset(
+                'assets/icons/dots.svg',
+                color: globals.lightColor,
+                width: 22,
+              ),
+            ),
           ],
         ),
       ),

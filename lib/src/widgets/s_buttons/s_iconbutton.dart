@@ -20,7 +20,7 @@ class SuperKitIconButton extends StatelessWidget {
     this.busy = false,
     this.onTap,
     this.icon,
-    this.color,
+    this.color = Colors.blue, // Added default color
     this.iconSize,
     this.iconColor,
     this.width = 45,
@@ -54,7 +54,10 @@ class SuperKitIconButton extends StatelessWidget {
         alignment: Alignment.center,
         decoration: !outline
             ? ShapeDecoration(
-                color: disabled ? Theme.of(context).primaryColor : color!,
+                color: disabled
+                    ? Theme.of(context).primaryColor
+                    : color ??
+                        Theme.of(context).primaryColor, // Added null check
                 shape: ContinuousRectangleBorder(
                   borderRadius: BorderRadius.circular(radius!),
                 ),
@@ -64,7 +67,8 @@ class SuperKitIconButton extends StatelessWidget {
                 shape: ContinuousRectangleBorder(
                   borderRadius: BorderRadius.circular(radius!),
                   side: BorderSide(
-                    color: color!,
+                    color: color ??
+                        Theme.of(context).primaryColor, // Added null check
                     width: 1.5,
                   ),
                 ),
