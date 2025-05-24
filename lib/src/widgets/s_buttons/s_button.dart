@@ -358,38 +358,46 @@ class _SuperKitButtonState extends State<SuperKitButton> {
                         valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                       ),
                     )
-                  : Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        if (widget.icon != null)
-                          Icon(
-                            widget.icon,
-                            color: widget.outline
-                                ? widget.color ?? Theme.of(context).primaryColor
-                                : Colors.white,
-                            size: widget.iconSize ?? 20,
-                          ),
-                        if (widget.icon != null)
-                          SizedBox(width: widget.spacing ?? 10),
-                        Text(
-                          widget.isTimerActive!
-                              ? "${widget.title} in ${remainingTime}sec"
-                              : widget.title,
-                          textAlign: widget.align,
-                          style: fontChanger(
-                            lang: lang,
-                            fontName: widget.font,
-                            fontArName: widget.fontAr,
-                            fontSize: widget.fontSize ?? 12,
-                            fontWeight: widget.fontWeight ?? FontWeight.w500,
-                            color: !widget.outline
-                                ? Colors.white
-                                : widget.color ??
-                                    Theme.of(context).primaryColor,
-                          ),
+                  : FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            if (widget.icon != null)
+                              Icon(
+                                widget.icon,
+                                color: widget.outline
+                                    ? widget.color ??
+                                        Theme.of(context).primaryColor
+                                    : Colors.white,
+                                size: widget.iconSize ?? 20,
+                              ),
+                            if (widget.icon != null)
+                              SizedBox(width: widget.spacing ?? 10),
+                            Text(
+                              widget.isTimerActive!
+                                  ? "${widget.title} in ${remainingTime}sec"
+                                  : widget.title,
+                              textAlign: widget.align,
+                              style: fontChanger(
+                                lang: lang,
+                                fontName: widget.font,
+                                fontArName: widget.fontAr,
+                                fontSize: widget.fontSize ?? 12,
+                                fontWeight:
+                                    widget.fontWeight ?? FontWeight.w500,
+                                color: !widget.outline
+                                    ? Colors.white
+                                    : widget.color ??
+                                        Theme.of(context).primaryColor,
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
             ),
           ),
