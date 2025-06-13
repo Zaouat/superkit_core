@@ -23,7 +23,9 @@ mixin Themes {
     disabledColor: globals.darkBG,
     splashColor: globals.kcPrimary_100.withOpacity(0.1),
     canvasColor: globals.lightBG,
-    cardTheme: CardTheme(shadowColor: globals.kcPrimary_100.withOpacity(0.5)),
+    cardTheme: CardThemeData(
+      shadowColor: globals.kcPrimary_100.withOpacity(0.5),
+    ),
     textSelectionTheme: TextSelectionThemeData(
       selectionColor: globals.kcPrimary_100,
       cursorColor: globals.lightColor,
@@ -115,7 +117,7 @@ mixin Themes {
     disabledColor: globals.darkBG,
     splashColor: globals.kcPrimary_100.withOpacity(0.1),
     canvasColor: globals.darkBG,
-    cardTheme: const CardTheme(shadowColor: globals.kcPrimary_100),
+    cardTheme: const CardThemeData(shadowColor: globals.kcPrimary_100),
     textSelectionTheme: TextSelectionThemeData(
       selectionColor: globals.kcPrimary_100,
       cursorColor: globals.darkBG,

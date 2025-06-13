@@ -15,11 +15,11 @@ class SuperKitSlider extends StatefulWidget {
   final FlutterSliderHandler? handler;
   final FlutterSliderHandler? rightHandler;
   final Function(int handlerIndex, dynamic lowerValue, dynamic upperValue)?
-      onDragStarted;
+  onDragStarted;
   final Function(int handlerIndex, dynamic lowerValue, dynamic upperValue)?
-      onDragCompleted;
+  onDragCompleted;
   final Function(int handlerIndex, dynamic lowerValue, dynamic upperValue)?
-      onDragging;
+  onDragging;
   final double? min;
   final double? max;
   final List<double> values;
@@ -46,76 +46,86 @@ class SuperKitSlider extends StatefulWidget {
   final BoxDecoration? foregroundDecoration;
   final bool? enableGradient;
 
-  SuperKitSlider(
-      {this.key,
-      this.min,
-      this.max,
-      required this.values,
-      this.fixedValues,
-      this.axis = Axis.horizontal,
-      this.handler,
-      this.rightHandler,
-      this.handlerHeight,
-      this.handlerWidth,
-      this.onDragStarted,
-      this.onDragCompleted,
-      this.onDragging,
-      this.rangeSlider = false,
-      this.rtl = false,
-      this.jump = false,
-      this.ignoreSteps = const <FlutterSliderIgnoreSteps>[],
-      this.disabled = false,
-      this.touchSize,
-      this.visibleTouchArea = false,
-      this.minimumDistance = 0,
-      this.maximumDistance = 0,
-      this.tooltip,
-      this.trackBar = const FlutterSliderTrackBar(),
-      this.handlerAnimation = const FlutterSliderHandlerAnimation(),
-      this.selectByTap = true,
-      this.step = const FlutterSliderStep(),
-      this.hatchMark,
-      this.centeredOrigin = false,
-      this.lockHandlers = false,
-      this.lockDistance,
-      this.decoration,
-      this.enableGradient = false,
-      this.foregroundDecoration})
-      : assert(touchSize == null || (touchSize >= 5 && touchSize <= 50)),
-        assert((ignoreSteps.isNotEmpty && step.rangeList == null) ||
-            (ignoreSteps.isEmpty)),
-        assert((step.rangeList != null &&
-                minimumDistance == 0 &&
-                maximumDistance == 0) ||
-            (minimumDistance > 0 && step.rangeList == null) ||
-            (maximumDistance > 0 && step.rangeList == null) ||
-            (step.rangeList == null)),
-        assert(centeredOrigin == false ||
-            (centeredOrigin == true &&
-                rangeSlider == false &&
-                lockHandlers == false &&
-                minimumDistance == 0 &&
-                maximumDistance == 0)),
-        assert(lockHandlers == false ||
-            (centeredOrigin == false &&
-                (ignoreSteps.isEmpty) &&
-                (fixedValues == null || fixedValues.isEmpty) &&
-                rangeSlider == true &&
-                values.length > 1 &&
-                lockHandlers == true &&
-                lockDistance != null &&
-                step.rangeList == null &&
-                lockDistance >=
-                    step.step /* && values[1] - values[0] == lockDistance*/)),
-        assert(
-            fixedValues != null || (min != null && max != null && min <= max),
-            'Min and Max are required if fixedValues is null'),
-        assert(
-            rangeSlider == false || (rangeSlider == true && values.length > 1),
-            'Range slider needs two values'),
-//        assert( fixedValues == null || (fixedValues != null && values[0] >= 0 && values[0] <= 100), "When using fixedValues, you should set values within the range of fixedValues" ),
-//        assert( fixedValues == null || (fixedValues != null && values.length > 1 && values[1] >= values[0] && values[1] <= 100), "When using fixedValues, you should set values within the range of fixedValues" ),
-        super(key: key);
+  SuperKitSlider({
+    this.key,
+    this.min,
+    this.max,
+    required this.values,
+    this.fixedValues,
+    this.axis = Axis.horizontal,
+    this.handler,
+    this.rightHandler,
+    this.handlerHeight,
+    this.handlerWidth,
+    this.onDragStarted,
+    this.onDragCompleted,
+    this.onDragging,
+    this.rangeSlider = false,
+    this.rtl = false,
+    this.jump = false,
+    this.ignoreSteps = const <FlutterSliderIgnoreSteps>[],
+    this.disabled = false,
+    this.touchSize,
+    this.visibleTouchArea = false,
+    this.minimumDistance = 0,
+    this.maximumDistance = 0,
+    this.tooltip,
+    this.trackBar = const FlutterSliderTrackBar(),
+    this.handlerAnimation = const FlutterSliderHandlerAnimation(),
+    this.selectByTap = true,
+    this.step = const FlutterSliderStep(),
+    this.hatchMark,
+    this.centeredOrigin = false,
+    this.lockHandlers = false,
+    this.lockDistance,
+    this.decoration,
+    this.enableGradient = false,
+    this.foregroundDecoration,
+  }) : assert(touchSize == null || (touchSize >= 5 && touchSize <= 50)),
+       assert(
+         (ignoreSteps.isNotEmpty && step.rangeList == null) ||
+             (ignoreSteps.isEmpty),
+       ),
+       assert(
+         (step.rangeList != null &&
+                 minimumDistance == 0 &&
+                 maximumDistance == 0) ||
+             (minimumDistance > 0 && step.rangeList == null) ||
+             (maximumDistance > 0 && step.rangeList == null) ||
+             (step.rangeList == null),
+       ),
+       assert(
+         centeredOrigin == false ||
+             (centeredOrigin == true &&
+                 rangeSlider == false &&
+                 lockHandlers == false &&
+                 minimumDistance == 0 &&
+                 maximumDistance == 0),
+       ),
+       assert(
+         lockHandlers == false ||
+             (centeredOrigin == false &&
+                 (ignoreSteps.isEmpty) &&
+                 (fixedValues == null || fixedValues.isEmpty) &&
+                 rangeSlider == true &&
+                 values.length > 1 &&
+                 lockHandlers == true &&
+                 lockDistance != null &&
+                 step.rangeList == null &&
+                 lockDistance >=
+                     step.step /* && values[1] - values[0] == lockDistance*/ ),
+       ),
+       assert(
+         fixedValues != null || (min != null && max != null && min <= max),
+         'Min and Max are required if fixedValues is null',
+       ),
+       assert(
+         rangeSlider == false || (rangeSlider == true && values.length > 1),
+         'Range slider needs two values',
+       ),
+       //        assert( fixedValues == null || (fixedValues != null && values[0] >= 0 && values[0] <= 100), "When using fixedValues, you should set values within the range of fixedValues" ),
+       //        assert( fixedValues == null || (fixedValues != null && values.length > 1 && values[1] >= values[0] && values[1] <= 100), "When using fixedValues, you should set values within the range of fixedValues" ),
+       super(key: key);
 
   @override
   _SuperKitSliderState createState() => _SuperKitSliderState();
@@ -253,68 +263,74 @@ class _SuperKitSliderState extends State<SuperKitSlider>
         //final String lang = Localizations.localeOf(context).languageCode;
 
         return LayoutBuilder(
-            builder: (BuildContext context, BoxConstraints constraints) {
-          _constraintMaxWidth = constraints.maxWidth;
-          _constraintMaxHeight = constraints.maxHeight;
+          builder: (BuildContext context, BoxConstraints constraints) {
+            _constraintMaxWidth = constraints.maxWidth;
+            _constraintMaxHeight = constraints.maxHeight;
 
-          _containerWidthWithoutPadding = _constraintMaxWidth - _handlersWidth!;
-          _containerHeightWithoutPadding =
-              _constraintMaxHeight - _handlersHeight!;
+            _containerWidthWithoutPadding =
+                _constraintMaxWidth - _handlersWidth!;
+            _containerHeightWithoutPadding =
+                _constraintMaxHeight - _handlersHeight!;
 
-          double? sliderProperSize = _findProperSliderSize();
-          if (widget.axis == Axis.vertical) {
-            double layoutWidth = constraints.maxWidth;
-            if (layoutWidth == double.infinity) {
-              layoutWidth = 0;
+            double? sliderProperSize = _findProperSliderSize();
+            if (widget.axis == Axis.vertical) {
+              double layoutWidth = constraints.maxWidth;
+              if (layoutWidth == double.infinity) {
+                layoutWidth = 0;
+              }
+              __containerSizeWithoutPadding = _containerHeightWithoutPadding;
+              _containerWidth = <double>[
+                (sliderProperSize! * 2),
+                layoutWidth,
+              ].reduce(max);
+              _containerHeight = constraints.maxHeight;
+            } else {
+              double layoutHeight = constraints.maxHeight;
+              if (layoutHeight == double.infinity) {
+                layoutHeight = 0;
+              }
+              _containerWidth = constraints.maxWidth;
+              _containerHeight = <double>[
+                (sliderProperSize! * 2),
+                layoutHeight,
+              ].reduce(max);
+              __containerSizeWithoutPadding = _containerWidthWithoutPadding;
             }
-            __containerSizeWithoutPadding = _containerHeightWithoutPadding;
-            _containerWidth =
-                <double>[(sliderProperSize! * 2), layoutWidth].reduce(max);
-            _containerHeight = constraints.maxHeight;
-          } else {
-            double layoutHeight = constraints.maxHeight;
-            if (layoutHeight == double.infinity) {
-              layoutHeight = 0;
+
+            if (MediaQuery.of(context).orientation != oldOrientation) {
+              _leftHandlerXPosition = 0;
+              _rightHandlerXPosition = 0;
+              _leftHandlerYPosition = 0;
+              _rightHandlerYPosition = 0;
+
+              _renderBoxInitialization();
+
+              _arrangeHandlersPosition();
+
+              _drawHatchMark();
+
+              oldOrientation = MediaQuery.of(context).orientation;
             }
-            _containerWidth = constraints.maxWidth;
-            _containerHeight =
-                <double>[(sliderProperSize! * 2), layoutHeight].reduce(max);
-            __containerSizeWithoutPadding = _containerWidthWithoutPadding;
-          }
 
-          if (MediaQuery.of(context).orientation != oldOrientation) {
-            _leftHandlerXPosition = 0;
-            _rightHandlerXPosition = 0;
-            _leftHandlerYPosition = 0;
-            _rightHandlerYPosition = 0;
-
-            _renderBoxInitialization();
-
-            _arrangeHandlersPosition();
-
-            _drawHatchMark();
-
-            oldOrientation = MediaQuery.of(context).orientation;
-          }
-
-          return Stack(
-            clipBehavior: Clip.none,
-            children: <Widget>[
-//                  ..._points,
-              Container(
-                key: containerKey,
-                height: _containerHeight,
-                width: _containerWidth,
-                foregroundDecoration: widget.foregroundDecoration,
-                decoration: widget.decoration,
-                child: Stack(
-                  clipBehavior: Clip.none,
-                  children: drawHandlers(),
+            return Stack(
+              clipBehavior: Clip.none,
+              children: <Widget>[
+                //                  ..._points,
+                Container(
+                  key: containerKey,
+                  height: _containerHeight,
+                  width: _containerWidth,
+                  foregroundDecoration: widget.foregroundDecoration,
+                  decoration: widget.decoration,
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: drawHandlers(),
+                  ),
                 ),
-              ),
-            ],
-          );
-        });
+              ],
+            );
+          },
+        );
       },
     );
   }
@@ -322,7 +338,7 @@ class _SuperKitSliderState extends State<SuperKitSlider>
   double? _findProperSliderSize() {
     List<double?> sizes = <double>[
       widget.trackBar.activeTrackBarHeight,
-      widget.trackBar.inactiveTrackBarHeight
+      widget.trackBar.inactiveTrackBarHeight,
     ];
     if (widget.axis == Axis.horizontal) {
       sizes.add(_handlersHeight);
@@ -330,8 +346,9 @@ class _SuperKitSliderState extends State<SuperKitSlider>
       sizes.add(_handlersWidth);
     }
 
-    return sizes
-        .reduce((double? value, double? element) => max(value!, element!));
+    return sizes.reduce(
+      (double? value, double? element) => max(value!, element!),
+    );
   }
 
   void initMethod() {
@@ -355,23 +372,31 @@ class _SuperKitSliderState extends State<SuperKitSlider>
 
     if (__isInitCall) {
       _leftHandlerScaleAnimationController = AnimationController(
-          duration: widget.handlerAnimation.duration, vsync: this);
+        duration: widget.handlerAnimation.duration,
+        vsync: this,
+      );
       _rightHandlerScaleAnimationController = AnimationController(
-          duration: widget.handlerAnimation.duration, vsync: this);
+        duration: widget.handlerAnimation.duration,
+        vsync: this,
+      );
     }
 
     _leftHandlerScaleAnimation =
         Tween<double>(begin: 1.0, end: widget.handlerAnimation.scale).animate(
-            CurvedAnimation(
-                parent: _leftHandlerScaleAnimationController!,
-                reverseCurve: widget.handlerAnimation.reverseCurve,
-                curve: widget.handlerAnimation.curve));
+          CurvedAnimation(
+            parent: _leftHandlerScaleAnimationController!,
+            reverseCurve: widget.handlerAnimation.reverseCurve,
+            curve: widget.handlerAnimation.curve,
+          ),
+        );
     _rightHandlerScaleAnimation =
         Tween<double>(begin: 1.0, end: widget.handlerAnimation.scale).animate(
-            CurvedAnimation(
-                parent: _rightHandlerScaleAnimationController!,
-                reverseCurve: widget.handlerAnimation.reverseCurve,
-                curve: widget.handlerAnimation.curve));
+          CurvedAnimation(
+            parent: _rightHandlerScaleAnimationController!,
+            reverseCurve: widget.handlerAnimation.reverseCurve,
+            curve: widget.handlerAnimation.curve,
+          ),
+        );
 
     _setParameters();
     _setValues();
@@ -415,9 +440,13 @@ class _SuperKitSliderState extends State<SuperKitSlider>
       _leftTooltipOpacity = (_tooltipData.alwaysShowTooltip == true) ? 1 : 0;
 
       _leftTooltipAnimationController = AnimationController(
-          duration: const Duration(milliseconds: 200), vsync: this);
+        duration: const Duration(milliseconds: 200),
+        vsync: this,
+      );
       _rightTooltipAnimationController = AnimationController(
-          duration: const Duration(milliseconds: 200), vsync: this);
+        duration: const Duration(milliseconds: 200),
+        vsync: this,
+      );
     } else {
       if (_tooltipData.alwaysShowTooltip!) {
         _rightTooltipOpacity = _leftTooltipOpacity = 1;
@@ -426,15 +455,19 @@ class _SuperKitSliderState extends State<SuperKitSlider>
 
     _leftTooltipAnimation =
         Tween<Offset>(begin: animationStart, end: animationFinish).animate(
-            CurvedAnimation(
-                parent: _leftTooltipAnimationController,
-                curve: Curves.fastOutSlowIn));
+          CurvedAnimation(
+            parent: _leftTooltipAnimationController,
+            curve: Curves.fastOutSlowIn,
+          ),
+        );
 
     _rightTooltipAnimation =
         Tween<Offset>(begin: animationStart, end: animationFinish).animate(
-            CurvedAnimation(
-                parent: _rightTooltipAnimationController,
-                curve: Curves.fastOutSlowIn));
+          CurvedAnimation(
+            parent: _rightTooltipAnimationController,
+            curve: Curves.fastOutSlowIn,
+          ),
+        );
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _renderBoxInitialization();
@@ -453,7 +486,7 @@ class _SuperKitSliderState extends State<SuperKitSlider>
 
     double maxTrackBarHeight = <double>[
       widget.trackBar.inactiveTrackBarHeight,
-      widget.trackBar.activeTrackBarHeight
+      widget.trackBar.activeTrackBarHeight,
     ].reduce(max);
 
     FlutterSliderHatchMark hatchMark = FlutterSliderHatchMark();
@@ -463,17 +496,22 @@ class _SuperKitSliderState extends State<SuperKitSlider>
         widget.hatchMark!.linesDistanceFromTrackBar ?? 0;
     hatchMark.labelsDistanceFromTrackBar =
         widget.hatchMark!.labelsDistanceFromTrackBar ?? 0;
-    hatchMark.smallLine = widget.hatchMark!.smallLine ??
+    hatchMark.smallLine =
+        widget.hatchMark!.smallLine ??
         const FlutterSliderSizedBox(
-            height: 5,
-            width: 1,
-            decoration: BoxDecoration(color: Colors.black45));
-    hatchMark.bigLine = widget.hatchMark!.bigLine ??
+          height: 5,
+          width: 1,
+          decoration: BoxDecoration(color: Colors.black45),
+        );
+    hatchMark.bigLine =
+        widget.hatchMark!.bigLine ??
         const FlutterSliderSizedBox(
-            height: 9,
-            width: 2,
-            decoration: BoxDecoration(color: Colors.black45));
-    hatchMark.labelBox = widget.hatchMark!.labelBox ??
+          height: 9,
+          width: 2,
+          decoration: BoxDecoration(color: Colors.black45),
+        );
+    hatchMark.labelBox =
+        widget.hatchMark!.labelBox ??
         const FlutterSliderSizedBox(height: 50, width: 50);
     hatchMark.labels = widget.hatchMark!.labels;
     hatchMark.linesAlignment = widget.hatchMark!.linesAlignment;
@@ -485,10 +523,10 @@ class _SuperKitSliderState extends State<SuperKitSlider>
       double? linesTop, linesLeft, linesRight, linesBottom;
 
       if (widget.axis == Axis.horizontal) {
-//      top = hatchMark.linesDistanceFromTrackBar - 2.25;
+        //      top = hatchMark.linesDistanceFromTrackBar - 2.25;
         distance = ((_constraintMaxWidth - _handlersWidth!) / percent);
       } else {
-//      left = hatchMark.linesDistanceFromTrackBar - 3.62;
+        //      left = hatchMark.linesDistanceFromTrackBar - 3.62;
         distance = ((_constraintMaxHeight - _handlersHeight!) / percent);
       }
 
@@ -535,7 +573,7 @@ class _SuperKitSliderState extends State<SuperKitSlider>
         );
 
         if (widget.axis == Axis.horizontal) {
-//        left = (p * distance) + _handlersPadding - labelBoxHalfSize - 0.5;
+          //        left = (p * distance) + _handlersPadding - labelBoxHalfSize - 0.5;
           linesLeft = (p * distance) + _handlersPadding - 0.75;
           if (hatchMark.linesAlignment ==
               FlutterSliderHatchMarkAlignment.right) {
@@ -569,12 +607,15 @@ class _SuperKitSliderState extends State<SuperKitSlider>
           }
         }
 
-        _points.add(Positioned(
+        _points.add(
+          Positioned(
             top: linesTop,
             bottom: linesBottom,
             left: linesLeft,
             right: linesRight,
-            child: barLine));
+            child: barLine,
+          ),
+        );
       }
     }
 
@@ -613,21 +654,23 @@ class _SuperKitSliderState extends State<SuperKitSlider>
                   : Alignment.center,
               child: label,
             ),
-          )
+          ),
         ];
 
         Widget bar;
         if (widget.axis == Axis.horizontal) {
           bar = Column(
-            mainAxisAlignment:
-                istext! ? MainAxisAlignment.end : MainAxisAlignment.center,
+            mainAxisAlignment: istext!
+                ? MainAxisAlignment.end
+                : MainAxisAlignment.center,
             children: labelWidget,
           );
-          left = tr! * _containerWidthWithoutPadding! / 100 -
+          left =
+              tr! * _containerWidthWithoutPadding! / 100 -
               0.5 +
               _handlersPadding -
               labelBoxHalfSize;
-//          left = (tr * distance) + _handlersPadding - labelBoxHalfSize - 0.5;
+          //          left = (tr * distance) + _handlersPadding - labelBoxHalfSize - 0.5;
 
           top = istext
               ? hatchMark.labelsDistanceFromTrackBar! + 52
@@ -638,7 +681,8 @@ class _SuperKitSliderState extends State<SuperKitSlider>
             mainAxisAlignment: MainAxisAlignment.end,
             children: labelWidget,
           );
-          top = tr! * _containerHeightWithoutPadding! / 100 -
+          top =
+              tr! * _containerHeightWithoutPadding! / 100 -
               0.5 +
               _handlersPadding -
               labelBoxHalfSize;
@@ -646,13 +690,15 @@ class _SuperKitSliderState extends State<SuperKitSlider>
           left = hatchMark.labelsDistanceFromTrackBar!;
         }
 
-        _points.add(Positioned(
-          top: top,
-          bottom: bottom,
-          left: left,
-          right: right,
-          child: bar,
-        ));
+        _points.add(
+          Positioned(
+            top: top,
+            bottom: bottom,
+            left: left,
+            right: right,
+            child: bar,
+          ),
+        );
       }
     }
   }
@@ -728,25 +774,32 @@ class _SuperKitSliderState extends State<SuperKitSlider>
             if (fixedPercent > lowerIgnoreBound + 1 || lowerIgnoreBound == 0) {
               if (lowerIgnoreBound > 0) lowerIgnoreBound += 1;
               upperIgnoreBound = fixedPercent - 1;
-              _ignoreSteps.add(FlutterSliderIgnoreSteps(
-                  from: lowerIgnoreBound, to: upperIgnoreBound));
+              _ignoreSteps.add(
+                FlutterSliderIgnoreSteps(
+                  from: lowerIgnoreBound,
+                  to: upperIgnoreBound,
+                ),
+              );
             }
             lowerIgnoreBound = fixedPercent;
             break;
           }
         }
-        _fixedValues.add(FlutterSliderFixedValue(
-            percent: fixedPercent.toInt(), value: fValue));
+        _fixedValues.add(
+          FlutterSliderFixedValue(percent: fixedPercent.toInt(), value: fValue),
+        );
         if (fValue.toString().isNotEmpty) {
           fixedV.add(fixedPercent);
         }
       }
 
-      double? biggestPoint =
-          _findBiggestIgnorePoint(ignoreBeyondBoundaries: true);
+      double? biggestPoint = _findBiggestIgnorePoint(
+        ignoreBeyondBoundaries: true,
+      );
       if (!fixedV.contains(100)) {
-        _ignoreSteps
-            .add(FlutterSliderIgnoreSteps(from: biggestPoint! + 1, to: 101));
+        _ignoreSteps.add(
+          FlutterSliderIgnoreSteps(from: biggestPoint! + 1, to: 101),
+        );
       }
     } else {
       _realMax = _widgetMax! - _widgetMin!;
@@ -760,20 +813,16 @@ class _SuperKitSliderState extends State<SuperKitSlider>
 
     _setDivisionAndDecimalScale();
 
-    _positionedItems = <Function>[
-      _leftHandlerWidget,
-      _rightHandlerWidget,
-    ];
+    _positionedItems = <Function>[_leftHandlerWidget, _rightHandlerWidget];
 
     FlutterSliderTooltip widgetTooltip =
         widget.tooltip ?? FlutterSliderTooltip();
 
     _tooltipData = FlutterSliderTooltip();
-    _tooltipData.boxStyle = widgetTooltip.boxStyle ??
+    _tooltipData.boxStyle =
+        widgetTooltip.boxStyle ??
         FlutterSliderTooltipBox(
-          foregroundDecoration: const BoxDecoration(
-            color: Colors.white,
-          ),
+          foregroundDecoration: const BoxDecoration(color: Colors.white),
           decoration: BoxDecoration(
             // color: colorChanger(
             //   context: context,
@@ -790,7 +839,8 @@ class _SuperKitSliderState extends State<SuperKitSlider>
           ),
         );
 
-    _tooltipData.textStyle = widgetTooltip.textStyle ??
+    _tooltipData.textStyle =
+        widgetTooltip.textStyle ??
         fontChanger(fontSize: 12, lang: '', fontWeight: FontWeight.w800);
 
     _tooltipData.leftPrefix = widgetTooltip.leftPrefix;
@@ -884,40 +934,46 @@ class _SuperKitSliderState extends State<SuperKitSlider>
     FlutterSliderHandler inputRightHandler =
         widget.rightHandler ?? FlutterSliderHandler();
     inputRightHandler.child ??= Icon(
-        (widget.axis == Axis.horizontal)
-            ? Icons.chevron_left
-            : Icons.expand_less,
-        color: Colors.black45);
-    inputRightHandler.decoration ??= const BoxDecoration(boxShadow: <BoxShadow>[
-      BoxShadow(
+      (widget.axis == Axis.horizontal) ? Icons.chevron_left : Icons.expand_less,
+      color: Colors.black45,
+    );
+    inputRightHandler.decoration ??= const BoxDecoration(
+      boxShadow: <BoxShadow>[
+        BoxShadow(
           color: Colors.black26,
           blurRadius: 2,
           spreadRadius: 0.2,
-          offset: Offset(0, 1))
-    ], color: Colors.white, shape: BoxShape.circle);
+          offset: Offset(0, 1),
+        ),
+      ],
+      color: Colors.white,
+      shape: BoxShape.circle,
+    );
 
     rightHandler = _MakeHandler(
-        animation: _rightHandlerScaleAnimation,
-        id: rightHandlerKey,
-        visibleTouchArea: widget.visibleTouchArea,
-        handlerData: widget.rightHandler,
-        width: _handlersWidth,
-        height: _handlersHeight,
-        axis: widget.axis,
-        handlerIndex: 2,
-        touchSize: _touchSize);
+      animation: _rightHandlerScaleAnimation,
+      id: rightHandlerKey,
+      visibleTouchArea: widget.visibleTouchArea,
+      handlerData: widget.rightHandler,
+      width: _handlersWidth,
+      height: _handlersHeight,
+      axis: widget.axis,
+      handlerIndex: 2,
+      touchSize: _touchSize,
+    );
 
     leftHandler = _MakeHandler(
-        animation: _leftHandlerScaleAnimation,
-        id: leftHandlerKey,
-        visibleTouchArea: widget.visibleTouchArea,
-        handlerData: widget.handler,
-        width: _handlersWidth,
-        height: _handlersHeight,
-        rtl: widget.rtl,
-        rangeSlider: widget.rangeSlider,
-        axis: widget.axis,
-        touchSize: _touchSize);
+      animation: _leftHandlerScaleAnimation,
+      id: leftHandlerKey,
+      visibleTouchArea: widget.visibleTouchArea,
+      handlerData: widget.handler,
+      width: _handlersWidth,
+      height: _handlersHeight,
+      rtl: widget.rtl,
+      rangeSlider: widget.rangeSlider,
+      axis: widget.axis,
+      touchSize: _touchSize,
+    );
 
     if (widget.rangeSlider == false) {
       rightHandler = leftHandler;
@@ -935,9 +991,11 @@ class _SuperKitSliderState extends State<SuperKitSlider>
   }
 
   double getValueByPosition(double position) {
-    double value = ((position / (__containerSizeWithoutPadding! / _divisions)) *
+    double value =
+        ((position / (__containerSizeWithoutPadding! / _divisions)) *
         _widgetStep!);
-    value = (double.parse(value.toStringAsFixed(_decimalScale)) -
+    value =
+        (double.parse(value.toStringAsFixed(_decimalScale)) -
         double.parse((value % _widgetStep!).toStringAsFixed(_decimalScale)));
     return value;
   }
@@ -947,15 +1005,18 @@ class _SuperKitSliderState extends State<SuperKitSlider>
   }
 
   double getValueByPositionIgnoreOffset(double position) {
-    double value = ((position / (__containerSizeWithoutPadding! / _divisions)) *
+    double value =
+        ((position / (__containerSizeWithoutPadding! / _divisions)) *
         _widgetStep!);
     return value;
   }
 
-  void _leftHandlerMove(PointerEvent pointer,
-      {double lockedHandlersDragOffset = 0,
-      double tappedPositionWithPadding = 0,
-      bool selectedByTap = false}) {
+  void _leftHandlerMove(
+    PointerEvent pointer, {
+    double lockedHandlersDragOffset = 0,
+    double tappedPositionWithPadding = 0,
+    bool selectedByTap = false,
+  }) {
     if (widget.disabled ||
         (widget.handler != null && widget.handler!.disabled)) {
       return;
@@ -974,7 +1035,8 @@ class _SuperKitSliderState extends State<SuperKitSlider>
     bool validMove = true;
 
     if (widget.axis == Axis.horizontal) {
-      __dAxis = pointer.position.dx -
+      __dAxis =
+          pointer.position.dx -
           tappedPositionWithPadding -
           lockedHandlersDragOffset -
           _containerLeft;
@@ -983,7 +1045,8 @@ class _SuperKitSliderState extends State<SuperKitSlider>
       __rightHandlerPosition = _rightHandlerXPosition;
       __leftHandlerPosition = _leftHandlerXPosition;
     } else {
-      __dAxis = pointer.position.dy -
+      __dAxis =
+          pointer.position.dy -
           tappedPositionWithPadding -
           lockedHandlersDragOffset -
           _containerTop;
@@ -1048,7 +1111,9 @@ class _SuperKitSliderState extends State<SuperKitSlider>
         if (!forcePosStop) {
           _lowerValue = tmpLowerValue;
           _leftHandlerMoveBetweenSteps(
-              __dAxis! - __axisDragTmp!, selectedByTap);
+            __dAxis! - __axisDragTmp!,
+            selectedByTap,
+          );
           __leftHandlerPosition = getPositionByValue(_lowerValue);
         } else {
           if (__axisPosTmp! - tS! >= __rightHandlerPosition!) {
@@ -1131,7 +1196,8 @@ class _SuperKitSliderState extends State<SuperKitSlider>
                 (_realMax! - getValueByPositionIgnoreOffset(__axisPosTmp!) >
                         steps.from! - _widgetStep! / 2 &&
                     _realMax! - getValueByPositionIgnoreOffset(__axisPosTmp!) <=
-                        steps.to! + _widgetStep! / 2))) validMove = false;
+                        steps.to! + _widgetStep! / 2)))
+          validMove = false;
       }
     }
 
@@ -1139,10 +1205,12 @@ class _SuperKitSliderState extends State<SuperKitSlider>
   }
 
   void _leftHandlerMoveBetweenSteps(dynamic handlerPos, bool selectedByTap) {
-    double nextStepMiddlePos =
-        getPositionByValue((_lowerValue! + (_lowerValue! + _widgetStep!)) / 2);
-    double prevStepMiddlePos =
-        getPositionByValue((_lowerValue! - (_lowerValue! - _widgetStep!)) / 2);
+    double nextStepMiddlePos = getPositionByValue(
+      (_lowerValue! + (_lowerValue! + _widgetStep!)) / 2,
+    );
+    double prevStepMiddlePos = getPositionByValue(
+      (_lowerValue! - (_lowerValue! - _widgetStep!)) / 2,
+    );
 
     if (handlerPos > nextStepMiddlePos || handlerPos < prevStepMiddlePos) {
       if (handlerPos > nextStepMiddlePos) {
@@ -1210,10 +1278,14 @@ class _SuperKitSliderState extends State<SuperKitSlider>
     }
   }
 
-  void _rightHandlerMove(PointerEvent pointer,
-      {double tappedPositionWithPadding = 0, bool selectedByTap = false}) {
+  void _rightHandlerMove(
+    PointerEvent pointer, {
+    double tappedPositionWithPadding = 0,
+    bool selectedByTap = false,
+  }) {
     if (widget.disabled ||
-        (widget.rightHandler != null && widget.rightHandler!.disabled)) return;
+        (widget.rightHandler != null && widget.rightHandler!.disabled))
+      return;
 
     _handlersDistance = widget.lockDistance ?? _upperValue! - _lowerValue!;
 
@@ -1296,7 +1368,9 @@ class _SuperKitSliderState extends State<SuperKitSlider>
         if (!forcePosStop) {
           _upperValue = tmpUpperValue;
           _rightHandlerMoveBetweenSteps(
-              __dAxis! - __axisDragTmp!, selectedByTap);
+            __dAxis! - __axisDragTmp!,
+            selectedByTap,
+          );
           __rightHandlerPosition = getPositionByValue(_upperValue);
         } else {
           if (__axisPosTmp! - tS! <= __leftHandlerPosition!) {
@@ -1394,7 +1468,8 @@ class _SuperKitSliderState extends State<SuperKitSlider>
                 (_realMax! - getValueByPositionIgnoreOffset(__axisPosTmp!) >
                         steps.from! - _widgetStep! / 2 &&
                     _realMax! - getValueByPositionIgnoreOffset(__axisPosTmp!) <=
-                        steps.to! + _widgetStep! / 2))) validMove = false;
+                        steps.to! + _widgetStep! / 2)))
+          validMove = false;
       }
     }
     return validMove;
@@ -1447,10 +1522,12 @@ class _SuperKitSliderState extends State<SuperKitSlider>
   }
 
   void _rightHandlerMoveBetweenSteps(dynamic handlerPos, bool selectedByTap) {
-    double nextStepMiddlePos =
-        getPositionByValue((_upperValue! + (_upperValue! + _widgetStep!)) / 2);
-    double prevStepMiddlePos =
-        getPositionByValue((_upperValue! - (_upperValue! - _widgetStep!)) / 2);
+    double nextStepMiddlePos = getPositionByValue(
+      (_upperValue! + (_upperValue! + _widgetStep!)) / 2,
+    );
+    double prevStepMiddlePos = getPositionByValue(
+      (_upperValue! - (_upperValue! - _widgetStep!)) / 2,
+    );
 
     if (handlerPos > nextStepMiddlePos || handlerPos < prevStepMiddlePos) {
       if (handlerPos > nextStepMiddlePos) {
@@ -1495,9 +1572,7 @@ class _SuperKitSliderState extends State<SuperKitSlider>
 
   Positioned _leftHandlerWidget() {
     if (widget.rangeSlider == false) {
-      return Positioned(
-        child: Container(),
-      );
+      return Positioned(child: Container());
     }
 
     double? bottom;
@@ -1516,32 +1591,36 @@ class _SuperKitSliderState extends State<SuperKitSlider>
       right: right,
       child: Listener(
         child: Draggable<Object>(
-            axis: widget.axis,
-            feedback: Container(),
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: <Widget>[
-                _tooltip(
-                    side: 'left',
-                    value: _outputLowerValue,
-                    opacity: _leftTooltipOpacity,
-                    animation: _leftTooltipAnimation),
-                leftHandler,
-              ],
-            )),
-        onPointerMove: (_) {
+          axis: widget.axis,
+          feedback: Container(),
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: <Widget>[
+              _tooltip(
+                side: 'left',
+                value: _outputLowerValue,
+                opacity: _leftTooltipOpacity,
+                animation: _leftTooltipAnimation,
+              ),
+              leftHandler,
+            ],
+          ),
+        ),
+        onPointerMove: (x) {
           __dragging = true;
 
-          _leftHandlerMove(_);
+          _leftHandlerMove(x);
         },
-        onPointerDown: (_) {
+        onPointerDown: (x) {
           if (widget.disabled ||
-              (widget.handler != null && widget.handler!.disabled)) return;
+              (widget.handler != null && widget.handler!.disabled)) {
+            return;
+          }
 
           _renderBoxInitialization();
 
-          xDragTmp = (_.position.dx - _containerLeft - _leftHandlerXPosition!);
-          yDragTmp = (_.position.dy - _containerTop - _leftHandlerYPosition!);
+          xDragTmp = (x.position.dx - _containerLeft - _leftHandlerXPosition!);
+          yDragTmp = (x.position.dy - _containerTop - _leftHandlerYPosition!);
 
           if (!_tooltipData.disabled! &&
               _tooltipData.alwaysShowTooltip == false) {
@@ -1566,13 +1645,15 @@ class _SuperKitSliderState extends State<SuperKitSlider>
           _adjustLeftHandlerPosition();
 
           if (widget.disabled ||
-              (widget.handler != null && widget.handler!.disabled)) return;
+              (widget.handler != null && widget.handler!.disabled))
+            return;
 
           _arrangeHandlersZIndex();
 
           _stopHandlerAnimation(
-              animation: _leftHandlerScaleAnimation,
-              controller: _leftHandlerScaleAnimationController);
+            animation: _leftHandlerScaleAnimation,
+            controller: _leftHandlerScaleAnimationController,
+          );
 
           _hideTooltips();
 
@@ -1637,33 +1718,35 @@ class _SuperKitSliderState extends State<SuperKitSlider>
       bottom: bottom,
       child: Listener(
         child: Draggable<Object>(
-            axis: Axis.horizontal,
-            feedback: Container(
-//                            width: 20,
-//                            height: 20,
-//                            color: Colors.blue.withOpacity(0.7),
-                ),
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: (<Widget>[
-                _tooltip(
-                    side: 'right',
-                    value: _outputUpperValue,
-                    opacity: _rightTooltipOpacity,
-                    animation: _rightTooltipAnimation),
-                rightHandler,
-              ]),
-            )),
-        onPointerMove: (_) {
+          axis: Axis.horizontal,
+          feedback: Container(
+            //                            width: 20,
+            //                            height: 20,
+            //                            color: Colors.blue.withOpacity(0.7),
+          ),
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: (<Widget>[
+              _tooltip(
+                side: 'right',
+                value: _outputUpperValue,
+                opacity: _rightTooltipOpacity,
+                animation: _rightTooltipAnimation,
+              ),
+              rightHandler,
+            ]),
+          ),
+        ),
+        onPointerMove: (x) {
           __dragging = true;
 
           if (!_tooltipData.disabled! &&
               _tooltipData.alwaysShowTooltip == false) {
             _rightTooltipOpacity = 1;
           }
-          _rightHandlerMove(_);
+          _rightHandlerMove(x);
         },
-        onPointerDown: (_) {
+        onPointerDown: (x) {
           if (widget.disabled ||
               (widget.rightHandler != null && widget.rightHandler!.disabled)) {
             return;
@@ -1671,8 +1754,8 @@ class _SuperKitSliderState extends State<SuperKitSlider>
 
           _renderBoxInitialization();
 
-          xDragTmp = (_.position.dx - _containerLeft - _rightHandlerXPosition!);
-          yDragTmp = (_.position.dy - _containerTop - _rightHandlerYPosition!);
+          xDragTmp = (x.position.dx - _containerLeft - _rightHandlerXPosition!);
+          yDragTmp = (x.position.dy - _containerTop - _rightHandlerYPosition!);
 
           if (!_tooltipData.disabled! &&
               _tooltipData.alwaysShowTooltip == false) {
@@ -1708,12 +1791,14 @@ class _SuperKitSliderState extends State<SuperKitSlider>
 
           if (widget.rangeSlider == false) {
             _stopHandlerAnimation(
-                animation: _leftHandlerScaleAnimation,
-                controller: _leftHandlerScaleAnimationController);
+              animation: _leftHandlerScaleAnimation,
+              controller: _leftHandlerScaleAnimationController,
+            );
           } else {
             _stopHandlerAnimation(
-                animation: _rightHandlerScaleAnimation,
-                controller: _rightHandlerScaleAnimationController);
+              animation: _rightHandlerScaleAnimation,
+              controller: _rightHandlerScaleAnimationController,
+            );
           }
 
           _hideTooltips();
@@ -1753,8 +1838,10 @@ class _SuperKitSliderState extends State<SuperKitSlider>
     }
   }
 
-  void _stopHandlerAnimation(
-      {Animation? animation, AnimationController? controller}) {
+  void _stopHandlerAnimation({
+    Animation? animation,
+    AnimationController? controller,
+  }) {
     if (widget.handlerAnimation.reverseCurve != null) {
       if (animation!.isCompleted) {
         controller!.reverse();
@@ -1770,13 +1857,14 @@ class _SuperKitSliderState extends State<SuperKitSlider>
     List<Positioned> items = <Positioned>[
       Function.apply(_inactiveTrack, <dynamic>[]),
       Function.apply(_centralWidget, <dynamic>[]),
-      Function.apply(_activeTrack, <dynamic>[])
+      Function.apply(_activeTrack, <dynamic>[]),
     ];
     items.addAll(_points);
 
     double tappedPositionWithPadding = 0;
 
-    items.add(Positioned(
+    items.add(
+      Positioned(
         left: 0,
         right: 0,
         top: 0,
@@ -1784,23 +1872,29 @@ class _SuperKitSliderState extends State<SuperKitSlider>
         child: Opacity(
           opacity: 0,
           child: Listener(
-            onPointerUp: (_) {
+            onPointerUp: (x) {
               if (widget.selectByTap && !__dragging) {
                 tappedPositionWithPadding = _distance();
                 if (_distanceFromLeftHandler! < _distanceFromRightHandler!) {
                   if (!widget.rangeSlider) {
-                    _rightHandlerMove(_,
-                        tappedPositionWithPadding: tappedPositionWithPadding,
-                        selectedByTap: true);
+                    _rightHandlerMove(
+                      x,
+                      tappedPositionWithPadding: tappedPositionWithPadding,
+                      selectedByTap: true,
+                    );
                   } else {
-                    _leftHandlerMove(_,
-                        tappedPositionWithPadding: tappedPositionWithPadding,
-                        selectedByTap: true);
+                    _leftHandlerMove(
+                      x,
+                      tappedPositionWithPadding: tappedPositionWithPadding,
+                      selectedByTap: true,
+                    );
                   }
                 } else {
-                  _rightHandlerMove(_,
-                      tappedPositionWithPadding: tappedPositionWithPadding,
-                      selectedByTap: true);
+                  _rightHandlerMove(
+                    x,
+                    tappedPositionWithPadding: tappedPositionWithPadding,
+                    selectedByTap: true,
+                  );
                 }
               } else {
                 if (_slidingByActiveTrackBar) {
@@ -1814,29 +1908,33 @@ class _SuperKitSliderState extends State<SuperKitSlider>
                 }
               }
 
-//              _adjustLeftHandlerPosition();
-//              _adjustRightHandlerPosition();
+              //              _adjustLeftHandlerPosition();
+              //              _adjustRightHandlerPosition();
 
               _hideTooltips();
 
               _stopHandlerAnimation(
-                  animation: _leftHandlerScaleAnimation,
-                  controller: _leftHandlerScaleAnimationController);
+                animation: _leftHandlerScaleAnimation,
+                controller: _leftHandlerScaleAnimationController,
+              );
               _stopHandlerAnimation(
-                  animation: _rightHandlerScaleAnimation,
-                  controller: _rightHandlerScaleAnimationController);
+                animation: _rightHandlerScaleAnimation,
+                controller: _rightHandlerScaleAnimationController,
+              );
 
               __dragging = false;
 
               setState(() {});
             },
-            onPointerMove: (_) {
+            onPointerMove: (x) {
               __dragging = true;
 
               if (_slidingByActiveTrackBar) {
                 _trackBarSlideCallDragStated(0);
-                _leftHandlerMove(_,
-                    lockedHandlersDragOffset: __lockedHandlersDragOffset);
+                _leftHandlerMove(
+                  x,
+                  lockedHandlersDragOffset: __lockedHandlersDragOffset,
+                );
               } else {
                 tappedPositionWithPadding = _distance();
 
@@ -1848,8 +1946,10 @@ class _SuperKitSliderState extends State<SuperKitSlider>
                       _leftTooltipOpacity = 1;
                       _leftTooltipAnimationController.forward();
                     }
-                    _leftHandlerMove(_,
-                        tappedPositionWithPadding: tappedPositionWithPadding);
+                    _leftHandlerMove(
+                      x,
+                      tappedPositionWithPadding: tappedPositionWithPadding,
+                    );
                   } else {
                     _trackBarSlideCallDragStated(1);
                     if (!_tooltipData.disabled! &&
@@ -1857,8 +1957,10 @@ class _SuperKitSliderState extends State<SuperKitSlider>
                       _rightTooltipOpacity = 1;
                       _rightTooltipAnimationController.forward();
                     }
-                    _rightHandlerMove(_,
-                        tappedPositionWithPadding: tappedPositionWithPadding);
+                    _rightHandlerMove(
+                      x,
+                      tappedPositionWithPadding: tappedPositionWithPadding,
+                    );
                   }
                 } else {
                   _trackBarSlideCallDragStated(1);
@@ -1867,12 +1969,14 @@ class _SuperKitSliderState extends State<SuperKitSlider>
                     _rightTooltipOpacity = 1;
                     _rightTooltipAnimationController.forward();
                   }
-                  _rightHandlerMove(_,
-                      tappedPositionWithPadding: tappedPositionWithPadding);
+                  _rightHandlerMove(
+                    x,
+                    tappedPositionWithPadding: tappedPositionWithPadding,
+                  );
                 }
               }
             },
-            onPointerDown: (_) {
+            onPointerDown: (x) {
               _leftTapAndSlide = false;
               _rightTapAndSlide = false;
               _slidingByActiveTrackBar = false;
@@ -1881,32 +1985,36 @@ class _SuperKitSliderState extends State<SuperKitSlider>
 
               double leftHandlerLastPosition, rightHandlerLastPosition;
               if (widget.axis == Axis.horizontal) {
-                double lX = _leftHandlerXPosition! +
+                double lX =
+                    _leftHandlerXPosition! +
                     _handlersPadding +
                     _touchSize! +
                     _containerLeft;
-                double rX = _rightHandlerXPosition! +
+                double rX =
+                    _rightHandlerXPosition! +
                     _handlersPadding +
                     _touchSize! +
                     _containerLeft;
 
-                _distanceFromRightHandler = (rX - _.position.dx);
-                _distanceFromLeftHandler = (lX - _.position.dx);
+                _distanceFromRightHandler = (rX - x.position.dx);
+                _distanceFromLeftHandler = (lX - x.position.dx);
 
                 leftHandlerLastPosition = lX;
                 rightHandlerLastPosition = rX;
               } else {
-                double lY = _leftHandlerYPosition! +
+                double lY =
+                    _leftHandlerYPosition! +
                     _handlersPadding +
                     _touchSize! +
                     _containerTop;
-                double rY = _rightHandlerYPosition! +
+                double rY =
+                    _rightHandlerYPosition! +
                     _handlersPadding +
                     _touchSize! +
                     _containerTop;
 
-                _distanceFromLeftHandler = (lY - _.position.dy);
-                _distanceFromRightHandler = (rY - _.position.dy);
+                _distanceFromLeftHandler = (lY - x.position.dy);
+                _distanceFromRightHandler = (rY - x.position.dy);
 
                 leftHandlerLastPosition = lY;
                 rightHandlerLastPosition = rY;
@@ -1920,8 +2028,8 @@ class _SuperKitSliderState extends State<SuperKitSlider>
                 _slidingByActiveTrackBar = true;
               } else {
                 double thumbPosition = (widget.axis == Axis.vertical)
-                    ? _.position.dy
-                    : _.position.dx;
+                    ? x.position.dy
+                    : x.position.dx;
                 if (_distanceFromLeftHandler!.abs() <
                         _distanceFromRightHandler!.abs() ||
                     (_distanceFromLeftHandler == _distanceFromRightHandler &&
@@ -1942,16 +2050,16 @@ class _SuperKitSliderState extends State<SuperKitSlider>
                 if (widget.axis == Axis.horizontal) {
                   xDragTmp = 0;
                   __lockedHandlersDragOffset =
-                      (_leftHandlerXPosition! + _containerLeft - _.position.dx)
+                      (_leftHandlerXPosition! + _containerLeft - x.position.dx)
                           .abs();
                 } else {
                   yDragTmp = 0;
                   __lockedHandlersDragOffset =
-                      (_leftHandlerYPosition! + _containerTop - _.position.dy)
+                      (_leftHandlerYPosition! + _containerTop - x.position.dy)
                           .abs();
                 }
               }
-//              }
+              //              }
 
               if (_ignoreSteps.isEmpty) {
                 if ((widget.lockHandlers || __lockedHandlersDragOffset > 0) &&
@@ -1972,15 +2080,16 @@ class _SuperKitSliderState extends State<SuperKitSlider>
               setState(() {});
             },
             child: Draggable<Object>(
-                axis: widget.axis,
-                feedback: Container(),
-                child: Container(
-                  color: Colors.transparent,
-                )),
+              axis: widget.axis,
+              feedback: Container(),
+              child: Container(color: Colors.transparent),
+            ),
           ),
-        )));
+        ),
+      ),
+    );
 
-//    items      ..addAll(_points);
+    //    items      ..addAll(_points);
 
     for (Function func in _positionedItems) {
       items.add(Function.apply(func, <dynamic>[]));
@@ -2007,12 +2116,14 @@ class _SuperKitSliderState extends State<SuperKitSlider>
     }
   }
 
-  Positioned _tooltip(
-      {String? side, dynamic value, double? opacity, Animation? animation}) {
+  Positioned _tooltip({
+    String? side,
+    dynamic value,
+    double? opacity,
+    Animation? animation,
+  }) {
     if (_tooltipData.disabled! || value == '') {
-      return Positioned(
-        child: Container(),
-      );
+      return Positioned(child: Container());
     }
 
     Widget prefix;
@@ -2022,9 +2133,7 @@ class _SuperKitSliderState extends State<SuperKitSlider>
       prefix = _tooltipData.leftPrefix ?? Container();
       suffix = _tooltipData.leftSuffix ?? Container();
       if (widget.rangeSlider == false) {
-        return Positioned(
-          child: Container(),
-        );
+        return Positioned(child: Container());
       }
     } else {
       prefix = _tooltipData.rightPrefix ?? Container();
@@ -2053,46 +2162,46 @@ class _SuperKitSliderState extends State<SuperKitSlider>
     }
 
     Widget tooltipWidget = IgnorePointer(
-        child: Center(
-      child: FittedBox(
-        child: Container(
-//            height: ,
-//          height: __tooltipKEY.currentContext.size.height,
-          key: (side == 'left') ? leftTooltipKey : rightTooltipKey,
-//            alignment: Alignment.center,
-          child: (widget.tooltip != null && widget.tooltip!.custom != null)
-              ? widget.tooltip!.custom!(value)
-              : Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(12),
-                    ),
-                    color: colorChanger(
-                      context: context,
-                      dark: kcNeutralColor_100,
-                      light: Colors.white,
-                    ),
-                    boxShadow: <BoxShadow>[
-                      BoxShadow(
-                        color: colorChanger(
-                          context: context,
-                          dark:
-                              Theme.of(context).primaryColor.withOpacity(0.08),
-                          light: kcVeryLightGreyColor.withOpacity(0.5),
-                        ),
-                        blurRadius: 6.0,
-                        spreadRadius: 0.5,
-                        offset: const Offset(0.0, 5),
+      child: Center(
+        child: FittedBox(
+          child: Container(
+            //            height: ,
+            //          height: __tooltipKEY.currentContext.size.height,
+            key: (side == 'left') ? leftTooltipKey : rightTooltipKey,
+            //            alignment: Alignment.center,
+            child: (widget.tooltip != null && widget.tooltip!.custom != null)
+                ? widget.tooltip!.custom!(value)
+                : Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(12)),
+                      color: colorChanger(
+                        context: context,
+                        dark: kcNeutralColor_100,
+                        light: Colors.white,
                       ),
-                    ],
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                          color: colorChanger(
+                            context: context,
+                            dark: Theme.of(
+                              context,
+                            ).primaryColor.withOpacity(0.08),
+                            light: kcVeryLightGreyColor.withOpacity(0.5),
+                          ),
+                          blurRadius: 6.0,
+                          spreadRadius: 0.5,
+                          offset: const Offset(0.0, 5),
+                        ),
+                      ],
+                    ),
+                    transform: _tooltipData.boxStyle!.transform,
+                    child: tooltipHolderWidget,
                   ),
-                  transform: _tooltipData.boxStyle!.transform,
-                  child: tooltipHolderWidget,
-                ),
+          ),
         ),
       ),
-    ));
+    );
 
     double? top, right, bottom, left;
     switch (_tooltipData.direction) {
@@ -2131,7 +2240,9 @@ class _SuperKitSliderState extends State<SuperKitSlider>
     }
 
     tooltipWidget = SlideTransition(
-        position: animation as Animation<Offset>, child: tooltipWidget);
+      position: animation as Animation<Offset>,
+      child: tooltipWidget,
+    );
 
     return Positioned(
       left: left,
@@ -2181,27 +2292,26 @@ class _SuperKitSliderState extends State<SuperKitSlider>
           height: height! + 5,
           width: width! + 5,
           decoration: BoxDecoration(
-              color: colorChanger(
-                context: context,
-                dark: kcNeutralColor_90,
-                light: Theme.of(context).primaryColor.withOpacity(0.15),
-              ),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(12),
-              ),
-              backgroundBlendMode: boxDecoration.backgroundBlendMode,
-              shape: boxDecoration.shape,
-              gradient: boxDecoration.gradient,
-              border: boxDecoration.border,
-              //borderRadius: boxDecoration.borderRadius,
-              boxShadow: boxDecoration.boxShadow,
-              image: boxDecoration.image),
+            color: colorChanger(
+              context: context,
+              dark: kcNeutralColor_90,
+              light: Theme.of(context).primaryColor.withOpacity(0.15),
+            ),
+            borderRadius: const BorderRadius.all(Radius.circular(12)),
+            backgroundBlendMode: boxDecoration.backgroundBlendMode,
+            shape: boxDecoration.shape,
+            gradient: boxDecoration.gradient,
+            border: boxDecoration.border,
+            //borderRadius: boxDecoration.borderRadius,
+            boxShadow: boxDecoration.boxShadow,
+            image: boxDecoration.image,
+          ),
         ),
       ),
     );
   }
 
-///////////////////////////////////////------- heho
+  ///////////////////////////////////////------- heho
   Positioned _activeTrack() {
     BoxDecoration boxDecoration =
         widget.trackBar.activeTrackBar ?? const BoxDecoration();
@@ -2225,20 +2335,23 @@ class _SuperKitSliderState extends State<SuperKitSlider>
         if (widget.rtl == true && widget.rangeSlider == false) {
           left = null;
           right = _handlersWidth! / 2;
-          width = _containerWidthWithoutPadding! -
+          width =
+              _containerWidthWithoutPadding! -
               _rightHandlerXPosition! -
               _touchSize!;
         }
       } else {
         if (_containerWidthWithoutPadding! / 2 - _touchSize! >
             _rightHandlerXPosition!) {
-          width = _containerWidthWithoutPadding! / 2 -
+          width =
+              _containerWidthWithoutPadding! / 2 -
               _rightHandlerXPosition! -
               _touchSize!;
           left = _rightHandlerXPosition! + _handlersWidth! / 2 + _touchSize!;
         } else {
           left = _containerWidthWithoutPadding! / 2 + _handlersPadding;
-          width = _rightHandlerXPosition! +
+          width =
+              _rightHandlerXPosition! +
               _touchSize! -
               _containerWidthWithoutPadding! / 2;
         }
@@ -2253,20 +2366,23 @@ class _SuperKitSliderState extends State<SuperKitSlider>
         if (widget.rtl == true && widget.rangeSlider == false) {
           top = null;
           bottom = _handlersHeight! / 2;
-          height = _containerHeightWithoutPadding! -
+          height =
+              _containerHeightWithoutPadding! -
               _rightHandlerYPosition! -
               _touchSize!;
         }
       } else {
         if (_containerHeightWithoutPadding! / 2 - _touchSize! >
             _rightHandlerYPosition!) {
-          height = _containerHeightWithoutPadding! / 2 -
+          height =
+              _containerHeightWithoutPadding! / 2 -
               _rightHandlerYPosition! -
               _touchSize!;
           top = _rightHandlerYPosition! + _handlersHeight! / 2 + _touchSize!;
         } else {
           top = _containerHeightWithoutPadding! / 2 + _handlersPadding;
-          height = _rightHandlerYPosition! +
+          height =
+              _rightHandlerYPosition! +
               _touchSize! -
               _containerHeightWithoutPadding! / 2;
         }
@@ -2286,37 +2402,31 @@ class _SuperKitSliderState extends State<SuperKitSlider>
           height: height + 5,
           width: width + 5,
           decoration: BoxDecoration(
-              color: widget.enableGradient!
-                  ? null
-                  : Theme.of(context).primaryColor,
-              borderRadius: const BorderRadius.all(
-                Radius.circular(12),
-              ),
-              backgroundBlendMode: boxDecoration.backgroundBlendMode,
-              shape: boxDecoration.shape,
-              gradient: widget.enableGradient!
-                  ? const LinearGradient(
-                      colors: [
-                        Colors.blue,
-                        Colors.green,
-                        Colors.yellow,
-                        Colors.red,
-                      ],
-                      stops: [
-                        0.0,
-                        0.25,
-                        0.5,
-                        0.75,
-                      ],
-                      begin: FractionalOffset(0.0, 0.0),
-                      end: FractionalOffset(1.0, 0.0),
-                      tileMode: TileMode.clamp,
-                    )
-                  : null,
-              border: boxDecoration.border,
-              //borderRadius: boxDecoration.borderRadius,
-              boxShadow: boxDecoration.boxShadow,
-              image: boxDecoration.image),
+            color: widget.enableGradient!
+                ? null
+                : Theme.of(context).primaryColor,
+            borderRadius: const BorderRadius.all(Radius.circular(12)),
+            backgroundBlendMode: boxDecoration.backgroundBlendMode,
+            shape: boxDecoration.shape,
+            gradient: widget.enableGradient!
+                ? const LinearGradient(
+                    colors: [
+                      Colors.blue,
+                      Colors.green,
+                      Colors.yellow,
+                      Colors.red,
+                    ],
+                    stops: [0.0, 0.25, 0.5, 0.75],
+                    begin: FractionalOffset(0.0, 0.0),
+                    end: FractionalOffset(1.0, 0.0),
+                    tileMode: TileMode.clamp,
+                  )
+                : null,
+            border: boxDecoration.border,
+            //borderRadius: boxDecoration.borderRadius,
+            boxShadow: boxDecoration.boxShadow,
+            image: boxDecoration.image,
+          ),
         ),
       ),
     );
@@ -2369,15 +2479,9 @@ class _SuperKitSliderState extends State<SuperKitSlider>
 
   void _arrangeHandlersZIndex() {
     if (_lowerValue! >= (_realMax! / 2)) {
-      _positionedItems = <Function>[
-        _rightHandlerWidget,
-        _leftHandlerWidget,
-      ];
+      _positionedItems = <Function>[_rightHandlerWidget, _leftHandlerWidget];
     } else {
-      _positionedItems = <Function>[
-        _leftHandlerWidget,
-        _rightHandlerWidget,
-      ];
+      _positionedItems = <Function>[_leftHandlerWidget, _rightHandlerWidget];
     }
   }
 
@@ -2412,18 +2516,19 @@ class _MakeHandler extends StatelessWidget {
   final bool rangeSlider;
   final double? touchSize;
 
-  const _MakeHandler(
-      {this.id,
-      this.handlerData,
-      this.visibleTouchArea,
-      this.width,
-      this.height,
-      this.animation,
-      this.rtl = false,
-      this.rangeSlider = false,
-      this.axis,
-      this.handlerIndex,
-      this.touchSize});
+  const _MakeHandler({
+    this.id,
+    this.handlerData,
+    this.visibleTouchArea,
+    this.width,
+    this.height,
+    this.animation,
+    this.rtl = false,
+    this.rangeSlider = false,
+    this.axis,
+    this.handlerIndex,
+    this.touchSize,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -2437,72 +2542,79 @@ class _MakeHandler extends StatelessWidget {
 
     if (handlerIndex == 2) {
       handler.child ??= Icon(
-          (axis == Axis.horizontal) ? Icons.chevron_left : Icons.expand_less,
-          color: Colors.black45);
+        (axis == Axis.horizontal) ? Icons.chevron_left : Icons.expand_less,
+        color: Colors.black45,
+      );
     } else {
-      IconData hIcon =
-          (axis == Axis.horizontal) ? Icons.chevron_right : Icons.expand_more;
+      IconData hIcon = (axis == Axis.horizontal)
+          ? Icons.chevron_right
+          : Icons.expand_more;
       if (rtl && !rangeSlider) {
-        hIcon =
-            (axis == Axis.horizontal) ? Icons.chevron_left : Icons.expand_less;
+        hIcon = (axis == Axis.horizontal)
+            ? Icons.chevron_left
+            : Icons.expand_less;
       }
       handler.child ??= Icon(hIcon, color: Colors.black45);
     }
 
-    handler.decoration ??= const BoxDecoration(boxShadow: <BoxShadow>[
-      BoxShadow(
+    handler.decoration ??= const BoxDecoration(
+      boxShadow: <BoxShadow>[
+        BoxShadow(
           color: Colors.black26,
           blurRadius: 2,
           spreadRadius: 0.2,
-          offset: Offset(0, 1))
-    ], color: Colors.white, shape: BoxShape.circle);
+          offset: Offset(0, 1),
+        ),
+      ],
+      color: Colors.white,
+      shape: BoxShape.circle,
+    );
 
     return Center(
       child: SizedBox(
         key: id,
         width: localWidth,
         height: localHeight,
-        child: Stack(children: <Widget>[
-          Opacity(
-            opacity: touchOpacity,
-            child: Container(
-              color: Colors.black12,
-              child: Container(),
+        child: Stack(
+          children: <Widget>[
+            Opacity(
+              opacity: touchOpacity,
+              child: Container(color: Colors.black12, child: Container()),
             ),
-          ),
-          Center(
-            child: ScaleTransition(
-              scale: animation as Animation<double>,
-              child: Opacity(
-                opacity: handler.opacity,
-                child: Container(
-                  alignment: Alignment.center,
-                  foregroundDecoration: handler.foregroundDecoration,
-                  decoration: BoxDecoration(
-                    color: colorChanger(
-                      context: context,
-                      dark: Theme.of(context).primaryColor,
-                      light: Colors.white,
-                    ),
-                    boxShadow: <BoxShadow>[
-                      BoxShadow(
-                        color: kcMediumGreyColor.withOpacity(0.2),
-                        blurRadius: 6.0,
-                        spreadRadius: 1.5,
+            Center(
+              child: ScaleTransition(
+                scale: animation as Animation<double>,
+                child: Opacity(
+                  opacity: handler.opacity,
+                  child: Container(
+                    alignment: Alignment.center,
+                    foregroundDecoration: handler.foregroundDecoration,
+                    decoration: BoxDecoration(
+                      color: colorChanger(
+                        context: context,
+                        dark: Theme.of(context).primaryColor,
+                        light: Colors.white,
                       ),
-                    ],
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(120),
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                          color: kcMediumGreyColor.withOpacity(0.2),
+                          blurRadius: 6.0,
+                          spreadRadius: 1.5,
+                        ),
+                      ],
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(120),
+                      ),
                     ),
+                    transform: handler.transform,
+                    width: 25,
+                    height: 25,
                   ),
-                  transform: handler.transform,
-                  width: 25,
-                  height: 25,
                 ),
               ),
             ),
-          )
-        ]),
+          ],
+        ),
       ),
     );
   }
@@ -2516,13 +2628,14 @@ class FlutterSliderHandler {
   bool disabled;
   double opacity;
 
-  FlutterSliderHandler(
-      {this.child,
-      this.decoration,
-      this.foregroundDecoration,
-      this.transform,
-      this.disabled = false,
-      this.opacity = 1});
+  FlutterSliderHandler({
+    this.child,
+    this.decoration,
+    this.foregroundDecoration,
+    this.transform,
+    this.disabled = false,
+    this.opacity = 1,
+  });
 
   @override
   String toString() {
@@ -2573,8 +2686,12 @@ class FlutterSliderTooltipPositionOffset {
   double? right;
   double? bottom;
 
-  FlutterSliderTooltipPositionOffset(
-      {this.top, this.left, this.right, this.bottom});
+  FlutterSliderTooltipPositionOffset({
+    this.top,
+    this.left,
+    this.right,
+    this.bottom,
+  });
 
   @override
   String toString() {
@@ -2587,8 +2704,11 @@ class FlutterSliderTooltipBox {
   final BoxDecoration? foregroundDecoration;
   final Matrix4? transform;
 
-  const FlutterSliderTooltipBox(
-      {this.decoration, this.foregroundDecoration, this.transform});
+  const FlutterSliderTooltipBox({
+    this.decoration,
+    this.foregroundDecoration,
+    this.transform,
+  });
 
   @override
   String toString() {
@@ -2628,7 +2748,7 @@ class FlutterSliderIgnoreSteps {
   final double? to;
 
   FlutterSliderIgnoreSteps({this.from, this.to})
-      : assert(from != null && to != null && from <= to);
+    : assert(from != null && to != null && from <= to);
 
   @override
   String toString() {
@@ -2641,8 +2761,9 @@ class FlutterSliderFixedValue {
   final dynamic value;
 
   FlutterSliderFixedValue({this.percent, this.value})
-      : assert(
-            percent != null && value != null && percent >= 0 && percent <= 100);
+    : assert(
+        percent != null && value != null && percent >= 0 && percent <= 100,
+      );
 
   @override
   String toString() {
@@ -2656,11 +2777,12 @@ class FlutterSliderHandlerAnimation {
   final Duration duration;
   final double scale;
 
-  const FlutterSliderHandlerAnimation(
-      {this.curve = Curves.elasticOut,
-      this.reverseCurve,
-      this.duration = const Duration(milliseconds: 700),
-      this.scale = 1.3});
+  const FlutterSliderHandlerAnimation({
+    this.curve = Curves.elasticOut,
+    this.reverseCurve,
+    this.duration = const Duration(milliseconds: 700),
+    this.scale = 1.3,
+  });
 
   @override
   String toString() {
@@ -2680,18 +2802,18 @@ class FlutterSliderHatchMark {
   FlutterSliderHatchMarkAlignment linesAlignment;
   bool? displayLines;
 
-  FlutterSliderHatchMark(
-      {this.disabled = false,
-      this.density = 1,
-      this.linesDistanceFromTrackBar,
-      this.labelsDistanceFromTrackBar,
-      this.labels,
-      this.smallLine,
-      this.bigLine,
-      this.linesAlignment = FlutterSliderHatchMarkAlignment.right,
-      this.labelBox,
-      this.displayLines})
-      : assert(density > 0 && density <= 2);
+  FlutterSliderHatchMark({
+    this.disabled = false,
+    this.density = 1,
+    this.linesDistanceFromTrackBar,
+    this.labelsDistanceFromTrackBar,
+    this.labels,
+    this.smallLine,
+    this.bigLine,
+    this.linesAlignment = FlutterSliderHatchMarkAlignment.right,
+    this.labelBox,
+    this.displayLines,
+  }) : assert(density > 0 && density <= 2);
 
   @override
   String toString() {
@@ -2704,12 +2826,11 @@ class FlutterSliderHatchMarkLabel {
   final Widget? label;
   final bool? isText;
 
-  FlutterSliderHatchMarkLabel({
-    this.percent,
-    this.label,
-    this.isText = true,
-  }) : assert((label == null && percent == null) ||
-            (label != null && percent != null && percent >= 0));
+  FlutterSliderHatchMarkLabel({this.percent, this.label, this.isText = true})
+    : assert(
+        (label == null && percent == null) ||
+            (label != null && percent != null && percent >= 0),
+      );
 
   @override
   String toString() {
@@ -2724,13 +2845,13 @@ class FlutterSliderSizedBox {
   final double width;
   final double height;
 
-  const FlutterSliderSizedBox(
-      {this.decoration,
-      this.foregroundDecoration,
-      this.transform,
-      required this.height,
-      required this.width})
-      : assert(width > 0 && height > 0);
+  const FlutterSliderSizedBox({
+    this.decoration,
+    this.foregroundDecoration,
+    this.transform,
+    required this.height,
+    required this.width,
+  }) : assert(width > 0 && height > 0);
 
   @override
   String toString() {
@@ -2760,11 +2881,8 @@ class FlutterSliderRangeStep {
   final double? to;
   final double? step;
 
-  FlutterSliderRangeStep({
-    this.from,
-    this.to,
-    this.step,
-  }) : assert(from != null && to != null && step != null);
+  FlutterSliderRangeStep({this.from, this.to, this.step})
+    : assert(from != null && to != null && step != null);
 
   @override
   String toString() {
