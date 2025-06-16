@@ -19,11 +19,26 @@ TextStyle fontChanger({
   final double? fontHeight,
   final String? fontName,
   final String? fontArName,
-  required final String? lang,
+  final String? lang,
 }) {
-  //final String lang = Localizations.localeOf(context).languageCode;
+  if (lang == null) {
+    return fontName != null
+        ? GoogleFonts.getFont(
+            fontName,
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+            color: color,
+            height: fontHeight,
+          )
+        : GoogleFonts.poppins(
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+            color: color,
+            height: fontHeight,
+          );
+  }
 
-  if (lang!.contains('ar')) {
+  if (lang.contains('ar')) {
     return fontArName != null
         ? GoogleFonts.getFont(
             fontArName,
