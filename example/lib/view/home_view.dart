@@ -43,10 +43,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ScaleTap(
               onPressed: () {},
-              child: Image.asset(
-                globals.Logo,
-                height: 40,
-              ),
+              child: Image.asset(globals.Logo, height: 40),
             ),
             ScaleTap(
               onPressed: () {},
@@ -76,95 +73,112 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.all(18.0),
         child: Column(
           children: [
-            SuperKitCard(
-              radius: 18,
-              color: colorChanger(
-                context: context,
-                dark: globals.darkBG,
-                light: globals.lightColor.withOpacity(.9),
-              ),
-              padding:
-                  EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SuperKitText.heading3Bold(
-                    text: 'Welcome to SuperKit',
-                    fontFamily: 'Rubik',
-                    lang: globals.lang,
-                    fontSize: 26,
-                    color: globals.colorTxt,
-                  ),
-                  verticalSpaceTiny,
-                  SuperKitText.captionSemiBold(
-                    text:
-                        'SuperKit is a Flutter UI Kit, that helps you to build your app faster and easier, with a lot of components and screens that you can use in your app to make it more beautiful and user-friendly.',
-                    color: globals.colorTxt,
-                    lang: globals.lang,
-                    fontFamily: 'DM Sans',
-                    maxLines: 4,
-                  ),
-                  verticalSpaceSmall,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 4.0),
-                        child: SuperKitText.captionSemiBold(
-                          text: 'Version ${hm.version}',
-                          lang: globals.lang,
-                          color: globals.colorTxt,
-                          fontFamily: 'DM Sans',
-                        ),
-                      ),
-                      Spacer(),
-                      SizedBox(
-                        width: 70,
-                        height: 32,
-                        child: Stack(
-                          children: [
-                            Positioned(
-                              left: 0,
-                              child: SuperKitAvatar(
-                                radius: 14,
-                                borderWidth: 1,
-                                imageSpace: 0,
-                                borderColor: globals.softColor.withOpacity(.3),
-                                onTap: () {},
-                                image: globals.zaouat_avatar,
-                              ),
-                            ),
-                            Positioned(
-                              left: 18,
-                              child: SuperKitAvatar(
-                                radius: 14,
-                                borderWidth: 1,
-                                imageSpace: 0,
-                                borderColor: globals.softColor.withOpacity(.3),
-                                onTap: () {},
-                                image: globals.elmissouri_avatar,
-                              ),
-                            ),
-                            Positioned(
-                              left: 40,
-                              child: SuperKitAvatar(
-                                radius: 14,
-                                borderWidth: 1,
-                                imageSpace: 0,
-                                borderColor: globals.softColor.withOpacity(.3),
-                                onTap: () {},
-                                image: globals.hamza_avatar,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            )
+            verticalSpaceLarge,
+            SuperKitButton(
+              title: 'Play Now'.toUpperCase(),
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+              isGameButton: true,
+              font: 'Rubik',
+              borderRadius: 22,
+              color: Colors.blue,
+              width: 200,
+              onTap: () {},
+            ),
+            verticalSpaceMedium,
+            // SuperKitCard(
+            //   radius: 18,
+            //   color: colorChanger(
+            //     context: context,
+            //     dark: globals.darkBG,
+            //     light: globals.lightColor.withOpacity(.9),
+            //   ),
+            //   padding: EdgeInsets.only(
+            //     top: 20,
+            //     left: 20,
+            //     right: 20,
+            //     bottom: 10,
+            //   ),
+            //   child: Column(
+            //     crossAxisAlignment: CrossAxisAlignment.start,
+            //     children: [
+            //       SuperKitText.heading3Bold(
+            //         text: 'Welcome to SuperKit',
+            //         fontFamily: 'Rubik',
+            //         lang: globals.lang,
+            //         fontSize: 26,
+            //         color: globals.colorTxt,
+            //       ),
+            //       verticalSpaceTiny,
+            //       SuperKitText.captionSemiBold(
+            //         text:
+            //             'SuperKit is a Flutter UI Kit, that helps you to build your app faster and easier, with a lot of components and screens that you can use in your app to make it more beautiful and user-friendly.',
+            //         color: globals.colorTxt,
+            //         lang: globals.lang,
+            //         fontFamily: 'DM Sans',
+            //         maxLines: 4,
+            //       ),
+            //       verticalSpaceSmall,
+            //       Row(
+            //         mainAxisAlignment: MainAxisAlignment.end,
+            //         crossAxisAlignment: CrossAxisAlignment.end,
+            //         children: [
+            //           Padding(
+            //             padding: const EdgeInsets.only(bottom: 4.0),
+            //             child: SuperKitText.captionSemiBold(
+            //               text: 'Version ${hm.version}',
+            //               lang: globals.lang,
+            //               color: globals.colorTxt,
+            //               fontFamily: 'DM Sans',
+            //             ),
+            //           ),
+            //           Spacer(),
+            //           SizedBox(
+            //             width: 70,
+            //             height: 32,
+            //             child: Stack(
+            //               children: [
+            //                 Positioned(
+            //                   left: 0,
+            //                   child: SuperKitAvatar(
+            //                     radius: 14,
+            //                     borderWidth: 1,
+            //                     imageSpace: 0,
+            //                     borderColor: globals.softColor.withOpacity(.3),
+            //                     onTap: () {},
+            //                     image: globals.zaouat_avatar,
+            //                   ),
+            //                 ),
+            //                 Positioned(
+            //                   left: 18,
+            //                   child: SuperKitAvatar(
+            //                     radius: 14,
+            //                     borderWidth: 1,
+            //                     imageSpace: 0,
+            //                     borderColor: globals.softColor.withOpacity(.3),
+            //                     onTap: () {},
+            //                     image: globals.elmissouri_avatar,
+            //                   ),
+            //                 ),
+            //                 Positioned(
+            //                   left: 40,
+            //                   child: SuperKitAvatar(
+            //                     radius: 14,
+            //                     borderWidth: 1,
+            //                     imageSpace: 0,
+            //                     borderColor: globals.softColor.withOpacity(.3),
+            //                     onTap: () {},
+            //                     image: globals.hamza_avatar,
+            //                   ),
+            //                 ),
+            //               ],
+            //             ),
+            //           ),
+            //         ],
+            //       ),
+            //     ],
+            //   ),
+            // ),
           ],
         ),
       ),
