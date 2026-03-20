@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-/* Here is the explanation for the code above:
-1. We have imported the google_fonts package.
-2. We have imported the google_fonts.GoogleFonts class.
-3. We have used the GoogleFonts class to import the font for the current language.
-4. We have used the GoogleFonts class to import the font for the current language.
+const _packageFontFamily = 'Poppins';
+const _packageArabicFontFamily = 'IBM Plex Sans Arabic';
+const _packageName = 'superkit_core';
 
-The code above will be executed for the languages that are supported by the app.
-
-So if we want to support more languages, we need to import the font for that language in the app.
-
-And the code below will import the font for the languages that are not supported by the app. */
 TextStyle fontChanger({
   final double? fontSize,
   final FontWeight? fontWeight,
@@ -21,52 +13,17 @@ TextStyle fontChanger({
   final String? fontArName,
   final String? lang,
 }) {
-  if (lang == null) {
-    return fontName != null
-        ? GoogleFonts.getFont(
-            fontName,
-            fontSize: fontSize,
-            fontWeight: fontWeight,
-            color: color,
-            height: fontHeight,
-          )
-        : GoogleFonts.poppins(
-            fontSize: fontSize,
-            fontWeight: fontWeight,
-            color: color,
-            height: fontHeight,
-          );
-  }
+  final isArabic = lang?.contains('ar') ?? false;
+  final family = isArabic
+      ? (fontArName ?? _packageArabicFontFamily)
+      : (fontName ?? _packageFontFamily);
 
-  if (lang.contains('ar')) {
-    return fontArName != null
-        ? GoogleFonts.getFont(
-            fontArName,
-            fontSize: fontSize,
-            fontWeight: fontWeight,
-            color: color,
-            height: fontHeight,
-          )
-        : GoogleFonts.ibmPlexSansArabic(
-            fontSize: fontSize,
-            fontWeight: fontWeight,
-            color: color,
-            height: fontHeight,
-          );
-  } else {
-    return fontName != null
-        ? GoogleFonts.getFont(
-            fontName,
-            fontSize: fontSize,
-            fontWeight: fontWeight,
-            color: color,
-            height: fontHeight,
-          )
-        : GoogleFonts.poppins(
-            fontSize: fontSize,
-            fontWeight: fontWeight,
-            color: color,
-            height: fontHeight,
-          );
-  }
+  return TextStyle(
+    fontFamily: family,
+    package: (isArabic ? fontArName : fontName) == null ? _packageName : null,
+    fontSize: fontSize,
+    fontWeight: fontWeight,
+    color: color,
+    height: fontHeight,
+  );
 }

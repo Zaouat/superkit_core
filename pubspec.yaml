@@ -22,7 +22,6 @@ dependencies:
   adaptive_theme: ^3.7.0
 
   # Icons & Fonts
-  google_fonts: ^6.2.1
   font_awesome_flutter: ^10.8.0
   flutter_svg: ^2.1.0
   flutter_iconly: ^1.0.2
@@ -44,12 +43,44 @@ dev_dependencies:
   flutter_lints: ^3.0.1
 
 flutter:
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/google_fonts/poppins/Poppins-Thin.ttf
+          weight: 100
+        - asset: assets/google_fonts/poppins/Poppins-ExtraLight.ttf
+          weight: 200
+        - asset: assets/google_fonts/poppins/Poppins-Light.ttf
+          weight: 300
+        - asset: assets/google_fonts/poppins/Poppins-Regular.ttf
+          weight: 400
+        - asset: assets/google_fonts/poppins/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/google_fonts/poppins/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/google_fonts/poppins/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/google_fonts/poppins/Poppins-ExtraBold.ttf
+          weight: 800
+        - asset: assets/google_fonts/poppins/Poppins-Black.ttf
+          weight: 900
+    - family: IBM Plex Sans Arabic
+      fonts:
+        - asset: assets/google_fonts/plexsans/IBMPlexSansArabic-Thin.ttf
+          weight: 100
+        - asset: assets/google_fonts/plexsans/IBMPlexSansArabic-ExtraLight.ttf
+          weight: 200
+        - asset: assets/google_fonts/plexsans/IBMPlexSansArabic-Light.ttf
+          weight: 300
+        - asset: assets/google_fonts/plexsans/IBMPlexSansArabic-Regular.ttf
+          weight: 400
+        - asset: assets/google_fonts/plexsans/IBMPlexSansArabic-Medium.ttf
+          weight: 500
+        - asset: assets/google_fonts/plexsans/IBMPlexSansArabic-SemiBold.ttf
+          weight: 600
+        - asset: assets/google_fonts/plexsans/IBMPlexSansArabic-Bold.ttf
+          weight: 700
   assets:
-    # Fonts
-    - assets/google_fonts/poppins/
-    - assets/google_fonts/plexsans/
-
-    # Images
     - packages/superkit_core/assets/images/superkit_core.png
     - packages/superkit_core/assets/images/avatar.png
     - packages/superkit_core/assets/images/light.png
